@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://5ctllddc4obb"]
+
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/start_button.tscn" id="1_7wdxp"]
+[ext_resource type="Texture2D" uid="uid://cehmp6afuprf1" path="res://icon.svg" id="2_e6roa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bramd"]
+size = Vector2(1167, 124)
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="StartButton" parent="." instance=ExtResource("1_7wdxp")]
+position = Vector2(542, 114)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(572.5, 592)
+scale = Vector2(9.13281, 1)
+texture = ExtResource("2_e6roa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(568, 592)
+shape = SubResource("RectangleShape2D_bramd")
