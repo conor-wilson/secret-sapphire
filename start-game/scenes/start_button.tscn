@@ -1,14 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7pp5suyru2lf"]
+[gd_scene load_steps=4 format=3 uid="uid://b7pp5suyru2lf"]
 
 [ext_resource type="Texture2D" uid="uid://cehmp6afuprf1" path="res://icon.svg" id="1_6rlpr"]
+[ext_resource type="Script" path="res://scenes/start_button.gd" id="1_285o8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8uom"]
 size = Vector2(128, 128)
 
 [node name="StartButton" type="RigidBody2D"]
+input_pickable = true
+gravity_scale = -8.0
+script = ExtResource("1_285o8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_6rlpr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_q8uom")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="." to="." method="_on_mouse_shape_exited"]
