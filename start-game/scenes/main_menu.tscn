@@ -17,5 +17,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAiAAAAAAAAAAA
 tile_set = ExtResource("1_jssq0")
 
 [node name="StartButton" parent="." instance=ExtResource("1_7wdxp")]
-position = Vector2(545, 115)
+position = Vector2(585, 187)
+rotation = -0.232184
 physics_material_override = SubResource("PhysicsMaterial_qxvnu")
