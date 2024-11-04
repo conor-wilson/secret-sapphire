@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://scenes/start_button.gd" id="1_285o8"]
 [ext_resource type="Texture2D" uid="uid://da1aop1iloq0v" path="res://assets/art/StartButton.png" id="2_xg8uo"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wpsjv"]
-radius = 32.0
-height = 256.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y6j8"]
+size = Vector2(60, 252)
 
 [node name="StartButton" type="RigidBody2D"]
 collision_layer = 2
@@ -18,8 +17,9 @@ script = ExtResource("1_285o8")
 texture = ExtResource("2_xg8uo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.90735e-05, 1.43051e-05)
 rotation = 1.57079
-shape = SubResource("CapsuleShape2D_wpsjv")
+shape = SubResource("RectangleShape2D_2y6j8")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
