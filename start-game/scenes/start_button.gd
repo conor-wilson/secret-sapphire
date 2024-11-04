@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_pressed() && event.is_action("click") && gravity_scale == 0:
 		gravity_scale = 1
+		apply_impulse(Vector2(0,-200), Vector2(randf_range(-25,25),0))
 
 func _on_body_entered(body: Node) -> void:
 	collision.emit()
