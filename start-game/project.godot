@@ -33,3 +33,7 @@ click={
 2d_physics/layer_2="objects"
 2d_physics/layer_3="characters"
 2d_physics/layer_4="particles"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
