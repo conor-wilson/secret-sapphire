@@ -29,32 +29,32 @@ position = Vector2(383, 484)
 
 [node name="T1" parent="Letters" instance=ExtResource("3_1ar5g")]
 position = Vector2(417, 481)
-letter = 1
+letter_type = 1
 
 [node name="A1" parent="Letters" instance=ExtResource("3_1ar5g")]
 position = Vector2(453, 478)
-letter = 2
+letter_type = 2
 
 [node name="R" parent="Letters" instance=ExtResource("3_1ar5g")]
 position = Vector2(489, 478)
-letter = 3
+letter_type = 3
 
 [node name="T2" parent="Letters" instance=ExtResource("3_1ar5g")]
 position = Vector2(525, 480)
-letter = 1
+letter_type = 1
 
 [node name="G" parent="Letters" instance=ExtResource("3_1ar5g")]
 position = Vector2(625, 470)
-letter = 4
+letter_type = 4
 
 [node name="A2" parent="Letters" instance=ExtResource("3_1ar5g")]
 position = Vector2(658, 472)
-letter = 2
+letter_type = 2
 
 [node name="M" parent="Letters" instance=ExtResource("3_1ar5g")]
 position = Vector2(694, 471)
-letter = 5
+letter_type = 5
 
 [node name="E" parent="Letters" instance=ExtResource("3_1ar5g")]
 position = Vector2(729, 471)
-letter = 6
+letter_type = 6
