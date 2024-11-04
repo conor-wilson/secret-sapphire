@@ -1,12 +1,18 @@
-[gd_scene load_steps=6 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=8 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/start_button.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_jssq0"]
 [ext_resource type="PackedScene" uid="uid://dn8q4o2sgxa7y" path="res://scenes/letter.tscn" id="3_1ar5g"]
+[ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_2a3fy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qxvnu"]
 bounce = 0.4
+
+[sub_resource type="LabelSettings" id="LabelSettings_rnshd"]
+font = ExtResource("5_2a3fy")
+font_size = 96
+font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_hib26")
@@ -20,7 +26,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAiAAAAAAAAAAA
 tile_set = ExtResource("1_jssq0")
 
 [node name="StartButton" parent="." instance=ExtResource("1_7wdxp")]
-position = Vector2(576, 323)
+position = Vector2(568, 431)
 physics_material_override = SubResource("PhysicsMaterial_qxvnu")
 
 [node name="Letters" type="Node2D" parent="."]
@@ -68,5 +74,15 @@ letter_type = 5
 position = Vector2(716, 573)
 rotation = -0.0150613
 letter_type = 6
+
+[node name="Label" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 152.0
+offset_right = 1118.0
+offset_bottom = 379.0
+text = "GITHUB GAME OFF
+2024"
+label_settings = SubResource("LabelSettings_rnshd")
+horizontal_alignment = 1
 
 [connection signal="collision" from="StartButton" to="." method="_on_start_button_collision"]
