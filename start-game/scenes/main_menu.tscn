@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=5 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/start_button.tscn" id="1_7wdxp"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_jssq0"]
+[ext_resource type="PackedScene" uid="uid://dn8q4o2sgxa7y" path="res://scenes/letter.tscn" id="3_1ar5g"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qxvnu"]
 bounce = 0.4
@@ -20,3 +21,8 @@ tile_set = ExtResource("1_jssq0")
 position = Vector2(585, 187)
 rotation = -0.232184
 physics_material_override = SubResource("PhysicsMaterial_qxvnu")
+
+[node name="Letters" type="Node2D" parent="."]
+
+[node name="S" parent="Letters" instance=ExtResource("3_1ar5g")]
+position = Vector2(617, 429)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn8q4o2sgxa7y"]
+
+[ext_resource type="Texture2D" uid="uid://pvl4opjitbn6" path="res://assets/art/Letters1.png" id="1_xwbin"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uq82m"]
+bounce = 0.3
+
+[node name="Letter" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_uq82m")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-12, -12, -8, -16, 8, -16, 12, -12, 12, -8, 11, -7, 7, -7, 4, -10, -5, -10, -6, -9, -6, -4, -5, -3, 8, -3, 12, 1, 12, 11, 6, 16, -8, 16, -12, 12, -12, 9, -10, 7, -7, 7, -5, 10, 4, 10, 6, 8, 6, 4, 5, 3, -8, 3, -12, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xwbin")
