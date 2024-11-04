@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal collision
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	gravity_scale = 0
@@ -11,3 +13,7 @@ func _process(delta: float) -> void:
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_pressed() && event.is_action("click") && gravity_scale == 0:
 		gravity_scale = 1
+
+func _on_body_entered(body: Node) -> void:
+	collision.emit()
+	queue_free()

@@ -19,11 +19,12 @@ var letter_body:RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	disable_all_letters()
 	set_letter_body()
+	disable_all_letters()
 	enable_letter(letter_body)
-	apply_random_force()
 
+# set_letter_body sets the value of letter_body to the correct child node
+# according to the value of letter_type.
 func set_letter_body():
 	match letter_type: 
 		LetterType.S: letter_body = s
@@ -46,20 +47,31 @@ func disable_all_letters():
 	disable_letter(e)
 
 # disable_letter disables and hides the provided letter from the node tree.
-func disable_letter(l:RigidBody2D): 
-	l.hide()
+func disable_letter(l:RigidBody2D):
 	l.get_child(1).disabled = true
+	l.hide()
 
 # enable_letter enables and shows the provided letter within the node tree.
 func enable_letter(l:RigidBody2D):
-	l.show()
 	l.get_child(1).disabled = false
 
+# spawn reveals the letter and applies a random force to it
+func spawn():
+	letter_body.show()
+	apply_random_force()
+
+# apply_random_force applies a random force on the letter (in the positive Y
+# direction, and in any X direction)
+#
+# TODO: Make the range values in here configurable.
 func apply_random_force():
-	var x_force:float = randf_range(-1000, 1000)
-	var y_force:float = randf_range(-1000, 0)
+	var x_force:float = randf_range(-750, 750)
+	var y_force:float = randf_range(-750, 0)
 	letter_body.apply_impulse(Vector2(x_force,y_force))
 
+# TODO: This is purely for debugging. This function should be removed once it's
+# no-longer needed.
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debugbutton"): 
+		spawn()
 		apply_random_force()
