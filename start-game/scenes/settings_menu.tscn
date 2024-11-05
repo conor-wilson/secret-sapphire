@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://cfjp23jay1xyw"]
+[gd_scene load_steps=6 format=4 uid="uid://cfjp23jay1xyw"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu.gd" id="1_g011e"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_g236m"]
@@ -8,6 +8,8 @@
 font = ExtResource("2_ityvj")
 font_size = 96
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucw1g"]
 
 [node name="SettingsMenu" type="Node2D"]
 script = ExtResource("1_g011e")
@@ -39,6 +41,7 @@ theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ityvj")
 theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ucw1g")
 text = "mute sound effects"
 flat = true
 
@@ -52,6 +55,7 @@ theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ityvj")
 theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ucw1g")
 text = "mute music"
 flat = true
 
@@ -65,6 +69,7 @@ theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ityvj")
 theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ucw1g")
 text = "secret settings"
 flat = true
 

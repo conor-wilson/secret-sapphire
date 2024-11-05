@@ -1,15 +1,12 @@
 extends Node2D
 
+@export var devUsername := "QuietLantern"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$UsernameBox.hide()
 	$PasswordBox.hide()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_secret_settings_button_pressed() -> void:
@@ -20,7 +17,7 @@ func _on_username_box_text_submitted(new_text: String) -> void:
 	print("Username Entered: ", new_text)
 	$UsernameBox.clear()
 	
-	if new_text == "QuietLantern":
+	if new_text == devUsername:
 		$PasswordBox.show()
 		$PasswordBox.grab_focus()
 
