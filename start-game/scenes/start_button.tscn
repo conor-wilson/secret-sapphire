@@ -19,6 +19,7 @@ script = ExtResource("1_285o8")
 texture = ExtResource("2_xg8uo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-7.62939e-06, 1.43051e-05)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_2y6j8")
