@@ -108,6 +108,16 @@ position = Vector2(716, 573)
 rotation = -0.0150613
 letter_type = 6
 
+[node name="Credit" type="Label" parent="."]
+offset_left = 784.0
+offset_top = 576.0
+offset_right = 1112.0
+offset_bottom = 604.0
+theme = ExtResource("6_43f6x")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Created by @QuietLantern"
+
 [connection signal="click" from="StartButton" to="." method="_on_start_button_click"]
 [connection signal="collision" from="StartButton" to="." method="_on_start_button_collision"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

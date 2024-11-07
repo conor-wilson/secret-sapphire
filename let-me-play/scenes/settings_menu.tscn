@@ -106,6 +106,16 @@ theme_override_font_sizes/font_size = 48
 placeholder_text = "<password>"
 alignment = 1
 
+[node name="Credit" type="Label" parent="."]
+offset_left = 784.0
+offset_top = 576.0
+offset_right = 1112.0
+offset_bottom = 604.0
+theme = ExtResource("4_558x5")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Created by @QuietLantern"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="SecretSettingsButton" to="." method="_on_secret_settings_button_pressed"]
 [connection signal="text_submitted" from="UsernameBox" to="." method="_on_username_box_text_submitted"]
