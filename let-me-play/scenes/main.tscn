@@ -7,12 +7,21 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_lvo15")
 
-[node name="MainMenu" parent="." instance=ExtResource("1_mw4j5")]
+[node name="Menus" type="Node2D" parent="."]
 
-[node name="SettingsMenu" parent="." instance=ExtResource("3_vdc1c")]
+[node name="MainMenu" parent="Menus" instance=ExtResource("1_mw4j5")]
+
+[node name="SettingsMenu" parent="Menus" instance=ExtResource("3_vdc1c")]
 position = Vector2(1152, 0)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Cameras" type="Node2D" parent="."]
+
+[node name="MainMenuCamera" type="Camera2D" parent="Cameras"]
 position = Vector2(576, 324)
 
-[connection signal="shake_screen" from="MainMenu" to="." method="_on_main_menu_shake_screen"]
+[node name="SettingsCamera" type="Camera2D" parent="Cameras"]
+position = Vector2(1728, 324)
+
+[connection signal="settings_button" from="Menus/MainMenu" to="." method="_on_main_menu_settings_button"]
+[connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
+[connection signal="back_button" from="Menus/SettingsMenu" to="." method="_on_settings_menu_back_button"]

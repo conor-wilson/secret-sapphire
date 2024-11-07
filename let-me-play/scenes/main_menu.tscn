@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dn8q4o2sgxa7y" path="res://scenes/letter.tscn" id="3_1ar5g"]
 [ext_resource type="Texture2D" uid="uid://7r8cut1jsvt0" path="res://assets/art/Panel.png" id="3_janoq"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_2a3fy"]
+[ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_43f6x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rnshd"]
 font = ExtResource("5_2a3fy")
@@ -14,10 +15,6 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qxvnu"]
 bounce = 0.4
-
-[sub_resource type="Theme" id="Theme_r460u"]
-default_font = ExtResource("5_2a3fy")
-default_font_size = 48
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfed"]
 
@@ -56,7 +53,7 @@ offset_top = 464.0
 offset_right = 672.0
 offset_bottom = 520.0
 focus_mode = 0
-theme = SubResource("Theme_r460u")
+theme = ExtResource("6_43f6x")
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)

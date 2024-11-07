@@ -3,6 +3,10 @@ extends Node
 var screen_shake_strength:float = 0.0
 var screen_shake_fade:float     = 5.0
 
+func _ready() -> void:
+	$Cameras/MainMenuCamera.make_current()
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	apply_screen_shake(delta)
@@ -15,7 +19,7 @@ func apply_screen_shake(delta: float):
 		return
 	
 	# Shake the screen
-	$Camera2D.offset = Vector2(
+	$Cameras/MainMenuCamera.offset = Vector2(
 		randf_range(-screen_shake_strength, screen_shake_strength), 
 		randf_range(-screen_shake_strength, screen_shake_strength),
 	)
@@ -31,4 +35,8 @@ func _on_main_menu_shake_screen(strength:float, fade:float) -> void:
 
 
 func _on_main_menu_settings_button() -> void:
-	pass # Replace with function body.
+	$Cameras/SettingsCamera.make_current()
+
+
+func _on_settings_menu_back_button() -> void:
+	$Cameras/MainMenuCamera.make_current()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://cfjp23jay1xyw"]
+[gd_scene load_steps=7 format=4 uid="uid://cfjp23jay1xyw"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu.gd" id="1_g011e"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_g236m"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="2_ityvj"]
+[ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="4_558x5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3h1cu"]
 font = ExtResource("2_ityvj")
@@ -30,6 +31,18 @@ offset_bottom = 225.0
 text = "SETTINGS"
 label_settings = SubResource("LabelSettings_3h1cu")
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 49.0
+offset_top = 52.0
+offset_right = 141.0
+offset_bottom = 102.0
+focus_mode = 0
+theme = ExtResource("4_558x5")
+theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "BACK"
+flat = true
 
 [node name="MuteSFXButton" type="Button" parent="."]
 offset_left = 385.0
@@ -93,6 +106,7 @@ theme_override_font_sizes/font_size = 48
 placeholder_text = "<password>"
 alignment = 1
 
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="SecretSettingsButton" to="." method="_on_secret_settings_button_pressed"]
 [connection signal="text_submitted" from="UsernameBox" to="." method="_on_username_box_text_submitted"]
 [connection signal="text_submitted" from="PasswordBox" to="." method="_on_password_box_text_submitted"]
