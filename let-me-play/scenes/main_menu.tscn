@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=11 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/start_button.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
@@ -7,13 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://7r8cut1jsvt0" path="res://assets/art/Panel.png" id="3_janoq"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_2a3fy"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qxvnu"]
-bounce = 0.4
-
 [sub_resource type="LabelSettings" id="LabelSettings_rnshd"]
 font = ExtResource("5_2a3fy")
 font_size = 96
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qxvnu"]
+bounce = 0.4
+
+[sub_resource type="Theme" id="Theme_r460u"]
+default_font = ExtResource("5_2a3fy")
+default_font_size = 48
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfed"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_hib26")
@@ -30,11 +36,6 @@ tile_set = ExtResource("1_jssq0")
 position = Vector2(576, 256)
 texture = ExtResource("3_janoq")
 
-[node name="StartButton" parent="." instance=ExtResource("1_7wdxp")]
-z_index = 10
-position = Vector2(576, 368)
-physics_material_override = SubResource("PhysicsMaterial_qxvnu")
-
 [node name="Title" type="Label" parent="."]
 offset_left = 32.0
 offset_top = 192.0
@@ -43,6 +44,26 @@ offset_bottom = 419.0
 text = "<JUST LET ME PLAY>"
 label_settings = SubResource("LabelSettings_rnshd")
 horizontal_alignment = 1
+
+[node name="StartButton" parent="." instance=ExtResource("1_7wdxp")]
+z_index = 10
+position = Vector2(576, 368)
+physics_material_override = SubResource("PhysicsMaterial_qxvnu")
+
+[node name="SettingsButton" type="Button" parent="."]
+offset_left = 480.0
+offset_top = 464.0
+offset_right = 672.0
+offset_bottom = 520.0
+focus_mode = 0
+theme = SubResource("Theme_r460u")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
+text = "SETTINGS"
+flat = true
 
 [node name="Letters" type="Node2D" parent="."]
 
@@ -92,3 +113,4 @@ letter_type = 6
 
 [connection signal="click" from="StartButton" to="." method="_on_start_button_click"]
 [connection signal="collision" from="StartButton" to="." method="_on_start_button_collision"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

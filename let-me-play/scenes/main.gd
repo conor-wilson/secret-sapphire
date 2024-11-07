@@ -28,3 +28,7 @@ func _on_main_menu_shake_screen(strength:float, fade:float) -> void:
 	screen_shake_strength = strength
 	if fade != 0:
 		screen_shake_fade = fade
+
+
+func _on_main_menu_settings_button() -> void:
+	pass # Replace with function body.

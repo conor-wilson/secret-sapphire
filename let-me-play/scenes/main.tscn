@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=4 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
+[ext_resource type="PackedScene" uid="uid://cfjp23jay1xyw" path="res://scenes/settings_menu.tscn" id="3_vdc1c"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lvo15")
 
 [node name="MainMenu" parent="." instance=ExtResource("1_mw4j5")]
+
+[node name="SettingsMenu" parent="." instance=ExtResource("3_vdc1c")]
+position = Vector2(1152, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
