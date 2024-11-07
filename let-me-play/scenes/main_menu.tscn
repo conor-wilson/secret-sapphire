@@ -90,4 +90,5 @@ position = Vector2(716, 573)
 rotation = -0.0150613
 letter_type = 6
 
+[connection signal="click" from="StartButton" to="." method="_on_start_button_click"]
 [connection signal="collision" from="StartButton" to="." method="_on_start_button_collision"]
