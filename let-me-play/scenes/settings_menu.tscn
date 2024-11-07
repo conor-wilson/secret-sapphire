@@ -38,6 +38,7 @@ horizontal_alignment = 1
 
 [node name="MuteSFXButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -49,6 +50,7 @@ flat = true
 
 [node name="MuteMusicButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -60,6 +62,7 @@ flat = true
 
 [node name="SecretSettingsButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -82,6 +85,18 @@ theme_override_fonts/font = ExtResource("2_ityvj")
 theme_override_font_sizes/font_size = 48
 placeholder_text = "<password>"
 alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PasswordBox"]
+layout_mode = 0
+offset_left = 386.0
+offset_top = -113.0
+offset_right = 830.0
+offset_bottom = -71.0
+rotation = 0.674616
+theme = ExtResource("4_558x5")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "FIRST PUZZLE COMPLETE!"
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 49.0
