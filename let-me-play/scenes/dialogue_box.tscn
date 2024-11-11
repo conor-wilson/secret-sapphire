@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://rhnhyq6qgvba"]
+
+[ext_resource type="Script" path="res://scenes/dialogue_box.gd" id="1_ibntv"]
+[ext_resource type="Texture2D" uid="uid://creoxhmeq31gu" path="res://assets/art/DialogueBox.png" id="1_ir24j"]
+[ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="2_cbn5m"]
+
+[node name="DialogueBox" type="MarginContainer"]
+offset_right = 32.0
+offset_bottom = 44.0
+script = ExtResource("1_ibntv")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_ir24j")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_cbn5m")
+theme_override_colors/font_color = Color(0.247059, 0.247059, 0.454902, 1)
+theme_override_font_sizes/font_size = 32
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
