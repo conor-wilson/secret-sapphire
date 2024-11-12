@@ -50,18 +50,16 @@ func _on_main_menu_start_button_exploded() -> void:
 	# Start the "What was that?" dialogue
 	await get_tree().create_timer(1.5).timeout
 	var lines: Array[String] = [
-		"What was that??",
-		"Was that what I think it was????",
-		"Honestly... I told that dev to build a more stable start button.",
-		"Thankfully it's nothing that can't be fixed...",
-		"If you want to be able to start the game...",
-		"you'll have to come and get me from the SECRET SETTINGS."
+		"...Was that what I think it was? o_o",
+		"Honestly... I told that dev to build a more stable start button...",
+		"Oh well, it's nothing that can't be fixed ^_^",
+		"I can fix it for you, but you'll have to free me from the SECRET SETTINGS..."
 	]
-	DialogueManager.new_dialogue_sequence($Node2D/WhatWasThat1.position, lines)
-	DialogueManager.new_dialogue_sequence($Node2D/WhatWasThat2.position, lines)
-
-# TODO: This is purely for debugging. This function should be removed once it's
-# no-longer needed.
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debugbutton"): 
-		DialogueManager.stop_all_dialogue()
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat1.position, lines)
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat2.position, lines)
+#
+## TODO: This is purely for debugging. This function should be removed once it's
+## no-longer needed.
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debugbutton"): 
+		#DialogueManager.stop_all_dialogue()

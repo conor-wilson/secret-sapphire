@@ -22,12 +22,12 @@ position = Vector2(576, 324)
 [node name="SettingsCamera" type="Camera2D" parent="Cameras"]
 position = Vector2(1728, 324)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="DialogueMarkers" type="Node2D" parent="."]
 
-[node name="WhatWasThat1" type="Marker2D" parent="Node2D"]
+[node name="WhatWasThat1" type="Marker2D" parent="DialogueMarkers"]
 position = Vector2(790, 512)
 
-[node name="WhatWasThat2" type="Marker2D" parent="Node2D"]
+[node name="WhatWasThat2" type="Marker2D" parent="DialogueMarkers"]
 position = Vector2(2008, 393)
 
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]

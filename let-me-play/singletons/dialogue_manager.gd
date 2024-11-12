@@ -2,10 +2,13 @@ extends Node
 
 @onready var dialogue_sequence_scene = preload("res://scenes/dialogue_sequence.tscn")
 
+# TODO: Fix this janky function
 func stop_all_dialogue():
 	for dialogue_sequence in get_children():
-		dialogue_sequence.dialogue_box.queue_free()
-		dialogue_sequence.queue_free() 
+		if is_instance_valid(dialogue_sequence):
+			if is_instance_valid(dialogue_sequence.dialogue_box):
+				dialogue_sequence.dialogue_box.queue_free()
+			dialogue_sequence.queue_free() 
 
 # new_dialogue_sequence starts a new dialogue sequence at the provided position,
 # displaying a dialogue box with the provided lines. The optional linger_time

@@ -23,6 +23,21 @@ func _on_username_box_text_submitted(new_text: String) -> void:
 	if new_text == devUsername:
 		password_box.show()
 		password_box.grab_focus()
+		
+		var lines: Array[String] = [
+			"Nice job! \\(^o^)/",
+			"Unfortunately, you'll also need his password...",
+			"<TO BE CONTINUED>"
+		]
+		DialogueManager.stop_all_dialogue()
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines)
+	else: 
+		var lines: Array[String] = [
+			"Damn ¬_¬ the dev locked it behind his username...",
+			"I bet he credited himself somewhere around here... >.>"
+		]
+		DialogueManager.stop_all_dialogue()
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines)
 
 func _on_password_box_text_submitted(new_text: String) -> void:
 	print("Password Entered: ", new_text)
