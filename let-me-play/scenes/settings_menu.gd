@@ -1,6 +1,7 @@
 extends Node2D
 
 signal back_pressed
+signal shake_screen(strength:float, fade:float)
 
 @export var devUsername := "QuietLantern"
 
@@ -31,7 +32,8 @@ func _on_username_box_text_submitted(new_text: String) -> void:
 		]
 		DialogueManager.stop_all_dialogue()
 		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines)
-	else: 
+	else:
+		shake_screen.emit(15, 5)
 		var lines: Array[String] = [
 			"Damn ¬_¬ the dev locked it behind his username...",
 			"I bet he credited himself somewhere around here... >.>"

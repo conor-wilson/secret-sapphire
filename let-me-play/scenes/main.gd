@@ -5,7 +5,6 @@ var screen_shake_fade:float     = 5.0
 
 func _ready() -> void:
 	$Cameras/MainMenuCamera.make_current()
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -19,17 +18,22 @@ func apply_screen_shake(delta: float):
 		return
 	
 	# Shake the screen
-	$Cameras/MainMenuCamera.offset = Vector2(
+	var offset:Vector2 = Vector2(
 		randf_range(-screen_shake_strength, screen_shake_strength), 
 		randf_range(-screen_shake_strength, screen_shake_strength),
 	)
+	$Cameras/MainMenuCamera.offset = offset
+	$Cameras/SettingsCamera.offset = offset
 	
 	# Fade the screen shake for the next time
 	screen_shake_strength = lerpf(screen_shake_strength, 0, screen_shake_fade*delta)
 
 func _on_main_menu_shake_screen(strength:float, fade:float) -> void:
 	shake_screen(strength, fade)
-	
+
+func _on_settings_menu_shake_screen(strength: float, fade: float) -> void:
+	shake_screen(strength, fade)
+
 func shake_screen(strength:float, fade:float):
 	screen_shake_strength = strength
 	if fade != 0:
@@ -50,10 +54,11 @@ func _on_main_menu_start_button_exploded() -> void:
 	# Start the "What was that?" dialogue
 	await get_tree().create_timer(1.5).timeout
 	var lines: Array[String] = [
-		"...Was that what I think it was? o_o",
-		"Honestly... I told that dev to build a more stable start button...",
-		"Oh well, it's nothing that can't be fixed ^_^",
-		"I can fix it for you, but you'll have to free me from the SECRET SETTINGS..."
+		"...What was that???",
+		"Was that what I think it was? o_o",
+		"Honestly... I told that dev to fix that start button before release...",
+		"Oh well, luckily I can fix it for you ^_^",
+		"You'll come and unlock me first though..."
 	]
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat1.position, lines)
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat2.position, lines)

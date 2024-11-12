@@ -67,9 +67,9 @@ flat = true
 [node name="SecretSettingsButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
-theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.796078, 0.858824, 0.988235, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.858824, 0.988235, 1)
+theme_override_colors/font_color = Color(0.247059, 0.247059, 0.454902, 1)
 theme_override_fonts/font = ExtResource("2_ityvj")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ucw1g")

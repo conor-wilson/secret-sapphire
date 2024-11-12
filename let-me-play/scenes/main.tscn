@@ -34,3 +34,4 @@ position = Vector2(2008, 393)
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
 [connection signal="start_button_exploded" from="Menus/MainMenu" to="." method="_on_main_menu_start_button_exploded"]
 [connection signal="back_pressed" from="Menus/SettingsMenu" to="." method="_on_settings_menu_back_pressed"]
+[connection signal="shake_screen" from="Menus/SettingsMenu" to="." method="_on_settings_menu_shake_screen"]
