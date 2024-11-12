@@ -25,18 +25,22 @@ tile_set = ExtResource("1_g236m")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 offset_right = 1152.0
-offset_bottom = 648.0
+offset_bottom = 354.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 146
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="SettingsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="SettingsLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "SETTINGS"
 label_settings = SubResource("LabelSettings_3h1cu")
 horizontal_alignment = 1
 
-[node name="MuteSFXButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="MuteSFXButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
@@ -48,7 +52,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ucw1g")
 text = "mute sound effects"
 flat = true
 
-[node name="MuteMusicButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="MuteMusicButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
@@ -60,7 +64,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ucw1g")
 text = "mute music"
 flat = true
 
-[node name="SecretSettingsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="SecretSettingsButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
@@ -72,21 +76,21 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ucw1g")
 text = "secret settings"
 flat = true
 
-[node name="UsernameBox" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+[node name="UsernameBox" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ityvj")
 theme_override_font_sizes/font_size = 48
 placeholder_text = "<username>"
 alignment = 1
 
-[node name="PasswordBox" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+[node name="PasswordBox" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ityvj")
 theme_override_font_sizes/font_size = 48
 placeholder_text = "<password>"
 alignment = 1
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PasswordBox"]
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/PasswordBox"]
 layout_mode = 0
 offset_left = 386.0
 offset_top = -113.0
@@ -127,7 +131,7 @@ text = "Created by @QuietLantern"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/SecretSettingsButton" to="." method="_on_secret_settings_button_pressed"]
-[connection signal="text_submitted" from="CenterContainer/VBoxContainer/UsernameBox" to="." method="_on_username_box_text_submitted"]
-[connection signal="text_submitted" from="CenterContainer/VBoxContainer/PasswordBox" to="." method="_on_password_box_text_submitted"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/SecretSettingsButton" to="." method="_on_secret_settings_button_pressed"]
+[connection signal="text_submitted" from="CenterContainer/MarginContainer/VBoxContainer/UsernameBox" to="." method="_on_username_box_text_submitted"]
+[connection signal="text_submitted" from="CenterContainer/MarginContainer/VBoxContainer/PasswordBox" to="." method="_on_password_box_text_submitted"]
 [connection signal="pressed" from="BackButton" to="." method="_on_button_pressed"]

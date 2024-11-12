@@ -134,11 +134,6 @@ text = "Created by @QuietLantern"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Markers" type="Node2D" parent="."]
-
-[node name="StartButtonExploedDialogue" type="Marker2D" parent="Markers"]
-position = Vector2(800, 512)
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/CenterContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="click" from="StartButton" to="." method="_on_start_button_click"]
 [connection signal="collision" from="StartButton" to="." method="_on_start_button_collision"]

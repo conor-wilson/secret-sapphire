@@ -4,8 +4,8 @@ signal back_pressed
 
 @export var devUsername := "QuietLantern"
 
-@onready var username_box: LineEdit = $CenterContainer/VBoxContainer/UsernameBox
-@onready var password_box: LineEdit = $CenterContainer/VBoxContainer/PasswordBox
+@onready var username_box: LineEdit = $CenterContainer/MarginContainer/VBoxContainer/UsernameBox
+@onready var password_box: LineEdit = $CenterContainer/MarginContainer/VBoxContainer/PasswordBox
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
