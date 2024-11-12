@@ -1,6 +1,6 @@
 extends Node2D
 
-signal back_button
+signal back_pressed
 
 @export var devUsername := "QuietLantern"
 
@@ -29,4 +29,4 @@ func _on_password_box_text_submitted(new_text: String) -> void:
 	password_box.clear()
 
 func _on_button_pressed() -> void:
-	back_button.emit()
+	back_pressed.emit()

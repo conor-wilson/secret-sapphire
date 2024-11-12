@@ -13,10 +13,10 @@ font = ExtResource("5_2a3fy")
 font_size = 96
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfed"]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qxvnu"]
 bounce = 0.4
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfed"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_hib26")
@@ -33,25 +33,29 @@ tile_set = ExtResource("1_jssq0")
 position = Vector2(576, 256)
 texture = ExtResource("3_janoq")
 
-[node name="Title" type="Label" parent="."]
-offset_left = 32.0
-offset_top = 192.0
-offset_right = 1120.0
-offset_bottom = 419.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 170.0
+theme_override_constants/margin_top = 175
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "<JUST LET ME PLAY>"
 label_settings = SubResource("LabelSettings_rnshd")
 horizontal_alignment = 1
 
-[node name="StartButton" parent="." instance=ExtResource("1_7wdxp")]
-z_index = 10
-position = Vector2(576, 368)
-physics_material_override = SubResource("PhysicsMaterial_qxvnu")
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 200
 
-[node name="SettingsButton" type="Button" parent="."]
-offset_left = 480.0
-offset_top = 464.0
-offset_right = 672.0
-offset_bottom = 520.0
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
 focus_mode = 0
 theme = ExtResource("6_43f6x")
 theme_type_variation = &"FlatButton"
@@ -61,6 +65,11 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
 text = "SETTINGS"
 flat = true
+
+[node name="StartButton" parent="." instance=ExtResource("1_7wdxp")]
+z_index = 10
+position = Vector2(576, 368)
+physics_material_override = SubResource("PhysicsMaterial_qxvnu")
 
 [node name="Letters" type="Node2D" parent="."]
 
@@ -108,16 +117,28 @@ position = Vector2(716, 573)
 rotation = -0.0150613
 letter_type = 6
 
-[node name="Credit" type="Label" parent="."]
-offset_left = 784.0
-offset_top = 576.0
-offset_right = 1112.0
-offset_bottom = 604.0
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+offset_left = 760.0
+offset_top = 556.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="Credit" type="Label" parent="MarginContainer2"]
+layout_mode = 2
 theme = ExtResource("6_43f6x")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Created by @QuietLantern"
+horizontal_alignment = 2
+vertical_alignment = 2
 
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="StartButtonExploedDialogue" type="Marker2D" parent="Markers"]
+position = Vector2(800, 512)
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/CenterContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="click" from="StartButton" to="." method="_on_start_button_click"]
 [connection signal="collision" from="StartButton" to="." method="_on_start_button_collision"]
-[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

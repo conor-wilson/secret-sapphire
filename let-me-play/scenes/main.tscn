@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=4 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
 [ext_resource type="PackedScene" uid="uid://cfjp23jay1xyw" path="res://scenes/settings_menu.tscn" id="3_vdc1c"]
-[ext_resource type="PackedScene" uid="uid://dn8q4o2sgxa7y" path="res://scenes/letter.tscn" id="4_g25q0"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lvo15")
@@ -23,8 +22,15 @@ position = Vector2(576, 324)
 [node name="SettingsCamera" type="Camera2D" parent="Cameras"]
 position = Vector2(1728, 324)
 
-[node name="Letter" parent="." instance=ExtResource("4_g25q0")]
+[node name="Node2D" type="Node2D" parent="."]
 
-[connection signal="settings_button" from="Menus/MainMenu" to="." method="_on_main_menu_settings_button"]
+[node name="WhatWasThat1" type="Marker2D" parent="Node2D"]
+position = Vector2(800, 512)
+
+[node name="WhatWasThat2" type="Marker2D" parent="Node2D"]
+position = Vector2(1983, 402)
+
+[connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
-[connection signal="back_button" from="Menus/SettingsMenu" to="." method="_on_settings_menu_back_button"]
+[connection signal="start_button_exploded" from="Menus/MainMenu" to="." method="_on_main_menu_start_button_exploded"]
+[connection signal="back_pressed" from="Menus/SettingsMenu" to="." method="_on_settings_menu_back_pressed"]
