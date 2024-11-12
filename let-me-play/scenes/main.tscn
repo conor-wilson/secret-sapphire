@@ -25,10 +25,10 @@ position = Vector2(1728, 324)
 [node name="DialogueMarkers" type="Node2D" parent="."]
 
 [node name="WhatWasThat1" type="Marker2D" parent="DialogueMarkers"]
-position = Vector2(790, 512)
+position = Vector2(795, 512)
 
 [node name="WhatWasThat2" type="Marker2D" parent="DialogueMarkers"]
-position = Vector2(2008, 393)
+position = Vector2(2021, 392)
 
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]

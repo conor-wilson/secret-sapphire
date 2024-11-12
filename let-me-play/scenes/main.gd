@@ -52,13 +52,13 @@ func _on_main_menu_start_button_exploded() -> void:
 	shake_screen(30.0, 5.0)
 	
 	# Start the "What was that?" dialogue
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(4).timeout
 	var lines: Array[String] = [
-		"...What was that???",
+		"...What was that?",
 		"Was that what I think it was? o_o",
-		"Honestly... I told that dev to fix that start button before release...",
+		"Honestly... I told that dev to fix that START GAME button before release...",
 		"Oh well, luckily I can fix it for you ^_^",
-		"You'll come and unlock me first though..."
+		"You'll have come and unlock me first though..."
 	]
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat1.position, lines)
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat2.position, lines)

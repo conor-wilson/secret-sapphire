@@ -135,7 +135,7 @@ vertical_alignment = 2
 [node name="DialogueMarkers" type="Node2D" parent="."]
 
 [node name="WrongPasswordMarker" type="Marker2D" parent="DialogueMarkers"]
-position = Vector2(856, 392)
+position = Vector2(872, 392)
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/SecretSettingsButton" to="." method="_on_secret_settings_button_pressed"]
 [connection signal="text_submitted" from="CenterContainer/MarginContainer/VBoxContainer/UsernameBox" to="." method="_on_username_box_text_submitted"]

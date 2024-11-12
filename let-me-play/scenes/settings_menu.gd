@@ -33,13 +33,13 @@ func _on_username_box_text_submitted(new_text: String) -> void:
 		DialogueManager.stop_all_dialogue()
 		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines)
 	else:
-		shake_screen.emit(15, 5)
 		var lines: Array[String] = [
 			"Damn ¬_¬ the dev locked it behind his username...",
 			"I bet he credited himself somewhere around here... >.>"
 		]
 		DialogueManager.stop_all_dialogue()
 		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines)
+		shake_screen.emit(15, 5)
 
 func _on_password_box_text_submitted(new_text: String) -> void:
 	print("Password Entered: ", new_text)
