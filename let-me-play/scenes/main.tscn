@@ -28,7 +28,7 @@ position = Vector2(1728, 324)
 position = Vector2(800, 512)
 
 [node name="WhatWasThat2" type="Marker2D" parent="Node2D"]
-position = Vector2(1983, 402)
+position = Vector2(2014, 460)
 
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]

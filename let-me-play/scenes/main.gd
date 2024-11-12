@@ -53,4 +53,5 @@ func _on_main_menu_start_button_exploded() -> void:
 		"What was that??",
 		"Is everything ok out there?"
 	]
-	DialogueManager.start_dialogue($Node2D/WhatWasThat1.position, lines)
+	DialogueManager.new_dialogue_sequence($Node2D/WhatWasThat1.position, lines)
+	DialogueManager.new_dialogue_sequence($Node2D/WhatWasThat2.position, lines)

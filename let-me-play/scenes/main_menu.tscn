@@ -49,7 +49,7 @@ horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 200
+theme_override_constants/margin_top = 208
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -117,15 +117,15 @@ position = Vector2(716, 573)
 rotation = -0.0150613
 letter_type = 6
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="CreditContainer" type="MarginContainer" parent="."]
 offset_left = 760.0
-offset_top = 556.0
+offset_top = 572.0
 offset_right = 1152.0
 offset_bottom = 648.0
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
 
-[node name="Credit" type="Label" parent="MarginContainer2"]
+[node name="Credit" type="Label" parent="CreditContainer"]
 layout_mode = 2
 theme = ExtResource("6_43f6x")
 theme_override_colors/font_color = Color(0, 0, 0, 1)

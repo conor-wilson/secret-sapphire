@@ -1,9 +1,11 @@
-extends MarginContainer
+class_name DialogueBox extends MarginContainer
 
 # TODO: Review this code and tidy it all up
 
 @onready var label: Label = $MarginContainer/Label
 @onready var timer: Timer = $Timer
+
+var line_queue: Array[String] = [] # The list of lines that are queued to be displayed.
 
 const MAX_WIDTH = 256
 
