@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://cfjp23jay1xyw"]
+[gd_scene load_steps=8 format=4 uid="uid://cfjp23jay1xyw"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu.gd" id="1_g011e"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_g236m"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="2_ityvj"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="4_558x5"]
+[ext_resource type="Texture2D" uid="uid://caulw0o26u0i7" path="res://assets/art/SettingsIcon.png" id="5_4i5yv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3h1cu"]
 font = ExtResource("2_ityvj")
@@ -34,7 +35,11 @@ theme_override_constants/margin_top = 146
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="SettingsLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
+[node name="CenterContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+
+[node name="SettingsLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 text = "SETTINGS"
 label_settings = SubResource("LabelSettings_3h1cu")
@@ -131,6 +136,11 @@ theme_override_font_sizes/font_size = 32
 text = "Created by @QuietLantern"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="SettingsIcon" type="Sprite2D" parent="."]
+position = Vector2(391, 179)
+scale = Vector2(2, 2)
+texture = ExtResource("5_4i5yv")
 
 [node name="DialogueMarkers" type="Node2D" parent="."]
 
