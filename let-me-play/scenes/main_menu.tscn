@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=13 format=4 uid="uid://5ctllddc4obb"]
 
-[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/start_button.tscn" id="1_7wdxp"]
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/breakable_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_jssq0"]
 [ext_resource type="PackedScene" uid="uid://dn8q4o2sgxa7y" path="res://scenes/letter.tscn" id="3_1ar5g"]
 [ext_resource type="Texture2D" uid="uid://7r8cut1jsvt0" path="res://assets/art/Panel.png" id="3_janoq"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_2a3fy"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_43f6x"]
+[ext_resource type="Texture2D" uid="uid://da1aop1iloq0v" path="res://assets/art/StartButton.png" id="7_cyu86"]
 [ext_resource type="Texture2D" uid="uid://op2bmdwt6xln" path="res://assets/art/Screw.png" id="8_yx54q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rnshd"]
@@ -16,8 +17,8 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfed"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qxvnu"]
-bounce = 0.4
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwsea"]
+size = Vector2(60, 284)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_hib26")
@@ -68,9 +69,16 @@ text = "SETTINGS"
 flat = true
 
 [node name="StartButton" parent="." instance=ExtResource("1_7wdxp")]
-z_index = 10
 position = Vector2(576, 368)
-physics_material_override = SubResource("PhysicsMaterial_qxvnu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StartButton"]
+texture = ExtResource("7_cyu86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartButton"]
+position = Vector2(-7.62939e-06, 1.43051e-05)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_nwsea")
 
 [node name="Letters" type="Node2D" parent="."]
 

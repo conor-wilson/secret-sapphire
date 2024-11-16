@@ -10,6 +10,7 @@ func _on_start_button_collision() -> void:
 	start_button_exploded.emit()
 
 func _on_start_button_click() -> void:
+	$StartButton.detatch()
 	shake_screen.emit(10, 5.0)
 
 func _on_settings_button_pressed() -> void:
