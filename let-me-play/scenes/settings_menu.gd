@@ -48,10 +48,14 @@ func _on_password_box_text_submitted(new_text: String) -> void:
 func _on_button_pressed() -> void:
 	back_pressed.emit()
 
-
 func _on_settings_icon_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_pressed() && event.is_action("click"):
 		print("WRENCH CLICKED")
 		CursorManager.set_mouse_cursor(CursorManager.WRENCH)
-		$SettingsIcon/Sprite2D.frame = 1
+		$InteractiveElements/SettingsIcon/Sprite2D.frame = 3
+		$InteractiveElements/Screwdriver.detatch()
 		shake_screen.emit(5, 10)
+
+
+func _on_screwdriver_smash() -> void:
+	shake_screen.emit(10,5)

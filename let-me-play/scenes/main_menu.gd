@@ -4,7 +4,7 @@ signal settings_pressed
 signal shake_screen(strength:float, fade:float)
 signal start_button_exploded
 
-func _on_start_button_collision() -> void:
+func _on_start_button_smash() -> void:
 	for letter in $Letters.get_children(): 
 		letter.spawn()
 	start_button_exploded.emit()

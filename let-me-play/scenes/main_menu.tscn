@@ -161,4 +161,4 @@ texture = ExtResource("8_yx54q")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/CenterContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="click" from="StartButton" to="." method="_on_start_button_click"]
-[connection signal="collision" from="StartButton" to="." method="_on_start_button_collision"]
+[connection signal="smash" from="StartButton" to="." method="_on_start_button_smash"]

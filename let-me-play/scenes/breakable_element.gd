@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 signal click
-signal collision
+signal smash
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,5 +18,5 @@ func detatch():
 	apply_impulse(Vector2(0,-200), Vector2(randf_range(-25,25),0))
 
 func _on_body_entered(body: Node) -> void:
-	collision.emit()
+	smash.emit()
 	queue_free()

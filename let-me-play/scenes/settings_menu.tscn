@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://cfjp23jay1xyw"]
+[gd_scene load_steps=12 format=4 uid="uid://cfjp23jay1xyw"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu.gd" id="1_g011e"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_g236m"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="2_ityvj"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="4_558x5"]
 [ext_resource type="Texture2D" uid="uid://diq05b766rpol" path="res://assets/art/SettingsIcon-Sheet.png" id="5_78cxs"]
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/breakable_element.tscn" id="6_447go"]
+[ext_resource type="Texture2D" uid="uid://q1bluytg0n3h" path="res://assets/art/ScrewDriver.png" id="7_lbls2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3h1cu"]
 font = ExtResource("2_ityvj")
@@ -16,6 +18,10 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rx223"]
 radius = 6.0104
 height = 39.598
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sygk3"]
+radius = 9.19238
+height = 79.196
 
 [node name="SettingsMenu" type="Node2D"]
 script = ExtResource("1_g011e")
@@ -141,17 +147,31 @@ text = "Created by @QuietLantern"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="SettingsIcon" type="Area2D" parent="."]
+[node name="InteractiveElements" type="Node2D" parent="."]
+
+[node name="SettingsIcon" type="Area2D" parent="InteractiveElements"]
 position = Vector2(391, 179)
 scale = Vector2(2, 2)
 
-[node name="Sprite2D" type="Sprite2D" parent="SettingsIcon"]
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/SettingsIcon"]
 texture = ExtResource("5_78cxs")
 hframes = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SettingsIcon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/SettingsIcon"]
 rotation = -0.785397
 shape = SubResource("CapsuleShape2D_rx223")
+
+[node name="Screwdriver" parent="InteractiveElements" instance=ExtResource("6_447go")]
+position = Vector2(391, 179)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screwdriver"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_lbls2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screwdriver"]
+rotation = 0.785397
+shape = SubResource("CapsuleShape2D_sygk3")
 
 [node name="DialogueMarkers" type="Node2D" parent="."]
 
@@ -162,4 +182,5 @@ position = Vector2(872, 392)
 [connection signal="text_submitted" from="CenterContainer/MarginContainer/VBoxContainer/UsernameBox" to="." method="_on_username_box_text_submitted"]
 [connection signal="text_submitted" from="CenterContainer/MarginContainer/VBoxContainer/PasswordBox" to="." method="_on_password_box_text_submitted"]
 [connection signal="pressed" from="BackButton" to="." method="_on_button_pressed"]
-[connection signal="input_event" from="SettingsIcon" to="." method="_on_settings_icon_input_event"]
+[connection signal="input_event" from="InteractiveElements/SettingsIcon" to="." method="_on_settings_icon_input_event"]
+[connection signal="smash" from="InteractiveElements/Screwdriver" to="." method="_on_screwdriver_smash"]
