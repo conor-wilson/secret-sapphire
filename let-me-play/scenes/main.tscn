@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=5 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
 [ext_resource type="PackedScene" uid="uid://cfjp23jay1xyw" path="res://scenes/settings_menu.tscn" id="3_vdc1c"]
+[ext_resource type="PackedScene" uid="uid://cpn7qml6weepp" path="res://scenes/cursor_manager.tscn" id="4_2brcq"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lvo15")
@@ -29,6 +30,8 @@ position = Vector2(795, 512)
 
 [node name="WhatWasThat2" type="Marker2D" parent="DialogueMarkers"]
 position = Vector2(2021, 392)
+
+[node name="CursorManager" parent="." instance=ExtResource("4_2brcq")]
 
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
