@@ -56,6 +56,5 @@ func _on_settings_icon_input_event(viewport: Node, event: InputEvent, shape_idx:
 		$InteractiveElements/Screwdriver.detatch()
 		shake_screen.emit(5, 10)
 
-
 func _on_screwdriver_smash() -> void:
 	shake_screen.emit(10,5)
