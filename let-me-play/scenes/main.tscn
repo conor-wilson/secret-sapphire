@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=5 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
 [ext_resource type="PackedScene" uid="uid://cfjp23jay1xyw" path="res://scenes/settings_menu.tscn" id="3_vdc1c"]
+[ext_resource type="PackedScene" uid="uid://vff026q47yk" path="res://scenes/secret_settings_menu.tscn" id="4_u0lve"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lvo15")
@@ -14,6 +15,9 @@ script = ExtResource("1_lvo15")
 [node name="SettingsMenu" parent="Menus" instance=ExtResource("3_vdc1c")]
 position = Vector2(1152, 0)
 
+[node name="SecretSettingsMenu" parent="Menus" instance=ExtResource("4_u0lve")]
+position = Vector2(2304, 0)
+
 [node name="Cameras" type="Node2D" parent="."]
 
 [node name="MainMenuCamera" type="Camera2D" parent="Cameras"]
@@ -21,6 +25,9 @@ position = Vector2(576, 324)
 
 [node name="SettingsCamera" type="Camera2D" parent="Cameras"]
 position = Vector2(1728, 324)
+
+[node name="SecretSettingsCamera" type="Camera2D" parent="Cameras"]
+position = Vector2(2880, 324)
 
 [node name="DialogueMarkers" type="Node2D" parent="."]
 
@@ -34,4 +41,5 @@ position = Vector2(2021, 392)
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
 [connection signal="start_button_exploded" from="Menus/MainMenu" to="." method="_on_main_menu_start_button_exploded"]
 [connection signal="back_pressed" from="Menus/SettingsMenu" to="." method="_on_settings_menu_back_pressed"]
+[connection signal="secret_settings_unlocked" from="Menus/SettingsMenu" to="." method="_on_settings_menu_secret_settings_unlocked"]
 [connection signal="shake_screen" from="Menus/SettingsMenu" to="." method="_on_settings_menu_shake_screen"]
