@@ -20,8 +20,8 @@ func _on_screen_input_event(viewport: Node, event: InputEvent, shape_idx: int) -
 func _get_mouse_cell_coords() -> Vector2i:
 	var coords:Vector2 = get_global_mouse_position() 
 	return Vector2i(
-		floor(coords.x/32),
-		floor(coords.y/32),
+		floor(coords.x/$Static.tile_set.tile_size.x),
+		floor(coords.y/$Static.tile_set.tile_size.y),
 	)
 
 const circle_matrix_0:Array[Vector2i] = [
@@ -67,7 +67,11 @@ const circle_matrix_full:Array[Vector2i] = [
 					 Vector2i(-1, 2), Vector2i(0, 2), Vector2i(1, 2),
 ]
 
-
+# _clear_circle clears a circle of static centred at the provided origin point, 
+# and then replaces it again with random static tiles.
+#
+# TODO: This function and the above matrices are HORRIBLY hard-coded. Figure out
+# a way to shorten this down and have no-more duplicated code.
 func _clear_circle(origin:Vector2i):
 	
 	# Clear static in a circle
@@ -89,17 +93,17 @@ func _clear_circle(origin:Vector2i):
 	# Rebuild the static in the circle
 	await get_tree().create_timer(0.2).timeout
 	for coords in circle_matrix_0:
-		$Static.set_cell(coords+origin,1,Vector2i(0,0))
+		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
 	await get_tree().create_timer(0.02).timeout
 	for coords in circle_matrix_1:
-		$Static.set_cell(coords+origin,1,Vector2i(0,0))
+		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
 	await get_tree().create_timer(0.02).timeout
 	for coords in circle_matrix_2:
-		$Static.set_cell(coords+origin,1,Vector2i(0,0))
+		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
 	await get_tree().create_timer(0.02).timeout
 	for coords in circle_matrix_3:
-		$Static.set_cell(coords+origin,1,Vector2i(0,0))
+		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
 	await get_tree().create_timer(0.02).timeout
 	for coords in circle_matrix_4:
-		$Static.set_cell(coords+origin,1,Vector2i(0,0))
+		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
 	await get_tree().create_timer(0.02).timeout
