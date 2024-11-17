@@ -1,11 +1,11 @@
-extends Node2D
+class_name BreakableElement extends Node2D
 
 signal settings_pressed
 signal shake_screen(strength:float, fade:float)
 signal start_button_exploded
 
-func _process(delta: float) -> void:
-	_check_for_screws()
+#func _process(delta: float) -> void:
+	#_check_for_screws()
 
 func _on_start_button_smash() -> void:
 	for letter in $Letters.get_children(): 
@@ -39,14 +39,19 @@ func _detatch_screw(screw:Node):
 		# TODO: Consider adding an animation for unscrewing the screws
 		screw.detatch(10)
 		panel_screw_count -= 1
+		_check_panel_detatchment()
 	
-func _check_for_screws():
-	if $InteractiveElements/Panel == null:
-		return
-	elif !$InteractiveElements/Panel.idle:
-		return
-	
+func _check_panel_detatchment():
 	if panel_screw_count == 0:
-		#await get_tree().create_timer(0.5).timeout
-		$InteractiveElements/Panel.detatch()
+		_detatch_element_if_exists("InteractiveElements/Panel", 1)
+		_detatch_element_if_exists("InteractiveElements/StartButton", 10)
+
+func _detatch_element_if_exists(path: NodePath, strength:float=1):
+	var element := get_node_or_null(path)
 	
+	# Check that the element can be detatched
+	if element == null: return
+	if !element.idle:   return
+	
+	# Detatch element
+	element.detatch(strength)
