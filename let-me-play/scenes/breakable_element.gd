@@ -1,4 +1,4 @@
-extends RigidBody2D
+class_name BreakableElement extends RigidBody2D
 
 signal click
 signal smash
