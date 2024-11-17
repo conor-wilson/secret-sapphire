@@ -68,10 +68,10 @@ func apply_random_force():
 	var x_force:float = randf_range(-750, 750)
 	var y_force:float = randf_range(-750, 0)
 	letter_body.apply_impulse(Vector2(x_force,y_force))
-
-# TODO: This is purely for debugging. This function should be removed once it's
-# no-longer needed.
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debugbutton"): 
-		spawn()
-		apply_random_force()
+#
+## TODO: This is purely for debugging. This function should be removed once it's
+## no-longer needed.
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debugbutton"): 
+		#spawn()
+		#apply_random_force()

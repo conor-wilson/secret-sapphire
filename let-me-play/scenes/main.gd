@@ -64,9 +64,9 @@ func _on_main_menu_start_button_exploded() -> void:
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat1.position, lines)
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat2.position, lines)
 #
-# TODO: This is purely for debugging. This function should be removed once it's
-# no-longer needed.
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debugbutton"): 
-		DialogueManager.stop_all_dialogue()
-		CursorManager.set_mouse_cursor(CursorManager.WRENCH)
+## TODO: This is purely for debugging. This function should be removed once it's
+## no-longer needed.
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debugbutton"): 
+		#DialogueManager.stop_all_dialogue()
+		#CursorManager.set_mouse_cursor(CursorManager.WRENCH)
