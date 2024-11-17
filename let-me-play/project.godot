@@ -45,9 +45,8 @@ advance_dialogue={
 [layer_names]
 
 2d_physics/layer_1="terrain"
-2d_physics/layer_2="objects"
-2d_physics/layer_3="characters"
-2d_physics/layer_4="particles"
+2d_physics/layer_2="breakable_elements"
+2d_physics/layer_3="letters"
 
 [rendering]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=15 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/breakable_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
@@ -10,18 +10,21 @@
 [ext_resource type="Texture2D" uid="uid://da1aop1iloq0v" path="res://assets/art/StartButton.png" id="7_cyu86"]
 [ext_resource type="Texture2D" uid="uid://op2bmdwt6xln" path="res://assets/art/Screw.png" id="8_yx54q"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_rnshd"]
-font = ExtResource("5_2a3fy")
-font_size = 96
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfed"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2u67"]
+size = Vector2(1024, 384)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwsea"]
 size = Vector2(60, 284)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jk44i"]
 radius = 8.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_rnshd"]
+font = ExtResource("5_2a3fy")
+font_size = 96
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfed"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_hib26")
@@ -34,9 +37,75 @@ tile_set = ExtResource("1_jssq0")
 tile_map_data = PackedByteArray("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")
 tile_set = ExtResource("1_jssq0")
 
-[node name="Panel" type="Sprite2D" parent="."]
+[node name="InteractiveElements" type="Node2D" parent="."]
+
+[node name="Panel" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Panel"]
 position = Vector2(576, 256)
 texture = ExtResource("3_janoq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Panel"]
+position = Vector2(576, 256)
+shape = SubResource("RectangleShape2D_p2u67")
+
+[node name="StartButton" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+position = Vector2(576, 368)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/StartButton"]
+texture = ExtResource("7_cyu86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/StartButton"]
+position = Vector2(-7.62939e-06, 1.43051e-05)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_nwsea")
+
+[node name="Screw1" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+position = Vector2(88, 88)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw1"]
+texture = ExtResource("8_yx54q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw1"]
+shape = SubResource("CircleShape2D_jk44i")
+
+[node name="Screw2" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+position = Vector2(1064, 88)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw2"]
+texture = ExtResource("8_yx54q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw2"]
+shape = SubResource("CircleShape2D_jk44i")
+
+[node name="Screw3" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+position = Vector2(88, 424)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw3"]
+texture = ExtResource("8_yx54q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw3"]
+shape = SubResource("CircleShape2D_jk44i")
+
+[node name="Screw4" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+position = Vector2(1064, 424)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw4"]
+texture = ExtResource("8_yx54q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw4"]
+shape = SubResource("CircleShape2D_jk44i")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 1152.0
@@ -134,64 +203,10 @@ text = "Created by @QuietLantern"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="InteractiveElements" type="Node2D" parent="."]
-
-[node name="StartButton" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
-position = Vector2(576, 368)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/StartButton"]
-texture = ExtResource("7_cyu86")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/StartButton"]
-position = Vector2(-7.62939e-06, 1.43051e-05)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_nwsea")
-
-[node name="Screw1" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
-position = Vector2(88, 88)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw1"]
-texture = ExtResource("8_yx54q")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw1"]
-shape = SubResource("CircleShape2D_jk44i")
-
-[node name="Screw2" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
-position = Vector2(1064, 88)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw2"]
-texture = ExtResource("8_yx54q")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw2"]
-shape = SubResource("CircleShape2D_jk44i")
-
-[node name="Screw3" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
-position = Vector2(88, 424)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw3"]
-texture = ExtResource("8_yx54q")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw3"]
-shape = SubResource("CircleShape2D_jk44i")
-
-[node name="Screw4" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
-position = Vector2(1064, 424)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw4"]
-texture = ExtResource("8_yx54q")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw4"]
-shape = SubResource("CircleShape2D_jk44i")
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/CenterContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="click" from="InteractiveElements/StartButton" to="." method="_on_start_button_click"]
 [connection signal="smash" from="InteractiveElements/StartButton" to="." method="_on_start_button_smash"]
 [connection signal="click" from="InteractiveElements/Screw1" to="." method="_on_screw_1_click"]
 [connection signal="click" from="InteractiveElements/Screw2" to="." method="_on_screw_2_click"]
 [connection signal="click" from="InteractiveElements/Screw3" to="." method="_on_screw_3_click"]
 [connection signal="click" from="InteractiveElements/Screw4" to="." method="_on_screw_4_click"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/CenterContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

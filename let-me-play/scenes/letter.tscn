@@ -14,6 +14,8 @@ script = ExtResource("1_py2od")
 
 [node name="S" type="RigidBody2D" parent="."]
 visible = false
+collision_layer = 4
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="S"]
 texture = ExtResource("1_xwbin")
@@ -23,6 +25,8 @@ polygon = PackedVector2Array(-12, -11, -7, -16, 7, -16, 12, -11, 12, -9, 10, -7,
 
 [node name="T" type="RigidBody2D" parent="."]
 visible = false
+collision_layer = 4
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="T"]
 texture = ExtResource("2_8btql")
@@ -32,6 +36,8 @@ polygon = PackedVector2Array(-10, -16, 10, -16, 13, -13, 10, -10, 3, -10, 3, 14,
 
 [node name="A" type="RigidBody2D" parent="."]
 visible = false
+collision_layer = 4
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="A"]
 texture = ExtResource("3_8b30d")
@@ -41,6 +47,8 @@ polygon = PackedVector2Array(1, -16, 16, 13, 16, 15, 15, 16, 11, 16, 7, 7, -7, 7
 
 [node name="R" type="RigidBody2D" parent="."]
 visible = false
+collision_layer = 4
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="R"]
 texture = ExtResource("4_p13cm")
@@ -50,6 +58,8 @@ polygon = PackedVector2Array(-7, -16, 5, -16, 10, -11, 10, -2, 7, 1, 11, 14, 9, 
 
 [node name="G" type="RigidBody2D" parent="."]
 visible = false
+collision_layer = 4
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="G"]
 texture = ExtResource("5_idgub")
@@ -59,6 +69,8 @@ polygon = PackedVector2Array(-12, -11, -7, -16, 7, -16, 12, -11, 12, -9, 10, -7,
 
 [node name="M" type="RigidBody2D" parent="."]
 visible = false
+collision_layer = 4
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="M"]
 texture = ExtResource("6_k31ig")
@@ -67,6 +79,8 @@ texture = ExtResource("6_k31ig")
 polygon = PackedVector2Array(-14, -13, -11, -16, -10, -16, 0, -6, 10, -16, 11, -16, 14, -13, 14, 14, 12, 16, 10, 16, 8, 14, 8, -2, 7, -5, 1, 1, -1, 1, -7, -5, -8, -2, -8, 14, -10, 16, -12, 16, -14, 14)
 
 [node name="E" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="E"]
 texture = ExtResource("7_ht6sd")
