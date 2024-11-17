@@ -15,7 +15,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 
 func detatch():
 	gravity_scale = 1
-	apply_impulse(Vector2(0,-200), Vector2(randf_range(-25,25),0))
+	apply_impulse(Vector2(randf_range(-10,10),-200), Vector2(randf_range(-25,25),0))
 
 func _on_body_entered(body: Node) -> void:
 	smash.emit()

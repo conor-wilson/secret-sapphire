@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=14 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/breakable_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
@@ -19,6 +19,9 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwsea"]
 size = Vector2(60, 284)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jk44i"]
+radius = 8.0
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_hib26")
@@ -67,18 +70,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
 text = "SETTINGS"
 flat = true
-
-[node name="StartButton" parent="." instance=ExtResource("1_7wdxp")]
-position = Vector2(576, 368)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="StartButton"]
-texture = ExtResource("7_cyu86")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StartButton"]
-position = Vector2(-7.62939e-06, 1.43051e-05)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_nwsea")
 
 [node name="Letters" type="Node2D" parent="."]
 
@@ -143,22 +134,64 @@ text = "Created by @QuietLantern"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Screw" type="Sprite2D" parent="."]
+[node name="InteractiveElements" type="Node2D" parent="."]
+
+[node name="StartButton" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+position = Vector2(576, 368)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/StartButton"]
+texture = ExtResource("7_cyu86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/StartButton"]
+position = Vector2(-7.62939e-06, 1.43051e-05)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_nwsea")
+
+[node name="Screw1" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 position = Vector2(88, 88)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw1"]
 texture = ExtResource("8_yx54q")
 
-[node name="Screw2" type="Sprite2D" parent="."]
-position = Vector2(88, 424)
-texture = ExtResource("8_yx54q")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw1"]
+shape = SubResource("CircleShape2D_jk44i")
 
-[node name="Screw3" type="Sprite2D" parent="."]
-position = Vector2(1064, 424)
-texture = ExtResource("8_yx54q")
-
-[node name="Screw4" type="Sprite2D" parent="."]
+[node name="Screw2" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 position = Vector2(1064, 88)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw2"]
 texture = ExtResource("8_yx54q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw2"]
+shape = SubResource("CircleShape2D_jk44i")
+
+[node name="Screw3" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+position = Vector2(88, 424)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw3"]
+texture = ExtResource("8_yx54q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw3"]
+shape = SubResource("CircleShape2D_jk44i")
+
+[node name="Screw4" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+position = Vector2(1064, 424)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw4"]
+texture = ExtResource("8_yx54q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw4"]
+shape = SubResource("CircleShape2D_jk44i")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/CenterContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="click" from="StartButton" to="." method="_on_start_button_click"]
-[connection signal="smash" from="StartButton" to="." method="_on_start_button_smash"]
+[connection signal="click" from="InteractiveElements/StartButton" to="." method="_on_start_button_click"]
+[connection signal="smash" from="InteractiveElements/StartButton" to="." method="_on_start_button_smash"]
+[connection signal="click" from="InteractiveElements/Screw1" to="." method="_on_screw_1_click"]
+[connection signal="click" from="InteractiveElements/Screw2" to="." method="_on_screw_2_click"]
+[connection signal="click" from="InteractiveElements/Screw3" to="." method="_on_screw_3_click"]
+[connection signal="click" from="InteractiveElements/Screw4" to="." method="_on_screw_4_click"]
