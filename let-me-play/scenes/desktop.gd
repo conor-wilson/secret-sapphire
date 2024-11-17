@@ -24,15 +24,82 @@ func _get_mouse_cell_coords() -> Vector2i:
 		floor(coords.y/32),
 	)
 
-const circle_matrix:Array[Vector2i] = [
-						 Vector2i(-1,-2), Vector2i(0,-2), Vector2i(1,-2),
-		Vector2i(-2,-1), Vector2i(-1,-1), Vector2i(0,-1), Vector2i(1,-1), Vector2i(2,-1),
-		Vector2i(-2, 0), Vector2i(-1, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0),
-		Vector2i(-2, 1), Vector2i(-1, 1), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1),
-						 Vector2i(-1, 2), Vector2i(0, 2), Vector2i(1, 2),
-	]
+const circle_matrix_0:Array[Vector2i] = [
+					 Vector2i(-1,-2),                 Vector2i(1,-2),
+	Vector2i(-2,-1),                                                  Vector2i(2,-1),
+																					 
+	Vector2i(-2, 1),                                                  Vector2i(2, 1),
+					 Vector2i(-1, 2),                 Vector2i(1, 2),
+]
+const circle_matrix_1:Array[Vector2i] = [
+									  Vector2i(0,-2),                 
+																					 
+	Vector2i(-2, 0),                                                  Vector2i(2, 0),
+																					 
+									  Vector2i(0, 2),                 
+]
+const circle_matrix_2:Array[Vector2i] = [
+																	 
+					 Vector2i(-1,-1),                 Vector2i(1,-1),                
+																					 
+					 Vector2i(-1, 1),                 Vector2i(1, 1),                
+																	 
+]
+const circle_matrix_3:Array[Vector2i] = [
+																	 
+									  Vector2i(0,-1),                                
+					 Vector2i(-1, 0),                 Vector2i(1, 0),                
+									  Vector2i(0, 1),                                
+																	 
+]
+const circle_matrix_4:Array[Vector2i] = [
+																	 
+																					 
+									  Vector2i(0, 0),                                
+																					 
+																	 
+]
+const circle_matrix_full:Array[Vector2i] = [
+					 Vector2i(-1,-2), Vector2i(0,-2), Vector2i(1,-2),
+	Vector2i(-2,-1), Vector2i(-1,-1), Vector2i(0,-1), Vector2i(1,-1), Vector2i(2,-1),
+	Vector2i(-2, 0), Vector2i(-1, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0),
+	Vector2i(-2, 1), Vector2i(-1, 1), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1),
+					 Vector2i(-1, 2), Vector2i(0, 2), Vector2i(1, 2),
+]
+
 
 func _clear_circle(origin:Vector2i):
-	for coords in circle_matrix:
-		$Static.erase_cell(coords+ origin)
 	
+	# Clear static in a circle
+	for coords in circle_matrix_4:
+		$Static.erase_cell(coords+origin)
+	#await get_tree().create_timer(0.02).timeout
+	for coords in circle_matrix_3:
+		$Static.erase_cell(coords+origin)
+	await get_tree().create_timer(0.02).timeout
+	for coords in circle_matrix_2:
+		$Static.erase_cell(coords+origin)
+	#await get_tree().create_timer(0.02).timeout
+	for coords in circle_matrix_1:
+		$Static.erase_cell(coords+origin)
+	await get_tree().create_timer(0.02).timeout
+	for coords in circle_matrix_0:
+		$Static.erase_cell(coords+origin)
+	
+	# Rebuild the static in the circle
+	await get_tree().create_timer(0.2).timeout
+	for coords in circle_matrix_0:
+		$Static.set_cell(coords+origin,1,Vector2i(0,0))
+	await get_tree().create_timer(0.02).timeout
+	for coords in circle_matrix_1:
+		$Static.set_cell(coords+origin,1,Vector2i(0,0))
+	await get_tree().create_timer(0.02).timeout
+	for coords in circle_matrix_2:
+		$Static.set_cell(coords+origin,1,Vector2i(0,0))
+	await get_tree().create_timer(0.02).timeout
+	for coords in circle_matrix_3:
+		$Static.set_cell(coords+origin,1,Vector2i(0,0))
+	await get_tree().create_timer(0.02).timeout
+	for coords in circle_matrix_4:
+		$Static.set_cell(coords+origin,1,Vector2i(0,0))
+	await get_tree().create_timer(0.02).timeout

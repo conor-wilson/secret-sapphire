@@ -33,6 +33,7 @@ texture_region_size = Vector2i(32, 32)
 2:3/3/flip_v = true
 2:3/4 = 4
 2:3/4/transpose = true
+3:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyaef"]
 texture = ExtResource("2_x7twc")
