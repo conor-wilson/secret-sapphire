@@ -66,6 +66,8 @@ func _on_password_box_text_submitted(new_text: String) -> void:
 	password_box.clear()
 	
 	if _correct_input(new_text, accpted_passwords):
+		# TODO: Here, make it so that the Secret Settings button now just takes 
+		# you to the secret settings menu
 		secret_settings_unlocked.emit()
 	else:
 		shake_screen.emit(5, 5)
