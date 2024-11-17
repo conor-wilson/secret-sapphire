@@ -45,6 +45,7 @@ func _check_panel_detatchment():
 	if panel_screw_count == 0:
 		_detatch_element_if_exists("InteractiveElements/Panel", 1)
 		_detatch_element_if_exists("InteractiveElements/StartButton", 10)
+		$MarginContainer/VBoxContainer/Title.text = " "
 
 func _detatch_element_if_exists(path: NodePath, strength:float=1):
 	var element := get_node_or_null(path)
@@ -55,3 +56,7 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 	
 	# Detatch element
 	element.detatch(strength)
+
+
+func _on_panel_smash() -> void:
+	shake_screen.emit(25,5)

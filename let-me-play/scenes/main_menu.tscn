@@ -257,6 +257,7 @@ text = "Created by @QuietLantern"
 horizontal_alignment = 2
 vertical_alignment = 2
 
+[connection signal="smash" from="InteractiveElements/Panel" to="." method="_on_panel_smash"]
 [connection signal="click" from="InteractiveElements/StartButton" to="." method="_on_start_button_click"]
 [connection signal="smash" from="InteractiveElements/StartButton" to="." method="_on_start_button_smash"]
 [connection signal="click" from="InteractiveElements/Screw1" to="." method="_on_screw_1_click"]
