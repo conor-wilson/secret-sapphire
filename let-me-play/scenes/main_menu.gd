@@ -4,6 +4,8 @@ signal settings_pressed
 signal shake_screen(strength:float, fade:float)
 signal start_button_exploded
 
+# TODO: Organise this code file. It's a damn mess.
+
 func _on_start_button_smash() -> void:
 	for letter in $Letters.get_children(): 
 		letter.spawn()
@@ -59,14 +61,3 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 
 func _on_panel_smash() -> void:
 	shake_screen.emit(25,5)
-
-
-# TODO: Maybe the screen should be its own scene (probably. definitely)
-func _on_screen_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	
-	# Confirm that the screen can be interacted with
-	if get_node_or_null("InteractiveElements/Panel") != null:
-		return
-	
-	if event.is_pressed() && event.is_action("click"):
-		print("screen has been clicked!")
