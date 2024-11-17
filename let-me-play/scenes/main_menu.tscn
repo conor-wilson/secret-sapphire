@@ -1,14 +1,53 @@
-[gd_scene load_steps=15 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=19 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/breakable_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_jssq0"]
 [ext_resource type="PackedScene" uid="uid://dn8q4o2sgxa7y" path="res://scenes/letter.tscn" id="3_1ar5g"]
+[ext_resource type="Texture2D" uid="uid://1rpws7w7ml0u" path="res://assets/art/StickyNoteTest-Sheet.png" id="3_ahnkd"]
 [ext_resource type="Texture2D" uid="uid://7r8cut1jsvt0" path="res://assets/art/Panel.png" id="3_janoq"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_2a3fy"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_43f6x"]
 [ext_resource type="Texture2D" uid="uid://da1aop1iloq0v" path="res://assets/art/StartButton.png" id="7_cyu86"]
 [ext_resource type="Texture2D" uid="uid://op2bmdwt6xln" path="res://assets/art/Screw.png" id="8_yx54q"]
+
+[sub_resource type="Animation" id="Animation_xpr53"]
+resource_name = "sticky_note_animation"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_bex1y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n3yhk"]
+_data = {
+"RESET": SubResource("Animation_bex1y"),
+"sticky_note_animation": SubResource("Animation_xpr53")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2u67"]
 size = Vector2(1024, 384)
@@ -42,6 +81,17 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAiAAAAAAAAAAA
 tile_set = ExtResource("1_jssq0")
 
 [node name="InteractiveElements" type="Node2D" parent="."]
+
+[node name="StickyNote" type="Sprite2D" parent="InteractiveElements"]
+position = Vector2(184, 336)
+texture = ExtResource("3_ahnkd")
+hframes = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractiveElements/StickyNote"]
+libraries = {
+"": SubResource("AnimationLibrary_n3yhk")
+}
+autoplay = "sticky_note_animation"
 
 [node name="Panel" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 collision_layer = 2
