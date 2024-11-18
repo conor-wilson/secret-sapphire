@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcttde4rl6c7u"]
+[gd_scene load_steps=7 format=3 uid="uid://bcttde4rl6c7u"]
 
+[ext_resource type="Script" path="res://scenes/help_bot.gd" id="1_b6jo1"]
 [ext_resource type="Texture2D" uid="uid://1cwslcas3huc" path="res://assets/art/HelpBot-Sheet.png" id="1_nxjie"]
 
 [sub_resource type="Animation" id="Animation_pv5sx"]
@@ -44,6 +45,7 @@ _data = {
 size = Vector2(62, 62)
 
 [node name="HelpBot" type="Area2D"]
+script = ExtResource("1_b6jo1")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
