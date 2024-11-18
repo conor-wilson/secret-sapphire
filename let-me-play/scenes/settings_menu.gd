@@ -87,7 +87,8 @@ func _on_settings_icon_input_event(viewport: Node, event: InputEvent, shape_idx:
 		print("WRENCH CLICKED")
 		CursorManager.set_mouse_cursor(CursorManager.WRENCH)
 		$InteractiveElements/SettingsIcon/Sprite2D.frame = 3
-		$InteractiveElements/Screwdriver.detatch(10)
+		
+		_detatch_element_if_exists("InteractiveElements/Screwdriver", 10)
 		shake_screen.emit(5, 10)
 
 func _on_screwdriver_smash() -> void:
@@ -102,3 +103,16 @@ func _correct_input(input:String, accepted_strings:Array[String]) -> bool:
 			return true
 	
 	return false
+
+# TODO: This is a duplicate of the same function in main_menu.gd. Deduplicate
+# this.
+func _detatch_element_if_exists(path: NodePath, strength:float=1):
+	var element := get_node_or_null(path)
+	
+	# Check that the element can be detatched
+	if element == null: return
+	if element is not BreakableElement: return
+	if !element.idle:   return
+	
+	# Detatch element
+	element.detatch(strength)
