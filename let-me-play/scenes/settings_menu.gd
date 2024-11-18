@@ -86,7 +86,7 @@ func _on_settings_icon_input_event(viewport: Node, event: InputEvent, shape_idx:
 	if event.is_pressed() && event.is_action("click"):
 		print("WRENCH CLICKED")
 		CursorManager.set_mouse_cursor(CursorManager.WRENCH)
-		$InteractiveElements/SettingsIcon/Sprite2D.frame = 3
+		$InteractiveElements/SettingsIcon.queue_free()
 		
 		_detatch_element_if_exists("InteractiveElements/Screwdriver", 10)
 		shake_screen.emit(5, 10)
