@@ -1,10 +1,14 @@
 extends Node2D
 
+# TODO: Add a bunch of dialogue that explains what's going on...
+
 signal shake_screen(strength:float, fade:float)
 
 func free_help_bot():
 	shake_screen.emit(5,5)
 	_detatch_element_if_exists("Cage", 1)
+	await get_tree().create_timer(2.5).timeout
+	$HelpBot.hellify()
 
 # TODO: This is a duplicate of the same function in main_menu.gd. Deduplicate
 # this.

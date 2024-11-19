@@ -2,15 +2,13 @@ extends Area2D
 
 @export var speed:float = 25
 @export var target_markers:Array[Marker2D]
-
+const HELL_BOT_SHEET = preload("res://assets/art/HellBot-Sheet.png")
 
 var target:Marker2D
 @onready var blink_length:float = $Sprite2D/AnimationPlayer.get_animation("help_bot_idle").length
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	
 	
 	if target_markers.size() == 0:
 		
@@ -47,3 +45,7 @@ func _on_blink_timer_timeout() -> void:
 	await get_tree().create_timer(blink_length).timeout
 	$Sprite2D/AnimationPlayer.play("RESET")
 	$BlinkTimer.start(randf_range(0.0, 5.0))
+
+
+func hellify(): 
+	$Sprite2D.texture = HELL_BOT_SHEET
