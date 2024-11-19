@@ -75,8 +75,18 @@ func _input(event: InputEvent) -> void:
 		if input_cache.size() >= cache_length:
 			input_cache.pop_front()
 		input_cache.append(event.as_text())
-		print(input_cache)
+		
+		_check_input_cache()
+		#print(input_cache)
 		
 	#if event.is_action_pressed("debugbutton"): 
 		#DialogueManager.stop_all_dialogue()
 		#CursorManager.set_mouse_cursor(CursorManager.WRENCH)
+
+const free_help_bot_cheat_code:Array[String] = [
+	"Up", "Down", "Left", "Right", "Left", "Right"
+]
+
+func _check_input_cache():
+	if input_cache == free_help_bot_cheat_code:
+		print("Freeing Help Bot...")
