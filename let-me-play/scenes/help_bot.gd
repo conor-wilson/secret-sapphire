@@ -47,5 +47,5 @@ func _on_blink_timer_timeout() -> void:
 	$BlinkTimer.start(randf_range(0.0, 5.0))
 
 
-func hellify(): 
+func become_evil(): 
 	$Sprite2D.texture = HELL_BOT_SHEET
