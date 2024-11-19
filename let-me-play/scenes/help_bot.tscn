@@ -45,6 +45,8 @@ _data = {
 size = Vector2(62, 62)
 
 [node name="HelpBot" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_b6jo1")
 metadata/_edit_group_ = true
 

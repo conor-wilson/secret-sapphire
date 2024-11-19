@@ -43,3 +43,4 @@ position = Vector2(2021, 392)
 [connection signal="back_pressed" from="Menus/SettingsMenu" to="." method="_on_settings_menu_back_pressed"]
 [connection signal="secret_settings_unlocked" from="Menus/SettingsMenu" to="." method="_on_settings_menu_secret_settings_unlocked"]
 [connection signal="shake_screen" from="Menus/SettingsMenu" to="." method="_on_settings_menu_shake_screen"]
+[connection signal="shake_screen" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_shake_screen"]

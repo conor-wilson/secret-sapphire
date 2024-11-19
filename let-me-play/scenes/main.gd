@@ -28,6 +28,7 @@ func apply_screen_shake(delta: float):
 	)
 	$Cameras/MainMenuCamera.offset = offset
 	$Cameras/SettingsCamera.offset = offset
+	$Cameras/SecretSettingsCamera.offset = offset
 	
 	# Fade the screen shake for the next time
 	screen_shake_strength = lerpf(screen_shake_strength, 0, screen_shake_fade*delta)
@@ -36,6 +37,9 @@ func _on_main_menu_shake_screen(strength:float, fade:float) -> void:
 	shake_screen(strength, fade)
 
 func _on_settings_menu_shake_screen(strength: float, fade: float) -> void:
+	shake_screen(strength, fade)
+
+func _on_secret_settings_menu_shake_screen(strength: float, fade: float) -> void:
 	shake_screen(strength, fade)
 
 func shake_screen(strength:float, fade:float):
@@ -77,11 +81,6 @@ func _input(event: InputEvent) -> void:
 		input_cache.append(event.as_text())
 		
 		_check_input_cache()
-		#print(input_cache)
-		
-	#if event.is_action_pressed("debugbutton"): 
-		#DialogueManager.stop_all_dialogue()
-		#CursorManager.set_mouse_cursor(CursorManager.WRENCH)
 
 const free_help_bot_cheat_code:Array[String] = [
 	"Up", "Down", "Left", "Right", "Left", "Right"
@@ -90,3 +89,4 @@ const free_help_bot_cheat_code:Array[String] = [
 func _check_input_cache():
 	if input_cache == free_help_bot_cheat_code:
 		print("Freeing Help Bot...")
+		$Menus/SecretSettingsMenu.free_help_bot()
