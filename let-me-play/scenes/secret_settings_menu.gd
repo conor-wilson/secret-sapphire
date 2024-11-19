@@ -3,15 +3,18 @@ extends Node2D
 # TODO: Add a bunch of dialogue that explains what's going on...
 
 signal shake_screen(strength:float, fade:float)
+signal back_pressed
 
 func free_help_bot():
 	shake_screen.emit(5,5)
 	_detatch_element_if_exists("Cage", 1)
+	DialogueManager.stop_all_dialogue()
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["BLAH BLAH BLAH..."]) # TODO
 	await get_tree().create_timer(2.5).timeout
 	$HelpBot.become_evil()
 
 func start_initial_dialogue():
+	DialogueManager.stop_all_dialogue()
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["BLAH BLAH BLAH..."]) # TODO
 
 # TODO: This is a duplicate of the same function in main_menu.gd. Deduplicate
@@ -30,3 +33,7 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 
 func _on_cage_smash() -> void:
 	shake_screen.emit(10,5)
+
+
+func _on_back_button_pressed() -> void:
+	back_pressed.emit()

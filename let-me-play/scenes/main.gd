@@ -57,6 +57,9 @@ func _on_settings_menu_secret_settings_unlocked() -> void:
 	$Cameras/SecretSettingsCamera.make_current()
 	$Menus/SecretSettingsMenu.start_initial_dialogue()
 
+func _on_secret_settings_menu_back_pressed() -> void:
+	$Cameras/SettingsCamera.make_current()
+
 
 func _on_main_menu_start_button_exploded() -> void:
 	

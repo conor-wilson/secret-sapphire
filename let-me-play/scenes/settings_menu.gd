@@ -63,13 +63,13 @@ func _on_username_box_text_submitted(new_text: String) -> void:
 
 func _on_password_box_text_submitted(new_text: String) -> void:
 	print("Password Entered: ", new_text)
-	password_box.clear()
 	
 	if _correct_input(new_text, accpted_passwords):
 		# TODO: Here, make it so that the Secret Settings button now just takes 
 		# you to the secret settings menu
 		secret_settings_unlocked.emit()
 	else:
+		password_box.clear()
 		shake_screen.emit(5, 5)
 		var lines: Array[String] = [
 			"Keep trying, you'll figure it out! ^.^",
