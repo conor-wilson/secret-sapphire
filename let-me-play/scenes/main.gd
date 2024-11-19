@@ -3,6 +3,9 @@ extends Node
 var screen_shake_strength:float = 0.0
 var screen_shake_fade:float     = 5.0
 
+var input_cache : Array[String] = []
+var cache_length:int = 6
+
 func _ready() -> void:
 	$Cameras/MainMenuCamera.make_current()
 	CursorManager.set_mouse_cursor(CursorManager.CURSOR)
@@ -67,9 +70,13 @@ func _on_main_menu_start_button_exploded() -> void:
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat1.position, lines)
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat2.position, lines)
 #
-## TODO: This is purely for debugging. This function should be removed once it's
-## no-longer needed.
-#func _input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
+	if event.is_action_type() && event.is_pressed():
+		if input_cache.size() >= cache_length:
+			input_cache.pop_front()
+		input_cache.append(event.as_text())
+		print(input_cache)
+		
 	#if event.is_action_pressed("debugbutton"): 
 		#DialogueManager.stop_all_dialogue()
 		#CursorManager.set_mouse_cursor(CursorManager.WRENCH)
