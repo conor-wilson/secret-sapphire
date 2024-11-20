@@ -107,4 +107,3 @@ func free_help_bot():
 	$HelpBot.become_evil()
 	await get_tree().create_timer(2.5).timeout
 	$HelpBot.start_leaving()
-	
