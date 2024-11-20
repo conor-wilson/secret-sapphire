@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var speed:float = 25
-@export var idle_markers:Array[Marker2D]
-@export var exit_marker:Marker2D
+var speed:float = 25
+var idle_speed = 25
+var idle_markers:Array[Marker2D]
 
 const HELL_BOT_SHEET = preload("res://assets/art/HellBot-Sheet.png")
 
@@ -12,8 +12,8 @@ var target:Marker2D
 @onready var shrink_length:float = $AnimationPlayer.get_animation("hell_bot_shrink").length
 @onready var grow_length:float = $AnimationPlayer.get_animation("hell_bot_grow").length
 
-enum State {IDLE, LEAVING}
-var state:State = State.IDLE
+#enum State {IDLE, MOVING}
+#var state:State = State.IDLE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,33 +28,32 @@ func _ready() -> void:
 		
 		idle_markers = [default_marker]
 	
-	if exit_marker == null:
-		
-		var default_marker = Marker2D.new()
-		add_child(default_marker)
-		
-		exit_marker = default_marker
+	#if exit_marker == null:
+		#
+		#var default_marker = Marker2D.new()
+		#add_child(default_marker)
+		#
+		#exit_marker = default_marker
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if state == State.IDLE:
-		set_idle_movement_target()
-	if state == State.LEAVING:
-		set_exit_movement_target()
+	#if state == State.IDLE:
+	set_idle_movement_target()
+	#if state == State.MOVING:
+		#_check_destination_arrived()
 	
 	move(delta)
 
 func set_idle_movement_target():
 	if target == null || position.distance_to(target.position) <10:
+		speed = idle_speed
 		target = idle_markers[randi_range(0, idle_markers.size()-1)]
 
-func set_exit_movement_target():
-	# TODO: Figure out how to make this more of an arc-movement
-	target = exit_marker
-	if target == null || position.distance_to(target.position) <5:
-		shrink()
+#func _check_destination_arrived():
+	#if target == null || position.distance_to(target.position) <5:
+		#state = State.IDLE
 
 func move(delta:float):
 	
@@ -62,9 +61,13 @@ func move(delta:float):
 	
 	position += direction * speed * delta
 
-func start_leaving():
-	speed = 200
-	state = State.LEAVING
+func set_new_idle_location(target_marker:Marker2D, new_idle_markers:Array[Marker2D], move_speed:float=200, new_idle_speed=idle_speed):
+	speed = move_speed
+	idle_speed = new_idle_speed
+	target = target_marker
+	idle_markers = new_idle_markers
+	#state = State.MOVING
+
 #
 ## TODO: This is purely for debugging. This function should be removed once it's
 ## no-longer needed.

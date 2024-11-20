@@ -172,9 +172,8 @@ position = Vector2(872, 392)
 [node name="BackButtonMarker" type="Marker2D" parent="MovementMarkers"]
 position = Vector2(90, 76)
 
-[node name="HelpBot" parent="." node_paths=PackedStringArray("exit_marker") instance=ExtResource("8_c12ak")]
+[node name="HelpBot" parent="." instance=ExtResource("8_c12ak")]
 position = Vector2(576, 361)
-exit_marker = NodePath("../MovementMarkers/BackButtonMarker")
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/SecretSettingsButton" to="." method="_on_secret_settings_button_pressed"]
 [connection signal="text_submitted" from="CenterContainer/MarginContainer/VBoxContainer/UsernameBox" to="." method="_on_username_box_text_submitted"]
