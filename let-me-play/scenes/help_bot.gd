@@ -10,6 +10,7 @@ var target:Marker2D
 
 @onready var blink_length:float = $AnimationPlayer.get_animation("help_bot_idle").length
 @onready var shrink_length:float = $AnimationPlayer.get_animation("hell_bot_shrink").length
+@onready var grow_length:float = $AnimationPlayer.get_animation("hell_bot_grow").length
 
 enum State {IDLE, LEAVING}
 var state:State = State.IDLE
@@ -91,3 +92,15 @@ func shrink():
 	$AnimationPlayer.play("hell_bot_shrink")
 	await get_tree().create_timer(shrink_length).timeout
 	$ShrinkingSprite.hide() # TODO: This is janky. Fix.
+
+func grow():
+	speed = 0
+	$BlinkTimer.stop()
+	$IdleSprite.hide()
+	$ShrinkingSprite.show()
+	$AnimationPlayer.play("hell_bot_grow")
+	await get_tree().create_timer(grow_length).timeout
+	_on_blink_timer_timeout()
+	$ShrinkingSprite.hide()
+	$IdleSprite.show()
+	$AnimationPlayer.play("help_bot_idle")

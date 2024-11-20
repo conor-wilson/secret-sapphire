@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcttde4rl6c7u"]
+[gd_scene load_steps=10 format=3 uid="uid://bcttde4rl6c7u"]
 
 [ext_resource type="Script" path="res://scenes/help_bot.gd" id="1_b6jo1"]
 [ext_resource type="Texture2D" uid="uid://1cwslcas3huc" path="res://assets/art/HelpBot-Sheet.png" id="1_nxjie"]
@@ -34,6 +34,22 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_b6akb"]
+resource_name = "hell_bot_shrink"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ShrinkingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666666, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
 [sub_resource type="Animation" id="Animation_pv5sx"]
 resource_name = "help_bot_idle"
 length = 0.8
@@ -51,9 +67,9 @@ tracks/0/keys = {
 "values": [0, 0, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_b6akb"]
-resource_name = "hell_bot_shrink"
-length = 0.65
+[sub_resource type="Animation" id="Animation_u7md5"]
+resource_name = "hell_bot_grow"
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -61,15 +77,16 @@ tracks/0/path = NodePath("../ShrinkingSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666666, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+"values": [9, 3, 2, 1, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cgdud"]
 _data = {
 "RESET": SubResource("Animation_yd1i7"),
+"hell_bot_grow": SubResource("Animation_u7md5"),
 "hell_bot_shrink": SubResource("Animation_b6akb"),
 "help_bot_idle": SubResource("Animation_pv5sx")
 }
@@ -81,6 +98,7 @@ script = ExtResource("1_b6jo1")
 metadata/_edit_group_ = true
 
 [node name="IdleSprite" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(2, 2)
 texture = ExtResource("1_nxjie")
 hframes = 8

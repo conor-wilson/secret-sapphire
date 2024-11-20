@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=6 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
 [ext_resource type="PackedScene" uid="uid://cfjp23jay1xyw" path="res://scenes/settings_menu.tscn" id="3_vdc1c"]
 [ext_resource type="PackedScene" uid="uid://vff026q47yk" path="res://scenes/secret_settings_menu.tscn" id="4_u0lve"]
+[ext_resource type="PackedScene" uid="uid://bcttde4rl6c7u" path="res://scenes/help_bot.tscn" id="5_lf0pf"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lvo15")
@@ -17,6 +18,11 @@ position = Vector2(1152, 0)
 
 [node name="SecretSettingsMenu" parent="Menus" instance=ExtResource("4_u0lve")]
 position = Vector2(2304, 0)
+
+[node name="HelpBot" parent="." node_paths=PackedStringArray("idle_markers", "exit_marker") instance=ExtResource("5_lf0pf")]
+position = Vector2(2879, 289)
+idle_markers = [NodePath("../MovementMarkers/CageMarker1"), NodePath("../MovementMarkers/CageMarker2"), NodePath("../MovementMarkers/CageMarker3"), NodePath("../MovementMarkers/CageMarker4")]
+exit_marker = NodePath("../MovementMarkers/MonologueMarker1")
 
 [node name="Cameras" type="Node2D" parent="."]
 
@@ -36,6 +42,26 @@ position = Vector2(795, 512)
 
 [node name="WhatWasThat2" type="Marker2D" parent="DialogueMarkers"]
 position = Vector2(2021, 392)
+
+[node name="CageDialogue" type="Marker2D" parent="DialogueMarkers"]
+position = Vector2(3084, 294)
+
+[node name="MovementMarkers" type="Node2D" parent="."]
+
+[node name="CageMarker1" type="Marker2D" parent="MovementMarkers"]
+position = Vector2(2857, 276)
+
+[node name="CageMarker2" type="Marker2D" parent="MovementMarkers"]
+position = Vector2(2893, 268)
+
+[node name="CageMarker3" type="Marker2D" parent="MovementMarkers"]
+position = Vector2(2865, 312)
+
+[node name="CageMarker4" type="Marker2D" parent="MovementMarkers"]
+position = Vector2(2901, 304)
+
+[node name="MonologueMarker1" type="Marker2D" parent="MovementMarkers"]
+position = Vector2(573, 262)
 
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]

@@ -32,6 +32,9 @@ var accpted_passwords:Array[String] = [
 func _ready() -> void:
 	username_box.hide()
 	password_box.hide()
+	$HelpBot.become_evil()
+	$HelpBot.hide()
+	$HelpBot.speed = 0
 
 func _on_secret_settings_button_pressed() -> void:
 	username_box.show()
@@ -116,3 +119,12 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 	
 	# Detatch element
 	element.detatch(strength)
+
+# TODO: This is purely for debugging. This function should be removed once it's
+# no-longer needed.
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debugbutton"):
+		$HelpBot.show()
+		$HelpBot.grow()
+		await get_tree().create_timer(2.5).timeout
+		$HelpBot.start_leaving()

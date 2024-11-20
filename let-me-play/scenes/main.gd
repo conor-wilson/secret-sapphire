@@ -55,7 +55,10 @@ func _on_settings_menu_back_pressed() -> void:
 
 func _on_settings_menu_secret_settings_unlocked() -> void:
 	$Cameras/SecretSettingsCamera.make_current()
-	$Menus/SecretSettingsMenu.start_initial_dialogue()
+	
+	# TODO: Make it so that the below only happens once
+	DialogueManager.stop_all_dialogue()
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["BLAH BLAH BLAH..."]) # TODO
 
 func _on_secret_settings_menu_back_pressed() -> void:
 	$Cameras/SettingsCamera.make_current()
@@ -93,4 +96,15 @@ const free_help_bot_cheat_code:Array[String] = [
 func _check_input_cache():
 	if input_cache == free_help_bot_cheat_code:
 		print("Freeing Help Bot...")
-		$Menus/SecretSettingsMenu.free_help_bot()
+		free_help_bot()
+
+func free_help_bot():
+	shake_screen(5,5)
+	$Menus/SecretSettingsMenu.unlock_cage()
+	DialogueManager.stop_all_dialogue()
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["BLAH BLAH BLAH..."]) # TODO
+	await get_tree().create_timer(2.5).timeout
+	$HelpBot.become_evil()
+	await get_tree().create_timer(2.5).timeout
+	$HelpBot.start_leaving()
+	
