@@ -13,7 +13,7 @@ func free_help_bot():
 	await get_tree().create_timer(2.5).timeout
 	$HelpBot.become_evil()
 	await get_tree().create_timer(2.5).timeout
-	$HelpBot.shrink()
+	$HelpBot.state == $HelpBot.start_leaving()
 
 func start_initial_dialogue():
 	DialogueManager.stop_all_dialogue()
