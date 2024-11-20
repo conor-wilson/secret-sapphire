@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcttde4rl6c7u"]
+[gd_scene load_steps=9 format=3 uid="uid://bcttde4rl6c7u"]
 
 [ext_resource type="Script" path="res://scenes/help_bot.gd" id="1_b6jo1"]
 [ext_resource type="Texture2D" uid="uid://1cwslcas3huc" path="res://assets/art/HelpBot-Sheet.png" id="1_nxjie"]
+[ext_resource type="Texture2D" uid="uid://o53y7lf7ihfd" path="res://assets/art/HellBot_Shrink-Sheet.png" id="3_2pc8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oh5jh"]
+size = Vector2(62, 62)
 
 [sub_resource type="Animation" id="Animation_yd1i7"]
 length = 0.001
@@ -12,6 +16,18 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ShrinkingSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -35,14 +51,27 @@ tracks/0/keys = {
 "values": [0, 0, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_b6akb"]
+resource_name = "hell_bot_shrink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ShrinkingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cgdud"]
 _data = {
 "RESET": SubResource("Animation_yd1i7"),
+"hell_bot_shrink": SubResource("Animation_b6akb"),
 "help_bot_idle": SubResource("Animation_pv5sx")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oh5jh"]
-size = Vector2(62, 62)
 
 [node name="HelpBot" type="Area2D"]
 collision_layer = 8
@@ -50,15 +79,15 @@ collision_mask = 0
 script = ExtResource("1_b6jo1")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="IdleSprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("1_nxjie")
 hframes = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-libraries = {
-"": SubResource("AnimationLibrary_cgdud")
-}
+[node name="ShrinkingSprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_2pc8o")
+hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_oh5jh")
@@ -67,5 +96,11 @@ shape = SubResource("RectangleShape2D_oh5jh")
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../IdleSprite")
+libraries = {
+"": SubResource("AnimationLibrary_cgdud")
+}
 
 [connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]

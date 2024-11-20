@@ -12,6 +12,8 @@ func free_help_bot():
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["BLAH BLAH BLAH..."]) # TODO
 	await get_tree().create_timer(2.5).timeout
 	$HelpBot.become_evil()
+	await get_tree().create_timer(2.5).timeout
+	$HelpBot.shrink()
 
 func start_initial_dialogue():
 	DialogueManager.stop_all_dialogue()
