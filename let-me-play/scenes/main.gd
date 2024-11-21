@@ -16,12 +16,7 @@ func _ready() -> void:
 		$MovementMarkers/CageMarkers/CageMarker3, 
 		$MovementMarkers/CageMarkers/CageMarker4
 	]
-	$HelpBot.set_new_idle_location(
-		$MovementMarkers/CageMarkers/CageMarker1,
-		idle_markers,
-		400,
-		10
-	)
+	$HelpBot.set_new_idle_location($MovementMarkers/CageMarkers/CageMarker1, idle_markers, 400, 10)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -128,9 +123,4 @@ func free_help_bot():
 		$MovementMarkers/ScreenMarkers/ScreenMarker5
 	]
 	
-	$HelpBot.set_new_idle_location(
-		$MovementMarkers/ScreenMarkers/ScreenMarker1, 
-		$MovementMarkers/ScreenMarkers.get_children() as Array[Marker2D],
-		400,
-		100
-	)
+	$HelpBot.set_new_idle_location($MovementMarkers/ScreenMarkers/ScreenMarker1, new_idle_markers, 400, 100)
