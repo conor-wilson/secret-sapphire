@@ -1,5 +1,7 @@
 extends Area2D
 
+signal arrived
+
 var speed:float = 25
 var idle_speed = 25
 var idle_markers:Array[Marker2D]
@@ -38,6 +40,10 @@ func _process(delta: float) -> void:
 
 func set_idle_movement_target():
 	if target == null || position.distance_to(target.position) <10:
+		
+		if state == State.MOVING:
+			arrived.emit()
+		
 		speed = idle_speed
 		state = State.IDLE
 		target = idle_markers[randi_range(0, idle_markers.size()-1)]

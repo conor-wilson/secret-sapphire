@@ -124,3 +124,7 @@ func free_help_bot():
 	]
 	
 	$HelpBot.set_new_idle_location($MovementMarkers/ScreenMarkers/ScreenMarker1, new_idle_markers, 400, 100)
+	
+	await $HelpBot.arrived
+	
+	$Menus/MainMenu.clear_static()

@@ -62,6 +62,8 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 func _on_panel_smash() -> void:
 	shake_screen.emit(25,5)
 
-
 func _on_desktop_tap() -> void:
 	shake_screen.emit(5,5)
+
+func clear_static():
+	$Desktop.clear_all_static()
