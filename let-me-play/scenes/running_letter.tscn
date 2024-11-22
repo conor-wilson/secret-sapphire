@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://lvqqxc7ln6wx"]
+[gd_scene load_steps=14 format=3 uid="uid://lvqqxc7ln6wx"]
 
 [ext_resource type="Script" path="res://running_letter.gd" id="1_b1yc4"]
 [ext_resource type="Texture2D" uid="uid://cha8waoixn83o" path="res://assets/art/RunningLetters/S-Running_Left1.png" id="2_0503h"]
@@ -16,6 +16,22 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0503h")
+}],
+"loop": true,
+"name": &"s-jumping_left",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bdtsu")
+}],
+"loop": true,
+"name": &"s-jumping_right",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -56,13 +72,20 @@ animations = [{
 radius = 12.0
 height = 48.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irv2h"]
+size = Vector2(5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ug51"]
+size = Vector2(5, 20)
+
 [node name="RunningLetter" type="CharacterBody2D"]
 collision_layer = 32
 script = ExtResource("1_b1yc4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_knhoi")
-animation = &"s-running_left"
+animation = &"s-jumping_right"
+frame_progress = 0.95878
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
@@ -73,5 +96,19 @@ one_shot = true
 
 [node name="JumpTimer" type="Timer" parent="."]
 
+[node name="LeftWallDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWallDetector"]
+position = Vector2(-10.5, 0)
+shape = SubResource("RectangleShape2D_irv2h")
+
+[node name="RightWallDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWallDetector"]
+position = Vector2(10.5, 0)
+shape = SubResource("RectangleShape2D_5ug51")
+
 [connection signal="timeout" from="ChangeDirTimer" to="." method="_on_change_dir_timer_timeout"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="body_entered" from="LeftWallDetector" to="." method="_on_left_wall_detector_body_entered"]
+[connection signal="body_entered" from="RightWallDetector" to="." method="_on_right_wall_detector_body_entered"]
