@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=23 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/breakable_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
@@ -12,6 +12,7 @@
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_43f6x"]
 [ext_resource type="Texture2D" uid="uid://da1aop1iloq0v" path="res://assets/art/StartButton.png" id="7_cyu86"]
 [ext_resource type="Texture2D" uid="uid://op2bmdwt6xln" path="res://assets/art/Screw.png" id="8_yx54q"]
+[ext_resource type="PackedScene" uid="uid://lvqqxc7ln6wx" path="res://scenes/running_letter.tscn" id="13_7j4n4"]
 
 [sub_resource type="Animation" id="Animation_bex1y"]
 length = 0.001
@@ -274,6 +275,9 @@ theme_override_font_sizes/font_size = 32
 text = "Created by @QuietLantern"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="RunningLetter" parent="." instance=ExtResource("13_7j4n4")]
+position = Vector2(135, 537)
 
 [connection signal="tap" from="Desktop" to="." method="_on_desktop_tap"]
 [connection signal="smash" from="InteractiveElements/Panel" to="." method="_on_panel_smash"]

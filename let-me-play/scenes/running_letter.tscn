@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://lvqqxc7ln6wx"]
+
+[ext_resource type="Script" path="res://running_letter.gd" id="1_b1yc4"]
+[ext_resource type="Texture2D" uid="uid://cha8waoixn83o" path="res://assets/art/RunningLetters/S-Running_Left1.png" id="2_0503h"]
+[ext_resource type="Texture2D" uid="uid://dtjehcy6olrjt" path="res://assets/art/RunningLetters/S-Running_Left2.png" id="3_4p2at"]
+[ext_resource type="Texture2D" uid="uid://bqvblky8ifgdg" path="res://assets/art/RunningLetters/S-Running_Left3.png" id="4_7318i"]
+[ext_resource type="Texture2D" uid="uid://dfy1oseus6muj" path="res://assets/art/RunningLetters/S-Running_Left4.png" id="5_2qxvp"]
+[ext_resource type="Texture2D" uid="uid://crppq1bq4q3tu" path="res://assets/art/RunningLetters/S-Running_Right1.png" id="6_bdtsu"]
+[ext_resource type="Texture2D" uid="uid://decaea1c163o0" path="res://assets/art/RunningLetters/S-Running_Right2.png" id="7_oq4wd"]
+[ext_resource type="Texture2D" uid="uid://cqqyn2ldh60nf" path="res://assets/art/RunningLetters/S-Running_Right3.png" id="8_kxmre"]
+[ext_resource type="Texture2D" uid="uid://bnft5l4w2d48j" path="res://assets/art/RunningLetters/S-Running_Right4.png" id="9_a0cwm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_knhoi"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0503h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4p2at")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7318i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2qxvp")
+}],
+"loop": true,
+"name": &"s-running_left",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bdtsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_oq4wd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kxmre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_a0cwm")
+}],
+"loop": true,
+"name": &"s-running_right",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oh5f5"]
+radius = 12.0
+height = 48.0
+
+[node name="RunningLetter" type="CharacterBody2D"]
+collision_layer = 32
+script = ExtResource("1_b1yc4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_knhoi")
+animation = &"s-running_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_oh5f5")
+
+[node name="ChangeDirTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="JumpTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ChangeDirTimer" to="." method="_on_change_dir_timer_timeout"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

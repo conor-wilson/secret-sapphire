@@ -98,12 +98,12 @@ script = ExtResource("1_b6jo1")
 metadata/_edit_group_ = true
 
 [node name="IdleSprite" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(2, 2)
 texture = ExtResource("1_nxjie")
 hframes = 8
 
 [node name="ShrinkingSprite" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(2, 2)
 texture = ExtResource("3_2pc8o")
 hframes = 10
