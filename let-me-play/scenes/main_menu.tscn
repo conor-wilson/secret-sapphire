@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=22 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/breakable_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dn8q4o2sgxa7y" path="res://scenes/letter.tscn" id="3_1ar5g"]
 [ext_resource type="Texture2D" uid="uid://1rpws7w7ml0u" path="res://assets/art/StickyNoteTest-Sheet.png" id="3_ahnkd"]
 [ext_resource type="Texture2D" uid="uid://7r8cut1jsvt0" path="res://assets/art/Panel.png" id="3_janoq"]
+[ext_resource type="Texture2D" uid="uid://4damehrpitmi" path="res://assets/art/CrumpledPaper.png" id="4_ylyox"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_2a3fy"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_43f6x"]
 [ext_resource type="Texture2D" uid="uid://da1aop1iloq0v" path="res://assets/art/StartButton.png" id="7_cyu86"]
@@ -24,7 +25,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [7]
 }
 
 [sub_resource type="Animation" id="Animation_xpr53"]
@@ -49,6 +50,9 @@ _data = {
 "RESET": SubResource("Animation_bex1y"),
 "sticky_note_animation": SubResource("Animation_xpr53")
 }
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gqx4u"]
+bounce = 0.3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2u67"]
 size = Vector2(1024, 384)
@@ -85,12 +89,27 @@ tile_set = ExtResource("1_jssq0")
 position = Vector2(184, 336)
 texture = ExtResource("3_ahnkd")
 hframes = 15
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="InteractiveElements/StickyNote"]
 libraries = {
 "": SubResource("AnimationLibrary_n3yhk")
 }
 autoplay = "sticky_note_animation"
+
+[node name="CrumpledStickyNote" type="RigidBody2D" parent="InteractiveElements"]
+visible = false
+position = Vector2(184, 328)
+collision_layer = 16
+physics_material_override = SubResource("PhysicsMaterial_gqx4u")
+gravity_scale = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledStickyNote"]
+texture = ExtResource("4_ylyox")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="InteractiveElements/CrumpledStickyNote"]
+polygon = PackedVector2Array(8, -45, 16, -35, 24, -34, 43, -30, 43, -20, 46, -18, 43, -11, 40, -3, 46, 7, 42, 15, 38, 20, 39, 27, 38, 35, 28, 41, 21, 46, 5, 42, 0, 42, -13, 47, -22, 42, -31, 47, -36, 43, -38, 33, -35, 28, -37, 19, -46, -2, -46, -14, -40, -22, -39, -25, -39, -31, -32, -37, -30, -40, -26, -40, -19, -36, -12, -39, -9, -40, 0, -43)
 
 [node name="Panel" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 collision_layer = 2

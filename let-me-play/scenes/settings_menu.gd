@@ -115,16 +115,16 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 	# Check that the element can be detatched
 	if element == null: return
 	if element is not BreakableElement: return
-	if !element.idle:   return
+	if !element.idle: return
 	
 	# Detatch element
 	element.detatch(strength)
-
-# TODO: This is purely for debugging. This function should be removed once it's
-# no-longer needed.
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debugbutton"):
-		$HelpBot.show()
-		$HelpBot.grow()
-		await get_tree().create_timer(2.5).timeout
-		$HelpBot.start_leaving()
+#
+## TODO: This is purely for debugging. This function should be removed once it's
+## no-longer needed.
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debugbutton"):
+		#$HelpBot.show()
+		#$HelpBot.grow()
+		#await get_tree().create_timer(2.5).timeout
+		#$HelpBot.start_leaving()

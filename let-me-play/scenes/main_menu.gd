@@ -67,3 +67,14 @@ func _on_desktop_tap() -> void:
 
 func clear_static():
 	$Desktop.clear_all_static()
+
+func detatch_sticky_note():
+	$InteractiveElements/StickyNote.hide()
+	$InteractiveElements/CrumpledStickyNote.show()
+	
+	$InteractiveElements/CrumpledStickyNote.gravity_scale = 1
+	var x_force:float = randf_range(-750, 750)
+	var y_force:float = randf_range(-750, 0)
+	$InteractiveElements/CrumpledStickyNote.apply_impulse(Vector2(x_force,y_force), Vector2(10,10))
+	
+	#$InteractiveElements/StickyNote/Sprite2D/AnimationPlayer.play("RESET")
