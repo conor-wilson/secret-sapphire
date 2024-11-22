@@ -68,6 +68,9 @@ right={
 2d_physics/layer_2="breakable_elements"
 2d_physics/layer_3="letters"
 2d_physics/layer_4="help_bot"
+2d_physics/layer_5="sticky_note"
+2d_physics/layer_6="running_letters"
+2d_physics/layer_7="detection_areas"
 
 [rendering]
 

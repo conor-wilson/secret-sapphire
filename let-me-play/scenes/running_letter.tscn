@@ -80,6 +80,7 @@ size = Vector2(5, 20)
 
 [node name="RunningLetter" type="CharacterBody2D"]
 collision_layer = 32
+collision_mask = 65
 script = ExtResource("1_b1yc4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

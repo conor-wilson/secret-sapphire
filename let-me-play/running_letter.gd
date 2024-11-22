@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name RunningLetter extends CharacterBody2D
 
 
 const SPEED = 300.0
@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -600.0
 
 @export var direction:Vector2 = Vector2.RIGHT
 var activated:bool=false
+var is_infront_of_desktop:bool = false
 
 #func _ready() -> void:
 	#$AnimatedSprite2D.play("s-running")
@@ -27,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	if activated:
 		_set_animation()
 		velocity.x = direction.x * SPEED
-		_check_apex()
+		_enter_desktop_if_able()
 	#else:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
 
@@ -59,8 +60,6 @@ func _set_animation():
 		if !is_on_floor():
 			$AnimatedSprite2D.play("s-jumping_left")
 		$AnimatedSprite2D.play("s-running_left")
-	
-
 
 func _on_left_wall_detector_body_entered(body: Node2D) -> void:
 	direction = Vector2.RIGHT
@@ -68,9 +67,17 @@ func _on_left_wall_detector_body_entered(body: Node2D) -> void:
 func _on_right_wall_detector_body_entered(body: Node2D) -> void:
 	direction = Vector2.LEFT
 
+#func _check_can_enter_desktop():
+	#if !is_on_floor() && velocity.y >= -0.01:
+		#
+		#
+		#print("YO")
+		#z_index = -100
 
-func _check_apex():
-	if !is_on_floor() && velocity.y >= -0.01:
-		
-		print("YO")
-		z_index = -100
+func _enter_desktop_if_able():
+	if !is_on_floor() && velocity.y >= -0.01 && is_infront_of_desktop:
+		z_index = -1
+
+func set_can_enter_desktop(val:bool):
+	#print("ASDF")
+	is_infront_of_desktop = val

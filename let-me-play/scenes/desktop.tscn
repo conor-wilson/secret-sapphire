@@ -93,6 +93,7 @@ sources/1 = SubResource("TileSetAtlasSource_ahmy2")
 size = Vector2(1008, 368)
 
 [node name="Desktop" type="Node2D"]
+z_index = -2
 script = ExtResource("1_wj53n")
 
 [node name="DesktopBg" type="Sprite2D" parent="."]
@@ -104,9 +105,13 @@ tile_map_data = PackedByteArray("AAAEAAQAAQAAAAAAAQAEAAUAAQAAAAEAAwAEAAYAAQAAAAE
 tile_set = SubResource("TileSet_g845v")
 
 [node name="Screen" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen"]
 position = Vector2(576, 256)
 shape = SubResource("RectangleShape2D_5awlk")
 
+[connection signal="body_entered" from="Screen" to="." method="_on_screen_body_entered"]
+[connection signal="body_exited" from="Screen" to="." method="_on_screen_body_exited"]
 [connection signal="input_event" from="Screen" to="." method="_on_screen_input_event"]

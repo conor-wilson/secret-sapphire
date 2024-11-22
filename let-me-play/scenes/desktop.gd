@@ -174,3 +174,13 @@ func _clear_static_circle(origin:Vector2i):
 	for coords in circle_matrix_6:
 		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
 	await get_tree().create_timer(0.02).timeout
+
+
+func _on_screen_body_entered(body: Node2D) -> void:
+	if body is RunningLetter:
+		body.set_can_enter_desktop(true)
+
+
+func _on_screen_body_exited(body: Node2D) -> void:
+	if body is RunningLetter:
+		body.set_can_enter_desktop(false)
