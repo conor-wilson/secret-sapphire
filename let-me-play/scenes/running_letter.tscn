@@ -1,10 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://lvqqxc7ln6wx"]
+[gd_scene load_steps=20 format=3 uid="uid://lvqqxc7ln6wx"]
 
 [ext_resource type="Script" path="res://running_letter.gd" id="1_b1yc4"]
+[ext_resource type="Texture2D" uid="uid://bf1ngf2defhrk" path="res://assets/art/RunningLetters/S-Jumping1.png" id="2_5lp2y"]
 [ext_resource type="Texture2D" uid="uid://cha8waoixn83o" path="res://assets/art/RunningLetters/S-Running_Left1.png" id="2_0503h"]
+[ext_resource type="Texture2D" uid="uid://dpfut3ukyynu7" path="res://assets/art/RunningLetters/S-Idle.png" id="2_wnng6"]
+[ext_resource type="Texture2D" uid="uid://cqga1ekfrnrcf" path="res://assets/art/RunningLetters/S-Jumping2.png" id="3_1f5ns"]
 [ext_resource type="Texture2D" uid="uid://dtjehcy6olrjt" path="res://assets/art/RunningLetters/S-Running_Left2.png" id="3_4p2at"]
 [ext_resource type="Texture2D" uid="uid://bqvblky8ifgdg" path="res://assets/art/RunningLetters/S-Running_Left3.png" id="4_7318i"]
+[ext_resource type="Texture2D" uid="uid://dtk330hprcgtl" path="res://assets/art/RunningLetters/S-Jumping3.png" id="4_rcayu"]
 [ext_resource type="Texture2D" uid="uid://dfy1oseus6muj" path="res://assets/art/RunningLetters/S-Running_Left4.png" id="5_2qxvp"]
+[ext_resource type="Texture2D" uid="uid://bg8qqke0yce8i" path="res://assets/art/RunningLetters/S-Jumping4.png" id="5_n7le1"]
 [ext_resource type="Texture2D" uid="uid://crppq1bq4q3tu" path="res://assets/art/RunningLetters/S-Running_Right1.png" id="6_bdtsu"]
 [ext_resource type="Texture2D" uid="uid://decaea1c163o0" path="res://assets/art/RunningLetters/S-Running_Right2.png" id="7_oq4wd"]
 [ext_resource type="Texture2D" uid="uid://cqqyn2ldh60nf" path="res://assets/art/RunningLetters/S-Running_Right3.png" id="8_kxmre"]
@@ -19,19 +24,36 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_0503h")
+"texture": ExtResource("2_wnng6")
 }],
 "loop": true,
-"name": &"s-jumping_left",
+"name": &"s-idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5lp2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1f5ns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rcayu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n7le1")
+}],
+"loop": false,
+"name": &"s-jumping",
 "speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_bdtsu")
+"texture": ExtResource("5_n7le1")
 }],
 "loop": true,
-"name": &"s-jumping_right",
-"speed": 12.0
+"name": &"s-mid-air",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -78,6 +100,9 @@ size = Vector2(5, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ug51"]
 size = Vector2(5, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0lr5"]
+size = Vector2(6, 82)
+
 [node name="RunningLetter" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 65
@@ -85,8 +110,7 @@ script = ExtResource("1_b1yc4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_knhoi")
-animation = &"s-jumping_right"
-frame_progress = 0.95878
+animation = &"s-mid-air"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
@@ -97,6 +121,10 @@ one_shot = true
 
 [node name="JumpTimer" type="Timer" parent="."]
 
+[node name="MischiefTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [node name="LeftWallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWallDetector"]
@@ -104,12 +132,21 @@ position = Vector2(-10.5, 0)
 shape = SubResource("RectangleShape2D_irv2h")
 
 [node name="RightWallDetector" type="Area2D" parent="."]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWallDetector"]
 position = Vector2(10.5, 0)
 shape = SubResource("RectangleShape2D_5ug51")
 
+[node name="LandingDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LandingDetector"]
+position = Vector2(0, 62)
+shape = SubResource("RectangleShape2D_g0lr5")
+
 [connection signal="timeout" from="ChangeDirTimer" to="." method="_on_change_dir_timer_timeout"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="timeout" from="MischiefTimer" to="." method="_on_mischief_timer_timeout"]
 [connection signal="body_entered" from="LeftWallDetector" to="." method="_on_left_wall_detector_body_entered"]
 [connection signal="body_entered" from="RightWallDetector" to="." method="_on_right_wall_detector_body_entered"]
+[connection signal="body_entered" from="LandingDetector" to="." method="_on_landing_detector_body_entered"]
