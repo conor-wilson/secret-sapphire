@@ -4,15 +4,19 @@ class_name RunningLetter extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 
-@export var direction:Vector2 = Vector2.RIGHT
+@export var sprite_frames:SpriteFrames
+var direction:Vector2 = Vector2.RIGHT
 var is_infront_of_desktop:bool = false
 var ready_to_exit:bool = false
 
 enum State {IDLE, RUNNING, JUMPING, LANDING}
 var state:State = State.IDLE
 
-#func _ready() -> void:
-	#$AnimatedSprite2D.play("s-running")
+func _ready() -> void:
+	$AnimatedSprite2D.sprite_frames = sprite_frames
+	
+	if randi_range(0,1):
+		direction = -direction
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -36,7 +40,7 @@ func _physics_process(delta: float) -> void:
 func start_running(): 
 	if state != State.RUNNING:
 		$ChangeDirTimer.start(randf_range(0.1, 1))
-		$JumpTimer.start(randf_range(0.1, 1))
+		$JumpTimer.start(randf_range(0.1, 3))
 		state = State.RUNNING
 
 func _on_change_dir_timer_timeout() -> void:
@@ -45,7 +49,7 @@ func _on_change_dir_timer_timeout() -> void:
 	$ChangeDirTimer.start(randf_range(0.1, 1))
 
 func _on_jump_timer_timeout() -> void:
-	$JumpTimer.start(randf_range(1.1, 3))
+	$JumpTimer.start(randf_range(0.1, 3))
 	if is_on_floor():
 		_jump()
 
@@ -101,6 +105,7 @@ func set_can_enter_desktop(val:bool):
 # no-longer needed.
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debugbutton"):
+		show()
 		$MischiefTimer.start()
 		start_running()
 

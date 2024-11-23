@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=27 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/breakable_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
@@ -13,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://da1aop1iloq0v" path="res://assets/art/StartButton.png" id="7_cyu86"]
 [ext_resource type="Texture2D" uid="uid://op2bmdwt6xln" path="res://assets/art/Screw.png" id="8_yx54q"]
 [ext_resource type="PackedScene" uid="uid://lvqqxc7ln6wx" path="res://scenes/running_letter.tscn" id="13_7j4n4"]
+[ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/RunningLetters/running_s.tres" id="14_asqxe"]
+[ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/RunningLetters/running_t.tres" id="15_8ipti"]
+[ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="16_pscsi"]
+[ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="17_sxf8s"]
 
 [sub_resource type="Animation" id="Animation_bex1y"]
 length = 0.001
@@ -276,8 +280,32 @@ text = "Created by @QuietLantern"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="RunningLetter" parent="." instance=ExtResource("13_7j4n4")]
-position = Vector2(135, 537)
+[node name="RunningLetters" type="Node2D" parent="."]
+
+[node name="S" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+visible = false
+position = Vector2(125, 538)
+sprite_frames = ExtResource("14_asqxe")
+
+[node name="T1" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+visible = false
+position = Vector2(284, 543)
+sprite_frames = ExtResource("15_8ipti")
+
+[node name="A1" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+visible = false
+position = Vector2(497, 543)
+sprite_frames = ExtResource("16_pscsi")
+
+[node name="R" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+visible = false
+position = Vector2(716, 535)
+sprite_frames = ExtResource("17_sxf8s")
+
+[node name="T2" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+visible = false
+position = Vector2(895, 508)
+sprite_frames = ExtResource("15_8ipti")
 
 [connection signal="tap" from="Desktop" to="." method="_on_desktop_tap"]
 [connection signal="smash" from="InteractiveElements/Panel" to="." method="_on_panel_smash"]
