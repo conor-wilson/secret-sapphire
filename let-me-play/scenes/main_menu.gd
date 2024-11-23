@@ -4,6 +4,8 @@ signal settings_pressed
 signal shake_screen(strength:float, fade:float)
 signal start_button_exploded
 
+var panel_screw_count:int = 4
+
 # TODO: Organise this code file. It's a damn mess.
 
 func _on_start_button_smash() -> void:
@@ -18,7 +20,6 @@ func _on_start_button_click() -> void:
 func _on_settings_button_pressed() -> void:
 	settings_pressed.emit()
 
-var panel_screw_count:int = 4
 
 func _on_screw_1_click() -> void:
 	_detatch_screw($InteractiveElements/Screw1)

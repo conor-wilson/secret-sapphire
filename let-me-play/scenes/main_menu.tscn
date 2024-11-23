@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://4damehrpitmi" path="res://assets/art/CrumpledPaper.png" id="4_ylyox"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_2a3fy"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_43f6x"]
-[ext_resource type="Texture2D" uid="uid://da1aop1iloq0v" path="res://assets/art/StartButton.png" id="7_cyu86"]
+[ext_resource type="Texture2D" uid="uid://y8wgjwjjrbhx" path="res://assets/art/SmallStartButton.png" id="8_nhvuo"]
 [ext_resource type="Texture2D" uid="uid://op2bmdwt6xln" path="res://assets/art/Screw.png" id="8_yx54q"]
 [ext_resource type="PackedScene" uid="uid://lvqqxc7ln6wx" path="res://scenes/running_letter.tscn" id="13_7j4n4"]
 [ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/RunningLetters/running_s.tres" id="14_asqxe"]
@@ -63,7 +63,7 @@ bounce = 0.3
 size = Vector2(1024, 384)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwsea"]
-size = Vector2(60, 284)
+size = Vector2(60, 156)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jk44i"]
 radius = 8.0
@@ -133,10 +133,10 @@ collision_layer = 2
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/StartButton"]
-texture = ExtResource("7_cyu86")
+texture = ExtResource("8_nhvuo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/StartButton"]
-position = Vector2(-7.62939e-06, 1.43051e-05)
+position = Vector2(0, 3.05176e-05)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_nwsea")
 
@@ -220,48 +220,28 @@ flat = true
 [node name="Letters" type="Node2D" parent="."]
 
 [node name="S" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(438, 579)
+position = Vector2(503, 585)
 rotation = -0.0150613
 
 [node name="T1" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(472, 574)
+position = Vector2(537, 580)
 rotation = -0.0150613
 letter_type = 1
 
 [node name="A1" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(508, 571)
+position = Vector2(573, 577)
 rotation = -0.0150613
 letter_type = 2
 
 [node name="R" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(539, 569)
+position = Vector2(604, 575)
 rotation = -0.0150613
 letter_type = 3
 
 [node name="T2" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(567, 573)
+position = Vector2(632, 579)
 rotation = -0.0150613
 letter_type = 1
-
-[node name="G" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(615, 575)
-rotation = -0.0150613
-letter_type = 4
-
-[node name="A2" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(652, 572)
-rotation = -0.0150613
-letter_type = 2
-
-[node name="M" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(689, 573)
-rotation = -0.0150613
-letter_type = 5
-
-[node name="E" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(716, 573)
-rotation = -0.0150613
-letter_type = 6
 
 [node name="CreditContainer" type="MarginContainer" parent="."]
 offset_left = 760.0
