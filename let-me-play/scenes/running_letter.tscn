@@ -1,94 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://lvqqxc7ln6wx"]
+[gd_scene load_steps=7 format=3 uid="uid://lvqqxc7ln6wx"]
 
 [ext_resource type="Script" path="res://running_letter.gd" id="1_b1yc4"]
-[ext_resource type="Texture2D" uid="uid://bf1ngf2defhrk" path="res://assets/art/RunningLetters/S-Jumping1.png" id="2_5lp2y"]
-[ext_resource type="Texture2D" uid="uid://cha8waoixn83o" path="res://assets/art/RunningLetters/S-Running_Left1.png" id="2_0503h"]
-[ext_resource type="Texture2D" uid="uid://dpfut3ukyynu7" path="res://assets/art/RunningLetters/S-Idle.png" id="2_wnng6"]
-[ext_resource type="Texture2D" uid="uid://cqga1ekfrnrcf" path="res://assets/art/RunningLetters/S-Jumping2.png" id="3_1f5ns"]
-[ext_resource type="Texture2D" uid="uid://dtjehcy6olrjt" path="res://assets/art/RunningLetters/S-Running_Left2.png" id="3_4p2at"]
-[ext_resource type="Texture2D" uid="uid://bqvblky8ifgdg" path="res://assets/art/RunningLetters/S-Running_Left3.png" id="4_7318i"]
-[ext_resource type="Texture2D" uid="uid://dtk330hprcgtl" path="res://assets/art/RunningLetters/S-Jumping3.png" id="4_rcayu"]
-[ext_resource type="Texture2D" uid="uid://dfy1oseus6muj" path="res://assets/art/RunningLetters/S-Running_Left4.png" id="5_2qxvp"]
-[ext_resource type="Texture2D" uid="uid://bg8qqke0yce8i" path="res://assets/art/RunningLetters/S-Jumping4.png" id="5_n7le1"]
-[ext_resource type="Texture2D" uid="uid://crppq1bq4q3tu" path="res://assets/art/RunningLetters/S-Running_Right1.png" id="6_bdtsu"]
-[ext_resource type="Texture2D" uid="uid://decaea1c163o0" path="res://assets/art/RunningLetters/S-Running_Right2.png" id="7_oq4wd"]
-[ext_resource type="Texture2D" uid="uid://cqqyn2ldh60nf" path="res://assets/art/RunningLetters/S-Running_Right3.png" id="8_kxmre"]
-[ext_resource type="Texture2D" uid="uid://bnft5l4w2d48j" path="res://assets/art/RunningLetters/S-Running_Right4.png" id="9_a0cwm"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_knhoi"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_wnng6")
-}],
-"loop": true,
-"name": &"s-idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_5lp2y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_1f5ns")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_rcayu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_n7le1")
-}],
-"loop": false,
-"name": &"s-jumping",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_n7le1")
-}],
-"loop": true,
-"name": &"s-mid-air",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_0503h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_4p2at")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_7318i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_2qxvp")
-}],
-"loop": true,
-"name": &"s-running_left",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_bdtsu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_oq4wd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_kxmre")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_a0cwm")
-}],
-"loop": true,
-"name": &"s-running_right",
-"speed": 12.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/RunningLetters/running_s.tres" id="2_vitff"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oh5f5"]
 radius = 12.0
@@ -109,8 +22,8 @@ collision_mask = 65
 script = ExtResource("1_b1yc4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_knhoi")
-animation = &"s-mid-air"
+sprite_frames = ExtResource("2_vitff")
+animation = &"running_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)

@@ -60,18 +60,18 @@ func _jump():
 func _set_animation():
 	
 	if state == State.JUMPING:
-		if $AnimatedSprite2D.animation != "s-jumping":
+		if $AnimatedSprite2D.animation != "jumping":
 			print($AnimatedSprite2D.animation)
-			$AnimatedSprite2D.play("s-jumping")
+			$AnimatedSprite2D.play("jumping")
 	elif state == State.LANDING:
-		$AnimatedSprite2D.play_backwards("s-jumping")
+		$AnimatedSprite2D.play_backwards("jumping")
 	elif state == State.RUNNING:
 		if direction == Vector2.RIGHT:
-			$AnimatedSprite2D.play("s-running_right")
+			$AnimatedSprite2D.play("running_right")
 		else:
-			$AnimatedSprite2D.play("s-running_left")
+			$AnimatedSprite2D.play("running_left")
 	else:
-		$AnimatedSprite2D.play("s-idle")
+		$AnimatedSprite2D.play("idle")
 
 func _set_velocity():
 	if state == State.RUNNING || state == State.JUMPING || state == State.LANDING:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtjehcy6olrjt"
-path="res://.godot/imported/S-Running_Left2.png-f4adac464e1522b7fea7852374e123fd.ctex"
+uid="uid://cyh7jcsw8cndx"
+path="res://.godot/imported/S-Running_Left-Sheet.png-88f9ed0b55bbd820f6704b1ca53b4f50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/RunningLetters/S-Running_Left2.png"
-dest_files=["res://.godot/imported/S-Running_Left2.png-f4adac464e1522b7fea7852374e123fd.ctex"]
+source_file="res://assets/art/RunningLetters/S-Running_Left-Sheet.png"
+dest_files=["res://.godot/imported/S-Running_Left-Sheet.png-88f9ed0b55bbd820f6704b1ca53b4f50.ctex"]
 
 [params]
 
