@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://lvqqxc7ln6wx"]
 
 [ext_resource type="Script" path="res://running_letter.gd" id="1_b1yc4"]
-[ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/RunningLetters/running_s.tres" id="2_vitff"]
+[ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="2_c6l87"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oh5f5"]
 radius = 12.0
@@ -22,8 +22,8 @@ collision_mask = 65
 script = ExtResource("1_b1yc4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_vitff")
-animation = &"running_right"
+sprite_frames = ExtResource("2_c6l87")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
