@@ -9,8 +9,10 @@ var panel_screw_count:int = 4
 # TODO: Organise this code file. It's a damn mess.
 
 func _on_start_button_smash() -> void:
-	for letter in $Letters.get_children(): 
-		letter.spawn()
+	$RigidLetters.show()
+	for letter in $RigidLetters.get_children():
+		letter.detatch()
+		letter.apply_random_force()
 	start_button_exploded.emit()
 
 func _on_start_button_click() -> void:
@@ -53,7 +55,7 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 	
 	# Check that the element can be detatched
 	if element == null: return
-	if element is not BreakableElement: return
+	if element is not InteractiveElement: return
 	if !element.idle:   return
 	
 	# Detatch element
@@ -77,5 +79,21 @@ func detatch_sticky_note():
 	var x_force:float = randf_range(-750, 750)
 	var y_force:float = randf_range(-750, 0)
 	$InteractiveElements/CrumpledStickyNote.apply_impulse(Vector2(x_force,y_force), Vector2(10,10))
-	
-	#$InteractiveElements/StickyNote/Sprite2D/AnimationPlayer.play("RESET")
+
+
+# TODO: This is purely for debugging. This function should be removed once it's
+# no-longer needed.
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debugbutton"):
+		
+		$RunningLetters/S.spawn($RigidLetters/S.position+Vector2(0,-10))
+		$RunningLetters/T1.spawn($RigidLetters/T1.position+Vector2(0,-10))
+		$RunningLetters/A1.spawn($RigidLetters/A1.position+Vector2(0,-10))
+		$RunningLetters/R.spawn($RigidLetters/R.position+Vector2(0,-10))
+		$RunningLetters/T2.spawn($RigidLetters/T2.position+Vector2(0,-10))
+		
+		$RigidLetters/S.queue_free()
+		$RigidLetters/T1.queue_free()
+		$RigidLetters/A1.queue_free()
+		$RigidLetters/R.queue_free()
+		$RigidLetters/T2.queue_free()

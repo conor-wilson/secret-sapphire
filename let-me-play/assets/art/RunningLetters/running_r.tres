@@ -173,5 +173,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"running_right",
-"speed": 5.0
+"speed": 12.0
 }]

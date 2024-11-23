@@ -114,7 +114,7 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 	
 	# Check that the element can be detatched
 	if element == null: return
-	if element is not BreakableElement: return
+	if element is not InteractiveElement: return
 	if !element.idle: return
 	
 	# Detatch element

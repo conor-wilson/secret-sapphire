@@ -1,10 +1,9 @@
-[gd_scene load_steps=27 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=30 format=4 uid="uid://5ctllddc4obb"]
 
-[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/breakable_element.tscn" id="1_7wdxp"]
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_jssq0"]
 [ext_resource type="PackedScene" uid="uid://dafqi5pwsvw6r" path="res://scenes/desktop.tscn" id="2_kxbcg"]
-[ext_resource type="PackedScene" uid="uid://dn8q4o2sgxa7y" path="res://scenes/letter.tscn" id="3_1ar5g"]
 [ext_resource type="Texture2D" uid="uid://1rpws7w7ml0u" path="res://assets/art/StickyNoteTest-Sheet.png" id="3_ahnkd"]
 [ext_resource type="Texture2D" uid="uid://7r8cut1jsvt0" path="res://assets/art/Panel.png" id="3_janoq"]
 [ext_resource type="Texture2D" uid="uid://4damehrpitmi" path="res://assets/art/CrumpledPaper.png" id="4_ylyox"]
@@ -12,8 +11,12 @@
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_43f6x"]
 [ext_resource type="Texture2D" uid="uid://y8wgjwjjrbhx" path="res://assets/art/SmallStartButton.png" id="8_nhvuo"]
 [ext_resource type="Texture2D" uid="uid://op2bmdwt6xln" path="res://assets/art/Screw.png" id="8_yx54q"]
+[ext_resource type="Texture2D" uid="uid://pvl4opjitbn6" path="res://assets/art/Letters1.png" id="12_oif4b"]
 [ext_resource type="PackedScene" uid="uid://lvqqxc7ln6wx" path="res://scenes/running_letter.tscn" id="13_7j4n4"]
+[ext_resource type="Texture2D" uid="uid://c7am4spqld716" path="res://assets/art/Letters2.png" id="13_mlhma"]
+[ext_resource type="Texture2D" uid="uid://rt1q2s47l33u" path="res://assets/art/Letters3.png" id="14_7kfov"]
 [ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/RunningLetters/running_s.tres" id="14_asqxe"]
+[ext_resource type="Texture2D" uid="uid://c7buyymj4wbih" path="res://assets/art/Letters4.png" id="15_1jtme"]
 [ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/RunningLetters/running_t.tres" id="15_8ipti"]
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="16_pscsi"]
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="17_sxf8s"]
@@ -217,31 +220,100 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
 text = "SETTINGS"
 flat = true
 
-[node name="Letters" type="Node2D" parent="."]
+[node name="RigidLetters" type="Node2D" parent="."]
+visible = false
 
-[node name="S" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(503, 585)
-rotation = -0.0150613
+[node name="S" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
+position = Vector2(507, 585)
+collision_layer = 4
+collision_mask = 5
+breakable = false
+metadata/_edit_group_ = true
 
-[node name="T1" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(537, 580)
-rotation = -0.0150613
-letter_type = 1
+[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/S"]
+texture = ExtResource("12_oif4b")
 
-[node name="A1" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(573, 577)
-rotation = -0.0150613
-letter_type = 2
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/S"]
+polygon = PackedVector2Array(-12, -11, -7, -16, 7, -16, 12, -11, 12, -9, 10, -7, 8, -7, 5, -10, -5, -10, -6, -9, -6, -4, -5, -3, 7, -3, 12, 2, 12, 10, 6, 16, -7, 16, -12, 11, -12, 9, -10, 7, -8, 7, -5, 10, 5, 10, 6, 9, 6, 4, 5, 3, -7, 3, -12, -2)
 
-[node name="R" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(604, 575)
-rotation = -0.0150613
-letter_type = 3
+[node name="T1" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
+position = Vector2(542, 586)
+collision_layer = 4
+collision_mask = 5
+breakable = false
+metadata/_edit_group_ = true
 
-[node name="T2" parent="Letters" instance=ExtResource("3_1ar5g")]
-position = Vector2(632, 579)
-rotation = -0.0150613
-letter_type = 1
+[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/T1"]
+texture = ExtResource("13_mlhma")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/T1"]
+polygon = PackedVector2Array(-10, -16, 10, -16, 13, -13, 10, -10, 3, -10, 3, 14, 1, 16, -1, 16, -3, 14, -3, -10, -10, -10, -13, -13)
+
+[node name="A1" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
+position = Vector2(576, 586)
+collision_layer = 4
+collision_mask = 5
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/A1"]
+texture = ExtResource("14_7kfov")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/A1"]
+polygon = PackedVector2Array(1, -16, 16, 13, 16, 15, 15, 16, 11, 16, 7, 7, -7, 7, -11, 16, -15, 16, -16, 15, -16, 13, -1, -16)
+
+[node name="R" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
+position = Vector2(609, 584)
+collision_layer = 4
+collision_mask = 5
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/R"]
+texture = ExtResource("15_1jtme")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/R"]
+polygon = PackedVector2Array(-7, -16, 5, -16, 10, -11, 10, -2, 7, 1, 11, 14, 9, 16, 7, 16, 5, 14, 2, 4, -4, 4, -4, 14, -6, 16, -8, 16, -10, 14, -10, -13)
+
+[node name="T2" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
+position = Vector2(638, 586)
+collision_layer = 4
+collision_mask = 5
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/T2"]
+texture = ExtResource("13_mlhma")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/T2"]
+polygon = PackedVector2Array(-10, -16, 10, -16, 13, -13, 10, -10, 3, -10, 3, 14, 1, 16, -1, 16, -3, 14, -3, -10, -10, -10, -13, -13)
+
+[node name="RunningLetters" type="Node2D" parent="."]
+
+[node name="S" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+visible = false
+position = Vector2(125, 538)
+sprite_frames = ExtResource("14_asqxe")
+
+[node name="T1" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+visible = false
+position = Vector2(284, 543)
+sprite_frames = ExtResource("15_8ipti")
+
+[node name="A1" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+visible = false
+position = Vector2(373, 537)
+sprite_frames = ExtResource("16_pscsi")
+
+[node name="R" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+visible = false
+position = Vector2(716, 535)
+sprite_frames = ExtResource("17_sxf8s")
+
+[node name="T2" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+visible = false
+position = Vector2(895, 508)
+sprite_frames = ExtResource("15_8ipti")
 
 [node name="CreditContainer" type="MarginContainer" parent="."]
 offset_left = 760.0
@@ -259,33 +331,6 @@ theme_override_font_sizes/font_size = 32
 text = "Created by @QuietLantern"
 horizontal_alignment = 2
 vertical_alignment = 2
-
-[node name="RunningLetters" type="Node2D" parent="."]
-
-[node name="S" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
-visible = false
-position = Vector2(125, 538)
-sprite_frames = ExtResource("14_asqxe")
-
-[node name="T1" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
-visible = false
-position = Vector2(284, 543)
-sprite_frames = ExtResource("15_8ipti")
-
-[node name="A1" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
-visible = false
-position = Vector2(497, 543)
-sprite_frames = ExtResource("16_pscsi")
-
-[node name="R" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
-visible = false
-position = Vector2(716, 535)
-sprite_frames = ExtResource("17_sxf8s")
-
-[node name="T2" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
-visible = false
-position = Vector2(895, 508)
-sprite_frames = ExtResource("15_8ipti")
 
 [connection signal="tap" from="Desktop" to="." method="_on_desktop_tap"]
 [connection signal="smash" from="InteractiveElements/Panel" to="." method="_on_panel_smash"]

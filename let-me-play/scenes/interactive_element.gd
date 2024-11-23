@@ -1,9 +1,10 @@
-class_name BreakableElement extends RigidBody2D
+class_name InteractiveElement extends RigidBody2D
 
 signal click
 signal smash
 
-var idle:bool
+@export var breakable:bool = true
+var idle:bool 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,7 +23,16 @@ func detatch(strength:float=1):
 	idle = false
 	apply_impulse(Vector2(randf_range(-strength,strength),-20*strength), Vector2(randf_range(-2.5*strength,2.5*strength),0))
 
+# apply_random_force applies a random force on the letter (in the positive Y
+# direction, and in any X direction)
+#
+# TODO: Make the range values in here configurable.
+func apply_random_force():
+	var x_force:float = randf_range(-750, 750)
+	var y_force:float = randf_range(-750, 0)
+	apply_impulse(Vector2(x_force,y_force))
+
 func _on_body_entered(body: Node) -> void:
-	if !idle:
+	if !idle && breakable:
 		smash.emit()
 		queue_free()

@@ -36,6 +36,16 @@ func _physics_process(delta: float) -> void:
 	#else:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
 
+func spawn(new_position:Vector2):
+	position = new_position
+	show()
+	#state = State.JUMPING
+	#$AnimatedSprite2D.play("jumping")
+	velocity.y = JUMP_VELOCITY/2
+	state = State.JUMPING
+	$MischiefTimer.start()
+	#start_running()
+	#_jump()
 
 func start_running(): 
 	if state != State.RUNNING:
@@ -100,15 +110,6 @@ func _enter_desktop_if_able():
 
 func set_can_enter_desktop(val:bool):
 	is_infront_of_desktop = val
-
-# TODO: This is purely for debugging. This function should be removed once it's
-# no-longer needed.
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debugbutton"):
-		show()
-		$MischiefTimer.start()
-		start_running()
-
 
 func _on_landing_detector_body_entered(body: Node2D) -> void:
 	

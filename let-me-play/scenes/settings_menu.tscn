@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="2_ityvj"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="4_558x5"]
 [ext_resource type="Texture2D" uid="uid://diq05b766rpol" path="res://assets/art/SettingsIcon-Sheet.png" id="5_78cxs"]
-[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/breakable_element.tscn" id="6_447go"]
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="6_447go"]
 [ext_resource type="Texture2D" uid="uid://q1bluytg0n3h" path="res://assets/art/ScrewDriver.png" id="7_lbls2"]
 [ext_resource type="PackedScene" uid="uid://bcttde4rl6c7u" path="res://scenes/help_bot.tscn" id="8_c12ak"]
 
