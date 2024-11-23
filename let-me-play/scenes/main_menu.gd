@@ -69,6 +69,12 @@ func _on_desktop_tap() -> void:
 	shake_screen.emit(5,5)
 
 func clear_static():
+	_detatch_element_if_exists("InteractiveElements/Screw1")
+	_detatch_element_if_exists("InteractiveElements/Screw2")
+	_detatch_element_if_exists("InteractiveElements/Screw3")
+	_detatch_element_if_exists("InteractiveElements/Screw4")
+	panel_screw_count = 0
+	_check_panel_detatchment()
 	$Desktop.clear_all_static()
 
 func detatch_sticky_note():
