@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcttde4rl6c7u"]
+[gd_scene load_steps=11 format=3 uid="uid://bcttde4rl6c7u"]
 
 [ext_resource type="Script" path="res://scenes/help_bot.gd" id="1_b6jo1"]
 [ext_resource type="Texture2D" uid="uid://1cwslcas3huc" path="res://assets/art/HelpBot-Sheet.png" id="1_nxjie"]
 [ext_resource type="Texture2D" uid="uid://o53y7lf7ihfd" path="res://assets/art/HellBot_Shrink-Sheet.png" id="3_2pc8o"]
+[ext_resource type="PackedScene" uid="uid://b63t8bt78w8t1" path="res://scenes/laser.tscn" id="4_khedk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh5jh"]
 size = Vector2(62, 62)
@@ -97,18 +98,20 @@ collision_mask = 0
 script = ExtResource("1_b6jo1")
 metadata/_edit_group_ = true
 
+[node name="Laser" parent="." instance=ExtResource("4_khedk")]
+
 [node name="IdleSprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("1_nxjie")
 hframes = 8
 
 [node name="ShrinkingSprite" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(2, 2)
 texture = ExtResource("3_2pc8o")
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_oh5jh")
 
 [node name="BlinkTimer" type="Timer" parent="."]

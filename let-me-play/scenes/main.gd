@@ -131,3 +131,15 @@ func free_help_bot():
 	
 	$Menus/MainMenu.clear_static()
 	$Menus/MainMenu.detatch_sticky_note()
+	
+	await get_tree().create_timer(4).timeout
+	
+	
+	for pos in $Menus/MainMenu.get_letter_positions():
+		$HelpBot.shoot(pos)
+		shake_screen(5,5)
+		await get_tree().create_timer(0.2).timeout
+	
+	$HelpBot.shrink()
+	
+	$Menus/MainMenu.animate_letters()

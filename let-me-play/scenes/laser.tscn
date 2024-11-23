@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b63t8bt78w8t1"]
+
+[ext_resource type="Script" path="res://laser.gd" id="1_ptiqu"]
+[ext_resource type="Texture2D" uid="uid://cehmp6afuprf1" path="res://icon.svg" id="2_ea6n5"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3a0nt"]
+b = Vector2(160, 0)
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_ptiqu")
+
+[node name="Reference" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ea6n5")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(184, 0)
+collision_mask = 5
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 104, 0)
+width = 8.0
+default_color = Color(0.67451, 0.196078, 0.196078, 1)
+
+[node name="Area2D" type="Area2D" parent="Line2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/Area2D"]
+shape = SubResource("SegmentShape2D_3a0nt")

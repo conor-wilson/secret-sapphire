@@ -71,6 +71,7 @@ right={
 2d_physics/layer_5="sticky_note"
 2d_physics/layer_6="running_letters"
 2d_physics/layer_7="detection_areas"
+2d_physics/layer_8="lasers"
 
 [rendering]
 

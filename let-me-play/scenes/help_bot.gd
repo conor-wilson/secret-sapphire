@@ -103,3 +103,6 @@ func grow():
 	$ShrinkingSprite.hide() # TODO: This is janky. Fix.
 	$IdleSprite.show()
 	$AnimationPlayer.play("help_bot_idle")
+
+func shoot(pos:Vector2):
+	$Laser.fire(pos)
