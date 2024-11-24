@@ -6,13 +6,10 @@ var speed:float = 25
 var idle_speed = 25
 var idle_markers:Array[Marker2D]
 
-const HELL_BOT_SHEET = preload("res://assets/art/HellBot-Sheet.png")
+enum Mode {HELP_BOT, HELL_BOT}
+var mode:Mode = Mode.HELP_BOT
 
 var target:Marker2D
-
-@onready var blink_length:float = $AnimationPlayer.get_animation("help_bot_idle").length
-@onready var shrink_length:float = $AnimationPlayer.get_animation("hell_bot_shrink").length
-@onready var grow_length:float = $AnimationPlayer.get_animation("hell_bot_grow").length
 
 enum State {IDLE, MOVING}
 var state:State = State.IDLE
@@ -20,8 +17,7 @@ var state:State = State.IDLE
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	$IdleSprite.show()
-	$ShrinkingSprite.hide()
+	show()
 	
 	if idle_markers.size() == 0:
 		
@@ -73,36 +69,47 @@ func set_new_idle_location(target_marker:Marker2D, new_idle_markers:Array[Marker
 
 
 func _on_blink_timer_timeout() -> void:
-	$AnimationPlayer.play("help_bot_idle")
-	await get_tree().create_timer(blink_length).timeout
-	$AnimationPlayer.play("RESET")
+	_blink()
 	$BlinkTimer.start(randf_range(0.0, 5.0))
 
+func _blink():
+	match mode:
+		Mode.HELP_BOT:
+			$AnimatedSprite2D.play("help_bot_blink")
+		Mode.HELL_BOT:
+			$AnimatedSprite2D.play("hell_bot_blink")
+		_:
+			print_debug("Mode ", mode, " does not have a blink animation")
+
+	await $AnimatedSprite2D.animation_finished
+	_become_idle()
+	
+
+func _become_idle():
+	match mode:
+		Mode.HELP_BOT:
+			$AnimatedSprite2D.play("help_bot_idle")
+		Mode.HELL_BOT:
+			$AnimatedSprite2D.play("hell_bot_idle")
+		_:
+			print_debug("Mode ", mode, " does not have an idle animation")
 
 func become_evil(): 
-	$IdleSprite.show()
-	$IdleSprite.texture = HELL_BOT_SHEET
+	mode = Mode.HELL_BOT
+	_become_idle()
 
 func shrink():
-	speed = 0
 	$BlinkTimer.stop()
-	$IdleSprite.hide()
-	$ShrinkingSprite.show()
-	$AnimationPlayer.play("hell_bot_shrink")
-	await get_tree().create_timer(shrink_length).timeout
-	$ShrinkingSprite.hide() # TODO: This is janky. Fix.
+	$AnimatedSprite2D.play("hell_bot_shrink")
+	await $AnimatedSprite2D.animation_finished
+	hide()
 
 func grow():
-	speed = 0
+	show()
 	$BlinkTimer.stop()
-	$IdleSprite.hide()
-	$ShrinkingSprite.show()
-	$AnimationPlayer.play("hell_bot_grow")
-	await get_tree().create_timer(grow_length).timeout
+	$AnimatedSprite2D.play_backwards("hell_bot_shrink")
+	await $AnimatedSprite2D.animation_finished
 	_on_blink_timer_timeout()
-	$ShrinkingSprite.hide() # TODO: This is janky. Fix.
-	$IdleSprite.show()
-	$AnimationPlayer.play("help_bot_idle")
 
 func shoot(pos:Vector2):
 	$Laser.fire(pos)
