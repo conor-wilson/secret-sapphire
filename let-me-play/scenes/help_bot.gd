@@ -127,6 +127,8 @@ func explode():
 	await $AnimatedSprite2D.frame_changed
 	await $AnimatedSprite2D.frame_changed
 	await $AnimatedSprite2D.frame_changed
+	await $AnimatedSprite2D.frame_changed
+	await $AnimatedSprite2D.frame_changed
 	boom.emit()
 	
 	await $AnimatedSprite2D.animation_finished
