@@ -129,6 +129,8 @@ func free_help_bot():
 	
 	await get_tree().create_timer(1).timeout
 	
+	$HelpBot.explode()
+	await $HelpBot.boom
 	$Menus/MainMenu.clear_static()
 	$Menus/MainMenu.detatch_sticky_note()
 	

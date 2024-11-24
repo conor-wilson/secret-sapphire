@@ -1,6 +1,7 @@
 extends Area2D
 
 signal arrived
+signal boom
 
 var speed:float = 25
 var idle_speed = 25
@@ -113,3 +114,20 @@ func grow():
 
 func shoot(pos:Vector2):
 	$Laser.fire(pos)
+
+func explode():
+	$BlinkTimer.stop()
+	$AnimatedSprite2D.play("hell_bot_explosion")
+	
+	await $AnimatedSprite2D.frame_changed
+	await $AnimatedSprite2D.frame_changed
+	await $AnimatedSprite2D.frame_changed
+	await $AnimatedSprite2D.frame_changed
+	await $AnimatedSprite2D.frame_changed
+	await $AnimatedSprite2D.frame_changed
+	await $AnimatedSprite2D.frame_changed
+	await $AnimatedSprite2D.frame_changed
+	boom.emit()
+	
+	await $AnimatedSprite2D.animation_finished
+	_on_blink_timer_timeout()
