@@ -5,6 +5,8 @@ class_name DialogueBox extends MarginContainer
 @onready var label: Label = $MarginContainer/Label
 @onready var timer: Timer = $Timer
 
+var follow_node:CanvasItem = null
+
 var line_queue: Array[String] = [] # The list of lines that are queued to be displayed.
 
 const MAX_WIDTH = 256
@@ -18,7 +20,17 @@ var punc_time = 0.2
 
 signal finished_displaying
 
+func _process(delta: float) -> void:
+	_follow_node_if_exists()
+
+func _follow_node_if_exists():
+	if follow_node != null:
+		position = follow_node.position + Vector2(48, 0)
+
 func display_text(new_text:String):
+	
+	_follow_node_if_exists()
+	
 	text = new_text
 	label.text = new_text
 	
@@ -38,6 +50,8 @@ func display_text(new_text:String):
 	_display_letter()
 
 func _display_letter():
+	
+	_follow_node_if_exists()
 	label.text += text[letter_index]
 	
 	letter_index += 1 
@@ -54,4 +68,5 @@ func _display_letter():
 			timer.start(letter_time)
 
 func _on_timer_timeout() -> void:
+	_follow_node_if_exists()
 	_display_letter()

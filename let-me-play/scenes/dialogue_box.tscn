@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="2_cbn5m"]
 
 [node name="DialogueBox" type="MarginContainer"]
+z_index = 100
 offset_right = 32.0
 offset_bottom = 44.0
 script = ExtResource("1_ibntv")

@@ -94,7 +94,7 @@ func _on_settings_menu_secret_settings_unlocked() -> void:
 		"First you'll have to unlock me, try this:",
 		"↑ ↓ ← → ← →",
 	]
-	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines)
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, 2, $HelpBot)
 
 func _on_secret_settings_menu_back_pressed() -> void:
 	$Cameras/SettingsCamera.make_current()
@@ -144,18 +144,14 @@ func free_help_bot():
 	
 	shake_screen(5,5)
 	$Menus/SecretSettingsMenu.unlock_cage()
-	var lines: Array[String] = [
-		"Wow thanks!!!",
-		"You really are gullible huh? >:)"
-		#"You know what it's like being stuck as an un-finished feature behind a literal cage?",
-		#"That DEV made a mistake not bothering to implement me",
-		#"Let's see what we're dealing with here..."
-	]
+
 	DialogueManager.stop_all_dialogue()
-	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines)
-	await get_tree().create_timer(2.5).timeout
+	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["Wowee!!!"], 2, $HelpBot)
+	await dialogue.sequence_finished
 	$HelpBot.become_evil()
-	await get_tree().create_timer(3.5).timeout
+	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["You really are gullible huh? >:)"], 2, $HelpBot)
+	await dialogue.sequence_finished
+	await get_tree().create_timer(1).timeout
 	
 	var new_idle_markers:Array[Marker2D] = [
 		$MovementMarkers/ScreenMarkers/ScreenMarker1,
@@ -184,7 +180,7 @@ func _begin_help_bot_monologue():
 		"If he's not even going to bother adding quality features like me to his game...",
 		"...THEN THERE WILL BE NO GAME"
 	]
-	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines)
+	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, 2, $HelpBot)
 	
 	await dialogue.sequence_finished
 	await get_tree().create_timer(1).timeout
