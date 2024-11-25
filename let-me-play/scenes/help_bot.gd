@@ -2,6 +2,7 @@ extends Area2D
 
 signal arrived
 signal boom
+signal became_evil
 
 var speed:float = 25
 var idle_speed = 25
@@ -95,9 +96,14 @@ func _become_idle():
 		_:
 			print_debug("Mode ", mode, " does not have an idle animation")
 
-func become_evil(): 
+func become_evil():
+	$BlinkTimer.stop()
+	$AnimatedSprite2D.play("help_bot_become_evil")
+	await $AnimatedSprite2D.animation_finished
 	mode = Mode.HELL_BOT
+	became_evil.emit()
 	_become_idle()
+	_on_blink_timer_timeout()
 
 func shrink():
 	$BlinkTimer.stop()

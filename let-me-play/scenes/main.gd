@@ -138,6 +138,8 @@ func free_help_bot():
 	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["Wowee!!!"], "blue", 2, $HelpBot)
 	await dialogue.sequence_finished
 	$HelpBot.become_evil()
+	shake_screen(20,2)
+	await $HelpBot.become_evil()
 	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["You really are gullible huh? >:)"], "red", 2, $HelpBot)
 	await dialogue.sequence_finished
 	await get_tree().create_timer(1).timeout
@@ -176,7 +178,7 @@ func _begin_help_bot_monologue():
 	
 	$HelpBot.explode()
 	await $HelpBot.boom
-	shake_screen(30,5)
+	shake_screen(20,1)
 	$Menus/MainMenu.clear_static()
 	$Menus/MainMenu.detatch_sticky_note()
 	
