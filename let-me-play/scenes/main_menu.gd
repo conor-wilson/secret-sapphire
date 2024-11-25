@@ -39,6 +39,8 @@ func _detatch_screw(screw:Node):
 	if CursorManager.current_cursor_is(CursorManager.WRENCH):
 		# TODO: Add some security checks in here
 		# TODO: Consider adding an animation for unscrewing the screws
+		if screw.gravity_scale != 0:
+			return
 		screw.detatch(10)
 		panel_screw_count -= 1
 		_check_panel_detatchment()

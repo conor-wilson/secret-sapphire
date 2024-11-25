@@ -14,7 +14,7 @@ func _ready() -> void:
 	connect("input_event", _on_input_event)
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_pressed() && event.is_action("click") && gravity_scale == 0:
+	if event.is_pressed() && event.is_action("click"):
 		click.emit()
 
 # TODO: Make the individual components in this function configurable

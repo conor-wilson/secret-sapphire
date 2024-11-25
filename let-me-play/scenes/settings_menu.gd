@@ -68,15 +68,17 @@ func _on_back_button_pressed() -> void:
 	back_pressed.emit()
 	username_box.release_focus()
 	password_box.release_focus()
+#
+#func move_wrench(new_pos:Vector2):
+	#$InteractiveElements/Wrench.show()
+	#await get_tree().create_timer(1).timeout
+	#$InteractiveElements/Wrench.position = new_pos
+	#await get_tree().create_timer(1).timeout
+	#_detatch_element_if_exists("InteractiveElements/Wrench", 1)
 
-func _on_settings_icon_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_pressed() && event.is_action("click"):
-		print("WRENCH CLICKED")
-		CursorManager.set_mouse_cursor(CursorManager.WRENCH)
-		$InteractiveElements/SettingsIcon.queue_free()
-		
-		_detatch_element_if_exists("InteractiveElements/Screwdriver", 10)
-		shake_screen.emit(5, 10)
+func detatch_screwdriver():
+	_detatch_element_if_exists("InteractiveElements/Screwdriver", 10)
+	shake_screen.emit(5, 10)
 
 func _on_screwdriver_smash() -> void:
 	shake_screen.emit(5,5)

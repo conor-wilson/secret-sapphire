@@ -1,10 +1,14 @@
-extends Node
+extends Node2D
 
 var screen_shake_strength:float = 0.0
 var screen_shake_fade:float     = 5.0
 
 var input_cache : Array[String] = []
 var cache_length:int = 6
+
+var cursor_in_item_drop_zone:bool = false
+
+@onready var wrench: InteractiveElement = $Items/Wrench
 
 # Stage indicates where we are in the game's story so that we can keep track of 
 # dialogue
@@ -73,15 +77,21 @@ func shake_screen(strength:float, fade:float):
 
 func _on_main_menu_settings_pressed() -> void:
 	$Cameras/SettingsCamera.make_current()
+	await $ItemDropZones/MainMenu.mouse_exited
+	cursor_in_item_drop_zone = true
 
 func _on_settings_menu_back_pressed() -> void:
 	$Cameras/MainMenuCamera.make_current()
+	await $ItemDropZones/SettingsMenu.mouse_exited
+	cursor_in_item_drop_zone = true
 	
 	if stage == Stage.HELP_BOT_MONOLOGUING:
 		_begin_help_bot_monologue()
 
 func _on_secret_settings_menu_back_pressed() -> void:
 	$Cameras/SettingsCamera.make_current()
+	await $ItemDropZones/SecretSettingsMenu.mouse_exited
+	cursor_in_item_drop_zone = true
 
 
 func _on_main_menu_start_button_exploded() -> void:
@@ -111,12 +121,39 @@ func _start_what_was_that_sequence():
 
 
 func _input(event: InputEvent) -> void:
+	
+	if event.is_action("right_click"):
+		_drop_held_item()
+		
 	if event.is_action_type() && event.is_pressed():
 		if input_cache.size() >= cache_length:
 			input_cache.pop_front()
 		input_cache.append(event.as_text())
 		
 		_check_input_cache()
+
+func _drop_held_item():
+	
+	if CursorManager.current_cursor != CursorManager.CURSOR && !cursor_in_item_drop_zone:
+		print("cannot drop item")
+		shake_screen(5,5)
+		return
+	
+	match CursorManager.current_cursor:
+		CursorManager.WRENCH:
+			$ItemInstructions.hide()
+			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
+			
+			var new_wrench:InteractiveElement = wrench.duplicate()
+			wrench.queue_free()
+			
+			add_child(new_wrench)
+			new_wrench.show()
+			new_wrench.position = get_local_mouse_position()
+			new_wrench.detatch(20)
+			wrench = new_wrench
+			#$Menus/SettingsMenu.move_wrench(get_global_mouse_position())
+
 
 const free_help_bot_cheat_code:Array[String] = [
 	"Up", "Down", "Left", "Right", "Left", "Right"
@@ -205,6 +242,8 @@ func _begin_help_bot_monologue():
 
 func _on_settings_menu_correct_password() -> void:
 	$Cameras/SecretSettingsCamera.make_current()
+	await $ItemDropZones/SettingsMenu.mouse_exited
+	cursor_in_item_drop_zone = true
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
 		_start_help_bot_deception_sequence()
 
@@ -258,3 +297,18 @@ func _on_settings_menu_incorrect_password() -> void:
 		DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, ["Keep trying, you'll figure it out! ^.^"], "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
 	
 	shake_screen(5, 5)
+
+
+func _on_item_drop_zone_mouse_entered() -> void:
+	cursor_in_item_drop_zone = true
+
+func _on_item_drop_zone_mouse_exited() -> void:
+	cursor_in_item_drop_zone = false
+
+
+func _on_wrench_click() -> void:
+	print("WRENCH CLICKED")
+	CursorManager.set_mouse_cursor(CursorManager.WRENCH)
+	$ItemInstructions.show()
+	wrench.hide()
+	$Menus/SettingsMenu.detatch_screwdriver()

@@ -1,12 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=13 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
 [ext_resource type="PackedScene" uid="uid://cfjp23jay1xyw" path="res://scenes/settings_menu.tscn" id="3_vdc1c"]
 [ext_resource type="PackedScene" uid="uid://vff026q47yk" path="res://scenes/secret_settings_menu.tscn" id="4_u0lve"]
 [ext_resource type="PackedScene" uid="uid://bcttde4rl6c7u" path="res://scenes/help_bot.tscn" id="5_lf0pf"]
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="6_s1drs"]
+[ext_resource type="Texture2D" uid="uid://4lwbjjjxilb" path="res://assets/art/SettingsIcon3.png" id="7_xhglg"]
+[ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="8_kk8my"]
 
-[node name="Main" type="Node"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o1dt"]
+radius = 6.0104
+height = 39.598
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj3n1"]
+size = Vector2(1072, 560)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0o4ac"]
+font = ExtResource("8_kk8my")
+font_size = 32
+font_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hbp62"]
+font = ExtResource("8_kk8my")
+font_size = 32
+font_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[node name="Main" type="Node2D"]
 script = ExtResource("1_lvo15")
 
 [node name="Menus" type="Node2D" parent="."]
@@ -80,6 +100,80 @@ position = Vector2(643, 198)
 [node name="ScreenMarker5" type="Marker2D" parent="MovementMarkers/ScreenMarkers"]
 position = Vector2(507, 305)
 
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Wrench" parent="Items" instance=ExtResource("6_s1drs")]
+position = Vector2(1545, 179)
+collision_layer = 1024
+breakable = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/Wrench"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_xhglg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Wrench"]
+rotation = -0.785397
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_0o1dt")
+
+[node name="ItemDropZones" type="Node2D" parent="."]
+
+[node name="MainMenu" type="Area2D" parent="ItemDropZones"]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDropZones/MainMenu"]
+position = Vector2(576, 320)
+shape = SubResource("RectangleShape2D_tj3n1")
+
+[node name="SettingsMenu" type="Area2D" parent="ItemDropZones"]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDropZones/SettingsMenu"]
+position = Vector2(1728, 320)
+shape = SubResource("RectangleShape2D_tj3n1")
+
+[node name="SecretSettingsMenu" type="Area2D" parent="ItemDropZones"]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDropZones/SecretSettingsMenu"]
+position = Vector2(2880, 320)
+shape = SubResource("RectangleShape2D_tj3n1")
+
+[node name="ItemInstructions" type="Node2D" parent="."]
+visible = false
+
+[node name="MainMenu" type="Label" parent="ItemInstructions"]
+offset_top = 608.0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "<RIGHT CLICK to drop item>"
+label_settings = SubResource("LabelSettings_0o4ac")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsMenu" type="Label" parent="ItemInstructions"]
+offset_left = 1152.0
+offset_top = 608.0
+offset_right = 2304.0
+offset_bottom = 648.0
+text = "<RIGHT CLICK to drop item>"
+label_settings = SubResource("LabelSettings_hbp62")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecretSettingsMenu" type="Label" parent="ItemInstructions"]
+offset_left = 2304.0
+offset_top = 608.0
+offset_right = 3456.0
+offset_bottom = 648.0
+text = "<RIGHT CLICK to drop item>"
+label_settings = SubResource("LabelSettings_hbp62")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
 [connection signal="start_button_exploded" from="Menus/MainMenu" to="." method="_on_main_menu_start_button_exploded"]
@@ -91,3 +185,10 @@ position = Vector2(507, 305)
 [connection signal="shake_screen" from="Menus/SettingsMenu" to="." method="_on_settings_menu_shake_screen"]
 [connection signal="back_pressed" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_back_pressed"]
 [connection signal="shake_screen" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_shake_screen"]
+[connection signal="click" from="Items/Wrench" to="." method="_on_wrench_click"]
+[connection signal="mouse_entered" from="ItemDropZones/MainMenu" to="." method="_on_item_drop_zone_mouse_entered"]
+[connection signal="mouse_exited" from="ItemDropZones/MainMenu" to="." method="_on_item_drop_zone_mouse_exited"]
+[connection signal="mouse_entered" from="ItemDropZones/SettingsMenu" to="." method="_on_item_drop_zone_mouse_entered"]
+[connection signal="mouse_exited" from="ItemDropZones/SettingsMenu" to="." method="_on_item_drop_zone_mouse_exited"]
+[connection signal="mouse_entered" from="ItemDropZones/SecretSettingsMenu" to="." method="_on_item_drop_zone_mouse_entered"]
+[connection signal="mouse_exited" from="ItemDropZones/SecretSettingsMenu" to="." method="_on_item_drop_zone_mouse_exited"]
