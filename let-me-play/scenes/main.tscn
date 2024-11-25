@@ -44,6 +44,9 @@ position = Vector2(2021, 392)
 [node name="CageDialogue" type="Marker2D" parent="DialogueMarkers"]
 position = Vector2(3084, 294)
 
+[node name="MonologueMarker" type="Marker2D" parent="DialogueMarkers"]
+position = Vector2(823, 295)
+
 [node name="MovementMarkers" type="Node2D" parent="."]
 
 [node name="CageMarkers" type="Node2D" parent="MovementMarkers"]
@@ -66,16 +69,16 @@ position = Vector2(2901, 304)
 position = Vector2(573, 262)
 
 [node name="ScreenMarker2" type="Marker2D" parent="MovementMarkers/ScreenMarkers"]
-position = Vector2(317, 150)
+position = Vector2(492, 207)
 
 [node name="ScreenMarker3" type="Marker2D" parent="MovementMarkers/ScreenMarkers"]
-position = Vector2(878, 362)
+position = Vector2(659, 322)
 
 [node name="ScreenMarker4" type="Marker2D" parent="MovementMarkers/ScreenMarkers"]
-position = Vector2(829, 188)
+position = Vector2(643, 198)
 
 [node name="ScreenMarker5" type="Marker2D" parent="MovementMarkers/ScreenMarkers"]
-position = Vector2(200, 348)
+position = Vector2(507, 305)
 
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]

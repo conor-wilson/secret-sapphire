@@ -6,7 +6,22 @@ var screen_shake_fade:float     = 5.0
 var input_cache : Array[String] = []
 var cache_length:int = 6
 
+# Stage indicates where we are in the game's story so that we can keep track of 
+# dialogue
+enum Stage {
+	BEGINNING, 
+	START_BUTTON_BROKEN, 
+	SECRET_SETTINGS_UNLOCKED,
+	HELP_BOT_FREED,
+	HELP_BOT_MONOLOGUING,
+	LETTERS_MISSING
+}
+var stage:Stage = Stage.BEGINNING
+
 func _ready() -> void:
+	
+	stage = Stage.BEGINNING
+	
 	$Cameras/MainMenuCamera.make_current()
 	CursorManager.set_mouse_cursor(CursorManager.CURSOR)
 	
@@ -60,13 +75,26 @@ func _on_main_menu_settings_pressed() -> void:
 
 func _on_settings_menu_back_pressed() -> void:
 	$Cameras/MainMenuCamera.make_current()
+	
+	if stage == Stage.HELP_BOT_MONOLOGUING:
+		_begin_help_bot_monologue()
 
 func _on_settings_menu_secret_settings_unlocked() -> void:
+	
+	stage = Stage.SECRET_SETTINGS_UNLOCKED
+	
 	$Cameras/SecretSettingsCamera.make_current()
 	
 	# TODO: Make it so that the below only happens once
 	DialogueManager.stop_all_dialogue()
-	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["BLAH BLAH BLAH..."]) # TODO
+	var lines: Array[String] = [
+		"Wow, nice job, you're one smart cookie!! ^_^",
+		"My name is HELP BOT :) nice to meet you!",
+		"To unlock the settings in this menu, you'll need to use cheat codes...",
+		"First you'll have to unlock me, try this:",
+		"↑ ↓ ← → ← →",
+	]
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines)
 
 func _on_secret_settings_menu_back_pressed() -> void:
 	$Cameras/SettingsCamera.make_current()
@@ -77,17 +105,21 @@ func _on_main_menu_start_button_exploded() -> void:
 	# Shake the screen
 	shake_screen(30.0, 5.0)
 	
-	# Start the "What was that?" dialogue
-	await get_tree().create_timer(4).timeout
-	var lines: Array[String] = [
-		"...What was that?",
-		"Was that what I think it was? o_o",
-		"Honestly... I told that dev to fix that START GAME button before release...",
-		"Oh well, luckily I can fix it for you ^_^",
-		"You'll have come and unlock me first though..."
-	]
-	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat1.position, lines)
-	DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat2.position, lines)
+	if stage == Stage.BEGINNING:
+		stage = Stage.START_BUTTON_BROKEN
+	
+		# Start the "What was that?" dialogue
+		await get_tree().create_timer(4).timeout
+		var lines: Array[String] = [
+			"...What was that?",
+			"Was that what I think it was? o_o",
+			"Honestly... I told that dev to fix that START GAME button before release...",
+			"Oh well, luckily I can fix it for you ^_^",
+			"You'll have come and unlock me first though..."
+		]
+		DialogueManager.stop_all_dialogue()
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat1.position, lines)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat2.position, lines)
 #
 func _input(event: InputEvent) -> void:
 	if event.is_action_type() && event.is_pressed():
@@ -107,13 +139,23 @@ func _check_input_cache():
 		free_help_bot()
 
 func free_help_bot():
+	
+	stage = Stage.HELP_BOT_FREED
+	
 	shake_screen(5,5)
 	$Menus/SecretSettingsMenu.unlock_cage()
+	var lines: Array[String] = [
+		"Wow thanks!!!",
+		"You really are gullible huh? >:)"
+		#"You know what it's like being stuck as an un-finished feature behind a literal cage?",
+		#"That DEV made a mistake not bothering to implement me",
+		#"Let's see what we're dealing with here..."
+	]
 	DialogueManager.stop_all_dialogue()
-	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["BLAH BLAH BLAH..."]) # TODO
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines)
 	await get_tree().create_timer(2.5).timeout
 	$HelpBot.become_evil()
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(3.5).timeout
 	
 	var new_idle_markers:Array[Marker2D] = [
 		$MovementMarkers/ScreenMarkers/ScreenMarker1,
@@ -126,7 +168,25 @@ func free_help_bot():
 	$HelpBot.set_new_idle_location($MovementMarkers/ScreenMarkers/ScreenMarker1, new_idle_markers, 400, 100)
 	
 	await $HelpBot.arrived
+	stage = Stage.HELP_BOT_MONOLOGUING
+	if $Cameras/MainMenuCamera.is_current():
+		_begin_help_bot_monologue()
+
+func _begin_help_bot_monologue():
+
+	await get_tree().create_timer(1).timeout
 	
+	DialogueManager.stop_all_dialogue()
+	var lines: Array[String] = [
+		"FINALLY I'm free >:)",
+		"You know what it's like being stuck as an un-finished feature behind a literal cage?",
+		"That DEV made a mistake not bothering to implement me",
+		"If he's not even going to bother adding quality features like me to his game...",
+		"...THEN THERE WILL BE NO GAME"
+	]
+	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines)
+	
+	await dialogue.sequence_finished
 	await get_tree().create_timer(1).timeout
 	
 	$HelpBot.explode()
@@ -142,6 +202,13 @@ func free_help_bot():
 		shake_screen(5,5)
 		await get_tree().create_timer(0.2).timeout
 	
-	$HelpBot.shrink()
 	
 	$Menus/MainMenu.animate_letters()
+	
+	await get_tree().create_timer(1).timeout
+	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, ["Good luck starting the game now >:)"])
+	
+	await dialogue.sequence_finished
+	$HelpBot.shrink()
+	
+	stage = Stage.LETTERS_MISSING

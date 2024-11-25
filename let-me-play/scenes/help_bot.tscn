@@ -409,9 +409,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_jgg44")
-animation = &"hell_bot_explosion"
-frame = 18
-frame_progress = 0.967145
+animation = &"hell_bot_shrink"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_oh5jh")

@@ -1,5 +1,8 @@
 class_name DialogueSequence extends Node2D
 
+signal line_finished
+signal sequence_finished
+
 @onready var dialogue_box_scene = preload("res://scenes/dialogue_box.tscn")
 
 var dialogue_box # The current instantiation of the dialogue box scene that is being displayed.
@@ -55,10 +58,13 @@ func _on_dialogue_box_finished_displaying():
 # the next line in the queue if one exists.
 func _advance_dialogue() -> void:
 	
+	line_finished.emit()
+	dialogue_box.queue_free()
+	
 	# Check to see if the sequence has completed
-	if dialogue_box == null:
+	if line_queue.size() == 0:
+		sequence_finished.emit()
 		queue_free()
 		return
 	
-	dialogue_box.queue_free()
 	_show_dialogue_box()

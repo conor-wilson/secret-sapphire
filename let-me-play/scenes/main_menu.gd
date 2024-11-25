@@ -94,11 +94,11 @@ func detatch_sticky_note():
 		#animate_letters()
 
 func animate_letters():
-	$RunningLetters/S.spawn($RigidLetters/S.position+Vector2(0,-25))
-	$RunningLetters/T1.spawn($RigidLetters/T1.position+Vector2(0,-25))
-	$RunningLetters/A1.spawn($RigidLetters/A1.position+Vector2(0,-25))
-	$RunningLetters/R.spawn($RigidLetters/R.position+Vector2(0,-25))
-	$RunningLetters/T2.spawn($RigidLetters/T2.position+Vector2(0,-25))
+	$RunningLetters/S.spawn($RigidLetters/S.position+Vector2(0,-30))
+	$RunningLetters/T1.spawn($RigidLetters/T1.position+Vector2(0,-30))
+	$RunningLetters/A1.spawn($RigidLetters/A1.position+Vector2(0,-30))
+	$RunningLetters/R.spawn($RigidLetters/R.position+Vector2(0,-30))
+	$RunningLetters/T2.spawn($RigidLetters/T2.position+Vector2(0,-30))
 	
 	$RigidLetters/S.queue_free()
 	$RigidLetters/T1.queue_free()
