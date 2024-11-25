@@ -5,6 +5,8 @@ signal sequence_finished
 
 var follow_node:CanvasItem = null
 
+var colour:String # TODO: This is jankey. Fix.
+
 @onready var dialogue_box_scene = preload("res://scenes/dialogue_box.tscn")
 
 var dialogue_box # The current instantiation of the dialogue box scene that is being displayed.
@@ -23,7 +25,7 @@ func _follow_node_if_exists():
 # start_dialogue starts the dialogue sequence, displaying the provided lines one
 # by one at the provided position. The optional linger_time input determines the
 # amount of seconds that each line should stay on the screen before moving on.
-func start_dialogue(position: Vector2, lines: Array[String], linger_time:float=2, follow:CanvasItem = null): 
+func start_dialogue(position: Vector2, lines: Array[String], colour:String, linger_time:float=2, follow:CanvasItem = null): 
 	
 	# Exit early if there's already an active dialogue box
 	if dialogue_box != null:
@@ -34,6 +36,7 @@ func start_dialogue(position: Vector2, lines: Array[String], linger_time:float=2
 	line_queue = lines
 	dialogue_linger_time = linger_time
 	follow_node = follow
+	self.colour = colour
 	_follow_node_if_exists()
 	
 	# Start the dialogue
@@ -55,6 +58,7 @@ func _show_dialogue_box():
 	dialogue_box.finished_displaying.connect(_on_dialogue_box_finished_displaying)
 	dialogue_box.global_position = position
 	dialogue_box.follow_node = follow_node
+	dialogue_box.set_colour(colour)
 	
 	# Display the next text in the queue
 	dialogue_box.display_text(line_queue.pop_front())

@@ -13,8 +13,8 @@ func stop_all_dialogue():
 # new_dialogue_sequence starts a new dialogue sequence at the provided position,
 # displaying a dialogue box with the provided lines. The optional linger_time
 # input determines how long the text box lingers for between lines.
-func new_dialogue_sequence(position: Vector2, lines: Array[String], linger_time:float=2, follow_node:CanvasItem = null) -> DialogueSequence:
+func new_dialogue_sequence(position: Vector2, lines: Array[String], colour:String, linger_time:float=2, follow_node:CanvasItem = null) -> DialogueSequence:
 	var sequence = dialogue_sequence_scene.instantiate()
 	add_child(sequence)
-	sequence.start_dialogue(position, lines.duplicate(), linger_time, follow_node)
+	sequence.start_dialogue(position, lines.duplicate(), colour, linger_time, follow_node)
 	return sequence

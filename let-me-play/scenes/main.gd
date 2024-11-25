@@ -94,7 +94,7 @@ func _on_settings_menu_secret_settings_unlocked() -> void:
 		"First you'll have to unlock me, try this:",
 		"↑ ↓ ← → ← →",
 	]
-	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, 2, $HelpBot)
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, "blue", 2, $HelpBot)
 
 func _on_secret_settings_menu_back_pressed() -> void:
 	$Cameras/SettingsCamera.make_current()
@@ -118,8 +118,8 @@ func _on_main_menu_start_button_exploded() -> void:
 			"You'll have come and unlock me first though..."
 		]
 		DialogueManager.stop_all_dialogue()
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat1.position, lines)
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat2.position, lines)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat1.position, lines, "blue", 2, $DialogueMarkers/WhatWasThat1)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat2.position, lines, "blue", 2, $DialogueMarkers/WhatWasThat2)
 #
 func _input(event: InputEvent) -> void:
 	if event.is_action_type() && event.is_pressed():
@@ -146,10 +146,10 @@ func free_help_bot():
 	$Menus/SecretSettingsMenu.unlock_cage()
 
 	DialogueManager.stop_all_dialogue()
-	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["Wowee!!!"], 2, $HelpBot)
+	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["Wowee!!!"], "blue", 2, $HelpBot)
 	await dialogue.sequence_finished
 	$HelpBot.become_evil()
-	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["You really are gullible huh? >:)"], 2, $HelpBot)
+	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["You really are gullible huh? >:)"], "red", 2, $HelpBot)
 	await dialogue.sequence_finished
 	await get_tree().create_timer(1).timeout
 	
@@ -180,7 +180,7 @@ func _begin_help_bot_monologue():
 		"If he's not even going to bother adding quality features like me to his game...",
 		"...THEN THERE WILL BE NO GAME"
 	]
-	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, 2, $HelpBot)
+	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 2, $HelpBot)
 	
 	await dialogue.sequence_finished
 	await get_tree().create_timer(1).timeout
@@ -202,7 +202,7 @@ func _begin_help_bot_monologue():
 	$Menus/MainMenu.animate_letters()
 	
 	await get_tree().create_timer(1).timeout
-	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, ["Good luck starting the game now >:)"])
+	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, ["Good luck starting the game now >:)"], "red",  2, $HelpBot)
 	
 	await dialogue.sequence_finished
 	$HelpBot.shrink()

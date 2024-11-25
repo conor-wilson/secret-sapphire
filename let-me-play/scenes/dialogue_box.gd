@@ -14,18 +14,34 @@ const MAX_WIDTH = 256
 var text = ""
 var letter_index = 0
 
+
+const BLUE_BOX:Texture2D = preload("res://assets/art/DialogueBox.png")
+const RED_BOX:Texture2D  = preload("res://assets/art/DialogueBox_Red.png")
+
 var letter_time = 0.03
 var space_time = 0.06
 var punc_time = 0.2
-
 signal finished_displaying
+
+# TODO: This is just so janky... create a proper constructor when there is time
+func set_colour(colour:String):
+	match colour:
+		"red":
+			$NinePatchRect.texture = RED_BOX
+			$MarginContainer/Label.add_theme_color_override("font_color", Color("ac3232"))
+		"blue":
+			$NinePatchRect.texture = BLUE_BOX
+			$MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))
+		_: 
+			$NinePatchRect.texture = BLUE_BOX
+			$MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))
 
 func _process(delta: float) -> void:
 	_follow_node_if_exists()
 
 func _follow_node_if_exists():
 	if follow_node != null:
-		position = follow_node.position + Vector2(48, 0)
+		position = follow_node.position + Vector2(48, 16)
 
 func display_text(new_text:String):
 	

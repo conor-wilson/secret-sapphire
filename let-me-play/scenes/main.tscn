@@ -36,10 +36,10 @@ position = Vector2(2880, 324)
 [node name="DialogueMarkers" type="Node2D" parent="."]
 
 [node name="WhatWasThat1" type="Marker2D" parent="DialogueMarkers"]
-position = Vector2(795, 512)
+position = Vector2(623, 476)
 
 [node name="WhatWasThat2" type="Marker2D" parent="DialogueMarkers"]
-position = Vector2(2021, 392)
+position = Vector2(1839, 352)
 
 [node name="CageDialogue" type="Marker2D" parent="DialogueMarkers"]
 position = Vector2(3084, 294)

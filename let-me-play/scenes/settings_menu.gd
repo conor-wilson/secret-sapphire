@@ -47,21 +47,26 @@ func _on_username_box_text_submitted(new_text: String) -> void:
 		password_box.show()
 		password_box.grab_focus()
 		
+		# TODO: Move this bit to the Main scene:
+		
 		var lines: Array[String] = [
 			"Nice job! \\(^o^)/",
 			"Looks like, you'll also need his password...",
 			"It can't be that hard to guess, I'm sure you'll figure it out!"
 		]
 		DialogueManager.stop_all_dialogue()
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines, "blue")
 	else:
 		username_box.clear()
+		
+		# TODO: Move this bit to the Main scene:
+		
 		var lines: Array[String] = [
 			"Damn ¬_¬ the dev locked it behind his username...",
 			"I bet he credited himself somewhere around here... >.>"
 		]
 		DialogueManager.stop_all_dialogue()
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines, "blue")
 		shake_screen.emit(5, 5)
 
 func _on_password_box_text_submitted(new_text: String) -> void:
@@ -74,11 +79,14 @@ func _on_password_box_text_submitted(new_text: String) -> void:
 	else:
 		password_box.clear()
 		shake_screen.emit(5, 5)
+		
+		# TODO: Move this bit to the Main scene:
+		
 		var lines: Array[String] = [
 			"Keep trying, you'll figure it out! ^.^",
 		]
 		DialogueManager.stop_all_dialogue()
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines, "blue")
 
 func _on_back_button_pressed() -> void:
 	back_pressed.emit()
