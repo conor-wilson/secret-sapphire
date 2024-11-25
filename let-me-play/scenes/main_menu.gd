@@ -47,7 +47,7 @@ func _check_panel_detatchment():
 	if panel_screw_count == 0:
 		_detatch_element_if_exists("InteractiveElements/Panel", 1)
 		_detatch_element_if_exists("InteractiveElements/StartButton", 10)
-		$Desktop.interactable = true
+		$Desktop.set_static_mode()
 		$MarginContainer/VBoxContainer/Title.text = " " # TODO: Attach the text to the panel
 
 func _detatch_element_if_exists(path: NodePath, strength:float=1):
@@ -94,11 +94,11 @@ func detatch_sticky_note():
 		#animate_letters()
 
 func animate_letters():
-	$RunningLetters/S.spawn($RigidLetters/S.position+Vector2(0,-30))
-	$RunningLetters/T1.spawn($RigidLetters/T1.position+Vector2(0,-30))
-	$RunningLetters/A1.spawn($RigidLetters/A1.position+Vector2(0,-30))
-	$RunningLetters/R.spawn($RigidLetters/R.position+Vector2(0,-30))
-	$RunningLetters/T2.spawn($RigidLetters/T2.position+Vector2(0,-30))
+	$RunningLetters/S.spawn($RigidLetters/S.position+Vector2(0,-35))
+	$RunningLetters/T1.spawn($RigidLetters/T1.position+Vector2(0,-35))
+	$RunningLetters/A1.spawn($RigidLetters/A1.position+Vector2(0,-35))
+	$RunningLetters/R.spawn($RigidLetters/R.position+Vector2(0,-35))
+	$RunningLetters/T2.spawn($RigidLetters/T2.position+Vector2(0,-35))
 	
 	$RigidLetters/S.queue_free()
 	$RigidLetters/T1.queue_free()
@@ -113,3 +113,6 @@ func get_letter_positions() -> Array[Vector2]:
 		output.append(letter.global_position)
 	
 	return output
+
+func activate_desktop():
+	$Desktop.set_active_mode()

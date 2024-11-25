@@ -1,5 +1,6 @@
 extends Node2D
 
+var disabled:bool = true
 var draggable:bool = false
 var is_outside_draggable_boundary:bool = false
 #var is_inside_droppable = false
@@ -14,6 +15,9 @@ var boundary_exit_pos:Vector2
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	if disabled:
+		return
+	
 	if draggable: 
 		initial_pos = global_position
 		if Input.is_action_just_pressed("click"):
@@ -25,8 +29,9 @@ func _process(delta: float) -> void:
 			Global.is_dragging = false
 			
 			if is_outside_draggable_boundary:
-				global_position = boundary_exit_pos + boundary_exit_pos.direction_to(draggable_boundary_centre.global_position)*64
-			
+				var drop_destination:Vector2 = boundary_exit_pos + boundary_exit_pos.direction_to(draggable_boundary_centre.global_position)*64
+				var tween = get_tree().create_tween()
+				tween.tween_property(self, "global_position", drop_destination, 0.2).set_ease(Tween.EASE_OUT)
 			# TODO: Have a look at this and see if we can apply it to the HellBot's movements
 			#var tween = get_tree().create_tween()
 			#if is_inside_dropable:
@@ -36,22 +41,38 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_mouse_entered() -> void:
+	
+	if disabled:
+		return
+	
 	if not Global.is_dragging:
 		draggable = true
 		scale = Vector2(1.05, 1.05)
 
 func _on_area_2d_mouse_exited() -> void:
+	
+	if disabled:
+		return
+	
 	if not Global.is_dragging:
 		draggable = false
 		scale = Vector2(1,1)
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
+	
+	if disabled:
+		return
+	
 	if area == draggable_boundary:
 		print("Left the boundary!")
 		is_outside_draggable_boundary = true
 		boundary_exit_pos = global_position
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	
+	if disabled:
+		return
+	
 	if area == draggable_boundary:
 		print("Back inside the boundary!")
 		is_outside_draggable_boundary = false

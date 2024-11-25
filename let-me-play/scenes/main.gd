@@ -200,6 +200,7 @@ func _begin_help_bot_monologue():
 	$HelpBot.shrink()
 	
 	stage = Stage.LETTERS_MISSING
+	$Menus/MainMenu.activate_desktop()
 
 
 func _on_settings_menu_correct_password() -> void:

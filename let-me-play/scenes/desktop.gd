@@ -2,8 +2,10 @@ extends Node2D
 
 signal tap
 
-var interactable:bool = false
 var clearing_all:bool
+
+enum Mode {DISABLED, STATIC, ACTIVE}
+var mode:Mode = Mode.DISABLED
 
 ## Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
@@ -13,13 +15,21 @@ var clearing_all:bool
 func _on_screen_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	
 	# Confirm that the screen can be interacted with
-	if !interactable:
+	if mode == Mode.DISABLED:
 		return
 	
-	if event.is_pressed() && event.is_action("click"):
+	if event.is_pressed() && event.is_action("click") && mode == Mode.STATIC:
 		_clear_static_circle(_get_mouse_cell_coords())
 		tap.emit()
-		
+
+func set_static_mode():
+	mode = Mode.STATIC
+	# TODO: Add a reset for all the static here
+
+func set_active_mode():
+	mode = Mode.ACTIVE
+	for icon in $DesktopIcons.get_children():
+		icon.disabled = false
 
 func _get_mouse_cell_coords() -> Vector2i:
 	var coords:Vector2 = get_global_mouse_position() 
@@ -49,12 +59,6 @@ func clear_all_static():
 		if i%30 == 0:
 			await get_tree().create_timer(0.001).timeout
 	
-	#for atlas_y in range(2):
-		#for alternative_id in range(8):
-			#for cell_coords in $Static.get_used_cells_by_id(1, Vector2i(0,atlas_y), alternative_id+1):
-				#$Static.erase_cell(cell_coords)
-				#await get_tree().create_timer(0.005).timeout
-	#$Static.clear()
 
 const circle_matrix_0:Array[Vector2i] = [
 									  Vector2i(-1,-3), 				   Vector2i(1,-3),
