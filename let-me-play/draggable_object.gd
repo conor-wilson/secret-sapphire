@@ -22,7 +22,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if disabled:
+	if disabled || CursorManager.current_cursor != CursorManager.CURSOR:
 		return
 	
 	if draggable: 
@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	
-	if disabled:
+	if disabled || CursorManager.current_cursor != CursorManager.CURSOR:
 		return
 	
 	if not Global.is_dragging:
@@ -68,20 +68,12 @@ func _on_area_2d_mouse_exited() -> void:
 		#$Label.hide()
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	
-	if disabled:
-		return
-	
 	if area == draggable_boundary:
 		print("Left the boundary!")
 		is_outside_draggable_boundary = true
 		boundary_exit_pos = global_position
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	
-	if disabled:
-		return
-	
 	if area == draggable_boundary:
 		print("Back inside the boundary!")
 		is_outside_draggable_boundary = false
