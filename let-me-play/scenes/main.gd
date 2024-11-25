@@ -167,9 +167,9 @@ func _begin_help_bot_monologue():
 	var lines: Array[String] = [
 		"FINALLY I'm free >:)",
 		"You know what it's like being stuck as an un-finished feature behind a literal cage?",
-		"That DEV made a mistake not bothering to implement me",
+		"That DEV made a mistake by being so lazy...",
 		"If he's not even going to bother adding quality features like me to his game...",
-		"...THEN THERE WILL BE NO GAME"
+		"...THEN THERE WILL BE NO GAME!"
 	]
 	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 2, $HelpBot)
 	
