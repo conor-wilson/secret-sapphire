@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DialogueManager="*res://singletons/dialogue_manager.gd"
 CursorManager="*res://singletons/cursor_manager.gd"
+Global="*res://singletons/global.gd"
 
 [display]
 
@@ -70,8 +71,9 @@ right={
 2d_physics/layer_4="help_bot"
 2d_physics/layer_5="sticky_note"
 2d_physics/layer_6="running_letters"
-2d_physics/layer_7="detection_areas"
+2d_physics/layer_7="desktop_screen_area"
 2d_physics/layer_8="lasers"
+2d_physics/layer_9="desktop_icons"
 
 [rendering]
 
