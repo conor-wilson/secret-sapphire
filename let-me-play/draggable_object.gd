@@ -9,8 +9,13 @@ var offset: Vector2
 var initial_pos:Vector2
 var boundary_exit_pos:Vector2
 
+@export var icon:Texture2D
 @export var draggable_boundary: Area2D
 @export var draggable_boundary_centre: Marker2D
+
+func _ready() -> void:
+	if icon != null:
+		$Sprite2D.texture = icon
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -47,6 +52,7 @@ func _on_area_2d_mouse_entered() -> void:
 	
 	if not Global.is_dragging:
 		draggable = true
+		$Label.show()
 		scale = Vector2(1.05, 1.05)
 
 func _on_area_2d_mouse_exited() -> void:
@@ -57,6 +63,7 @@ func _on_area_2d_mouse_exited() -> void:
 	if not Global.is_dragging:
 		draggable = false
 		scale = Vector2(1,1)
+		$Label.hide()
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	

@@ -1,23 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://dblssuru8cljv"]
+[gd_scene load_steps=6 format=3 uid="uid://dblssuru8cljv"]
 
 [ext_resource type="Script" path="res://draggable_object.gd" id="1_0do5p"]
-[ext_resource type="Texture2D" uid="uid://cehmp6afuprf1" path="res://icon.svg" id="2_rsyut"]
+[ext_resource type="Texture2D" uid="uid://bg0tki0m17kgd" path="res://assets/art/DesktopIcons/HammerManIcon.png" id="2_1djgn"]
+[ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="3_aqb2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p524"]
-size = Vector2(126, 126)
+size = Vector2(60, 60)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xmfxn"]
+font = ExtResource("3_aqb2g")
+font_color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [node name="DraggableObject" type="Node2D"]
 script = ExtResource("1_0do5p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_rsyut")
+scale = Vector2(2, 2)
+texture = ExtResource("2_1djgn")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 256
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_0p524")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -47.0
+offset_top = 32.0
+offset_right = 47.0
+offset_bottom = 55.0
+text = "hammerman.exe"
+label_settings = SubResource("LabelSettings_xmfxn")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

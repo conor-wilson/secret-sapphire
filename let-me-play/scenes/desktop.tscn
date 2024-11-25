@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://dafqi5pwsvw6r"]
+[gd_scene load_steps=10 format=4 uid="uid://dafqi5pwsvw6r"]
 
 [ext_resource type="Script" path="res://scenes/desktop.gd" id="1_wj53n"]
 [ext_resource type="Texture2D" uid="uid://1dldeotyl6j4" path="res://assets/art/WhiteNoise-Sheet.png" id="2_dbro5"]
 [ext_resource type="Texture2D" uid="uid://d6k4h82q3rpu" path="res://assets/art/DesktopBG.png" id="2_j3mel"]
 [ext_resource type="PackedScene" uid="uid://dblssuru8cljv" path="res://scenes/draggable_object.tscn" id="3_yrive"]
+[ext_resource type="Texture2D" uid="uid://bg0tki0m17kgd" path="res://assets/art/DesktopIcons/HammerManIcon.png" id="4_y3ib0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ahmy2"]
 texture = ExtResource("2_dbro5")
@@ -108,6 +109,7 @@ texture = ExtResource("2_j3mel")
 
 [node name="DraggableObject" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
 position = Vector2(240, 240)
+icon = ExtResource("4_y3ib0")
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 
