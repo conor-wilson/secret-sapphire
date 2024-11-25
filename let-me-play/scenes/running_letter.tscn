@@ -35,7 +35,7 @@ one_shot = true
 [node name="JumpTimer" type="Timer" parent="."]
 
 [node name="MischiefTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 7.5
 one_shot = true
 
 [node name="LeftWallDetector" type="Area2D" parent="."]

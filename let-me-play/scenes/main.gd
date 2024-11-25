@@ -57,7 +57,8 @@ func apply_screen_shake(delta: float):
 	screen_shake_strength = lerpf(screen_shake_strength, 0, screen_shake_fade*delta)
 
 func _on_main_menu_shake_screen(strength:float, fade:float) -> void:
-	shake_screen(strength, fade)
+	if stage != Stage.HELP_BOT_MONOLOGUING:
+		shake_screen(strength, fade)
 
 func _on_settings_menu_shake_screen(strength: float, fade: float) -> void:
 	shake_screen(strength, fade)
@@ -79,23 +80,6 @@ func _on_settings_menu_back_pressed() -> void:
 	if stage == Stage.HELP_BOT_MONOLOGUING:
 		_begin_help_bot_monologue()
 
-func _on_settings_menu_secret_settings_unlocked() -> void:
-	
-	stage = Stage.SECRET_SETTINGS_UNLOCKED
-	
-	$Cameras/SecretSettingsCamera.make_current()
-	
-	# TODO: Make it so that the below only happens once
-	DialogueManager.stop_all_dialogue()
-	var lines: Array[String] = [
-		"Wow, nice job, you're one smart cookie!! ^_^",
-		"My name is HELP BOT :) nice to meet you!",
-		"To unlock the settings in this menu, you'll need to use cheat codes...",
-		"First you'll have to unlock me, try this:",
-		"↑ ↓ ← → ← →",
-	]
-	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, "blue", 2, $HelpBot)
-
 func _on_secret_settings_menu_back_pressed() -> void:
 	$Cameras/SettingsCamera.make_current()
 
@@ -110,17 +94,22 @@ func _on_main_menu_start_button_exploded() -> void:
 	
 		# Start the "What was that?" dialogue
 		await get_tree().create_timer(4).timeout
+		_start_what_was_that_sequence()
+		
+func _start_what_was_that_sequence():
+	if stage == Stage.START_BUTTON_BROKEN:
 		var lines: Array[String] = [
 			"...What was that?",
 			"Was that what I think it was? o_o",
-			"Honestly... I told that dev to fix that START GAME button before release...",
+			"I told that DEV to fix the START button... ¬_¬",
 			"Oh well, luckily I can fix it for you ^_^",
 			"You'll have come and unlock me first though..."
 		]
 		DialogueManager.stop_all_dialogue()
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat1.position, lines, "blue", 2, $DialogueMarkers/WhatWasThat1)
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/WhatWasThat2.position, lines, "blue", 2, $DialogueMarkers/WhatWasThat2)
-#
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.position, lines, "blue", 2, $DialogueMarkers/SettingsButtonMarker)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.position, lines, "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_type() && event.is_pressed():
 		if input_cache.size() >= cache_length:
@@ -187,6 +176,7 @@ func _begin_help_bot_monologue():
 	
 	$HelpBot.explode()
 	await $HelpBot.boom
+	shake_screen(30,5)
 	$Menus/MainMenu.clear_static()
 	$Menus/MainMenu.detatch_sticky_note()
 	
@@ -208,3 +198,60 @@ func _begin_help_bot_monologue():
 	$HelpBot.shrink()
 	
 	stage = Stage.LETTERS_MISSING
+
+
+func _on_settings_menu_correct_password() -> void:
+	$Cameras/SecretSettingsCamera.make_current()
+	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
+		_start_help_bot_deception_sequence()
+
+func _start_help_bot_deception_sequence():
+	
+	stage = Stage.SECRET_SETTINGS_UNLOCKED
+	
+	DialogueManager.stop_all_dialogue()
+	var lines: Array[String] = [
+		"Wow, nice job, you're one smart cookie!! ^_^",
+		"My name is HELP BOT :) nice to meet you!",
+		"To unlock the settings in this menu, you'll need to use cheat codes...",
+		"First you'll have to unlock me, try this:",
+	]
+	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, "blue", 2, $HelpBot)
+	
+	await dialogue.sequence_finished
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["↑ ↓ ← → ← →"], "blue", 600, $HelpBot)
+
+
+func _on_settings_menu_incorrect_username() -> void:
+	
+	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
+		var lines: Array[String] = [
+			"Damn ¬_¬ the DEV locked it behind his username...",
+			"I bet he credited himself somewhere around here... >.>"
+		]
+		DialogueManager.stop_all_dialogue()
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/SettingsButtonMarker)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
+	
+	shake_screen(5, 5)
+
+func _on_settings_menu_correct_username() -> void:
+		
+		if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
+			var lines: Array[String] = [
+				"Nice job! \\(^o^)/",
+				"Looks like, you'll also need his password...",
+				"It can't be that hard to guess, I'm sure you'll figure it out!"
+			]
+			DialogueManager.stop_all_dialogue()
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/SettingsButtonMarker)
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
+
+func _on_settings_menu_incorrect_password() -> void:
+		
+	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
+		DialogueManager.stop_all_dialogue()
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.global_position, ["Keep trying, you'll figure it out! ^.^"], "blue", 2, $DialogueMarkers/SettingsButtonMarker)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, ["Keep trying, you'll figure it out! ^.^"], "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
+	
+	shake_screen(5, 5)

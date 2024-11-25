@@ -35,10 +35,10 @@ position = Vector2(2880, 324)
 
 [node name="DialogueMarkers" type="Node2D" parent="."]
 
-[node name="WhatWasThat1" type="Marker2D" parent="DialogueMarkers"]
+[node name="SettingsButtonMarker" type="Marker2D" parent="DialogueMarkers"]
 position = Vector2(623, 476)
 
-[node name="WhatWasThat2" type="Marker2D" parent="DialogueMarkers"]
+[node name="SecretSettingsButtonMarker" type="Marker2D" parent="DialogueMarkers"]
 position = Vector2(1839, 352)
 
 [node name="CageDialogue" type="Marker2D" parent="DialogueMarkers"]
@@ -84,7 +84,10 @@ position = Vector2(507, 305)
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
 [connection signal="start_button_exploded" from="Menus/MainMenu" to="." method="_on_main_menu_start_button_exploded"]
 [connection signal="back_pressed" from="Menus/SettingsMenu" to="." method="_on_settings_menu_back_pressed"]
-[connection signal="secret_settings_unlocked" from="Menus/SettingsMenu" to="." method="_on_settings_menu_secret_settings_unlocked"]
+[connection signal="correct_password" from="Menus/SettingsMenu" to="." method="_on_settings_menu_correct_password"]
+[connection signal="correct_username" from="Menus/SettingsMenu" to="." method="_on_settings_menu_correct_username"]
+[connection signal="incorrect_password" from="Menus/SettingsMenu" to="." method="_on_settings_menu_incorrect_password"]
+[connection signal="incorrect_username" from="Menus/SettingsMenu" to="." method="_on_settings_menu_incorrect_username"]
 [connection signal="shake_screen" from="Menus/SettingsMenu" to="." method="_on_settings_menu_shake_screen"]
 [connection signal="back_pressed" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_back_pressed"]
 [connection signal="shake_screen" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_shake_screen"]

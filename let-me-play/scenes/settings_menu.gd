@@ -2,7 +2,10 @@ extends Node2D
 
 signal back_pressed
 signal shake_screen(strength:float, fade:float)
-signal secret_settings_unlocked
+signal correct_username
+signal incorrect_username
+signal correct_password
+signal incorrect_password
 
 # TODO: Implement a generic way to check case-insentitively
 var accepted_usernames:Array[String] = [
@@ -32,9 +35,6 @@ var accpted_passwords:Array[String] = [
 func _ready() -> void:
 	username_box.hide()
 	password_box.hide()
-	$HelpBot.become_evil()
-	$HelpBot.hide()
-	$HelpBot.speed = 0
 
 func _on_secret_settings_button_pressed() -> void:
 	username_box.show()
@@ -46,28 +46,11 @@ func _on_username_box_text_submitted(new_text: String) -> void:
 	if _correct_input(new_text, accepted_usernames):
 		password_box.show()
 		password_box.grab_focus()
-		
-		# TODO: Move this bit to the Main scene:
-		
-		var lines: Array[String] = [
-			"Nice job! \\(^o^)/",
-			"Looks like, you'll also need his password...",
-			"It can't be that hard to guess, I'm sure you'll figure it out!"
-		]
-		DialogueManager.stop_all_dialogue()
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines, "blue")
+		correct_username.emit()
+	
 	else:
 		username_box.clear()
-		
-		# TODO: Move this bit to the Main scene:
-		
-		var lines: Array[String] = [
-			"Damn ¬_¬ the dev locked it behind his username...",
-			"I bet he credited himself somewhere around here... >.>"
-		]
-		DialogueManager.stop_all_dialogue()
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines, "blue")
-		shake_screen.emit(5, 5)
+		incorrect_username.emit()
 
 func _on_password_box_text_submitted(new_text: String) -> void:
 	print("Password Entered: ", new_text)
@@ -75,18 +58,11 @@ func _on_password_box_text_submitted(new_text: String) -> void:
 	if _correct_input(new_text, accpted_passwords):
 		# TODO: Here, make it so that the Secret Settings button now just takes 
 		# you to the secret settings menu
-		secret_settings_unlocked.emit()
+		correct_password.emit()
+	
 	else:
 		password_box.clear()
-		shake_screen.emit(5, 5)
-		
-		# TODO: Move this bit to the Main scene:
-		
-		var lines: Array[String] = [
-			"Keep trying, you'll figure it out! ^.^",
-		]
-		DialogueManager.stop_all_dialogue()
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/WrongPasswordMarker.global_position, lines, "blue")
+		incorrect_password.emit()
 
 func _on_back_button_pressed() -> void:
 	back_pressed.emit()
