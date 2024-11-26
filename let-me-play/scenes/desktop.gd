@@ -30,6 +30,8 @@ func set_active_mode():
 	mode = Mode.ACTIVE
 	for icon in $DesktopIcons.get_children():
 		icon.disabled = false
+	for window in $DesktopWindows.get_children():
+		window.disabled = false
 
 func _get_mouse_cell_coords() -> Vector2i:
 	var coords:Vector2 = get_global_mouse_position() 

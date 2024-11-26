@@ -9,15 +9,10 @@ var offset: Vector2
 var initial_pos:Vector2
 var boundary_exit_pos:Vector2
 
-@export var icon:Texture2D
-@export var icon_name:String
 @export var draggable_boundary: Area2D
 @export var draggable_boundary_centre: Marker2D
+@export var is_icon:bool = false
 
-func _ready() -> void:
-	$Label.text = icon_name
-	if icon != null:
-		$Sprite2D.texture = icon
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -36,7 +31,7 @@ func _process(delta: float) -> void:
 			Global.is_dragging = false
 			
 			if is_outside_draggable_boundary:
-				var drop_destination:Vector2 = boundary_exit_pos + boundary_exit_pos.direction_to(draggable_boundary_centre.global_position)*64
+				var drop_destination:Vector2 = boundary_exit_pos + boundary_exit_pos.direction_to(draggable_boundary_centre.global_position)*32
 				var tween = get_tree().create_tween()
 				tween.tween_property(self, "global_position", drop_destination, 0.2).set_ease(Tween.EASE_OUT)
 			# TODO: Have a look at this and see if we can apply it to the HellBot's movements
@@ -47,33 +42,34 @@ func _process(delta: float) -> void:
 				#tween.tween_property(self, "global_position", initial_pos, 0.2).set_ease(Tween.EASE_OUT)
 
 
-func _on_area_2d_mouse_entered() -> void:
+func _on_mouse_entered() -> void:
 	
 	if disabled || CursorManager.current_cursor != CursorManager.CURSOR:
 		return
 	
 	if not Global.is_dragging:
 		draggable = true
-		#$Label.show()
-		scale = Vector2(1.05, 1.05)
+		
+		if is_icon:
+			scale = Vector2(1.05, 1.05)
 
-func _on_area_2d_mouse_exited() -> void:
+func _on_mouse_exited() -> void:
 	
 	if disabled:
 		return
 	
 	if not Global.is_dragging:
 		draggable = false
-		scale = Vector2(1,1)
-		#$Label.hide()
+		if is_icon:
+			scale = Vector2(1,1)
 
-func _on_area_2d_area_exited(area: Area2D) -> void:
+func _on_area_exited(area: Area2D) -> void:
 	if area == draggable_boundary:
 		print("Left the boundary!")
 		is_outside_draggable_boundary = true
 		boundary_exit_pos = global_position
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_entered(area: Area2D) -> void:
 	if area == draggable_boundary:
 		print("Back inside the boundary!")
 		is_outside_draggable_boundary = false
