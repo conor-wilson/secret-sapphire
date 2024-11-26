@@ -190,3 +190,7 @@ func _on_screen_body_entered(body: Node2D) -> void:
 func _on_screen_body_exited(body: Node2D) -> void:
 	if body is RunningLetter:
 		body.set_can_enter_desktop(false)
+
+
+func _on_hammer_man_exe_icon_double_clicked() -> void:
+	print("YO YO!")

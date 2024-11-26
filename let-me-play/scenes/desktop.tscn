@@ -267,11 +267,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
-[node name="TurtlePNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+[node name="TurtlePNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(840, 160)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
+openable_window = NodePath("../../DesktopWindows/TurtlePNG")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtlePNGIcon"]
@@ -291,11 +292,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleHatPNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+[node name="TurtleHatPNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(792, 256)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
+openable_window = NodePath("../../DesktopWindows/TurtleHatPNG")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleHatPNGIcon"]
@@ -316,11 +318,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleGifIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+[node name="TurtleGifIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(960, 184)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
+openable_window = NodePath("../../DesktopWindows/HappyTurtleGIF")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleGifIcon"]
@@ -340,11 +343,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TMNTJPGIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+[node name="TMNTJPGIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(832, 360)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
+openable_window = NodePath("../../DesktopWindows/TMNTJPG")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TMNTJPGIcon"]
@@ -364,11 +368,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleMemeWEBPIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+[node name="TurtleMemeWEBPIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(976, 296)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
+openable_window = NodePath("../../DesktopWindows/TurtleMemeWEBP")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleMemeWEBPIcon"]
@@ -391,6 +396,7 @@ vertical_alignment = 1
 [node name="DesktopWindows" type="Node2D" parent="."]
 
 [node name="TurtlePNG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+visible = false
 position = Vector2(680, 216)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
@@ -403,6 +409,7 @@ position = Vector2(0, -88)
 shape = SubResource("RectangleShape2D_rcyqw")
 
 [node name="TurtleHatPNG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+visible = false
 position = Vector2(480, 288)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
@@ -415,6 +422,7 @@ position = Vector2(0, -88)
 shape = SubResource("RectangleShape2D_rcyqw")
 
 [node name="HappyTurtleGIF" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+visible = false
 position = Vector2(384, 264)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
@@ -435,6 +443,7 @@ position = Vector2(0, -88)
 shape = SubResource("RectangleShape2D_rcyqw")
 
 [node name="TMNTJPG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+visible = false
 position = Vector2(528, 168)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
@@ -447,6 +456,7 @@ position = Vector2(0, -88)
 shape = SubResource("RectangleShape2D_rcyqw")
 
 [node name="TurtleMemeWEBP" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+visible = false
 position = Vector2(592, 256)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
@@ -481,6 +491,7 @@ shape = SubResource("RectangleShape2D_8tfpi")
 [node name="IconBoundaryCentre" type="Marker2D" parent="IconBoundary"]
 position = Vector2(576, 256)
 
+[connection signal="double_clicked" from="DesktopIcons/HammerManEXEIcon" to="." method="_on_hammer_man_exe_icon_double_clicked"]
 [connection signal="body_entered" from="Screen" to="." method="_on_screen_body_entered"]
 [connection signal="body_exited" from="Screen" to="." method="_on_screen_body_exited"]
 [connection signal="input_event" from="Screen" to="." method="_on_screen_input_event"]
