@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://dafqi5pwsvw6r"]
+[gd_scene load_steps=34 format=4 uid="uid://dafqi5pwsvw6r"]
 
 [ext_resource type="Script" path="res://scenes/desktop.gd" id="1_wj53n"]
 [ext_resource type="Texture2D" uid="uid://1dldeotyl6j4" path="res://assets/art/WhiteNoise-Sheet.png" id="2_dbro5"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cw0alt2k6h8w1" path="res://assets/art/DesktopIcons/TurtleMemeIcon.png" id="12_mkfbq"]
 [ext_resource type="Texture2D" uid="uid://chjr22080rb6k" path="res://assets/art/DesktopWindows/TurtlePNG.png" id="14_6xl12"]
 [ext_resource type="Texture2D" uid="uid://bio866fmnbbrt" path="res://assets/art/DesktopWindows/TurtleHatPNG.png" id="14_85gd2"]
+[ext_resource type="Texture2D" uid="uid://cme26wu70ydrw" path="res://assets/art/DesktopWindows/todoTXT.png" id="14_8688o"]
 [ext_resource type="Texture2D" uid="uid://cotwwg0orvryt" path="res://assets/art/DesktopWindows/HappyTurtleGif-Sheet.png" id="15_ecr0k"]
 [ext_resource type="Texture2D" uid="uid://bp5uggpcfdq0p" path="res://assets/art/DesktopWindows/TMNTJPG.png" id="16_ho8k6"]
 [ext_resource type="Texture2D" uid="uid://qobfft7r7lng" path="res://assets/art/DesktopWindows/TurtleMeme.png" id="17_yj0i8"]
@@ -32,6 +33,15 @@ size = Vector2(192, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih88g"]
 size = Vector2(16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m5gid"]
+font = ExtResource("5_bxrir")
+font_size = 32
+font_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7brmu"]
+font = ExtResource("5_bxrir")
+font_color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [sub_resource type="Animation" id="Animation_rw62o"]
 resource_name = "happy_turtle_gif"
@@ -244,11 +254,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NotesIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+[node name="NotesIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(456, 224)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
+openable_window = NodePath("../../DesktopWindows/todoTXT")
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/NotesIcon"]
 scale = Vector2(2, 2)
@@ -397,6 +408,107 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DesktopWindows" type="Node2D" parent="."]
+
+[node name="todoTXT" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+position = Vector2(600, 288)
+draggable_boundary = NodePath("../../IconBoundary")
+draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
+close_button = NodePath("CloseButton")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/todoTXT"]
+texture = ExtResource("14_8688o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/todoTXT"]
+position = Vector2(0, -120)
+shape = SubResource("RectangleShape2D_rcyqw")
+
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/todoTXT"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/todoTXT/CloseButton"]
+position = Vector2(-88, -120)
+shape = SubResource("RectangleShape2D_ih88g")
+
+[node name="Text" type="Node2D" parent="DesktopWindows/todoTXT"]
+
+[node name="Title" type="Label" parent="DesktopWindows/todoTXT/Text"]
+offset_left = -80.0
+offset_top = -104.0
+offset_right = -24.0
+offset_bottom = -76.0
+text = "TODO:"
+label_settings = SubResource("LabelSettings_m5gid")
+vertical_alignment = 1
+
+[node name="Line1" type="Label" parent="DesktopWindows/todoTXT/Text"]
+offset_left = -80.0
+offset_top = -72.0
+offset_right = 57.0
+offset_bottom = -58.0
+text = "GitHub Game Off Work:"
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line2" type="Label" parent="DesktopWindows/todoTXT/Text"]
+offset_left = -80.0
+offset_top = -48.0
+offset_right = 78.0
+offset_bottom = -34.0
+text = "- [ ] Finish game"
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line3" type="Label" parent="DesktopWindows/todoTXT/Text"]
+offset_left = -80.0
+offset_top = -24.0
+offset_right = 78.0
+offset_bottom = -10.0
+text = "- [ ] Fix all the bugs"
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line4" type="Label" parent="DesktopWindows/todoTXT/Text"]
+offset_left = -80.0
+offset_right = 78.0
+offset_bottom = 14.0
+text = "- [ ] Add FINAL BOSS"
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line5" type="Label" parent="DesktopWindows/todoTXT/Text"]
+offset_left = -80.0
+offset_top = 24.0
+offset_right = 78.0
+offset_bottom = 38.0
+text = "- [ ] Implement HELP BOT"
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line6" type="Label" parent="DesktopWindows/todoTXT/Text"]
+offset_left = -80.0
+offset_top = 48.0
+offset_right = 78.0
+offset_bottom = 62.0
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line7" type="Label" parent="DesktopWindows/todoTXT/Text"]
+offset_left = -80.0
+offset_top = 72.0
+offset_right = 78.0
+offset_bottom = 86.0
+text = "Other Work:"
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line8" type="Label" parent="DesktopWindows/todoTXT/Text"]
+offset_left = -80.0
+offset_top = 96.0
+offset_right = 80.0
+offset_bottom = 110.0
+text = "- [x] Find more turtle pix"
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
 
 [node name="TurtlePNG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
 visible = false
