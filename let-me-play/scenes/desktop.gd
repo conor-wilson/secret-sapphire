@@ -200,3 +200,13 @@ func _on_home_button_input_event(viewport: Node, event: InputEvent, shape_idx: i
 	if event.is_action_pressed("click") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
 		for window in $DesktopWindows.get_children():
 			window.hide()
+
+
+func _on_home_button_mouse_entered() -> void:
+	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+		$HomeButton.scale = Vector2(1.05, 1.05)
+
+
+func _on_home_button_mouse_exited() -> void:
+	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+		$HomeButton.scale = Vector2(1, 1)
