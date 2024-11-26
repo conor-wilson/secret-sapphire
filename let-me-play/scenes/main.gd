@@ -131,6 +131,13 @@ func _input(event: InputEvent) -> void:
 		input_cache.append(event.as_text())
 		
 		_check_input_cache()
+	
+# TODO: This is purely for debugging. This function should be removed once it's
+# no-longer needed.
+#func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debugbutton"):
+		CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
+
 
 func _drop_held_item():
 	
