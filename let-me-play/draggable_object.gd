@@ -15,7 +15,12 @@ var boundary_exit_pos:Vector2
 @export var draggable_boundary_centre: Marker2D
 @export var is_icon:bool = false
 @export var openable_window:DraggableObject
+@export var close_button:Area2D
 
+
+func _ready() -> void:
+	if !is_icon && close_button != null:
+		close_button.input_event.connect(_on_close_input_event)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -108,3 +113,7 @@ func _on_double_clicked() -> void:
 	if is_icon && openable_window != null:
 		openable_window.global_position = global_position
 		openable_window.show()
+
+func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if !is_icon && event.is_action_pressed("click"):
+		hide()
