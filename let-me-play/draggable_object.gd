@@ -115,5 +115,7 @@ func _on_double_clicked() -> void:
 		openable_window.show()
 
 func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if !is_icon && event.is_action_pressed("click"):
+	if !disabled && !is_icon && event.is_action_pressed("click") && CursorManager.current_cursor == CursorManager.CURSOR:
 		hide()
+		draggable = false
+		

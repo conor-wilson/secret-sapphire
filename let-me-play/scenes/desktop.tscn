@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://dafqi5pwsvw6r"]
+[gd_scene load_steps=37 format=4 uid="uid://dafqi5pwsvw6r"]
 
 [ext_resource type="Script" path="res://scenes/desktop.gd" id="1_wj53n"]
 [ext_resource type="Texture2D" uid="uid://1dldeotyl6j4" path="res://assets/art/WhiteNoise-Sheet.png" id="2_dbro5"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://chjr22080rb6k" path="res://assets/art/DesktopWindows/TurtlePNG.png" id="14_6xl12"]
 [ext_resource type="Texture2D" uid="uid://bio866fmnbbrt" path="res://assets/art/DesktopWindows/TurtleHatPNG.png" id="14_85gd2"]
 [ext_resource type="Texture2D" uid="uid://cme26wu70ydrw" path="res://assets/art/DesktopWindows/todoTXT.png" id="14_8688o"]
+[ext_resource type="Texture2D" uid="uid://dojtrgtgvcjdf" path="res://assets/art/DesktopWindows/AntiVirus.png" id="14_trhyc"]
 [ext_resource type="Texture2D" uid="uid://cotwwg0orvryt" path="res://assets/art/DesktopWindows/HappyTurtleGif-Sheet.png" id="15_ecr0k"]
 [ext_resource type="Texture2D" uid="uid://bp5uggpcfdq0p" path="res://assets/art/DesktopWindows/TMNTJPG.png" id="16_ho8k6"]
 [ext_resource type="Texture2D" uid="uid://qobfft7r7lng" path="res://assets/art/DesktopWindows/TurtleMeme.png" id="17_yj0i8"]
@@ -173,6 +174,9 @@ size = Vector2(1008, 368)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tfpi"]
 size = Vector2(816, 256)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
+size = Vector2(48, 48)
+
 [node name="Desktop" type="Node2D"]
 z_index = -2
 script = ExtResource("1_wj53n")
@@ -184,7 +188,7 @@ texture = ExtResource("2_j3mel")
 [node name="DesktopIcons" type="Node2D" parent="."]
 
 [node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
-position = Vector2(224, 360)
+position = Vector2(352, 352)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
@@ -207,11 +211,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AntivirusIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
-position = Vector2(224, 136)
+[node name="AntivirusIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
+position = Vector2(288, 224)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
+openable_window = NodePath("../../DesktopWindows/Antivirus")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/AntivirusIcon"]
@@ -232,7 +237,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ChatIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
-position = Vector2(224, 248)
+position = Vector2(224, 352)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
@@ -260,7 +265,7 @@ position = Vector2(456, 224)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
-openable_window = NodePath("../../DesktopWindows/todoTXT")
+openable_window = NodePath("../../DesktopWindows/TodoTXT")
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/NotesIcon"]
 scale = Vector2(2, 2)
@@ -410,29 +415,50 @@ vertical_alignment = 1
 
 [node name="DesktopWindows" type="Node2D" parent="."]
 
-[node name="todoTXT" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+[node name="Antivirus" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+visible = false
+position = Vector2(832, 240)
+draggable_boundary = NodePath("../../IconBoundary")
+draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
+close_button = NodePath("CloseButton")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Antivirus"]
+texture = ExtResource("14_trhyc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus"]
+position = Vector2(0, -88)
+shape = SubResource("RectangleShape2D_rcyqw")
+
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/Antivirus"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/CloseButton"]
+position = Vector2(-88, -88)
+shape = SubResource("RectangleShape2D_ih88g")
+
+[node name="TodoTXT" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
 position = Vector2(600, 288)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/todoTXT"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TodoTXT"]
 texture = ExtResource("14_8688o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/todoTXT"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TodoTXT"]
 position = Vector2(0, -120)
 shape = SubResource("RectangleShape2D_rcyqw")
 
-[node name="CloseButton" type="Area2D" parent="DesktopWindows/todoTXT"]
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/TodoTXT"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/todoTXT/CloseButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TodoTXT/CloseButton"]
 position = Vector2(-88, -120)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="Text" type="Node2D" parent="DesktopWindows/todoTXT"]
+[node name="Text" type="Node2D" parent="DesktopWindows/TodoTXT"]
 
-[node name="Title" type="Label" parent="DesktopWindows/todoTXT/Text"]
+[node name="Title" type="Label" parent="DesktopWindows/TodoTXT/Text"]
 offset_left = -80.0
 offset_top = -104.0
 offset_right = -24.0
@@ -441,7 +467,7 @@ text = "TODO:"
 label_settings = SubResource("LabelSettings_m5gid")
 vertical_alignment = 1
 
-[node name="Line1" type="Label" parent="DesktopWindows/todoTXT/Text"]
+[node name="Line1" type="Label" parent="DesktopWindows/TodoTXT/Text"]
 offset_left = -80.0
 offset_top = -72.0
 offset_right = 57.0
@@ -450,7 +476,7 @@ text = "GitHub Game Off Work:"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line2" type="Label" parent="DesktopWindows/todoTXT/Text"]
+[node name="Line2" type="Label" parent="DesktopWindows/TodoTXT/Text"]
 offset_left = -80.0
 offset_top = -48.0
 offset_right = 78.0
@@ -459,7 +485,7 @@ text = "- [ ] Finish game"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line3" type="Label" parent="DesktopWindows/todoTXT/Text"]
+[node name="Line3" type="Label" parent="DesktopWindows/TodoTXT/Text"]
 offset_left = -80.0
 offset_top = -24.0
 offset_right = 78.0
@@ -468,7 +494,7 @@ text = "- [ ] Fix all the bugs"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line4" type="Label" parent="DesktopWindows/todoTXT/Text"]
+[node name="Line4" type="Label" parent="DesktopWindows/TodoTXT/Text"]
 offset_left = -80.0
 offset_right = 78.0
 offset_bottom = 14.0
@@ -476,7 +502,7 @@ text = "- [ ] Add FINAL BOSS"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line5" type="Label" parent="DesktopWindows/todoTXT/Text"]
+[node name="Line5" type="Label" parent="DesktopWindows/TodoTXT/Text"]
 offset_left = -80.0
 offset_top = 24.0
 offset_right = 78.0
@@ -485,7 +511,7 @@ text = "- [ ] Implement HELP BOT"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line6" type="Label" parent="DesktopWindows/todoTXT/Text"]
+[node name="Line6" type="Label" parent="DesktopWindows/TodoTXT/Text"]
 offset_left = -80.0
 offset_top = 48.0
 offset_right = 78.0
@@ -493,7 +519,7 @@ offset_bottom = 62.0
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line7" type="Label" parent="DesktopWindows/todoTXT/Text"]
+[node name="Line7" type="Label" parent="DesktopWindows/TodoTXT/Text"]
 offset_left = -80.0
 offset_top = 72.0
 offset_right = 78.0
@@ -502,7 +528,7 @@ text = "Other Work:"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line8" type="Label" parent="DesktopWindows/todoTXT/Text"]
+[node name="Line8" type="Label" parent="DesktopWindows/TodoTXT/Text"]
 offset_left = -80.0
 offset_top = 96.0
 offset_right = 80.0
@@ -840,7 +866,16 @@ shape = SubResource("RectangleShape2D_8tfpi")
 [node name="IconBoundaryCentre" type="Marker2D" parent="IconBoundary"]
 position = Vector2(576, 256)
 
+[node name="HomeButton" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomeButton"]
+position = Vector2(104, 408)
+shape = SubResource("RectangleShape2D_4sq1c")
+
 [connection signal="double_clicked" from="DesktopIcons/HammerManEXEIcon" to="." method="_on_hammer_man_exe_icon_double_clicked"]
 [connection signal="body_entered" from="Screen" to="." method="_on_screen_body_entered"]
 [connection signal="body_exited" from="Screen" to="." method="_on_screen_body_exited"]
 [connection signal="input_event" from="Screen" to="." method="_on_screen_input_event"]
+[connection signal="input_event" from="HomeButton" to="." method="_on_home_button_input_event"]
