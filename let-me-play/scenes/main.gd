@@ -145,8 +145,8 @@ func _input(event: InputEvent) -> void:
 ## TODO: This is purely for debugging. This function should be removed once it's
 ## no-longer needed.
 #func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("debugbutton"):
-		#CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
+	if event.is_action_pressed("debugbutton"):
+		$Cameras/FreeRoamCamera.make_current()
 
 
 func _drop_held_item():
@@ -189,7 +189,7 @@ const free_help_bot_cheat_code:Array[String] = [
 ]
 
 func _check_input_cache():
-	if input_cache == free_help_bot_cheat_code:
+	if input_cache == free_help_bot_cheat_code && (stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN || stage == Stage.SECRET_SETTINGS_UNLOCKED):
 		print("Freeing Help Bot...")
 		free_help_bot()
 

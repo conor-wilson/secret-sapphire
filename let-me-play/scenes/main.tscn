@@ -67,6 +67,8 @@ position = Vector2(1728, 324)
 [node name="SecretSettingsCamera" type="Camera2D" parent="Cameras"]
 position = Vector2(2880, 324)
 
+[node name="FreeRoamCamera" type="Camera2D" parent="Cameras"]
+
 [node name="DialogueMarkers" type="Node2D" parent="."]
 
 [node name="SettingsButtonMarker" type="Marker2D" parent="DialogueMarkers"]
