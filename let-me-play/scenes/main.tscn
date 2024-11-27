@@ -44,6 +44,23 @@ height = 44.0
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lvo15")
 
+[node name="Camera" type="Node2D" parent="."]
+
+[node name="FreeRoamCamera" type="Camera2D" parent="Camera"]
+position = Vector2(576, 324)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("6_tfhi4")
+
+[node name="MainMenuCameraMarker" type="Marker2D" parent="Camera"]
+position = Vector2(576, 324)
+
+[node name="SettingsCameraMarker" type="Marker2D" parent="Camera"]
+position = Vector2(1728, 324)
+
+[node name="SecretSettingsCameraMarker" type="Marker2D" parent="Camera"]
+position = Vector2(2880, 324)
+
 [node name="Menus" type="Node2D" parent="."]
 
 [node name="MainMenu" parent="Menus" instance=ExtResource("1_mw4j5")]
@@ -56,22 +73,6 @@ position = Vector2(2304, 0)
 
 [node name="HelpBot" parent="." instance=ExtResource("5_lf0pf")]
 position = Vector2(2879, 289)
-
-[node name="Cameras" type="Node2D" parent="."]
-
-[node name="MainMenuCamera" type="Camera2D" parent="Cameras"]
-position = Vector2(576, 324)
-
-[node name="SettingsCamera" type="Camera2D" parent="Cameras"]
-position = Vector2(1728, 324)
-
-[node name="SecretSettingsCamera" type="Camera2D" parent="Cameras"]
-position = Vector2(2880, 324)
-
-[node name="FreeRoamCamera" type="Camera2D" parent="Cameras"]
-position_smoothing_enabled = true
-position_smoothing_speed = 32.0
-script = ExtResource("6_tfhi4")
 
 [node name="DialogueMarkers" type="Node2D" parent="."]
 

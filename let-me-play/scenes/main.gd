@@ -18,6 +18,7 @@ enum Stage {
 	START_BUTTON_BROKEN, 
 	SECRET_SETTINGS_UNLOCKED,
 	HELP_BOT_FREED,
+	HELP_BOT_WAITING_TO_MONOLOGUE,
 	HELP_BOT_MONOLOGUING,
 	LETTERS_MISSING
 }
@@ -30,7 +31,8 @@ func _ready() -> void:
 	
 	stage = Stage.BEGINNING
 	
-	$Cameras/MainMenuCamera.make_current()
+	$Camera/FreeRoamCamera.position = $Camera/MainMenuCameraMarker.position
+	$Camera/FreeRoamCamera.make_current()
 	CursorManager.set_mouse_cursor(CursorManager.CURSOR)
 	
 	var idle_markers:Array[Marker2D] = [
@@ -57,9 +59,7 @@ func apply_screen_shake(delta: float):
 		randf_range(-screen_shake_strength, screen_shake_strength), 
 		randf_range(-screen_shake_strength, screen_shake_strength),
 	)
-	$Cameras/MainMenuCamera.offset = offset
-	$Cameras/SettingsCamera.offset = offset
-	$Cameras/SecretSettingsCamera.offset = offset
+	$Camera/FreeRoamCamera.offset = offset
 	
 	# Fade the screen shake for the next time
 	screen_shake_strength = lerpf(screen_shake_strength, 0, screen_shake_fade*delta)
@@ -80,20 +80,20 @@ func shake_screen(strength:float, fade:float):
 		screen_shake_fade = fade
 
 func _on_main_menu_settings_pressed() -> void:
-	$Cameras/SettingsCamera.make_current()
+	$Camera/FreeRoamCamera.position = $Camera/SettingsCameraMarker.position
 	await $ItemDropZones/MainMenu.mouse_exited
 	cursor_in_item_drop_zone = true
 
 func _on_settings_menu_back_pressed() -> void:
-	$Cameras/MainMenuCamera.make_current()
+	$Camera/FreeRoamCamera.position = $Camera/MainMenuCameraMarker.position
 	await $ItemDropZones/SettingsMenu.mouse_exited
 	cursor_in_item_drop_zone = true
 	
-	if stage == Stage.HELP_BOT_MONOLOGUING:
+	if stage == Stage.HELP_BOT_WAITING_TO_MONOLOGUE:
 		_begin_help_bot_monologue()
 
 func _on_secret_settings_menu_back_pressed() -> void:
-	$Cameras/SettingsCamera.make_current()
+	$Camera/FreeRoamCamera.position = $Camera/SettingsCameraMarker.position
 	await $ItemDropZones/SecretSettingsMenu.mouse_exited
 	cursor_in_item_drop_zone = true
 
@@ -141,17 +141,15 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("click"):
 		$Foam.stop_following()
 
-
+#
 ## TODO: This is purely for debugging. This function should be removed once it's
 ## no-longer needed.
 #func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debugbutton"):
-		for camera in $Cameras.get_children():
-			if camera.is_current():
-				$Cameras/FreeRoamCamera.position_smoothing_enabled = false
-				$Cameras/FreeRoamCamera.position = camera.position
-				$Cameras/FreeRoamCamera.position_smoothing_enabled = true
-		$Cameras/FreeRoamCamera.make_current()
+		if $Camera/FreeRoamCamera.free_roam_mode_enabled:
+			$Camera/FreeRoamCamera.disable_free_roam($Camera/MainMenuCameraMarker.global_position)
+		else:
+			$Camera/FreeRoamCamera.enable_free_roam()
 
 
 func _drop_held_item():
@@ -226,11 +224,15 @@ func free_help_bot():
 	$HelpBot.set_new_idle_location($MovementMarkers/ScreenMarkers/ScreenMarker1, new_idle_markers, 400, 100)
 	
 	await $HelpBot.arrived
-	stage = Stage.HELP_BOT_MONOLOGUING
-	if $Cameras/MainMenuCamera.is_current():
+	stage = Stage.HELP_BOT_WAITING_TO_MONOLOGUE
+	
+	# TODO: Figure out a way to have this conditional work with the free-roam camera's roaming enabled
+	if $Camera/FreeRoamCamera.global_position == $Camera/MainMenuCameraMarker.global_position:
 		_begin_help_bot_monologue()
 
 func _begin_help_bot_monologue():
+	
+	stage = Stage.HELP_BOT_MONOLOGUING
 
 	await get_tree().create_timer(1).timeout
 	
@@ -275,7 +277,7 @@ func _begin_help_bot_monologue():
 
 
 func _on_settings_menu_correct_password() -> void:
-	$Cameras/SecretSettingsCamera.make_current()
+	$Camera/FreeRoamCamera.position = $Camera/SecretSettingsCameraMarker.position
 	await $ItemDropZones/SettingsMenu.mouse_exited
 	cursor_in_item_drop_zone = true
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
