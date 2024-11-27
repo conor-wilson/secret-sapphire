@@ -111,7 +111,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_double_clicked() -> void:
 	if is_icon && openable_window != null:
-		openable_window.global_position = global_position
+		openable_window.global_position = global_position + Vector2(0, 64)
 		openable_window.show()
 
 func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
