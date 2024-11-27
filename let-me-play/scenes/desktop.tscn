@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://dafqi5pwsvw6r"]
+[gd_scene load_steps=41 format=4 uid="uid://dafqi5pwsvw6r"]
 
 [ext_resource type="Script" path="res://scenes/desktop.gd" id="1_wj53n"]
 [ext_resource type="Texture2D" uid="uid://1dldeotyl6j4" path="res://assets/art/WhiteNoise-Sheet.png" id="2_dbro5"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cme26wu70ydrw" path="res://assets/art/DesktopWindows/todoTXT.png" id="14_8688o"]
 [ext_resource type="Texture2D" uid="uid://dojtrgtgvcjdf" path="res://assets/art/DesktopWindows/AntiVirus.png" id="14_trhyc"]
 [ext_resource type="Texture2D" uid="uid://cotwwg0orvryt" path="res://assets/art/DesktopWindows/HappyTurtleGif-Sheet.png" id="15_ecr0k"]
+[ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/FireExtinguisher.png" id="15_xgsxi"]
 [ext_resource type="Texture2D" uid="uid://bp5uggpcfdq0p" path="res://assets/art/DesktopWindows/TMNTJPG.png" id="16_ho8k6"]
 [ext_resource type="Texture2D" uid="uid://qobfft7r7lng" path="res://assets/art/DesktopWindows/TurtleMeme.png" id="17_yj0i8"]
 [ext_resource type="PackedScene" uid="uid://ci342gax57cc2" path="res://scenes/fire.tscn" id="20_npo72"]
@@ -36,6 +37,10 @@ size = Vector2(192, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih88g"]
 size = Vector2(16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3c21"]
+radius = 7.0
+height = 36.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_m5gid"]
 font = ExtResource("5_bxrir")
@@ -422,7 +427,7 @@ vertical_alignment = 1
 
 [node name="Antivirus" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
 visible = false
-position = Vector2(832, 240)
+position = Vector2(312, 256)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 close_button = NodePath("CloseButton")
@@ -440,6 +445,17 @@ shape = SubResource("RectangleShape2D_rcyqw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/CloseButton"]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
+
+[node name="FireExtinguisher" type="Area2D" parent="DesktopWindows/Antivirus"]
+position = Vector2(57, -51)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/FireExtinguisher"]
+shape = SubResource("CapsuleShape2D_q3c21")
+
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Antivirus/FireExtinguisher"]
+position = Vector2(8, 0)
+texture = ExtResource("15_xgsxi")
 
 [node name="TodoTXT" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
 position = Vector2(600, 288)
@@ -635,6 +651,7 @@ position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
 [node name="TurtleMemeWEBP" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+visible = false
 position = Vector2(712, 272)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
@@ -893,6 +910,7 @@ shape = SubResource("RectangleShape2D_8tfpi")
 position = Vector2(576, 256)
 
 [connection signal="double_clicked" from="DesktopIcons/HammerManEXEIcon" to="." method="_on_hammer_man_exe_icon_double_clicked"]
+[connection signal="input_event" from="DesktopWindows/Antivirus/FireExtinguisher" to="." method="_on_fire_extinguisher_input_event"]
 [connection signal="input_event" from="HomeButton" to="." method="_on_home_button_input_event"]
 [connection signal="mouse_entered" from="HomeButton" to="." method="_on_home_button_mouse_entered"]
 [connection signal="mouse_exited" from="HomeButton" to="." method="_on_home_button_mouse_exited"]

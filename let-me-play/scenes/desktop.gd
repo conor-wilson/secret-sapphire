@@ -210,3 +210,9 @@ func _on_home_button_mouse_entered() -> void:
 func _on_home_button_mouse_exited() -> void:
 	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
 		$HomeButton.scale = Vector2(1, 1)
+
+
+func _on_fire_extinguisher_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+		if event.is_action_pressed("click") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+			$DesktopWindows/Antivirus/FireExtinguisher.hide()
+			CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)

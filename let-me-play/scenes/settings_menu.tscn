@@ -133,6 +133,7 @@ vertical_alignment = 2
 [node name="InteractiveElements" type="Node2D" parent="."]
 
 [node name="Screwdriver" parent="InteractiveElements" instance=ExtResource("6_447go")]
+z_index = 10
 position = Vector2(391, 179)
 collision_layer = 2
 metadata/_edit_group_ = true

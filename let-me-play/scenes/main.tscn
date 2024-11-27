@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://vff026q47yk" path="res://scenes/secret_settings_menu.tscn" id="4_u0lve"]
 [ext_resource type="PackedScene" uid="uid://bcttde4rl6c7u" path="res://scenes/help_bot.tscn" id="5_lf0pf"]
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="6_s1drs"]
-[ext_resource type="Texture2D" uid="uid://4lwbjjjxilb" path="res://assets/art/SettingsIcon3.png" id="7_xhglg"]
+[ext_resource type="Texture2D" uid="uid://difhinmukve4m" path="res://assets/art/Wrench.png" id="7_85cok"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="8_kk8my"]
 [ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/FireExtinguisher.png" id="8_mmbyy"]
 
@@ -114,7 +114,7 @@ breakable = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Items/Wrench"]
 scale = Vector2(2, 2)
-texture = ExtResource("7_xhglg")
+texture = ExtResource("7_85cok")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Wrench"]
 rotation = -0.785397
@@ -122,7 +122,7 @@ scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_0o1dt")
 
 [node name="FireExtinguisher" parent="Items" instance=ExtResource("6_s1drs")]
-position = Vector2(267, 506)
+position = Vector2(-120, 496)
 collision_layer = 1024
 breakable = false
 metadata/_edit_group_ = true
