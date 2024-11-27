@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=20 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://difhinmukve4m" path="res://assets/art/Wrench.png" id="7_85cok"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="8_kk8my"]
 [ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/FireExtinguisher.png" id="8_mmbyy"]
+[ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/RunningLetters/running_s.tres" id="10_wm5o8"]
+[ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/RunningLetters/running_t.tres" id="11_2eygt"]
+[ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="12_hat1b"]
+[ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="13_atri8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o1dt"]
 radius = 6.0104
@@ -30,6 +34,10 @@ font_color = Color(0.333333, 0.333333, 0.333333, 1)
 font = ExtResource("8_kk8my")
 font_size = 32
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4r0k"]
+radius = 13.0
+height = 44.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lvo15")
@@ -192,6 +200,78 @@ text = "<RIGHT CLICK to drop item>"
 label_settings = SubResource("LabelSettings_hbp62")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CollectableLetters" type="Node2D" parent="."]
+
+[node name="S" type="Area2D" parent="CollectableLetters"]
+visible = false
+position = Vector2(64, 576)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/S"]
+sprite_frames = ExtResource("10_wm5o8")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/S"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_f4r0k")
+
+[node name="T1" type="Area2D" parent="CollectableLetters"]
+visible = false
+position = Vector2(96, 576)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/T1"]
+sprite_frames = ExtResource("11_2eygt")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/T1"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_f4r0k")
+
+[node name="A1" type="Area2D" parent="CollectableLetters"]
+visible = false
+position = Vector2(128, 576)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/A1"]
+sprite_frames = ExtResource("12_hat1b")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/A1"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_f4r0k")
+
+[node name="R" type="Area2D" parent="CollectableLetters"]
+visible = false
+position = Vector2(168, 576)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/R"]
+sprite_frames = ExtResource("13_atri8")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/R"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_f4r0k")
+
+[node name="T2" type="Area2D" parent="CollectableLetters"]
+visible = false
+position = Vector2(200, 576)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/T2"]
+sprite_frames = ExtResource("11_2eygt")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/T2"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_f4r0k")
 
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]

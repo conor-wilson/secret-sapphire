@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://dafqi5pwsvw6r"]
+[gd_scene load_steps=44 format=4 uid="uid://dafqi5pwsvw6r"]
 
 [ext_resource type="Script" path="res://scenes/desktop.gd" id="1_wj53n"]
 [ext_resource type="Texture2D" uid="uid://1dldeotyl6j4" path="res://assets/art/WhiteNoise-Sheet.png" id="2_dbro5"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://bp5uggpcfdq0p" path="res://assets/art/DesktopWindows/TMNTJPG.png" id="16_ho8k6"]
 [ext_resource type="Texture2D" uid="uid://qobfft7r7lng" path="res://assets/art/DesktopWindows/TurtleMeme.png" id="17_yj0i8"]
 [ext_resource type="PackedScene" uid="uid://ci342gax57cc2" path="res://scenes/fire.tscn" id="20_npo72"]
+[ext_resource type="PackedScene" uid="uid://byo6qeugb3o4d" path="res://scenes/collectable_letter.tscn" id="22_gmy4o"]
+[ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="23_2ysj3"]
 [ext_resource type="Texture2D" uid="uid://8yqnj4mcp32" path="res://assets/art/DesktopIcons/HomeIcon.png" id="23_3xjlp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyifw"]
@@ -88,6 +90,10 @@ _data = {
 "RESET": SubResource("Animation_q8fvx"),
 "happy_turtle_gif": SubResource("Animation_rw62o")
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_skiw6"]
+radius = 16.0
+height = 44.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_f8lwi"]
 font = ExtResource("5_bxrir")
@@ -670,13 +676,26 @@ shape = SubResource("RectangleShape2D_rcyqw")
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
+[node name="CollectableLetter" parent="DesktopWindows/TurtleMemeWEBP" instance=ExtResource("22_gmy4o")]
+position = Vector2(55, -33)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DesktopWindows/TurtleMemeWEBP/CollectableLetter"]
+sprite_frames = ExtResource("23_2ysj3")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP/CollectableLetter"]
+position = Vector2(0, 11)
+shape = SubResource("CapsuleShape2D_skiw6")
+
 [node name="Fire" type="Node2D" parent="DesktopWindows/TurtleMemeWEBP"]
 
 [node name="Fire1" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
 position = Vector2(-61, 76)
 
 [node name="Fire2" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
-position = Vector2(64, -32)
+position = Vector2(60, -43)
 
 [node name="Fire3" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
 position = Vector2(56, -24)
@@ -685,7 +704,7 @@ position = Vector2(56, -24)
 position = Vector2(-59, 8)
 
 [node name="Fire5" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
-position = Vector2(32, -16)
+position = Vector2(50, -46)
 
 [node name="Fire6" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
 position = Vector2(-73, 76)
@@ -700,13 +719,13 @@ position = Vector2(-80, 16)
 position = Vector2(-72, 8)
 
 [node name="Fire10" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
-position = Vector2(72, -24)
+position = Vector2(71, -32)
 
 [node name="Fire11" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
-position = Vector2(40, -24)
+position = Vector2(48, -38)
 
 [node name="Fire12" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
-position = Vector2(40, -16)
+position = Vector2(50, -26)
 
 [node name="Fire13" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
 position = Vector2(-59, 19)
@@ -718,13 +737,13 @@ position = Vector2(-72, 24)
 position = Vector2(-81, 76)
 
 [node name="Fire16" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
-position = Vector2(48, -24)
+position = Vector2(61, -30)
 
 [node name="Fire17" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
 position = Vector2(65, 76)
 
 [node name="Fire18" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
-position = Vector2(55, -17)
+position = Vector2(38, -25)
 
 [node name="Fire19" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
 position = Vector2(81, 76)
@@ -739,7 +758,7 @@ position = Vector2(70, -17)
 position = Vector2(73, 76)
 
 [node name="Fire23" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
-position = Vector2(30, -15)
+position = Vector2(52, -15)
 
 [node name="Fire24" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
 position = Vector2(64, 49)
@@ -754,7 +773,7 @@ position = Vector2(-58, 52)
 position = Vector2(53, 53)
 
 [node name="Fire28" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
-position = Vector2(28, -7)
+position = Vector2(38, -13)
 
 [node name="Fire29" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
 position = Vector2(-73, 44)
