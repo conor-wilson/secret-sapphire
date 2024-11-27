@@ -3,6 +3,7 @@ extends Node2D
 signal settings_pressed
 signal shake_screen(strength:float, fade:float)
 signal start_button_exploded
+signal a_collected
 
 var panel_screw_count:int = 4
 
@@ -118,3 +119,7 @@ func get_letter_positions() -> Array[Vector2]:
 
 func activate_desktop():
 	$Desktop.set_active_mode()
+
+
+func _on_desktop_a_collected() -> void:
+	a_collected.emit()

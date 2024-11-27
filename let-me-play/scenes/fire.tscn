@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ci342gax57cc2"]
+[gd_scene load_steps=19 format=3 uid="uid://bmtqbkl3i7e1b"]
 
 [ext_resource type="Texture2D" uid="uid://b08lgh1vne8a4" path="res://assets/art/Fire-Sheet.png" id="1_ia4ea"]
 [ext_resource type="Script" path="res://scenes/fire.gd" id="2_amdga"]

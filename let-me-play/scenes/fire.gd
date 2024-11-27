@@ -20,9 +20,9 @@ func _process(delta: float) -> void:
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click") && CursorManager.current_cursor == CursorManager.FIRE_EXTINGUISHER:
-		hide()
+		queue_free()
 
 
 func _on_mouse_entered() -> void:
 	if Input.is_action_pressed("click") && CursorManager.current_cursor == CursorManager.FIRE_EXTINGUISHER:
-		hide()
+		queue_free()

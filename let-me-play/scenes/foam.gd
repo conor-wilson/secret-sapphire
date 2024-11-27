@@ -9,7 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if following:
+	if following && CursorManager.current_cursor == CursorManager.FIRE_EXTINGUISHER:
 		global_position = get_global_mouse_position() + Vector2(0,4)
 
 func start_following():

@@ -172,6 +172,7 @@ func _drop_held_item():
 		CursorManager.FIRE_EXTINGUISHER:
 			$ItemInstructions.hide()
 			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
+			$Foam.stop_following()
 			
 			var new_fire_extinguisher:InteractiveElement = fire_extinguisher.duplicate()
 			fire_extinguisher.queue_free()
@@ -353,3 +354,7 @@ func _on_fire_extinguisher_click() -> void:
 	CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
 	$ItemInstructions.show()
 	fire_extinguisher.hide()
+
+
+func _on_main_menu_a_collected() -> void:
+	$CollectableLetters/A1.show()

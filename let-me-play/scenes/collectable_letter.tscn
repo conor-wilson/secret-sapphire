@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://byo6qeugb3o4d"]
+[gd_scene load_steps=2 format=3 uid="uid://ddhqiieofpixr"]
+
+[ext_resource type="Script" path="res://scenes/collectable_letter.gd" id="1_dvxkb"]
 
 [node name="CollectableLetter" type="Area2D"]
+script = ExtResource("1_dvxkb")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

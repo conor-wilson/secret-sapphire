@@ -1,6 +1,7 @@
 extends Node2D
 
 signal tap
+signal a_collected
 
 var clearing_all:bool
 
@@ -10,6 +11,10 @@ var mode:Mode = Mode.DISABLED
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	mode = Mode.DISABLED
+
+
+func _process(delta: float) -> void:
+	$DesktopWindows/TurtleMemeWEBP/A.set_can_collect($DesktopWindows/TurtleMemeWEBP/A/BlockingFire.get_children().size() == 0)
 
 
 func _on_screen_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -213,6 +218,10 @@ func _on_home_button_mouse_exited() -> void:
 
 
 func _on_fire_extinguisher_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-		if event.is_action_pressed("click") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
-			$DesktopWindows/Antivirus/FireExtinguisher.hide()
-			CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
+	if event.is_action_pressed("click") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+		$DesktopWindows/Antivirus/FireExtinguisher.hide()
+		CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
+
+
+func _on_a_collect() -> void:
+	a_collected.emit()
