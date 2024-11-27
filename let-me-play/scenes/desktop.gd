@@ -12,10 +12,20 @@ var mode:Mode = Mode.DISABLED
 func _ready() -> void:
 	mode = Mode.DISABLED
 
+const this_is_actually_fine_message:String = "\"THIS IS ACTUALLY FINE!\"\nTRY THIS: ←↑←↑→↓←↑\""
 
 func _process(delta: float) -> void:
+	
+	# Check if A1 is collectable
 	$DesktopWindows/TurtleMemeWEBP/A.set_can_collect($DesktopWindows/TurtleMemeWEBP/A/BlockingFire.get_children().size() == 0)
-
+	
+	# Check if the fire has been completely doused
+	if (
+		$DesktopWindows/TurtleMemeWEBP/A/BlockingFire.get_children().size() == 0 &&
+		$DesktopWindows/TurtleMemeWEBP/Fire.get_children().size() == 0 &&
+		$DesktopWindows/TurtleMemeWEBP/Caption.text != this_is_actually_fine_message
+	):
+		$DesktopWindows/TurtleMemeWEBP/Captionh.text = this_is_actually_fine_message
 
 func _on_screen_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	
