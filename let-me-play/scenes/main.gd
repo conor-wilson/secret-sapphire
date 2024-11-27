@@ -135,6 +135,11 @@ func _input(event: InputEvent) -> void:
 		input_cache.append(event.as_text())
 		
 		_check_input_cache()
+	
+	if event.is_action("click") && CursorManager.current_cursor == CursorManager.FIRE_EXTINGUISHER:
+		$Foam.start_following()
+	if event.is_action_released("click"):
+		$Foam.stop_following()
 
 
 ## TODO: This is purely for debugging. This function should be removed once it's

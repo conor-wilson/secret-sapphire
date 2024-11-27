@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=21 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
@@ -13,6 +13,7 @@
 [ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/RunningLetters/running_t.tres" id="11_2eygt"]
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="12_hat1b"]
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="13_atri8"]
+[ext_resource type="PackedScene" uid="uid://dgb87ltag6my4" path="res://scenes/foam.tscn" id="14_kuj0x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o1dt"]
 radius = 6.0104
@@ -272,6 +273,9 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/T2"]
 position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_f4r0k")
+
+[node name="Foam" parent="." instance=ExtResource("14_kuj0x")]
+position = Vector2(240, 536)
 
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
