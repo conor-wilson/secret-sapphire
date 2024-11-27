@@ -364,4 +364,9 @@ func _on_fire_extinguisher_click() -> void:
 
 
 func _on_main_menu_a_collected() -> void:
-	$CollectableLetters/A1.show()
+	$CollectedLetters/A1.show()
+
+
+func _on_r_collect() -> void:
+	$CollectableLetters/R.hide()
+	$CollectedLetters/R.show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=24 format=4 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
@@ -16,6 +16,7 @@
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="12_hat1b"]
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="13_atri8"]
 [ext_resource type="PackedScene" uid="uid://dgb87ltag6my4" path="res://scenes/foam.tscn" id="14_kuj0x"]
+[ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/collectable_letter.tscn" id="16_ea6f3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o1dt"]
 radius = 6.0104
@@ -215,11 +216,83 @@ label_settings = SubResource("LabelSettings_hbp62")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CollectedLetters" type="Node2D" parent="."]
+
+[node name="S" type="Area2D" parent="CollectedLetters"]
+visible = false
+position = Vector2(64, 576)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectedLetters/S"]
+sprite_frames = ExtResource("10_wm5o8")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectedLetters/S"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_f4r0k")
+
+[node name="T1" type="Area2D" parent="CollectedLetters"]
+visible = false
+position = Vector2(96, 576)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectedLetters/T1"]
+sprite_frames = ExtResource("11_2eygt")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectedLetters/T1"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_f4r0k")
+
+[node name="A1" type="Area2D" parent="CollectedLetters"]
+visible = false
+position = Vector2(128, 576)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectedLetters/A1"]
+sprite_frames = ExtResource("12_hat1b")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectedLetters/A1"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_f4r0k")
+
+[node name="R" type="Area2D" parent="CollectedLetters"]
+visible = false
+position = Vector2(168, 576)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectedLetters/R"]
+sprite_frames = ExtResource("13_atri8")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectedLetters/R"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_f4r0k")
+
+[node name="T2" type="Area2D" parent="CollectedLetters"]
+visible = false
+position = Vector2(200, 576)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectedLetters/T2"]
+sprite_frames = ExtResource("11_2eygt")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectedLetters/T2"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_f4r0k")
+
 [node name="CollectableLetters" type="Node2D" parent="."]
 
 [node name="S" type="Area2D" parent="CollectableLetters"]
 visible = false
-position = Vector2(64, 576)
+position = Vector2(937, 535)
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/S"]
@@ -233,7 +306,7 @@ shape = SubResource("CapsuleShape2D_f4r0k")
 
 [node name="T1" type="Area2D" parent="CollectableLetters"]
 visible = false
-position = Vector2(96, 576)
+position = Vector2(969, 535)
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/T1"]
@@ -245,37 +318,23 @@ autoplay = "idle"
 position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_f4r0k")
 
-[node name="A1" type="Area2D" parent="CollectableLetters"]
-visible = false
-position = Vector2(128, 576)
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/A1"]
-sprite_frames = ExtResource("12_hat1b")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/A1"]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_f4r0k")
-
-[node name="R" type="Area2D" parent="CollectableLetters"]
-visible = false
-position = Vector2(168, 576)
+[node name="R" parent="CollectableLetters" instance=ExtResource("16_ea6f3")]
+position = Vector2(20, -54)
+can_collect = true
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/R"]
+position = Vector2(0, -10)
 sprite_frames = ExtResource("13_atri8")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/R"]
-position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_f4r0k")
 
 [node name="T2" type="Area2D" parent="CollectableLetters"]
 visible = false
-position = Vector2(200, 576)
+position = Vector2(1073, 535)
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/T2"]
@@ -310,3 +369,4 @@ position = Vector2(184, -144)
 [connection signal="mouse_exited" from="ItemDropZones/SettingsMenu" to="." method="_on_item_drop_zone_mouse_exited"]
 [connection signal="mouse_entered" from="ItemDropZones/SecretSettingsMenu" to="." method="_on_item_drop_zone_mouse_entered"]
 [connection signal="mouse_exited" from="ItemDropZones/SecretSettingsMenu" to="." method="_on_item_drop_zone_mouse_exited"]
+[connection signal="collect" from="CollectableLetters/R" to="." method="_on_r_collect"]
