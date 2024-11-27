@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 		$DesktopWindows/TurtleMemeWEBP/Fire.get_children().size() == 0 &&
 		$DesktopWindows/TurtleMemeWEBP/Caption.text != this_is_actually_fine_message
 	):
-		$DesktopWindows/TurtleMemeWEBP/Captionh.text = this_is_actually_fine_message
+		$DesktopWindows/TurtleMemeWEBP/Caption.text = this_is_actually_fine_message
 
 func _on_screen_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	

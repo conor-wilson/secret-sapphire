@@ -146,6 +146,11 @@ func _input(event: InputEvent) -> void:
 ## no-longer needed.
 #func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debugbutton"):
+		for camera in $Cameras.get_children():
+			if camera.is_current():
+				$Cameras/FreeRoamCamera.position_smoothing_enabled = false
+				$Cameras/FreeRoamCamera.position = camera.position
+				$Cameras/FreeRoamCamera.position_smoothing_enabled = true
 		$Cameras/FreeRoamCamera.make_current()
 
 

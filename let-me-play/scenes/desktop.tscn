@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/desktop.gd" id="1_wj53n"]
 [ext_resource type="Texture2D" uid="uid://1dldeotyl6j4" path="res://assets/art/WhiteNoise-Sheet.png" id="2_dbro5"]
 [ext_resource type="Texture2D" uid="uid://d6k4h82q3rpu" path="res://assets/art/DesktopBG.png" id="2_j3mel"]
-[ext_resource type="PackedScene" path="res://scenes/draggable_object.tscn" id="3_yrive"]
+[ext_resource type="PackedScene" uid="uid://dblssuru8cljv" path="res://scenes/draggable_object.tscn" id="3_yrive"]
 [ext_resource type="Texture2D" uid="uid://bg0tki0m17kgd" path="res://assets/art/DesktopIcons/HammerManIcon.png" id="4_y3ib0"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_bxrir"]
 [ext_resource type="Texture2D" uid="uid://4448nynviyr7" path="res://assets/art/DesktopIcons/AntiVirusIcon.png" id="5_cnua8"]
