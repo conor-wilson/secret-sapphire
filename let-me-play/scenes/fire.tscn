@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ci342gax57cc2"]
+[gd_scene load_steps=19 format=3 uid="uid://ci342gax57cc2"]
 
 [ext_resource type="Texture2D" uid="uid://b08lgh1vne8a4" path="res://assets/art/Fire-Sheet.png" id="1_ia4ea"]
 [ext_resource type="Script" path="res://scenes/fire.gd" id="2_amdga"]
@@ -112,7 +112,18 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Fire" type="AnimatedSprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjn3x"]
+size = Vector2(32, 32)
+
+[node name="Fire" type="Area2D"]
+script = ExtResource("2_amdga")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0n0t7")
 animation = &"fire_0"
-script = ExtResource("2_amdga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vjn3x")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
