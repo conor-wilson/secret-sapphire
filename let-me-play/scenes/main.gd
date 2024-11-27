@@ -274,6 +274,8 @@ func _begin_help_bot_monologue():
 	
 	stage = Stage.LETTERS_MISSING
 	$Menus/MainMenu.activate_desktop()
+	for collectable_letter in $CollectableLetters.get_children():
+		collectable_letter.show()
 
 
 func _on_settings_menu_correct_password() -> void:
