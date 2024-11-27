@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=15 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
@@ -8,13 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="6_s1drs"]
 [ext_resource type="Texture2D" uid="uid://4lwbjjjxilb" path="res://assets/art/SettingsIcon3.png" id="7_xhglg"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="8_kk8my"]
+[ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/FireExtinguisher.png" id="8_mmbyy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o1dt"]
 radius = 6.0104
 height = 39.598
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ej1cw"]
+radius = 12.0
+height = 62.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tj3n1"]
-size = Vector2(1072, 560)
+size = Vector2(1112, 592)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0o4ac"]
 font = ExtResource("8_kk8my")
@@ -116,6 +121,20 @@ rotation = -0.785397
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_0o1dt")
 
+[node name="FireExtinguisher" parent="Items" instance=ExtResource("6_s1drs")]
+position = Vector2(267, 506)
+collision_layer = 1024
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/FireExtinguisher"]
+scale = Vector2(2, 2)
+texture = ExtResource("8_mmbyy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/FireExtinguisher"]
+position = Vector2(-16, 1)
+shape = SubResource("CapsuleShape2D_ej1cw")
+
 [node name="ItemDropZones" type="Node2D" parent="."]
 
 [node name="MainMenu" type="Area2D" parent="ItemDropZones"]
@@ -123,7 +142,7 @@ collision_layer = 512
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDropZones/MainMenu"]
-position = Vector2(576, 320)
+position = Vector2(572, 320)
 shape = SubResource("RectangleShape2D_tj3n1")
 
 [node name="SettingsMenu" type="Area2D" parent="ItemDropZones"]
@@ -186,6 +205,7 @@ vertical_alignment = 1
 [connection signal="back_pressed" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_back_pressed"]
 [connection signal="shake_screen" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_shake_screen"]
 [connection signal="click" from="Items/Wrench" to="." method="_on_wrench_click"]
+[connection signal="click" from="Items/FireExtinguisher" to="." method="_on_fire_extinguisher_click"]
 [connection signal="mouse_entered" from="ItemDropZones/MainMenu" to="." method="_on_item_drop_zone_mouse_entered"]
 [connection signal="mouse_exited" from="ItemDropZones/MainMenu" to="." method="_on_item_drop_zone_mouse_exited"]
 [connection signal="mouse_entered" from="ItemDropZones/SettingsMenu" to="." method="_on_item_drop_zone_mouse_entered"]

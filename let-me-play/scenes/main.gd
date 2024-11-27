@@ -9,6 +9,7 @@ var cache_length:int = 6
 var cursor_in_item_drop_zone:bool = false
 
 @onready var wrench: InteractiveElement = $Items/Wrench
+@onready var fire_extinguisher: InteractiveElement = $Items/FireExtinguisher
 
 # Stage indicates where we are in the game's story so that we can keep track of 
 # dialogue
@@ -23,6 +24,9 @@ enum Stage {
 var stage:Stage = Stage.BEGINNING
 
 func _ready() -> void:
+	
+	#fire_extinguisher.hide()
+	fire_extinguisher.detatch(5)
 	
 	stage = Stage.BEGINNING
 	
@@ -131,12 +135,13 @@ func _input(event: InputEvent) -> void:
 		input_cache.append(event.as_text())
 		
 		_check_input_cache()
-	
-# TODO: This is purely for debugging. This function should be removed once it's
-# no-longer needed.
+
+
+## TODO: This is purely for debugging. This function should be removed once it's
+## no-longer needed.
 #func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debugbutton"):
-		CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
+	#if event.is_action_pressed("debugbutton"):
+		#CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
 
 
 func _drop_held_item():
@@ -159,7 +164,18 @@ func _drop_held_item():
 			new_wrench.position = get_local_mouse_position()
 			new_wrench.detatch(20)
 			wrench = new_wrench
-			#$Menus/SettingsMenu.move_wrench(get_global_mouse_position())
+		CursorManager.FIRE_EXTINGUISHER:
+			$ItemInstructions.hide()
+			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
+			
+			var new_fire_extinguisher:InteractiveElement = fire_extinguisher.duplicate()
+			fire_extinguisher.queue_free()
+			
+			add_child(new_fire_extinguisher)
+			new_fire_extinguisher.show()
+			new_fire_extinguisher.position = get_local_mouse_position()
+			new_fire_extinguisher.detatch(20)
+			fire_extinguisher = new_fire_extinguisher
 
 
 const free_help_bot_cheat_code:Array[String] = [
@@ -314,8 +330,21 @@ func _on_item_drop_zone_mouse_exited() -> void:
 
 
 func _on_wrench_click() -> void:
+	
 	print("WRENCH CLICKED")
+	
+	_drop_held_item()
 	CursorManager.set_mouse_cursor(CursorManager.WRENCH)
 	$ItemInstructions.show()
 	wrench.hide()
 	$Menus/SettingsMenu.detatch_screwdriver()
+
+
+func _on_fire_extinguisher_click() -> void:
+	
+	print("FIRE EXTINGUISHER CLICKED")
+	
+	_drop_held_item()
+	CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
+	$ItemInstructions.show()
+	fire_extinguisher.hide()

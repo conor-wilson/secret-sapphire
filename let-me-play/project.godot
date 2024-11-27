@@ -80,6 +80,7 @@ right={
 2d_physics/layer_8="lasers"
 2d_physics/layer_9="desktop_icons"
 2d_physics/layer_10="item_drop_zones"
+2d_physics/layer_11="items"
 
 [rendering]
 
