@@ -4,7 +4,7 @@ var screen_shake_strength:float = 0.0
 var screen_shake_fade:float     = 5.0
 
 var input_cache : Array[String] = []
-var cache_length:int = 6
+var cache_length:int = 8
 
 var cursor_in_item_drop_zone:bool = false
 
@@ -141,15 +141,15 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("click"):
 		$Foam.stop_following()
 
-#
-## TODO: This is purely for debugging. This function should be removed once it's
-## no-longer needed.
-#func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debugbutton"):
-		if $Camera/FreeRoamCamera.free_roam_mode_enabled:
-			$Camera/FreeRoamCamera.disable_free_roam($Camera/MainMenuCameraMarker.global_position)
-		else:
-			$Camera/FreeRoamCamera.enable_free_roam()
+##
+### TODO: This is purely for debugging. This function should be removed once it's
+### no-longer needed.
+##func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debugbutton"):
+		#if $Camera/FreeRoamCamera.free_roam_mode_enabled:
+			#$Camera/FreeRoamCamera.disable_free_roam($Camera/MainMenuCameraMarker.global_position)
+		#else:
+			#$Camera/FreeRoamCamera.enable_free_roam()
 
 
 func _drop_held_item():
@@ -188,13 +188,24 @@ func _drop_held_item():
 
 
 const free_help_bot_cheat_code:Array[String] = [
-	"Up", "Down", "Left", "Right", "Left", "Right"
+	# ↑↓↑↓←→←→
+	"Up", "Down", "Up", "Down", "Left", "Right", "Left", "Right"
+]
+const unlock_free_roam_camera_cheat_code:Array[String] = [
+	# ←↑←↑→↓←↑
+	"Left", "Up", "Left", "Up", "Right", "Down", "Left", "Up"
 ]
 
 func _check_input_cache():
 	if input_cache == free_help_bot_cheat_code && (stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN || stage == Stage.SECRET_SETTINGS_UNLOCKED):
 		print("Freeing Help Bot...")
 		free_help_bot()
+	
+	if input_cache == unlock_free_roam_camera_cheat_code:
+		print("Unlocking Free Roam Camera...")
+		$Menus/SecretSettingsMenu.unlock_free_roaming_camera()
+		$Camera/FreeRoamCamera.enable_free_roam()
+		
 
 func free_help_bot():
 	
@@ -280,7 +291,9 @@ func _begin_help_bot_monologue():
 
 func _on_settings_menu_correct_password() -> void:
 	$Camera/FreeRoamCamera.position = $Camera/SecretSettingsCameraMarker.position
-	await $ItemDropZones/SettingsMenu.mouse_exited
+	print("BABABA")
+	#await $ItemDropZones/SettingsMenu.mouse_exited # TODO: Fix this! 
+	print("BEBEBE")
 	cursor_in_item_drop_zone = true
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
 		_start_help_bot_deception_sequence()
@@ -299,7 +312,7 @@ func _start_help_bot_deception_sequence():
 	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, "blue", 2, $HelpBot)
 	
 	await dialogue.sequence_finished
-	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["↑ ↓ ← → ← →"], "blue", 600, $HelpBot)
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["↑ ↓ ↑ ↓ ← → ← →"], "blue", 600, $HelpBot)
 
 
 func _on_settings_menu_incorrect_username() -> void:

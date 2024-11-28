@@ -12,7 +12,7 @@ var mode:Mode = Mode.DISABLED
 func _ready() -> void:
 	mode = Mode.DISABLED
 
-const this_is_actually_fine_message:String = "\"THIS IS ACTUALLY FINE!\"\nTRY THIS: ←↑←↑→↓←↑\""
+const this_is_actually_fine_message:String = "\"THIS ACTUALLY IS FINE!\nTRY THIS: ←↑←↑→↓←↑\""
 
 func _process(delta: float) -> void:
 	

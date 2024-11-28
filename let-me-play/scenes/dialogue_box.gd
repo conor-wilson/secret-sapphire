@@ -9,7 +9,7 @@ var follow_node:CanvasItem = null
 
 var line_queue: Array[String] = [] # The list of lines that are queued to be displayed.
 
-const MAX_WIDTH = 256
+const MAX_WIDTH = 288
 
 var text = ""
 var letter_index = 0

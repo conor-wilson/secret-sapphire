@@ -28,3 +28,9 @@ func _on_cage_smash() -> void:
 
 func _on_back_button_pressed() -> void:
 	back_pressed.emit()
+
+func unlock_free_roaming_camera() -> void:
+	_detatch_element_if_exists("Locks/FreeRoamCameraLock", 20)
+
+func _on_free_roam_camera_lock_smash() -> void:
+	shake_screen.emit(10,5)
