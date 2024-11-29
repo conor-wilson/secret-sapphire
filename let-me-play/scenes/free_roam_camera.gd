@@ -3,6 +3,7 @@ extends Camera2D
 signal snap(snap_point:Marker2D)
 
 var free_roam_mode_enabled:bool = false
+var zoom_mode_enabled:bool = false
 
 var moving:bool = false
 var original_mouse_pos:Vector2 = Vector2.ZERO
@@ -45,19 +46,17 @@ func _input(event: InputEvent) -> void:
 		print("Stopping Dragging")
 		moving = false
 	
-	if event.is_action_pressed("scroll_down") && zoom.x > zoom_min:
-		
+	if zoom_mode_enabled && event.is_action_pressed("scroll_down") && zoom.x > zoom_min:
 		zoom.x -= zoom_speed
 		zoom.y -= zoom_speed
 		#$Static.scale.x += 1
 		#$Static.scale.y += 1
-	if event.is_action_pressed("scroll_up") && zoom.x < zoom_max:
+	
+	if zoom_mode_enabled && event.is_action_pressed("scroll_up") && zoom.x < zoom_max:
 		zoom.x += zoom_speed
 		zoom.y += zoom_speed
 		#$Static.scale.x -= 1
 		#$Static.scale.y -= 1
-	
-	print("Zoom: ", zoom)
 
 func enable_free_roam():
 	free_roam_mode_enabled = true
@@ -67,3 +66,11 @@ func disable_free_roam(new_global_position:Vector2 = global_position):
 	free_roam_mode_enabled = false
 	position_smoothing_speed = smoothing_speed_stationary
 	global_position = new_global_position
+
+func enable_zoom():
+	zoom_mode_enabled = true
+
+func disable_zoom():
+	zoom_mode_enabled = false
+	zoom.x = 1
+	zoom.y = 1

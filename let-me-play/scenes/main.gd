@@ -195,6 +195,10 @@ const unlock_free_roam_camera_cheat_code:Array[String] = [
 	# ←↑←↑→↓←↑
 	"Left", "Up", "Left", "Up", "Right", "Down", "Left", "Up"
 ]
+const unlock_camera_zoom_cheat_code:Array[String] = [
+	# →→←←→←↑↓
+	"Right", "Right", "Left", "Left", "Right", "Left", "Up", "Down"
+]
 
 func _check_input_cache():
 	if input_cache == free_help_bot_cheat_code && (stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN || stage == Stage.SECRET_SETTINGS_UNLOCKED):
@@ -207,6 +211,13 @@ func _check_input_cache():
 		$Menus/SecretSettingsMenu.unlock_free_roaming_camera()
 		$Camera/FreeRoamCamera.enable_free_roam()
 		_show_instructions("<RIGHT CLICK and DRAG to pan camera>")
+	
+	if input_cache == unlock_camera_zoom_cheat_code:
+		print("Unlocking Zoom Camera...")
+		shake_screen(5,5)
+		#$Menus/SecretSettingsMenu.unlock_camera_zoom()
+		$Camera/FreeRoamCamera.enable_zoom()
+		_show_instructions("MOUSE SCROLL to zoom in and out")
 
 func free_help_bot():
 	
