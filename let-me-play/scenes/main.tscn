@@ -65,7 +65,7 @@ position = Vector2(1728, 324)
 position = Vector2(2880, 324)
 
 [node name="CaveOfWondersCameraMarker" type="Marker2D" parent="Camera"]
-position = Vector2(4242, -1392)
+position = Vector2(4238, -1428)
 
 [node name="Menus" type="Node2D" parent="."]
 
@@ -365,6 +365,7 @@ position = Vector2(184, -144)
 [connection signal="shake_screen" from="Menus/SettingsMenu" to="." method="_on_settings_menu_shake_screen"]
 [connection signal="back_pressed" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_back_pressed"]
 [connection signal="shake_screen" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_shake_screen"]
+[connection signal="toggle_camera_zoom" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_toggle_camera_zoom"]
 [connection signal="toggle_free_roam_camera" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_toggle_free_roam_camera"]
 [connection signal="click" from="Items/Wrench" to="." method="_on_wrench_click"]
 [connection signal="click" from="Items/FireExtinguisher" to="." method="_on_fire_extinguisher_click"]

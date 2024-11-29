@@ -215,7 +215,7 @@ func _check_input_cache():
 	if input_cache == unlock_camera_zoom_cheat_code:
 		print("Unlocking Zoom Camera...")
 		shake_screen(5,5)
-		#$Menus/SecretSettingsMenu.unlock_camera_zoom()
+		$Menus/SecretSettingsMenu.unlock_camera_zoom()
 		$Camera/FreeRoamCamera.enable_zoom()
 		_show_instructions("MOUSE SCROLL to zoom in and out")
 
@@ -303,9 +303,9 @@ func _begin_help_bot_monologue():
 
 func _on_settings_menu_correct_password() -> void:
 	$Camera/FreeRoamCamera.position = $Camera/SecretSettingsCameraMarker.position
-	print("BABABA")
+	
 	#await $ItemDropZones/SettingsMenu.mouse_exited # TODO: Fix this! 
-	print("BEBEBE")
+	
 	cursor_in_item_drop_zone = true
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
 		_start_help_bot_deception_sequence()
@@ -418,9 +418,18 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 
 
 func _on_secret_settings_menu_toggle_free_roam_camera(toggled_on: bool) -> void:
-	$Camera/FreeRoamCamera.free_roam_mode_enabled = toggled_on
+	$Camera/FreeRoamCamera.enable_free_roam()
 	if toggled_on:
 		_show_instructions("<RIGHT CLICK and DRAG to pan camera>")
 	else:
 		$ItemInstructions.hide()
-		$Camera/FreeRoamCamera.position = $Camera/SecretSettingsCameraMarker.position
+		$Camera/FreeRoamCamera.disable_free_roam($Camera/SecretSettingsCameraMarker.position)
+
+
+func _on_secret_settings_menu_toggle_camera_zoom(toggled_on: bool) -> void:
+	$Camera/FreeRoamCamera.enable_zoom()
+	if toggled_on:
+		_show_instructions("<MOUSE SCROLL to zoom in and out>")
+	else:
+		$ItemInstructions.hide()
+		$Camera/FreeRoamCamera.disable_zoom()
