@@ -345,6 +345,7 @@ shape = SubResource("CapsuleShape2D_f4r0k")
 [node name="Foam" parent="." instance=ExtResource("14_kuj0x")]
 position = Vector2(184, -144)
 
+[connection signal="snap" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_snap"]
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]

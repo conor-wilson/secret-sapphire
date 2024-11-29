@@ -385,3 +385,8 @@ func _on_main_menu_a_collected() -> void:
 func _on_r_collect() -> void:
 	$CollectableLetters/R.hide()
 	$CollectedLetters/R.show()
+
+
+func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
+	if snap_point == $Camera/SecretSettingsCameraMarker:
+		print("Arrived!")
