@@ -1,6 +1,7 @@
 extends Node2D
 
 signal secret_received
+signal t_2_collected
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +13,14 @@ func _process(delta: float) -> void:
 	pass
 
 
+func reveal_t_2():
+	$T2.show()
+	$T2.set_can_collect(true)
+
 func _on_cave_mouth_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		secret_received.emit()
+
+
+func _on_t_2_collect() -> void:
+	t_2_collected.emit()

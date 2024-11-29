@@ -510,5 +510,10 @@ func _on_cave_of_wonders_secret_received() -> void:
 				"You have brought me a delectable secret, and so I will give you what you seek.",
 			]
 			DialogueManager.stop_all_dialogue()
-			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
-		
+			var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
+			await dialogue.sequence_finished
+			
+
+
+func _on_cave_of_wonders_t_2_collected() -> void:
+	$CollectedLetters/T2.show()

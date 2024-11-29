@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvp3k2yn1w8rb"]
+[gd_scene load_steps=7 format=3 uid="uid://dvp3k2yn1w8rb"]
 
 [ext_resource type="Script" path="res://scenes/cave_of_wonders.gd" id="1_2gn2m"]
 [ext_resource type="Texture2D" uid="uid://bjc3ogtd7g8s4" path="res://assets/art/Cave.png" id="1_db4o6"]
+[ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/collectable_letter.tscn" id="3_ii8et"]
+[ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/RunningLetters/running_t.tres" id="4_j2g5j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wrdc1"]
 radius = 72.0
 height = 208.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovjao"]
+radius = 13.0
+height = 44.0
 
 [node name="CaveOfWonders" type="Node2D"]
 script = ExtResource("1_2gn2m")
@@ -20,4 +26,19 @@ position = Vector2(0, 48)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_wrdc1")
 
+[node name="T2" parent="." instance=ExtResource("3_ii8et")]
+visible = false
+position = Vector2(-3, 69)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="T2"]
+sprite_frames = ExtResource("4_j2g5j")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T2"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_ovjao")
+
 [connection signal="input_event" from="CaveMouth" to="." method="_on_cave_mouth_input_event"]
+[connection signal="collect" from="T2" to="." method="_on_t_2_collect"]
