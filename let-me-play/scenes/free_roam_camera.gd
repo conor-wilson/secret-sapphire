@@ -13,6 +13,9 @@ var original_pos:Vector2 = global_position
 @export var snap_distance:float = 64
 @export var snap_tolerence:float = 0.1
 @export var snap_points:Array[Marker2D] = []
+@export var zoom_speed:float = 0.1
+@export var zoom_max:float = 3.0
+@export var zoom_min:float = 0.1
 
 func _process(delta: float) -> void:
 	
@@ -41,6 +44,20 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_released("right_click"):
 		print("Stopping Dragging")
 		moving = false
+	
+	if event.is_action_pressed("scroll_down") && zoom.x > zoom_min:
+		
+		zoom.x -= zoom_speed
+		zoom.y -= zoom_speed
+		#$Static.scale.x += 1
+		#$Static.scale.y += 1
+	if event.is_action_pressed("scroll_up") && zoom.x < zoom_max:
+		zoom.x += zoom_speed
+		zoom.y += zoom_speed
+		#$Static.scale.x -= 1
+		#$Static.scale.y -= 1
+	
+	print("Zoom: ", zoom)
 
 func enable_free_roam():
 	free_roam_mode_enabled = true
