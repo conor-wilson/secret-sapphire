@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvp3k2yn1w8rb"]
+[gd_scene load_steps=3 format=3 uid="uid://dvp3k2yn1w8rb"]
 
+[ext_resource type="Script" path="res://scenes/cave_of_wonders.gd" id="1_2gn2m"]
 [ext_resource type="Texture2D" uid="uid://bjc3ogtd7g8s4" path="res://assets/art/Cave.png" id="1_db4o6"]
 
 [node name="CaveOfWonders" type="Node2D"]
+script = ExtResource("1_2gn2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(144, 144)

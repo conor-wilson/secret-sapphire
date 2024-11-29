@@ -415,6 +415,20 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 		stage == Stage.HELP_BOT_WAITING_TO_MONOLOGUE 
 	):
 		_begin_help_bot_monologue()
+	
+	if (
+		snap_point == $Camera/CaveOfWondersCameraMarker &&
+		stage == Stage.LETTERS_MISSING
+	): 
+		_begin_cave_of_wonders_monologue()
+
+func _begin_cave_of_wonders_monologue() -> void:
+	var lines:Array[String] = [
+		"I am the cave of secrets.",
+		"I sense you have lost much.",
+		"Bring me a secret, and I will give you that which you seek."
+	]
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
 
 
 func _on_secret_settings_menu_toggle_free_roam_camera(toggled_on: bool) -> void:

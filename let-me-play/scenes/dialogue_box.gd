@@ -15,8 +15,9 @@ var text = ""
 var letter_index = 0
 
 
-const BLUE_BOX:Texture2D = preload("res://assets/art/DialogueBox.png")
-const RED_BOX:Texture2D  = preload("res://assets/art/DialogueBox_Red.png")
+const BLUE_BOX:Texture2D  = preload("res://assets/art/DialogueBox.png")
+const RED_BOX:Texture2D   = preload("res://assets/art/DialogueBox_Red.png")
+const BLACK_BOX:Texture2D = preload("res://assets/art/DialogueBox_black.png")
 
 var letter_time = 0.03
 var space_time = 0.06
@@ -32,6 +33,9 @@ func set_colour(colour:String):
 		"blue":
 			$NinePatchRect.texture = BLUE_BOX
 			$MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))
+		"black":
+			$NinePatchRect.texture = BLACK_BOX
+			$MarginContainer/Label.add_theme_color_override("font_color", Color("000000"))
 		_: 
 			$NinePatchRect.texture = BLUE_BOX
 			$MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))

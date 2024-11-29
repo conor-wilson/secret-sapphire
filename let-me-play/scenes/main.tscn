@@ -97,6 +97,9 @@ position = Vector2(3084, 294)
 [node name="MonologueMarker" type="Marker2D" parent="DialogueMarkers"]
 position = Vector2(823, 295)
 
+[node name="CaveMarker" type="Marker2D" parent="DialogueMarkers"]
+position = Vector2(4286, -1340)
+
 [node name="MovementMarkers" type="Node2D" parent="."]
 
 [node name="CageMarkers" type="Node2D" parent="MovementMarkers"]
