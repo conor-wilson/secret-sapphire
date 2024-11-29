@@ -453,6 +453,7 @@ func _begin_cave_of_wonders_monologue() -> void:
 		"I sense you have lost much.",
 		"Bring me a secret, and I will give you that which you seek."
 	]
+	DialogueManager.stop_all_dialogue()
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
 
 
@@ -472,3 +473,42 @@ func _on_secret_settings_menu_toggle_camera_zoom(toggled_on: bool) -> void:
 	else:
 		$ItemInstructions.hide()
 		$Camera/FreeRoamCamera.disable_zoom()
+
+
+func _on_cave_of_wonders_secret_received() -> void:
+	
+	if stage != Stage.LETTERS_MISSING:
+		return
+	
+	match CursorManager.current_cursor:
+		
+		CursorManager.CURSOR:
+			_begin_cave_of_wonders_monologue()
+		
+		CursorManager.WRENCH:
+			var lines:Array[String] = [
+				"This item contains no secrets.",
+				"Its purpose is to tighten and untighten screws and bolts.",
+				"Bring me a secret, and I will give you that which you seek.",
+			]
+			DialogueManager.stop_all_dialogue()
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
+		
+		CursorManager.FIRE_EXTINGUISHER:
+			var lines:Array[String] = [
+				"This item contains no secrets.",
+				"Its purpose is put out fires in homes when they burn.",
+				"Bring me a secret, and I will give you that which you seek.",
+			]
+			DialogueManager.stop_all_dialogue()
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
+		
+		CursorManager.CRUMPLED_PAPER:
+			var lines:Array[String] = [
+				"Ah, a secret password.",
+				"The DEV should be more careful of the secrets they leave lying around.",
+				"You have brought me a delectable secret, and so I will give you what you seek.",
+			]
+			DialogueManager.stop_all_dialogue()
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
+		

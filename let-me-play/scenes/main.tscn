@@ -383,6 +383,7 @@ position = Vector2(184, -144)
 [connection signal="shake_screen" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_shake_screen"]
 [connection signal="toggle_camera_zoom" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_toggle_camera_zoom"]
 [connection signal="toggle_free_roam_camera" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_toggle_free_roam_camera"]
+[connection signal="secret_received" from="Menus/CaveOfWonders" to="." method="_on_cave_of_wonders_secret_received"]
 [connection signal="click" from="Items/Wrench" to="." method="_on_wrench_click"]
 [connection signal="click" from="Items/FireExtinguisher" to="." method="_on_fire_extinguisher_click"]
 [connection signal="click" from="Items/CrumpledPasswordHint" to="." method="_on_crumpled_password_hint_click"]
