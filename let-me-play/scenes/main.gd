@@ -10,6 +10,7 @@ var cursor_in_item_drop_zone:bool = false
 
 @onready var wrench: InteractiveElement = $Items/Wrench
 @onready var fire_extinguisher: InteractiveElement = $Items/FireExtinguisher
+@onready var crumpled_password_hint: InteractiveElement = $Items/CrumpledPasswordHint
 
 # Stage indicates where we are in the game's story so that we can keep track of 
 # dialogue
@@ -172,6 +173,20 @@ func _drop_held_item():
 			new_wrench.position = get_local_mouse_position()
 			new_wrench.detatch(20)
 			wrench = new_wrench
+		
+		CursorManager.CRUMPLED_PAPER:
+			$ItemInstructions.hide()
+			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
+			
+			var new_crumpled_password_hint:InteractiveElement = crumpled_password_hint.duplicate()
+			crumpled_password_hint.queue_free()
+			
+			add_child(new_crumpled_password_hint)
+			new_crumpled_password_hint.show()
+			new_crumpled_password_hint.position = get_local_mouse_position()
+			new_crumpled_password_hint.detatch(20)
+			crumpled_password_hint = new_crumpled_password_hint
+		
 		CursorManager.FIRE_EXTINGUISHER:
 			$ItemInstructions.hide()
 			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
@@ -183,7 +198,7 @@ func _drop_held_item():
 			add_child(new_fire_extinguisher)
 			new_fire_extinguisher.show()
 			new_fire_extinguisher.position = get_local_mouse_position()
-			new_fire_extinguisher.detatch(20)
+			new_fire_extinguisher.detatch(80)
 			fire_extinguisher = new_fire_extinguisher
 
 
@@ -379,10 +394,14 @@ func _on_wrench_click() -> void:
 	wrench.hide()
 	$Menus/SettingsMenu.detatch_screwdriver()
 
-func _show_instructions(text:String) -> void:
-	for instruction_lable in $ItemInstructions.get_children():
-		instruction_lable.text = text
-	$ItemInstructions.show()
+func _on_crumpled_password_hint_click() -> void:
+	
+	print("CRUMPLED PASSWORD HINT CLICKED")
+	
+	_drop_held_item()
+	CursorManager.set_mouse_cursor(CursorManager.CRUMPLED_PAPER)
+	_show_instructions("<RIGHT CLICK to drop CRUMPLED PASSWORD HINT>")
+	crumpled_password_hint.hide()
 
 func _on_fire_extinguisher_click() -> void:
 	
@@ -393,6 +412,11 @@ func _on_fire_extinguisher_click() -> void:
 	_show_instructions("<RIGHT CLICK to drop FIRE EXTINGUISHER>")
 	fire_extinguisher.hide()
 
+
+func _show_instructions(text:String) -> void:
+	for instruction_lable in $ItemInstructions.get_children():
+		instruction_lable.text = text
+	$ItemInstructions.show()
 
 func _on_main_menu_a_collected() -> void:
 	$CollectedLetters/A1.show()
