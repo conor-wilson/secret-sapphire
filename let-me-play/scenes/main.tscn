@@ -47,10 +47,12 @@ script = ExtResource("1_lvo15")
 
 [node name="Camera" type="Node2D" parent="."]
 
-[node name="FreeRoamCamera" parent="Camera" instance=ExtResource("2_qs646")]
+[node name="FreeRoamCamera" parent="Camera" node_paths=PackedStringArray("snap_points") instance=ExtResource("2_qs646")]
 position = Vector2(576, 324)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+snap_distance = 96.0
+snap_points = [NodePath("../MainMenuCameraMarker"), NodePath("../SettingsCameraMarker"), NodePath("../SecretSettingsCameraMarker")]
 
 [node name="MainMenuCameraMarker" type="Marker2D" parent="Camera"]
 position = Vector2(576, 324)
