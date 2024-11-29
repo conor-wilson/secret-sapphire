@@ -59,7 +59,7 @@ _data = {
 "sticky_note_animation": SubResource("Animation_xpr53")
 }
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gqx4u"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2ej0i"]
 bounce = 0.3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2u67"]
@@ -105,13 +105,11 @@ libraries = {
 }
 autoplay = "sticky_note_animation"
 
-[node name="CrumpledStickyNote" type="RigidBody2D" parent="InteractiveElements"]
+[node name="CrumpledStickyNote" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 visible = false
 position = Vector2(184, 328)
 collision_layer = 16
-physics_material_override = SubResource("PhysicsMaterial_gqx4u")
-gravity_scale = 0.0
-metadata/_edit_group_ = true
+physics_material_override = SubResource("PhysicsMaterial_2ej0i")
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledStickyNote"]
 texture = ExtResource("4_ylyox")
@@ -334,6 +332,7 @@ vertical_alignment = 2
 
 [connection signal="a_collected" from="Desktop" to="." method="_on_desktop_a_collected"]
 [connection signal="tap" from="Desktop" to="." method="_on_desktop_tap"]
+[connection signal="click" from="InteractiveElements/CrumpledStickyNote" to="." method="_on_crumpled_sticky_note_click"]
 [connection signal="smash" from="InteractiveElements/Panel" to="." method="_on_panel_smash"]
 [connection signal="click" from="InteractiveElements/StartButton" to="." method="_on_start_button_click"]
 [connection signal="smash" from="InteractiveElements/StartButton" to="." method="_on_start_button_smash"]

@@ -123,3 +123,8 @@ func activate_desktop():
 
 func _on_desktop_a_collected() -> void:
 	a_collected.emit()
+
+
+func _on_crumpled_sticky_note_click() -> void:
+	$InteractiveElements/CrumpledStickyNote.hide()
+	CursorManager.set_mouse_cursor(CursorManager.CRUMPLED_PAPER)

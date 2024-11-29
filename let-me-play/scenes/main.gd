@@ -28,6 +28,7 @@ var stage:Stage = Stage.BEGINNING
 func _ready() -> void:
 	
 	fire_extinguisher.hide()
+	crumpled_password_hint.hide()
 	#fire_extinguisher.detatch(5)
 	
 	stage = Stage.BEGINNING
