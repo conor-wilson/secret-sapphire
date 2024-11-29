@@ -388,5 +388,14 @@ func _on_r_collect() -> void:
 
 
 func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
-	if snap_point == $Camera/SecretSettingsCameraMarker:
-		print("Arrived!")
+	if (
+		snap_point == $Camera/SecretSettingsCameraMarker &&
+		(stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN)
+	):
+		_start_help_bot_deception_sequence()
+	
+	if (
+		snap_point == $Camera/MainMenuCameraMarker && 
+		stage == Stage.HELP_BOT_WAITING_TO_MONOLOGUE 
+	):
+		_begin_help_bot_monologue()
