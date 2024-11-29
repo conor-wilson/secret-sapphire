@@ -358,6 +358,7 @@ position = Vector2(184, -144)
 [connection signal="shake_screen" from="Menus/SettingsMenu" to="." method="_on_settings_menu_shake_screen"]
 [connection signal="back_pressed" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_back_pressed"]
 [connection signal="shake_screen" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_shake_screen"]
+[connection signal="toggle_free_roam_camera" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_toggle_free_roam_camera"]
 [connection signal="click" from="Items/Wrench" to="." method="_on_wrench_click"]
 [connection signal="click" from="Items/FireExtinguisher" to="." method="_on_fire_extinguisher_click"]
 [connection signal="mouse_entered" from="ItemDropZones/MainMenu" to="." method="_on_item_drop_zone_mouse_entered"]

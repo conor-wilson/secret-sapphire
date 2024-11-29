@@ -203,9 +203,9 @@ func _check_input_cache():
 	
 	if input_cache == unlock_free_roam_camera_cheat_code:
 		print("Unlocking Free Roam Camera...")
+		shake_screen(5,5)
 		$Menus/SecretSettingsMenu.unlock_free_roaming_camera()
 		$Camera/FreeRoamCamera.enable_free_roam()
-		
 
 func free_help_bot():
 	
@@ -399,3 +399,9 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 		stage == Stage.HELP_BOT_WAITING_TO_MONOLOGUE 
 	):
 		_begin_help_bot_monologue()
+
+
+func _on_secret_settings_menu_toggle_free_roam_camera(toggled_on: bool) -> void:
+	$Camera/FreeRoamCamera.free_roam_mode_enabled = toggled_on
+	if !toggled_on:
+		$Camera/FreeRoamCamera.position = $Camera/SecretSettingsCameraMarker.position

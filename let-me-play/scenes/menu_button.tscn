@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://s4xq3eosd21v"]
+
+[ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="1_bxvqx"]
+[ext_resource type="Script" path="res://scenes/menu_button.gd" id="2_fpol0"]
+
+[node name="MenuButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+theme = ExtResource("1_bxvqx")
+theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "sample text"
+flat = true
+icon_alignment = 2
+script = ExtResource("2_fpol0")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
