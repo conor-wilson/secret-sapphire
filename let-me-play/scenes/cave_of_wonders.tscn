@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvp3k2yn1w8rb"]
+
+[ext_resource type="Texture2D" uid="uid://bjc3ogtd7g8s4" path="res://assets/art/Cave.png" id="1_db4o6"]
+
+[node name="CaveOfWonders" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(144, 144)
+texture = ExtResource("1_db4o6")

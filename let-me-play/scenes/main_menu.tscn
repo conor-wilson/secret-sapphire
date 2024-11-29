@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=4 uid="uid://5ctllddc4obb"]
 
-[ext_resource type="PackedScene" path="res://scenes/interactive_element.tscn" id="1_7wdxp"]
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_jssq0"]
 [ext_resource type="PackedScene" uid="uid://bwd7js17uny6q" path="res://scenes/desktop.tscn" id="2_kxbcg"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://y8wgjwjjrbhx" path="res://assets/art/SmallStartButton.png" id="8_nhvuo"]
 [ext_resource type="Texture2D" uid="uid://op2bmdwt6xln" path="res://assets/art/Screw.png" id="8_yx54q"]
 [ext_resource type="Texture2D" uid="uid://pvl4opjitbn6" path="res://assets/art/Letters1.png" id="12_oif4b"]
-[ext_resource type="PackedScene" path="res://scenes/running_letter.tscn" id="13_7j4n4"]
+[ext_resource type="PackedScene" uid="uid://lvqqxc7ln6wx" path="res://scenes/running_letter.tscn" id="13_7j4n4"]
 [ext_resource type="Texture2D" uid="uid://c7am4spqld716" path="res://assets/art/Letters2.png" id="13_mlhma"]
 [ext_resource type="Texture2D" uid="uid://rt1q2s47l33u" path="res://assets/art/Letters3.png" id="14_7kfov"]
 [ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/RunningLetters/running_s.tres" id="14_asqxe"]

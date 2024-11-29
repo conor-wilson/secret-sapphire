@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="4_558x5"]
 [ext_resource type="PackedScene" uid="uid://s4xq3eosd21v" path="res://scenes/menu_button.tscn" id="4_pbn47"]
 [ext_resource type="Texture2D" uid="uid://b63820ss4q4ep" path="res://assets/art/checkBoxUnchecked.png" id="5_te0yd"]
-[ext_resource type="PackedScene" path="res://scenes/interactive_element.tscn" id="6_447go"]
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="6_447go"]
 [ext_resource type="Texture2D" uid="uid://q1bluytg0n3h" path="res://assets/art/ScrewDriver.png" id="7_lbls2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3h1cu"]
