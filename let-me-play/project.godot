@@ -99,6 +99,8 @@ pan={
 2d_physics/layer_9="desktop_icons"
 2d_physics/layer_10="item_drop_zones"
 2d_physics/layer_11="items"
+2d_physics/layer_12="hammer_man_character"
+2d_physics/layer_13="hammer_man_level"
 
 [rendering]
 
