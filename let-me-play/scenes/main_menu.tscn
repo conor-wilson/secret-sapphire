@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=31 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwd7js17uny6q" path="res://scenes/desktop.tscn" id="2_kxbcg"]
 [ext_resource type="Texture2D" uid="uid://1rpws7w7ml0u" path="res://assets/art/StickyNoteTest-Sheet.png" id="3_ahnkd"]
 [ext_resource type="Texture2D" uid="uid://7r8cut1jsvt0" path="res://assets/art/Panel.png" id="3_janoq"]
-[ext_resource type="Texture2D" uid="uid://c04fbie0j08m" path="res://assets/art/menuTiles.png" id="4_es462"]
+[ext_resource type="TileSet" uid="uid://cumnmwk8n3qwe" path="res://scenes/breakable_menu_tiles.tres" id="4_rruka"]
 [ext_resource type="Texture2D" uid="uid://4damehrpitmi" path="res://assets/art/CrumpledPaper.png" id="4_ylyox"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_2a3fy"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_43f6x"]
@@ -21,16 +21,6 @@
 [ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/RunningLetters/running_t.tres" id="15_8ipti"]
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="16_pscsi"]
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="17_sxf8s"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_34nql"]
-texture = ExtResource("4_es462")
-6:1/0 = 0
-6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSet" id="TileSet_kqurx"]
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_34nql")
 
 [sub_resource type="Animation" id="Animation_bex1y"]
 length = 0.001
@@ -104,8 +94,8 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAiAAAAAAAAAAA
 tile_set = ExtResource("1_jssq0")
 
 [node name="BreakableBlocks" type="TileMapLayer" parent="." groups=["BreakableBlocks"]]
-tile_map_data = PackedByteArray("AABGACQAAAAGAAEAAABHACQAAAAGAAEAAABHACUAAAAGAAEAAABGACUAAAAGAAEAAABAACUAAAAGAAEAAAA/ACUAAAAGAAEAAAA+ACUAAAAGAAEAAAA9ACUAAAAGAAEAAAA8ACUAAAAGAAEAAAA7ACUAAAAGAAEAAAA6ACUAAAAGAAEAAAA5ACUAAAAGAAEAAAA4ACUAAAAGAAEAAAA3ACUAAAAGAAEAAAA2ACUAAAAGAAEAAAA1ACUAAAAGAAEAAAA0ACUAAAAGAAEAAAAzACUAAAAGAAEAAAAyACUAAAAGAAEAAAAyACQAAAAGAAEAAAAzACQAAAAGAAEAAAA0ACQAAAAGAAEAAAA1ACQAAAAGAAEAAAA2ACQAAAAGAAEAAAA3ACQAAAAGAAEAAAA4ACQAAAAGAAEAAAA5ACQAAAAGAAEAAAA6ACQAAAAGAAEAAAA7ACQAAAAGAAEAAAA8ACQAAAAGAAEAAAA9ACQAAAAGAAEAAAA+ACQAAAAGAAEAAAA/ACQAAAAGAAEAAABAACQAAAAGAAEAAAA=")
-tile_set = SubResource("TileSet_kqurx")
+tile_map_data = PackedByteArray("AABGACQAAAAGAAEAAABHACQAAAAGAAEAAABHACUAAAAGAAEAAABGACUAAAAGAAEAAAA=")
+tile_set = ExtResource("4_rruka")
 
 [node name="InteractiveElements" type="Node2D" parent="."]
 

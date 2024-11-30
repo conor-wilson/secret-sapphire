@@ -93,6 +93,9 @@ position = Vector2(623, 476)
 [node name="SecretSettingsButtonMarker" type="Marker2D" parent="DialogueMarkers"]
 position = Vector2(1839, 352)
 
+[node name="LockedSecretSettingsButtonMarker" type="Marker2D" parent="DialogueMarkers"]
+position = Vector2(1766, 352)
+
 [node name="CageDialogue" type="Marker2D" parent="DialogueMarkers"]
 position = Vector2(3084, 294)
 
@@ -343,6 +346,7 @@ position = Vector2(-123, 339)
 [connection signal="correct_username" from="Menus/SettingsMenu" to="." method="_on_settings_menu_correct_username"]
 [connection signal="incorrect_password" from="Menus/SettingsMenu" to="." method="_on_settings_menu_incorrect_password"]
 [connection signal="incorrect_username" from="Menus/SettingsMenu" to="." method="_on_settings_menu_incorrect_username"]
+[connection signal="secret_settings_pressed" from="Menus/SettingsMenu" to="." method="_on_settings_menu_secret_settings_pressed"]
 [connection signal="shake_screen" from="Menus/SettingsMenu" to="." method="_on_settings_menu_shake_screen"]
 [connection signal="back_pressed" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_back_pressed"]
 [connection signal="shake_screen" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_shake_screen"]

@@ -1,6 +1,7 @@
 extends Node2D
 
 signal back_pressed
+signal secret_settings_pressed
 signal shake_screen(strength:float, fade:float)
 signal correct_username
 signal incorrect_username
@@ -10,10 +11,12 @@ signal incorrect_password
 # TODO: Implement a generic way to check case-insentitively
 var accepted_usernames:Array[String] = [
 	"QuietLantern",
+	"Quietlantern",
 	"quietlantern",
 	"quietLantern",
 	"QUIETLANTERN",
 	"@QuietLantern",
+	"@Quietlantern",
 	"@quietlantern",
 	"@quietLantern",
 	"@QUIETLANTERN",
@@ -31,14 +34,30 @@ var accpted_passwords:Array[String] = [
 @onready var username_box: LineEdit = $CenterContainer/MarginContainer/VBoxContainer/UsernameBox
 @onready var password_box: LineEdit = $CenterContainer/MarginContainer/VBoxContainer/PasswordBox
 
+var secret_settings_locked:bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	lock_secret_settings()
+
+func lock_secret_settings():
 	username_box.hide()
 	password_box.hide()
+	secret_settings_locked = true
+	$CenterContainer/MarginContainer/VBoxContainer/SecretSettingsContainer/SecretSettingsButton.text = "<locked>"
+
+func unlock_secret_settings():
+	username_box.hide()
+	password_box.hide()
+	secret_settings_locked = false
+	$CenterContainer/MarginContainer/VBoxContainer/SecretSettingsContainer/SecretSettingsButton.text = "secret settings"
 
 func _on_secret_settings_button_pressed() -> void:
-	username_box.show()
-	username_box.grab_focus()
+	if secret_settings_locked:
+		username_box.show()
+		username_box.grab_focus()
+	else:
+		secret_settings_pressed.emit()
 
 func _on_username_box_text_submitted(new_text: String) -> void:
 	print("Username Entered: ", new_text)
@@ -58,6 +77,7 @@ func _on_password_box_text_submitted(new_text: String) -> void:
 	if _correct_input(new_text, accpted_passwords):
 		# TODO: Here, make it so that the Secret Settings button now just takes 
 		# you to the secret settings menu
+		unlock_secret_settings()
 		correct_password.emit()
 	
 	else:

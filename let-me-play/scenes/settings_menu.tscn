@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/settings_menu.gd" id="1_g011e"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_g236m"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="2_ityvj"]
-[ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man_game_tiles.tres" id="3_c3ucq"]
+[ext_resource type="TileSet" uid="uid://cumnmwk8n3qwe" path="res://scenes/breakable_menu_tiles.tres" id="3_pui2j"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="4_558x5"]
 [ext_resource type="PackedScene" uid="uid://s4xq3eosd21v" path="res://scenes/menu_button.tscn" id="4_pbn47"]
 [ext_resource type="Texture2D" uid="uid://b63820ss4q4ep" path="res://assets/art/checkBoxUnchecked.png" id="5_te0yd"]
@@ -34,7 +34,7 @@ tile_set = ExtResource("1_g236m")
 
 [node name="BreakableBlocks" type="TileMapLayer" parent="." groups=["BreakableBlocks"]]
 tile_map_data = PackedByteArray("AAAAACUAAAAGAAEAAAABACUAAAAGAAEAAAABACQAAAAGAAEAAAAAACQAAAAGAAEAAABGACIAAAAGAAEAAABHACIAAAAGAAEAAABHACMAAAAGAAEAAABGACMAAAAGAAEAAAA=")
-tile_set = ExtResource("3_c3ucq")
+tile_set = ExtResource("3_pui2j")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 offset_right = 1152.0
