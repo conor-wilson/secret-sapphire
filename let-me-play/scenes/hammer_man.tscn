@@ -1,7 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://bplobt2yqsrkn"]
+[gd_scene load_steps=9 format=3 uid="uid://bplobt2yqsrkn"]
 
 [ext_resource type="Script" path="res://scenes/hammer_man.gd" id="1_xriwn"]
-[ext_resource type="Texture2D" uid="uid://ew36lrsvo0g3" path="res://assets/art/HammerMan.png" id="2_r5owj"]
+[ext_resource type="Texture2D" uid="uid://ew36lrsvo0g3" path="res://assets/art/HammerMan/HammerMan.png" id="2_375q2"]
+[ext_resource type="Texture2D" uid="uid://eud55xccloly" path="res://assets/art/HammerMan/HammerManRunning-Sheet.png" id="2_p1pe4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0clnv"]
+atlas = ExtResource("2_p1pe4")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg23y"]
+atlas = ExtResource("2_p1pe4")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtn6e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_375q2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0clnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg23y")
+}],
+"loop": true,
+"name": &"running",
+"speed": 9.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_08jb5"]
 radius = 6.0
@@ -15,8 +46,10 @@ collision_layer = 2048
 collision_mask = 4353
 script = ExtResource("1_xriwn")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_r5owj")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dtn6e")
+animation = &"running"
+autoplay = "idle"
 
 [node name="HammerZoneRight1" type="Area2D" parent="."]
 position = Vector2(15, 8)

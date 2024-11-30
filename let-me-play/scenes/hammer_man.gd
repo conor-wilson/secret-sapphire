@@ -48,9 +48,14 @@ func set_direction(dir:Vector2):
 
 func set_sprite():
 	if direction.x < 0:
-		$Sprite2D.flip_h = true
+		$AnimatedSprite2D.flip_h = true
 	else:
-		$Sprite2D.flip_h = false
+		$AnimatedSprite2D.flip_h = false
+	
+	if moving: 
+		$AnimatedSprite2D.play("running")
+	else:
+		$AnimatedSprite2D.play("idle")
 
 func slam_hammer():
 	

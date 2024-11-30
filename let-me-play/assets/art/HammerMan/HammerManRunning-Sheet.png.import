@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ew36lrsvo0g3"
-path="res://.godot/imported/HammerMan.png-acaa1e1b9043ea49515afe1fca91184e.ctex"
+uid="uid://eud55xccloly"
+path="res://.godot/imported/HammerManRunning-Sheet.png-0bf3f2323dff3f57a44e10a85c11c4b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/HammerMan.png"
-dest_files=["res://.godot/imported/HammerMan.png-acaa1e1b9043ea49515afe1fca91184e.ctex"]
+source_file="res://assets/art/HammerMan/HammerManRunning-Sheet.png"
+dest_files=["res://.godot/imported/HammerManRunning-Sheet.png-0bf3f2323dff3f57a44e10a85c11c4b4.ctex"]
 
 [params]
 
