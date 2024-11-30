@@ -19,6 +19,7 @@ func _ready() -> void:
 
 func open():
 	$HammerMan.active = true
+	$HammerMan.show()
 	start_level($Levels/TitleScreen)
 
 func close():

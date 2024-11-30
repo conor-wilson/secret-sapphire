@@ -5,6 +5,7 @@ signal shake_screen(strength:float, fade:float)
 signal start_button_exploded
 signal a_collected
 signal hammer_man_escaped(global_pos:Vector2)
+signal hammer_man_level_changed
 
 var panel_screw_count:int = 4
 
@@ -133,3 +134,9 @@ func _on_crumpled_sticky_note_click() -> void:
 
 func _on_desktop_hammer_man_escaped(global_pos: Vector2) -> void:
 	hammer_man_escaped.emit(global_pos)
+
+func _on_desktop_hammer_man_block_break() -> void:
+	shake_screen.emit(5,5)
+
+func _on_desktop_hammer_man_level_changed() -> void:
+	hammer_man_level_changed.emit()

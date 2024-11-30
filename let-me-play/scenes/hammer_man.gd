@@ -98,7 +98,7 @@ func break_blocks_in_zone(zone:Area2D) -> bool:
 	
 	# Check to see if zone overlaps with any enemies
 	for area in zone.get_overlapping_areas():
-		if area is BlobEnemy:
+		if area is BlobEnemy && area.active:
 			area.kill()
 			broke_block = true
 	

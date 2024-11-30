@@ -555,3 +555,8 @@ func _on_main_menu_hammer_man_escaped(global_pos: Vector2) -> void:
 	hammer_man.global_position = global_pos
 	hammer_man.show()
 	hammer_man.active = true
+
+func _on_main_menu_hammer_man_level_changed() -> void:
+	if hammer_man != null:
+		hammer_man.hide()
+		hammer_man.active = false

@@ -361,6 +361,7 @@ position = Vector2(-123, 339)
 [connection signal="snap" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_snap"]
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]
 [connection signal="hammer_man_escaped" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_escaped"]
+[connection signal="hammer_man_level_changed" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_level_changed"]
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
 [connection signal="start_button_exploded" from="Menus/MainMenu" to="." method="_on_main_menu_start_button_exploded"]
