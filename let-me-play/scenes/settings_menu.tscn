@@ -118,6 +118,7 @@ text = "BACK"
 flat = true
 
 [node name="CreditContainer" type="MarginContainer" parent="."]
+visible = false
 offset_left = 760.0
 offset_top = 572.0
 offset_right = 1152.0
