@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=45 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop.gd" id="1_wj53n"]
 [ext_resource type="Texture2D" uid="uid://d6k4h82q3rpu" path="res://assets/art/DesktopBG.png" id="2_j3mel"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/collectable_letter.tscn" id="22_gmy4o"]
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="23_2ysj3"]
 [ext_resource type="Texture2D" uid="uid://8yqnj4mcp32" path="res://assets/art/DesktopIcons/HomeIcon.png" id="23_3xjlp"]
+[ext_resource type="PackedScene" uid="uid://dtxr5ergy7jvd" path="res://scenes/hammer_man_game.tscn" id="25_ruqgm"]
 [ext_resource type="TileSet" uid="uid://dqe6s2a32nf6q" path="res://scenes/static_tile_set.tres" id="26_totme"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyifw"]
@@ -99,6 +100,12 @@ height = 44.0
 font = ExtResource("5_bxrir")
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ime56"]
+size = Vector2(192, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfer5"]
+size = Vector2(16, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
 size = Vector2(48, 48)
 
@@ -118,11 +125,12 @@ texture = ExtResource("2_j3mel")
 
 [node name="DesktopIcons" type="Node2D" parent="."]
 
-[node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
+[node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 248)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
+openable_window = NodePath("../../DesktopWindows/HammerManEXE")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/HammerManEXEIcon"]
@@ -809,6 +817,27 @@ text = "\"THIS IS FINE\""
 label_settings = SubResource("LabelSettings_f8lwi")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HammerManEXE" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+visible = false
+position = Vector2(320, 232)
+draggable_boundary = NodePath("../../IconBoundary")
+draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
+close_button = NodePath("CloseButton")
+metadata/_edit_group_ = true
+
+[node name="HammerManGame" parent="DesktopWindows/HammerManEXE" instance=ExtResource("25_ruqgm")]
+position = Vector2(-96, -96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE"]
+position = Vector2(0, -88)
+shape = SubResource("RectangleShape2D_ime56")
+
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/HammerManEXE"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE/CloseButton"]
+position = Vector2(-88, -88)
+shape = SubResource("RectangleShape2D_kfer5")
 
 [node name="HomeButton" type="Area2D" parent="."]
 position = Vector2(104, 408)
