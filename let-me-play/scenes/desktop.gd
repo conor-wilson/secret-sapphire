@@ -1,9 +1,11 @@
 extends Node2D
 
 signal tap
+signal s_collected
 signal a_collected
 signal hammer_man_escaped(global_pos:Vector2)
 signal hammer_man_block_break
+signal hammer_man_death
 signal hammer_man_level_changed
 
 var clearing_all:bool
@@ -252,3 +254,9 @@ func _on_hammer_man_game_block_break() -> void:
 
 func _on_hammer_man_game_level_changed() -> void:
 	hammer_man_level_changed.emit()
+
+func _on_hammer_man_game_s_collected() -> void:
+	s_collected.emit()
+
+func _on_hammer_man_game_hammer_man_death() -> void:
+	hammer_man_death.emit()

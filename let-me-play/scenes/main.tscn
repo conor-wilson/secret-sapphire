@@ -309,20 +309,6 @@ shape = SubResource("CapsuleShape2D_f4r0k")
 
 [node name="CollectableLetters" type="Node2D" parent="."]
 
-[node name="S" type="Area2D" parent="CollectableLetters"]
-visible = false
-position = Vector2(937, 535)
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/S"]
-sprite_frames = ExtResource("10_wm5o8")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/S"]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_f4r0k")
-
 [node name="T1" type="Area2D" parent="CollectableLetters"]
 visible = false
 position = Vector2(969, 535)
@@ -362,6 +348,7 @@ position = Vector2(-123, 339)
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]
 [connection signal="hammer_man_escaped" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_escaped"]
 [connection signal="hammer_man_level_changed" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_level_changed"]
+[connection signal="s_collected" from="Menus/MainMenu" to="." method="_on_main_menu_s_collected"]
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
 [connection signal="start_button_exploded" from="Menus/MainMenu" to="." method="_on_main_menu_start_button_exploded"]

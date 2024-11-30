@@ -3,6 +3,8 @@ extends Node2D
 signal hammer_man_escaped(global_pos:Vector2)
 signal level_changed
 signal block_break
+signal hammer_man_death
+signal s_collected
 
 @onready var levels:Array[Node2D] = [
 	$Levels/TitleScreen,
@@ -15,7 +17,11 @@ signal block_break
 @onready var current_level:Node2D = $Levels/TitleScreen
 
 func _ready() -> void:
-	start_level($Levels/TitleScreen)
+	start_level($Levels/Level3)
+
+func _process(delta: float) -> void:
+	if !$Levels/Level3/S.can_collect:
+		$Levels/Level3/S.can_collect = check_s_collectable()
 
 func open():
 	$HammerMan.active = true
@@ -50,6 +56,17 @@ func start_level(desired_level:Node2D):
 	$HammerMan.position = $HammerManSpawnPoint.position
 	level_changed.emit()
 
+func check_s_collectable() -> bool:
+	var blocking_coords:Array[Vector2i] = [
+		Vector2i(1,3), Vector2i(2,3), Vector2i(3,3),
+		Vector2i(1,4), Vector2i(2,4), Vector2i(3,4),
+		Vector2i(1,5), Vector2i(2,5), Vector2i(3,5),
+	]
+	for blocking_coord in blocking_coords:
+		if $Levels/Level3/BreakableBlocks.get_cell_atlas_coords(blocking_coord) != Vector2i(-1,-1):
+			return false
+	
+	return true
 
 func _on_escape_zone_body_entered(body: Node2D) -> void:
 	if body is HammerMan:
@@ -77,12 +94,15 @@ func _on_level_3_door_body_entered(body: Node2D) -> void:
 
 func _on_level_1_blob_enemy_hit() -> void:
 	start_level($Levels/Level1)
+	hammer_man_death.emit()
 
 func _on_level_2_blob_enemy_hit() -> void:
 	start_level($Levels/Level2)
+	hammer_man_death.emit()
 
 func _on_level_3_blob_enemy_hit() -> void:
 	start_level($Levels/Level3)
+	hammer_man_death.emit()
 
 func _on_hammer_man_block_break() -> void:
 	block_break.emit()
@@ -92,3 +112,7 @@ func _on_blinker_timer_timeout() -> void:
 		$Levels/TitleScreen/Controls.hide()
 	else:
 		$Levels/TitleScreen/Controls.show()
+
+
+func _on_s_collect() -> void:
+	s_collected.emit()
