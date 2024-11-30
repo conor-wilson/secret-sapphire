@@ -1,6 +1,7 @@
 class_name HammerMan extends CharacterBody2D
 
 signal block_break
+signal slam_started
 
 var active:bool = true
 
@@ -9,6 +10,7 @@ const JUMP_VELOCITY = -300.0
 
 var direction:Vector2 = Vector2.RIGHT
 var moving:bool = false
+var slamming:bool = false
 
 func _physics_process(delta: float) -> void:
 	
@@ -25,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle Hammer Slam
 	if Input.is_action_just_pressed("ui_accept"):
-		slam_hammer()
+		slam_started.emit()
 	
 	# Get the input direction and handle the movement/deceleration.
 	moving = false
@@ -47,6 +49,11 @@ func set_direction(dir:Vector2):
 	velocity.x = direction.x * SPEED
 
 func set_sprite():
+	
+	if slamming:
+		$AnimatedSprite2D.play("slam")
+		return
+	
 	if direction.x < 0:
 		$AnimatedSprite2D.flip_h = true
 	else:
@@ -58,6 +65,8 @@ func set_sprite():
 		$AnimatedSprite2D.play("idle")
 
 func slam_hammer():
+	
+	slamming = true
 	
 	var break_1:bool = false
 	var break_2:bool = false
@@ -89,3 +98,12 @@ func break_blocks_in_zone(zone:Area2D) -> bool:
 	
 	# Report if a block was broken
 	return broke_block
+
+
+func _on_slam_started() -> void:
+	slamming = true
+	await $AnimatedSprite2D.frame_changed
+	await $AnimatedSprite2D.frame_changed
+	slam_hammer()
+	await $AnimatedSprite2D.animation_finished
+	slamming = false

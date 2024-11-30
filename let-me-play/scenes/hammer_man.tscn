@@ -1,16 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://bplobt2yqsrkn"]
+[gd_scene load_steps=12 format=3 uid="uid://bplobt2yqsrkn"]
 
 [ext_resource type="Script" path="res://scenes/hammer_man.gd" id="1_xriwn"]
 [ext_resource type="Texture2D" uid="uid://ew36lrsvo0g3" path="res://assets/art/HammerMan/HammerMan.png" id="2_375q2"]
 [ext_resource type="Texture2D" uid="uid://eud55xccloly" path="res://assets/art/HammerMan/HammerManRunning-Sheet.png" id="2_p1pe4"]
+[ext_resource type="Texture2D" uid="uid://bohi1q3vnhf77" path="res://assets/art/HammerMan/HammerManSlam-Sheet.png" id="4_wypc8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0clnv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1v86"]
 atlas = ExtResource("2_p1pe4")
-region = Rect2(0, 0, 48, 32)
+region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hg23y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k784g"]
 atlas = ExtResource("2_p1pe4")
-region = Rect2(48, 0, 48, 32)
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a63re"]
+atlas = ExtResource("4_wypc8")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebgbo"]
+atlas = ExtResource("4_wypc8")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dtn6e"]
 animations = [{
@@ -24,14 +33,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0clnv")
+"texture": SubResource("AtlasTexture_h1v86")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hg23y")
+"texture": SubResource("AtlasTexture_k784g")
 }],
 "loop": true,
 "name": &"running",
 "speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a63re")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebgbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebgbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebgbo")
+}],
+"loop": false,
+"name": &"slam",
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_08jb5"]
@@ -48,7 +74,7 @@ script = ExtResource("1_xriwn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dtn6e")
-animation = &"running"
+animation = &"slam"
 autoplay = "idle"
 
 [node name="HammerZoneRight1" type="Area2D" parent="."]
@@ -90,3 +116,5 @@ shape = SubResource("CapsuleShape2D_08jb5")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_504md")
+
+[connection signal="slam_started" from="." to="." method="_on_slam_started"]
