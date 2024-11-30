@@ -208,7 +208,7 @@ func _on_screen_body_exited(body: Node2D) -> void:
 
 
 func _on_hammer_man_exe_icon_double_clicked() -> void:
-	print("YO YO!")
+	$DesktopWindows/HammerManEXE/HammerManGame.open()
 
 
 func _on_home_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -235,3 +235,9 @@ func _on_fire_extinguisher_input_event(viewport: Node, event: InputEvent, shape_
 
 func _on_a_collect() -> void:
 	a_collected.emit()
+
+
+
+func _on_hammer_man_exe_close_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		$DesktopWindows/HammerManEXE/HammerManGame.close()

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bplobt2yqsrkn"]
+
+[ext_resource type="Script" path="res://scenes/hammer_man.gd" id="1_xriwn"]
+[ext_resource type="Texture2D" uid="uid://ew36lrsvo0g3" path="res://assets/art/HammerMan.png" id="2_r5owj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_504md"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_08jb5"]
+radius = 6.0
+height = 12.0
+
+[node name="HammerMan" type="CharacterBody2D"]
+collision_layer = 2048
+collision_mask = 4353
+script = ExtResource("1_xriwn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_r5owj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 1)
+shape = SubResource("CapsuleShape2D_504md")
+
+[node name="HammerZone1" type="Area2D" parent="."]
+position = Vector2(8, 8)
+collision_layer = 2048
+collision_mask = 4097
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerZone1"]
+shape = SubResource("CapsuleShape2D_08jb5")
+
+[node name="HammerZone2" type="Area2D" parent="."]
+position = Vector2(8, -6)
+collision_layer = 2048
+collision_mask = 4097
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerZone2"]
+shape = SubResource("CapsuleShape2D_08jb5")
