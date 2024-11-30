@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=26 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
@@ -18,6 +18,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="13_atri8"]
 [ext_resource type="PackedScene" uid="uid://dgb87ltag6my4" path="res://scenes/foam.tscn" id="14_kuj0x"]
 [ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/collectable_letter.tscn" id="16_ea6f3"]
+[ext_resource type="PackedScene" uid="uid://bplobt2yqsrkn" path="res://scenes/hammer_man.tscn" id="19_h4bd0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o1dt"]
 radius = 6.0104
@@ -351,25 +352,15 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/R"]
 shape = SubResource("CapsuleShape2D_f4r0k")
 
-[node name="T2" type="Area2D" parent="CollectableLetters"]
-visible = false
-position = Vector2(1073, 535)
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/T2"]
-sprite_frames = ExtResource("11_2eygt")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/T2"]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_f4r0k")
-
 [node name="Foam" parent="." instance=ExtResource("14_kuj0x")]
 position = Vector2(184, -144)
 
+[node name="HammerMan" parent="." instance=ExtResource("19_h4bd0")]
+position = Vector2(-123, 339)
+
 [connection signal="snap" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_snap"]
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]
+[connection signal="hammer_man_escaped" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_escaped"]
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
 [connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
 [connection signal="start_button_exploded" from="Menus/MainMenu" to="." method="_on_main_menu_start_button_exploded"]

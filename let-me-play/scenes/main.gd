@@ -11,6 +11,7 @@ var cursor_in_item_drop_zone:bool = false
 @onready var wrench: InteractiveElement = $Items/Wrench
 @onready var fire_extinguisher: InteractiveElement = $Items/FireExtinguisher
 @onready var crumpled_password_hint: InteractiveElement = $Items/CrumpledPasswordHint
+@onready var hammer_man: HammerMan = $HammerMan
 
 # Stage indicates where we are in the game's story so that we can keep track of 
 # dialogue
@@ -29,7 +30,8 @@ func _ready() -> void:
 	
 	fire_extinguisher.hide()
 	crumpled_password_hint.hide()
-	#fire_extinguisher.detatch(5)
+	hammer_man.hide()
+	hammer_man.active = false
 	
 	stage = Stage.BEGINNING
 	
@@ -547,3 +549,9 @@ func _on_cave_of_wonders_secret_received() -> void:
 
 func _on_cave_of_wonders_t_2_collected() -> void:
 	$CollectedLetters/T2.show()
+
+
+func _on_main_menu_hammer_man_escaped(global_pos: Vector2) -> void:
+	hammer_man.global_position = global_pos
+	hammer_man.show()
+	hammer_man.active = true

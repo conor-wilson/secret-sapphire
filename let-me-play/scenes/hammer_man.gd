@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name HammerMan extends CharacterBody2D
 
 var active:bool = false
 

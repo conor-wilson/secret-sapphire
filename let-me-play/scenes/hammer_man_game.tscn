@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=4 uid="uid://dtxr5ergy7jvd"]
+[gd_scene load_steps=6 format=4 uid="uid://dtxr5ergy7jvd"]
 
 [ext_resource type="Script" path="res://scenes/hammer_man_game.gd" id="1_214vy"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man_game_tiles.tres" id="1_w6q41"]
 [ext_resource type="Texture2D" uid="uid://baikahbpd705q" path="res://assets/art/DesktopWindows/HammerManWindow.png" id="2_jl3ys"]
 [ext_resource type="PackedScene" uid="uid://bplobt2yqsrkn" path="res://scenes/hammer_man.tscn" id="3_i6xiq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kh20f"]
+size = Vector2(32, 46)
 
 [node name="HammerManGame" type="Node2D"]
 script = ExtResource("1_214vy")
@@ -30,3 +33,16 @@ texture = ExtResource("2_jl3ys")
 
 [node name="HammerMan" parent="." instance=ExtResource("3_i6xiq")]
 position = Vector2(41, 154)
+
+[node name="EscapeZone" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EscapeZone"]
+position = Vector2(208, 48)
+shape = SubResource("RectangleShape2D_kh20f")
+
+[node name="HammerManSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(41, 154)
+
+[connection signal="body_entered" from="EscapeZone" to="." method="_on_escape_zone_body_entered"]

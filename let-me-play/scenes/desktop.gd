@@ -2,6 +2,7 @@ extends Node2D
 
 signal tap
 signal a_collected
+signal hammer_man_escaped(global_pos:Vector2)
 
 var clearing_all:bool
 
@@ -236,8 +237,10 @@ func _on_fire_extinguisher_input_event(viewport: Node, event: InputEvent, shape_
 func _on_a_collect() -> void:
 	a_collected.emit()
 
-
-
 func _on_hammer_man_exe_close_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		$DesktopWindows/HammerManEXE/HammerManGame.close()
+
+
+func _on_hammer_man_game_hammer_man_escaped(global_pos: Vector2) -> void:
+	hammer_man_escaped.emit(global_pos)
