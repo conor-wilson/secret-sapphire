@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://hmfard6sqx6h" path="res://scenes/free_roam_camera.tscn" id="2_qs646"]
 [ext_resource type="PackedScene" uid="uid://cfjp23jay1xyw" path="res://scenes/settings_menu.tscn" id="3_vdc1c"]
 [ext_resource type="PackedScene" uid="uid://vff026q47yk" path="res://scenes/secret_settings_menu.tscn" id="4_u0lve"]
-[ext_resource type="PackedScene" path="res://scenes/help_bot.tscn" id="5_lf0pf"]
+[ext_resource type="PackedScene" uid="uid://bcttde4rl6c7u" path="res://scenes/help_bot.tscn" id="5_lf0pf"]
 [ext_resource type="PackedScene" uid="uid://dvp3k2yn1w8rb" path="res://scenes/cave_of_wonders.tscn" id="6_o5rlv"]
-[ext_resource type="PackedScene" path="res://scenes/interactive_element.tscn" id="6_s1drs"]
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="6_s1drs"]
 [ext_resource type="Texture2D" uid="uid://difhinmukve4m" path="res://assets/art/Wrench.png" id="7_85cok"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="8_kk8my"]
 [ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/FireExtinguisher.png" id="8_mmbyy"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://4damehrpitmi" path="res://assets/art/CrumpledPaper.png" id="11_ytw5d"]
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="12_hat1b"]
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="13_atri8"]
-[ext_resource type="PackedScene" path="res://scenes/foam.tscn" id="14_kuj0x"]
+[ext_resource type="PackedScene" uid="uid://dgb87ltag6my4" path="res://scenes/foam.tscn" id="14_kuj0x"]
 [ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/collectable_letter.tscn" id="16_ea6f3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o1dt"]
@@ -79,7 +79,7 @@ position = Vector2(1152, 0)
 position = Vector2(2304, 0)
 
 [node name="CaveOfWonders" parent="Menus" instance=ExtResource("6_o5rlv")]
-position = Vector2(4103, -1575)
+position = Vector2(4238, -1428)
 
 [node name="HelpBot" parent="." instance=ExtResource("5_lf0pf")]
 position = Vector2(2879, 289)

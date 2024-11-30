@@ -185,7 +185,7 @@ func _drop_held_item():
 			add_child(new_crumpled_password_hint)
 			new_crumpled_password_hint.show()
 			new_crumpled_password_hint.position = get_local_mouse_position()
-			new_crumpled_password_hint.detatch(20)
+			new_crumpled_password_hint.detatch(50)
 			crumpled_password_hint = new_crumpled_password_hint
 		
 		CursorManager.FIRE_EXTINGUISHER:
@@ -199,7 +199,7 @@ func _drop_held_item():
 			add_child(new_fire_extinguisher)
 			new_fire_extinguisher.show()
 			new_fire_extinguisher.position = get_local_mouse_position()
-			new_fire_extinguisher.detatch(80)
+			new_fire_extinguisher.detatch(20)
 			fire_extinguisher = new_fire_extinguisher
 
 
@@ -441,18 +441,37 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 	):
 		_begin_help_bot_monologue()
 	
-	if (
-		snap_point == $Camera/CaveOfWondersCameraMarker &&
-		stage == Stage.LETTERS_MISSING
-	): 
-		_begin_cave_of_wonders_monologue()
+	if snap_point == $Camera/CaveOfWondersCameraMarker:
+		
+		if $Menus/CaveOfWonders.talking_about_paper == true:
+			return
+		
+		if stage == Stage.LETTERS_MISSING:
+			_begin_cave_of_wonders_monologue()
+		elif stage == Stage.HELP_BOT_MONOLOGUING:
+			return
+		else: 
+			var lines:Array[String] = [
+				"You, like me, are one who knows many secrets.",
+				"Although you are here too early.",
+				"Come back later when you have released the HELP BOT."
+			]
+			DialogueManager.stop_all_dialogue()
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
 
 func _begin_cave_of_wonders_monologue() -> void:
-	var lines:Array[String] = [
-		"I am the cave of secrets.",
-		"I sense you have lost much.",
-		"Bring me a secret, and I will give you that which you seek."
-	]
+	var lines:Array[String] = []
+	if !$Menus/CaveOfWonders.t_2_revealed:
+		lines = [
+			"I am the cave of secrets.",
+			"I sense you have lost much.",
+			"Bring me a secret, and I will give you that which you seek."
+		]
+	else:
+		lines = [
+			"I have nothing more to give you, and you have no more secrets to give me.",
+			"Good luck with the HELP BOT."
+		]
 	DialogueManager.stop_all_dialogue()
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
 
@@ -504,6 +523,8 @@ func _on_cave_of_wonders_secret_received() -> void:
 			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
 		
 		CursorManager.CRUMPLED_PAPER:
+			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
+			$Menus/CaveOfWonders.talking_about_paper = true
 			var lines:Array[String] = [
 				"Ah, a secret password.",
 				"The DEV should be more careful of the secrets they leave lying around.",
@@ -513,6 +534,8 @@ func _on_cave_of_wonders_secret_received() -> void:
 			var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
 			await dialogue.sequence_finished
 			
+			$Menus/CaveOfWonders.reveal_t_2()
+			$Menus/CaveOfWonders.talking_about_paper = false
 
 
 func _on_cave_of_wonders_t_2_collected() -> void:
