@@ -5,20 +5,21 @@ signal level_changed
 signal block_break
 
 @onready var levels:Array[Node2D] = [
+	$Levels/TitleScreen,
 	$Levels/Level1,
 	$Levels/Level2,
 	$Levels/Level3,
 	$Levels/VictoryScreen
 ]
 
-@onready var current_level:Node2D = $Levels/Level1
+@onready var current_level:Node2D = $Levels/TitleScreen
 
 func _ready() -> void:
-	start_level($Levels/Level1)
+	start_level($Levels/TitleScreen)
 
 func open():
 	$HammerMan.active = true
-	start_level($Levels/Level1)
+	start_level($Levels/TitleScreen)
 
 func close():
 	$HammerMan.active = false
@@ -57,6 +58,10 @@ func _on_escape_zone_body_entered(body: Node2D) -> void:
 		$HammerMan.position = $HammerManSpawnPoint.position
 
 
+func _on_level_0_door_body_entered(body: Node2D) -> void:
+	if body is HammerMan && current_level == $Levels/TitleScreen:
+		start_level($Levels/Level1)
+
 func _on_level_1_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/Level1:
 		start_level($Levels/Level2)
@@ -80,3 +85,9 @@ func _on_level_3_blob_enemy_hit() -> void:
 
 func _on_hammer_man_block_break() -> void:
 	block_break.emit()
+
+func _on_blinker_timer_timeout() -> void:
+	if $Levels/TitleScreen/Controls.visible:
+		$Levels/TitleScreen/Controls.hide()
+	else:
+		$Levels/TitleScreen/Controls.show()
