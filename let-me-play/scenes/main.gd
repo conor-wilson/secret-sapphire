@@ -317,6 +317,7 @@ func _begin_help_bot_monologue():
 	$Menus/MainMenu.activate_desktop()
 	for collectable_letter in $CollectableLetters.get_children():
 		collectable_letter.show()
+	$Menus/SecretSettingsMenu.hide_letter()
 
 
 func _on_settings_menu_correct_password() -> void:
@@ -546,10 +547,8 @@ func _on_cave_of_wonders_secret_received() -> void:
 			$Menus/CaveOfWonders.reveal_t_2()
 			$Menus/CaveOfWonders.talking_about_paper = false
 
-
 func _on_cave_of_wonders_t_2_collected() -> void:
 	$CollectedLetters/T2.show()
-
 
 func _on_main_menu_hammer_man_escaped(global_pos: Vector2) -> void:
 	hammer_man.global_position = global_pos
@@ -561,6 +560,8 @@ func _on_main_menu_hammer_man_level_changed() -> void:
 		hammer_man.hide()
 		hammer_man.active = false
 
-
 func _on_main_menu_s_collected() -> void:
 	$CollectedLetters/S.show()
+
+func _on_secret_settings_menu_t_1_collected() -> void:
+	$CollectedLetters/T1.show()

@@ -309,20 +309,6 @@ shape = SubResource("CapsuleShape2D_f4r0k")
 
 [node name="CollectableLetters" type="Node2D" parent="."]
 
-[node name="T1" type="Area2D" parent="CollectableLetters"]
-visible = false
-position = Vector2(969, 535)
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/T1"]
-sprite_frames = ExtResource("11_2eygt")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/T1"]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_f4r0k")
-
 [node name="R" parent="CollectableLetters" instance=ExtResource("16_ea6f3")]
 visible = false
 position = Vector2(20, -54)
@@ -360,6 +346,7 @@ position = Vector2(-123, 339)
 [connection signal="shake_screen" from="Menus/SettingsMenu" to="." method="_on_settings_menu_shake_screen"]
 [connection signal="back_pressed" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_back_pressed"]
 [connection signal="shake_screen" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_shake_screen"]
+[connection signal="t_1_collected" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_t_1_collected"]
 [connection signal="toggle_camera_zoom" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_toggle_camera_zoom"]
 [connection signal="toggle_free_roam_camera" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_toggle_free_roam_camera"]
 [connection signal="secret_received" from="Menus/CaveOfWonders" to="." method="_on_cave_of_wonders_secret_received"]

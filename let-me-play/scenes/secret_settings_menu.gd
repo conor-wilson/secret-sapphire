@@ -6,6 +6,14 @@ signal shake_screen(strength:float, fade:float)
 signal back_pressed
 signal toggle_free_roam_camera(toggled_on:bool)
 signal toggle_camera_zoom(toggled_on:bool)
+signal t_1_collected
+
+func _process(delta: float) -> void:
+	if !$T1.can_collect:
+		$T1.can_collect = check_t_1_collectable()
+
+func check_t_1_collectable() -> bool:
+	return $SpecialBreakableBlocks.get_used_cells().size() == 0
 
 func unlock_cage():
 	_detatch_element_if_exists("Cage", 1)
@@ -55,3 +63,10 @@ func _on_enable_free_roam_camera_box_toggled(toggled_on: bool) -> void:
 
 func _on_enable_camera_zoom_box_toggled(toggled_on: bool) -> void:
 	toggle_camera_zoom.emit(toggled_on)
+
+func hide_letter():
+	$T1.show()
+	$SpecialBreakableBlocks.show()
+
+func _on_t_1_collect() -> void:
+	t_1_collected.emit()
