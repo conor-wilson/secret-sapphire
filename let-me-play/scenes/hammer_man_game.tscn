@@ -24,7 +24,7 @@ tile_map_data = PackedByteArray("AAABAAcAAAAHAAAAAAACAAcAAAAHAAAAAAAFAAkAAAAHAAA
 tile_set = ExtResource("1_w6q41")
 
 [node name="BreakableBlocks" type="TileMapLayer" parent="." groups=["BreakableBlocks"]]
-tile_map_data = PackedByteArray("AAAHAAUAAAAHAAEAAAAHAAYAAAAHAAEAAAALAAIAAAAHAAEAAAALAAMAAAAHAAEAAAA=")
+tile_map_data = PackedByteArray("AAAHAAUAAAAHAAEAAAAHAAYAAAAHAAEAAAALAAIAAAAHAAEAAAALAAMAAAAHAAEAAAABAAYAAAAHAAEAAAABAAUAAAAHAAEAAAA=")
 tile_set = ExtResource("1_w6q41")
 
 [node name="HammerManWindow" type="Sprite2D" parent="."]

@@ -1,10 +1,14 @@
 class_name HammerMan extends CharacterBody2D
 
-var active:bool = false
+signal block_break
+
+var active:bool = true
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 
+var direction:Vector2 = Vector2.RIGHT
+var moving:bool = false
 
 func _physics_process(delta: float) -> void:
 	
@@ -19,23 +23,49 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
+	# Handle Hammer Slam
 	if Input.is_action_just_pressed("ui_accept"):
-		
-		var break_1:bool = break_blocks_in_zone($HammerZone1)
-		var break_2:bool = break_blocks_in_zone($HammerZone2)
-		if  break_1 || break_2:
-			print("BREAK!")
-		
+		slam_hammer()
 	
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
+	moving = false
+	if Input.is_action_pressed("right"):
+		set_direction(Vector2.RIGHT)
+		moving = true
+	if Input.is_action_pressed("left"):
+		set_direction(Vector2.LEFT)
+		moving = true
+	if !moving:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	
+	set_sprite()
+	
 	move_and_slide()
+
+func set_direction(dir:Vector2):
+	direction = dir
+	velocity.x = direction.x * SPEED
+
+func set_sprite():
+	if direction.x < 0:
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
+
+func slam_hammer():
+	
+	var break_1:bool = false
+	var break_2:bool = false
+	if direction.x < 0:
+		break_1 = break_blocks_in_zone($HammerZoneLeft1)
+		break_2 = break_blocks_in_zone($HammerZoneLeft2)
+	else:
+		break_1 = break_blocks_in_zone($HammerZoneRight1)
+		break_2 = break_blocks_in_zone($HammerZoneRight2)
+	
+	if break_1 || break_2:
+		block_break.emit()
+		print("BREAK!")
 
 func break_blocks_in_zone(zone:Area2D) -> bool:
 	
