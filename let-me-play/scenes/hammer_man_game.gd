@@ -17,7 +17,7 @@ signal s_collected
 @onready var current_level:Node2D = $Levels/TitleScreen
 
 func _ready() -> void:
-	start_level($Levels/Level3)
+	start_level($Levels/TitleScreen)
 
 func _process(delta: float) -> void:
 	if !$Levels/Level3/S.can_collect:
@@ -30,6 +30,7 @@ func open():
 
 func close():
 	$HammerMan.active = false
+	start_level(null)
 
 func start_level(desired_level:Node2D):
 	
@@ -52,7 +53,8 @@ func start_level(desired_level:Node2D):
 					child.kill()
 	
 	# Show the desired level and move HammerMan to start position
-	desired_level.show()
+	if desired_level != null:
+		desired_level.show()
 	$HammerMan.position = $HammerManSpawnPoint.position
 	level_changed.emit()
 
