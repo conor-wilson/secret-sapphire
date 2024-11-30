@@ -117,4 +117,14 @@ shape = SubResource("CapsuleShape2D_08jb5")
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_504md")
 
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="CoyoteTimer" type="Timer" parent="Timers"]
+wait_time = 0.06
+
+[node name="JumpBufferTimer" type="Timer" parent="Timers"]
+wait_time = 0.07
+one_shot = true
+
 [connection signal="slam_started" from="." to="." method="_on_slam_started"]
+[connection signal="timeout" from="Timers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

@@ -11,6 +11,7 @@ const JUMP_VELOCITY = -300.0
 var direction:Vector2 = Vector2.RIGHT
 var moving:bool = false
 var slamming:bool = false
+var can_jump:bool = false
 
 func _physics_process(delta: float) -> void:
 	
@@ -21,12 +22,18 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	handle_jumpability()
+	handle_jump_buffer()
+
 	# Handle jump.
-	if Input.is_action_just_pressed("up") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("up"):
+		if can_jump:
+			jump()
+		else:
+			$Timers/JumpBufferTimer.start()
 	
 	# Handle Hammer Slam
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("slam"):
 		slam_started.emit()
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -43,6 +50,30 @@ func _physics_process(delta: float) -> void:
 	set_sprite()
 	
 	move_and_slide()
+
+# handle_jumpability detects whether the player should be able to jump, and adjusts the
+# can_jump var accordingly.
+func handle_jumpability(): 
+	if is_on_floor():
+		can_jump = true
+		$Timers/CoyoteTimer.stop()
+	elif can_jump && $Timers/CoyoteTimer.is_stopped(): 
+		$Timers/CoyoteTimer.start()
+
+func jump():
+	can_jump = false
+	$Timers/CoyoteTimer.stop()
+	$Timers/JumpBufferTimer.stop()
+	velocity.y = JUMP_VELOCITY
+
+func _on_coyote_timer_timeout() -> void:
+	can_jump = false
+
+# handle_jump_buffer causes the player to jump if they have just landed on the floor
+# during the jump buffer timeout period.
+func handle_jump_buffer():
+	if not $Timers/JumpBufferTimer.is_stopped() && can_jump:
+		jump()
 
 func set_direction(dir:Vector2):
 	direction = dir
