@@ -226,7 +226,7 @@ func _check_input_cache():
 		shake_screen(5,5)
 		$Menus/SecretSettingsMenu.unlock_free_roaming_camera()
 		$Camera/FreeRoamCamera.enable_free_roam()
-		_show_instructions("<RIGHT CLICK and DRAG to pan camera>")
+		_show_instructions("<MIDDLE MOUSE or CTRL+CLICK and DRAG to pan camera>")
 	
 	if input_cache == unlock_camera_zoom_cheat_code:
 		print("Unlocking Zoom Camera...")
@@ -479,7 +479,7 @@ func _begin_cave_of_wonders_monologue() -> void:
 func _on_secret_settings_menu_toggle_free_roam_camera(toggled_on: bool) -> void:
 	$Camera/FreeRoamCamera.enable_free_roam()
 	if toggled_on:
-		_show_instructions("<RIGHT CLICK and DRAG to pan camera>")
+		_show_instructions("<MIDDLE MOUSE or RIGHT CLICK and DRAG to pan camera>")
 	else:
 		$ItemInstructions.hide()
 		$Camera/FreeRoamCamera.disable_free_roam($Camera/SecretSettingsCameraMarker.position)
@@ -497,6 +497,13 @@ func _on_secret_settings_menu_toggle_camera_zoom(toggled_on: bool) -> void:
 func _on_cave_of_wonders_secret_received() -> void:
 	
 	if stage != Stage.LETTERS_MISSING:
+		var lines:Array[String] = [
+			"You, like me, are one who knows many secrets.",
+			"Although you are here too early.",
+			"Come back later when you have released the HELP BOT."
+		]
+		DialogueManager.stop_all_dialogue()
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
 		return
 	
 	match CursorManager.current_cursor:

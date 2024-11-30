@@ -34,15 +34,15 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	
-	if !is_current() || CursorManager.current_cursor != CursorManager.CURSOR:
+	if !is_current():
 		return
 	
-	if event.is_action_pressed("right_click"):
+	if event.is_action_pressed("pan"):
 		print("Starting Dragging")
 		original_mouse_pos = get_global_mouse_position()
 		original_pos = global_position
 		moving = true
-	elif event.is_action_released("right_click"):
+	elif event.is_action_released("pan"):
 		print("Stopping Dragging")
 		moving = false
 	
