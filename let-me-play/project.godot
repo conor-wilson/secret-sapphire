@@ -25,6 +25,10 @@ Global="*res://singletons/global.gd"
 
 window/stretch/mode="viewport"
 
+[global_group]
+
+BreakableBlocks=""
+
 [input]
 
 click={
