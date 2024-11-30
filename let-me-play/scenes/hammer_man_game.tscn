@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=4 uid="uid://dtxr5ergy7jvd"]
+[gd_scene load_steps=7 format=4 uid="uid://dtxr5ergy7jvd"]
 
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man_game_tiles.tres" id="1_w6q41"]
 [ext_resource type="Texture2D" uid="uid://baikahbpd705q" path="res://assets/art/DesktopWindows/HammerManWindow.png" id="2_jl3ys"]
-[ext_resource type="Texture2D" uid="uid://cehmp6afuprf1" path="res://icon.svg" id="3_j75dx"]
 [ext_resource type="Script" path="res://scenes/hammer_man.gd" id="3_qwi2t"]
+[ext_resource type="Texture2D" uid="uid://ew36lrsvo0g3" path="res://assets/art/HammerMan.png" id="4_m6gec"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlkxi"]
-size = Vector2(24, 24)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uw1x2"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sm3if"]
+radius = 6.0
+height = 12.0
 
 [node name="HammerManGame" type="Node2D"]
 
@@ -19,6 +23,11 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAHAAAAAAABAAAAAAAHAAAAAAALAAAAAAAHAAA
 tile_set = ExtResource("1_w6q41")
 
 [node name="Platforms" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABAAcAAAAHAAAAAAACAAcAAAAHAAAAAAAFAAkAAAAHAAAAAAAFAAoAAAAHAAAAAAAFAAgAAAAHAAAAAAAGAAcAAAAHAAAAAAAHAAcAAAAHAAAAAAAHAAQAAAAHAAAAAAAIAAQAAAAHAAAAAAAJAAQAAAAHAAAAAAAKAAQAAAAHAAAAAAAGAAgAAAAHAAAAAAAKAAoAAAAHAAAAAAA=")
+tile_set = ExtResource("1_w6q41")
+
+[node name="BreakableBlocks" type="TileMapLayer" parent="." groups=["BreakableBlocks"]]
+tile_map_data = PackedByteArray("AAAHAAUAAAAHAAEAAAAHAAYAAAAHAAEAAAA=")
 tile_set = ExtResource("1_w6q41")
 
 [node name="HammerManWindow" type="Sprite2D" parent="."]
@@ -26,15 +35,32 @@ position = Vector2(96, 96)
 texture = ExtResource("2_jl3ys")
 
 [node name="HammerMan" type="CharacterBody2D" parent="."]
-position = Vector2(91, 119)
+position = Vector2(34, 160)
 collision_layer = 2048
 collision_mask = 4352
 script = ExtResource("3_qwi2t")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="HammerMan"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_j75dx")
+texture = ExtResource("4_m6gec")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HammerMan"]
-shape = SubResource("RectangleShape2D_dlkxi")
+position = Vector2(-7, 1)
+shape = SubResource("CapsuleShape2D_uw1x2")
+
+[node name="HammerZone1" type="Area2D" parent="HammerMan"]
+position = Vector2(8, 8)
+collision_layer = 2048
+collision_mask = 4097
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerMan/HammerZone1"]
+shape = SubResource("CapsuleShape2D_sm3if")
+
+[node name="HammerZone2" type="Area2D" parent="HammerMan"]
+position = Vector2(8, -6)
+collision_layer = 2048
+collision_mask = 4097
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerMan/HammerZone2"]
+shape = SubResource("CapsuleShape2D_sm3if")
