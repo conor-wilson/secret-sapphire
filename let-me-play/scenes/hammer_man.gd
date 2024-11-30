@@ -96,6 +96,12 @@ func break_blocks_in_zone(zone:Area2D) -> bool:
 				body_as_tile_map_layer.erase_cell(block_cell_coords)
 				broke_block = true
 	
+	# Check to see if zone overlaps with any enemies
+	for area in zone.get_overlapping_areas():
+		if area is BlobEnemy:
+			area.kill()
+			broke_block = true
+	
 	# Report if a block was broken
 	return broke_block
 

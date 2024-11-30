@@ -42,7 +42,7 @@ script = ExtResource("1_lekqe")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lvc2u")
 autoplay = "default"
-frame_progress = 0.642564
+frame_progress = 0.911085
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dt4iv")
@@ -83,6 +83,7 @@ collision_mask = 4096
 position = Vector2(11, 11)
 shape = SubResource("RectangleShape2D_okerm")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="WallDetection/Left" to="." method="_on_wall_detection_left_body_entered"]
 [connection signal="body_entered" from="WallDetection/Right" to="." method="_on_wall_detection_right_body_entered"]
 [connection signal="body_exited" from="FloorDetection/Left" to="." method="_on_floor_detection_left_body_exited"]
