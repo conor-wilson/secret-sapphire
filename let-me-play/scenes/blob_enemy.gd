@@ -1,0 +1,32 @@
+class_name BlobEnemy extends Area2D
+
+@export var direction:Vector2 = Vector2.LEFT
+@export var speed:float = 1
+
+var active:bool = true 
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if active:
+		position += direction*speed
+
+func _on_wall_detection_left_body_entered(body: Node2D) -> void:
+	if active:
+		direction = Vector2.RIGHT
+
+func _on_wall_detection_right_body_entered(body: Node2D) -> void:
+	if active:
+		direction = Vector2.LEFT
+
+func _on_floor_detection_left_body_exited(body: Node2D) -> void:
+	if active:
+		direction = Vector2.RIGHT
+
+func _on_floor_detection_right_body_exited(body: Node2D) -> void:
+	if active:
+		direction = Vector2.LEFT

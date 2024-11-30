@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://cuionsm2r5c28"]
+
+[ext_resource type="Script" path="res://scenes/blob_enemy.gd" id="1_lekqe"]
+[ext_resource type="Texture2D" uid="uid://vc0x6veeavi7" path="res://assets/art/HammerMan/HammerManBlob-Sheet.png" id="1_ya62f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dqlq"]
+atlas = ExtResource("1_ya62f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh4n6"]
+atlas = ExtResource("1_ya62f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvc2u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dqlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh4n6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dt4iv"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0caf"]
+size = Vector2(4, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okerm"]
+size = Vector2(4, 5)
+
+[node name="BlobEnemy" type="Area2D"]
+collision_layer = 4096
+collision_mask = 2048
+script = ExtResource("1_lekqe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lvc2u")
+autoplay = "default"
+frame_progress = 0.642564
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dt4iv")
+
+[node name="WallDetection" type="Node2D" parent="."]
+
+[node name="Left" type="Area2D" parent="WallDetection"]
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetection/Left"]
+position = Vector2(-11, 2)
+shape = SubResource("RectangleShape2D_c0caf")
+
+[node name="Right" type="Area2D" parent="WallDetection"]
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetection/Right"]
+position = Vector2(11, 2)
+shape = SubResource("RectangleShape2D_c0caf")
+
+[node name="FloorDetection" type="Node2D" parent="."]
+
+[node name="Left" type="Area2D" parent="FloorDetection"]
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetection/Left"]
+position = Vector2(-11, 11)
+shape = SubResource("RectangleShape2D_okerm")
+
+[node name="Right" type="Area2D" parent="FloorDetection"]
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetection/Right"]
+position = Vector2(11, 11)
+shape = SubResource("RectangleShape2D_okerm")
+
+[connection signal="body_entered" from="WallDetection/Left" to="." method="_on_wall_detection_left_body_entered"]
+[connection signal="body_entered" from="WallDetection/Right" to="." method="_on_wall_detection_right_body_entered"]
+[connection signal="body_exited" from="FloorDetection/Left" to="." method="_on_floor_detection_left_body_exited"]
+[connection signal="body_exited" from="FloorDetection/Right" to="." method="_on_floor_detection_right_body_exited"]

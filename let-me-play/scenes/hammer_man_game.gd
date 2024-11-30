@@ -5,7 +5,8 @@ signal hammer_man_escaped(global_pos:Vector2)
 @onready var levels:Array[Node2D] = [
 	$Levels/Level1,
 	$Levels/Level2,
-	$Levels/Level3
+	$Levels/Level3,
+	$Levels/VictoryScreen
 ]
 
 @onready var current_level:Node2D = $Levels/Level1
@@ -30,9 +31,11 @@ func start_level(desired_level:Node2D):
 			level.hide()
 		
 		# Disable all other levels' layers
-		for layer in level.get_children():
-			if layer is TileMapLayer:
-				layer.enabled = level == current_level
+		for child in level.get_children():
+			if child is TileMapLayer:
+				child.enabled = level == current_level
+			elif child is BlobEnemy:
+				child.active = level == current_level
 	
 	# Show the desired level and move HammerMan to start position
 	desired_level.show()
@@ -51,7 +54,10 @@ func _on_level_1_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/Level1:
 		start_level($Levels/Level2)
 
-
 func _on_level_2_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/Level2:
 		start_level($Levels/Level3)
+
+func _on_level_3_door_body_entered(body: Node2D) -> void:
+	if body is HammerMan && current_level == $Levels/Level3:
+		start_level($Levels/VictoryScreen)
