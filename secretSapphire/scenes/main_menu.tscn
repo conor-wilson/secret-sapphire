@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=34 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
@@ -22,6 +22,7 @@
 [ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/RunningLetters/running_t.tres" id="15_8ipti"]
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="16_pscsi"]
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="17_sxf8s"]
+[ext_resource type="AudioStream" uid="uid://t76hd8ekf63" path="res://assets/audio/Select 1.wav" id="23_0uyfe"]
 
 [sub_resource type="Animation" id="Animation_bex1y"]
 length = 0.001
@@ -355,6 +356,11 @@ theme_override_font_sizes/font_size = 32
 text = "Created by @QuietLantern"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="SelectNoise" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("23_0uyfe")
 
 [connection signal="a_collected" from="Desktop" to="." method="_on_desktop_a_collected"]
 [connection signal="hammer_man_block_break" from="Desktop" to="." method="_on_desktop_hammer_man_block_break"]

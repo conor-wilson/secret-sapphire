@@ -53,6 +53,7 @@ func unlock_secret_settings():
 	$CenterContainer/MarginContainer/VBoxContainer/SecretSettingsContainer/SecretSettingsButton.text = "secret settings"
 
 func _on_secret_settings_button_pressed() -> void:
+	$Sound/SelectNoise.play()
 	if secret_settings_locked:
 		username_box.show()
 		username_box.grab_focus()
@@ -85,6 +86,7 @@ func _on_password_box_text_submitted(new_text: String) -> void:
 		incorrect_password.emit()
 
 func _on_back_button_pressed() -> void:
+	$Sound/SelectNoise.play()
 	back_pressed.emit()
 	username_box.release_focus()
 	password_box.release_focus()

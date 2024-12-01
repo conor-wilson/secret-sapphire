@@ -97,6 +97,7 @@ func _become_idle():
 			print_debug("Mode ", mode, " does not have an idle animation")
 
 func become_evil():
+	$Sound/VillifyNoise.play()
 	$BlinkTimer.stop()
 	$AnimatedSprite2D.play("help_bot_become_evil")
 	await $AnimatedSprite2D.animation_finished
@@ -106,6 +107,7 @@ func become_evil():
 	_on_blink_timer_timeout()
 
 func shrink():
+	$Sound/ShrinkNoise.play()
 	$BlinkTimer.stop()
 	$AnimatedSprite2D.play("hell_bot_shrink")
 	await $AnimatedSprite2D.animation_finished
@@ -136,7 +138,7 @@ func explode():
 	await $AnimatedSprite2D.frame_changed
 	await $AnimatedSprite2D.frame_changed
 	await $AnimatedSprite2D.frame_changed
-	$SFX/ExplosionNoise.play()
+	$Sound/ExplosionNoise.play()
 	await $AnimatedSprite2D.frame_changed
 	await $AnimatedSprite2D.frame_changed
 	boom.emit()

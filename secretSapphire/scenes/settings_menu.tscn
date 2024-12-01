@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cfjp23jay1xyw"]
+[gd_scene load_steps=14 format=4 uid="uid://cfjp23jay1xyw"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu.gd" id="1_g011e"]
 [ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_g236m"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b63820ss4q4ep" path="res://assets/art/checkBoxUnchecked.png" id="5_te0yd"]
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="6_447go"]
 [ext_resource type="Texture2D" uid="uid://q1bluytg0n3h" path="res://assets/art/ScrewDriver.png" id="7_lbls2"]
+[ext_resource type="AudioStream" uid="uid://t76hd8ekf63" path="res://assets/audio/Select 1.wav" id="10_4j5bp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3h1cu"]
 font = ExtResource("2_ityvj")
@@ -160,6 +161,11 @@ position = Vector2(872, 392)
 
 [node name="BackButtonMarker" type="Marker2D" parent="MovementMarkers"]
 position = Vector2(90, 76)
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="SelectNoise" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("10_4j5bp")
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/SecretSettingsContainer/SecretSettingsButton" to="." method="_on_secret_settings_button_pressed"]
 [connection signal="text_submitted" from="CenterContainer/MarginContainer/VBoxContainer/UsernameBox" to="." method="_on_username_box_text_submitted"]

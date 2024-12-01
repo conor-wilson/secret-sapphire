@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://s4xq3eosd21v"]
+[gd_scene load_steps=4 format=3 uid="uid://s4xq3eosd21v"]
 
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="1_bxvqx"]
 [ext_resource type="Script" path="res://scenes/menu_button.gd" id="2_fpol0"]
+[ext_resource type="AudioStream" uid="uid://t76hd8ekf63" path="res://assets/audio/Select 1.wav" id="3_hflot"]
 
 [node name="MenuButton" type="Button"]
 offset_right = 8.0
@@ -15,5 +16,8 @@ text = "sample text"
 flat = true
 icon_alignment = 2
 script = ExtResource("2_fpol0")
+
+[node name="SelectNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hflot")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -30,6 +30,7 @@ func get_checkbox_icon(checked:bool) -> Resource:
 
 
 func _on_pressed() -> void:
+	$SelectNoise.play()
 	if checkable:
 		
 		var toggled_on:bool = icon == CHECK_BOX_UNCHECKED

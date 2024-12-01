@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://bcttde4rl6c7u"]
+[gd_scene load_steps=82 format=3 uid="uid://bcttde4rl6c7u"]
 
 [ext_resource type="Script" path="res://scenes/help_bot.gd" id="1_b6jo1"]
 [ext_resource type="Texture2D" uid="uid://1cwslcas3huc" path="res://assets/art/HelpBot-Sheet.png" id="1_nxjie"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://72xyusf4s8ca" path="res://assets/art/Explosion-Sheet.png" id="4_swxx6"]
 [ext_resource type="Texture2D" uid="uid://bhumivffmec6g" path="res://assets/art/HelpBotBecomeEvil-Sheet.png" id="6_p8ct4"]
 [ext_resource type="AudioStream" uid="uid://n4ujjlwhpeg5" path="res://assets/audio/explosion-80108.mp3" id="8_nhyrt"]
+[ext_resource type="AudioStream" uid="uid://2cswgxppb4aa" path="res://assets/audio/Retro Event Wrong Simple 03.wav" id="9_kb37v"]
+[ext_resource type="AudioStream" uid="uid://bl8dia5y4b7gh" path="res://assets/audio/Retro Negative Short 21.wav" id="10_icgor"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8btmh"]
 atlas = ExtResource("3_gvqsg")
@@ -561,10 +563,16 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="SFX" type="Node2D" parent="."]
+[node name="Sound" type="Node2D" parent="."]
 
-[node name="ExplosionNoise" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="ExplosionNoise" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("8_nhyrt")
 volume_db = -2.646
+
+[node name="ShrinkNoise" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("9_kb37v")
+
+[node name="VillifyNoise" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("10_icgor")
 
 [connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]
