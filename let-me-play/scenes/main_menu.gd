@@ -145,3 +145,10 @@ func _on_desktop_hammer_man_level_changed() -> void:
 
 func _on_desktop_hammer_man_death() -> void:
 	shake_screen.emit(5,5)
+
+
+func _on_start_button_mouse_entered() -> void:
+	$InteractiveElements/StartButton.scale = Vector2(1.05,1.05)
+
+func _on_start_button_mouse_exited() -> void:
+	$InteractiveElements/StartButton.scale = Vector2(1,1)

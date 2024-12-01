@@ -312,3 +312,5 @@ shape = SubResource("RectangleShape2D_u6cai")
 [connection signal="all_letters_collected" from="CollectedLetters" to="." method="_on_collected_letters_all_letters_collected"]
 [connection signal="collect" from="CollectableLetters/R" to="." method="_on_r_collect"]
 [connection signal="block_break" from="HammerMan" to="." method="_on_hammer_man_block_break"]
+[connection signal="mouse_entered" from="TrueStartButton" to="." method="_on_true_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="TrueStartButton" to="." method="_on_true_start_button_mouse_exited"]

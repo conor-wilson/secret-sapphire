@@ -609,3 +609,10 @@ func _on_collected_letters_all_letters_collected() -> void:
 
 func _on_hammer_man_block_break() -> void:
 	shake_screen(5,5)
+
+
+func _on_true_start_button_mouse_entered() -> void:
+	$TrueStartButton.scale = Vector2(1.05,1.05)
+
+func _on_true_start_button_mouse_exited() -> void:
+	$TrueStartButton.scale = Vector2(1,1)

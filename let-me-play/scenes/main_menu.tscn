@@ -346,6 +346,8 @@ vertical_alignment = 2
 [connection signal="click" from="InteractiveElements/CrumpledStickyNote" to="." method="_on_crumpled_sticky_note_click"]
 [connection signal="smash" from="InteractiveElements/Panel" to="." method="_on_panel_smash"]
 [connection signal="click" from="InteractiveElements/StartButton" to="." method="_on_start_button_click"]
+[connection signal="mouse_entered" from="InteractiveElements/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="InteractiveElements/StartButton" to="." method="_on_start_button_mouse_exited"]
 [connection signal="smash" from="InteractiveElements/StartButton" to="." method="_on_start_button_smash"]
 [connection signal="click" from="InteractiveElements/Screw1" to="." method="_on_screw_1_click"]
 [connection signal="click" from="InteractiveElements/Screw2" to="." method="_on_screw_2_click"]
