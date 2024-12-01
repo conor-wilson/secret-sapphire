@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://duh2whuig04ys"]
+
+[ext_resource type="PackedScene" uid="uid://drpjvxm3qjcl7" path="res://scenes/menus.tscn" id="1_7ucwg"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
+[ext_resource type="PackedScene" uid="uid://byovsr0mrrcte" path="res://scenes/search_for_the_secret_sapphire.tscn" id="3_wl75p"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_lvo15")
+
+[node name="Menus" parent="." instance=ExtResource("1_7ucwg")]
+
+[node name="SearchForTheSecretSapphire" parent="." instance=ExtResource("3_wl75p")]
+
+[connection signal="start_game" from="Menus" to="." method="_on_menus_start_game"]

@@ -1,5 +1,9 @@
 extends Node2D
 
+signal start_game
+
+var active:bool = true
+
 var screen_shake_strength:float = 0.0
 var screen_shake_fade:float     = 5.0
 
@@ -23,11 +27,14 @@ enum Stage {
 	HELP_BOT_WAITING_TO_MONOLOGUE,
 	HELP_BOT_MONOLOGUING,
 	LETTERS_MISSING,
-	ALL_LETTERS_COLLECTED
+	ALL_LETTERS_COLLECTED,
+	READY_TO_START_GAME
 }
 var stage:Stage = Stage.BEGINNING
 
 func _ready() -> void:
+	
+	if !active: return
 	
 	fire_extinguisher.hide()
 	crumpled_password_hint.hide()
@@ -50,9 +57,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if !active: return
+	
 	apply_screen_shake(delta)
 
 func apply_screen_shake(delta: float):
+	
+	if !active: return
 	
 	# No shake required if the strength is below the shake threshold
 	if screen_shake_strength <= 0.001:
@@ -70,26 +82,32 @@ func apply_screen_shake(delta: float):
 	screen_shake_strength = lerpf(screen_shake_strength, 0, screen_shake_fade*delta)
 
 func _on_main_menu_shake_screen(strength:float, fade:float) -> void:
+	if !active: return
 	if stage != Stage.HELP_BOT_MONOLOGUING:
 		shake_screen(strength, fade)
 
 func _on_settings_menu_shake_screen(strength: float, fade: float) -> void:
+	if !active: return
 	shake_screen(strength, fade)
 
 func _on_secret_settings_menu_shake_screen(strength: float, fade: float) -> void:
+	if !active: return
 	shake_screen(strength, fade)
 
 func shake_screen(strength:float, fade:float):
+	if !active: return
 	screen_shake_strength = strength
 	if fade != 0:
 		screen_shake_fade = fade
 
 func _on_main_menu_settings_pressed() -> void:
+	if !active: return
 	$Camera/FreeRoamCamera.position = $Camera/SettingsCameraMarker.position
 	await $ItemDropZones/MainMenu.mouse_exited
 	cursor_in_item_drop_zone = true
 
 func _on_settings_menu_back_pressed() -> void:
+	if !active: return
 	$Camera/FreeRoamCamera.position = $Camera/MainMenuCameraMarker.position
 	await $ItemDropZones/SettingsMenu.mouse_exited
 	cursor_in_item_drop_zone = true
@@ -98,12 +116,14 @@ func _on_settings_menu_back_pressed() -> void:
 		_begin_help_bot_monologue()
 
 func _on_secret_settings_menu_back_pressed() -> void:
+	if !active: return
 	$Camera/FreeRoamCamera.position = $Camera/SettingsCameraMarker.position
 	await $ItemDropZones/SecretSettingsMenu.mouse_exited
 	cursor_in_item_drop_zone = true
 
 
 func _on_main_menu_start_button_exploded() -> void:
+	if !active: return
 	
 	# Shake the screen
 	shake_screen(30.0, 5.0)
@@ -116,6 +136,7 @@ func _on_main_menu_start_button_exploded() -> void:
 		_start_what_was_that_sequence()
 		
 func _start_what_was_that_sequence():
+	if !active: return
 	if stage == Stage.START_BUTTON_BROKEN:
 		var lines: Array[String] = [
 			"...What was that?",
@@ -133,6 +154,7 @@ func _start_what_was_that_sequence():
 
 
 func _input(event: InputEvent) -> void:
+	if !active: return
 	
 	if event.is_action("right_click"):
 		_drop_held_item()
@@ -157,6 +179,7 @@ func _input(event: InputEvent) -> void:
 		#reform_start_button()
 
 func reform_start_button():
+	if !active: return
 	await get_tree().create_timer(1).timeout
 	
 	$CollectedLetters.jump()
@@ -167,8 +190,11 @@ func reform_start_button():
 	shake_screen(20,5)
 	$TrueStartButton.detatch(40)
 	
+	stage = Stage.READY_TO_START_GAME
+	
 
 func _drop_held_item():
+	if !active: return
 	
 	if CursorManager.current_cursor != CursorManager.CURSOR && !cursor_in_item_drop_zone:
 		print("cannot drop item")
@@ -231,6 +257,7 @@ const unlock_camera_zoom_cheat_code:Array[String] = [
 ]
 
 func _check_input_cache():
+	if !active: return
 	if input_cache == free_help_bot_cheat_code && (stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN || stage == Stage.SECRET_SETTINGS_UNLOCKED):
 		print("Freeing Help Bot...")
 		free_help_bot()
@@ -250,6 +277,7 @@ func _check_input_cache():
 		_show_instructions("MOUSE SCROLL to zoom in and out")
 
 func free_help_bot():
+	if !active: return
 	
 	stage = Stage.HELP_BOT_FREED
 	
@@ -284,6 +312,7 @@ func free_help_bot():
 		_begin_help_bot_monologue()
 
 func _begin_help_bot_monologue():
+	if !active: return
 	
 	stage = Stage.HELP_BOT_MONOLOGUING
 
@@ -333,6 +362,7 @@ func _begin_help_bot_monologue():
 
 
 func _on_settings_menu_secret_settings_pressed() -> void:
+	if !active: return
 	$Camera/FreeRoamCamera.position = $Camera/SecretSettingsCameraMarker.position
 	
 	#await $ItemDropZones/SettingsMenu.mouse_exited # TODO: Fix this!  Wow, nice job, 
@@ -342,6 +372,7 @@ func _on_settings_menu_secret_settings_pressed() -> void:
 		_start_help_bot_deception_sequence()
 
 func _start_help_bot_deception_sequence():
+	if !active: return
 	
 	stage = Stage.SECRET_SETTINGS_UNLOCKED
 	
@@ -359,6 +390,7 @@ func _start_help_bot_deception_sequence():
 
 
 func _on_settings_menu_incorrect_username() -> void:
+	if !active: return
 	
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
 		var lines: Array[String] = [
@@ -375,6 +407,7 @@ func _on_settings_menu_incorrect_username() -> void:
 	shake_screen(5, 5)
 
 func _on_settings_menu_correct_username() -> void:
+	if !active: return
 		
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
 		var lines: Array[String] = [
@@ -390,6 +423,7 @@ func _on_settings_menu_correct_username() -> void:
 			DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
 
 func _on_settings_menu_incorrect_password() -> void:
+	if !active: return
 		
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
 		DialogueManager.stop_all_dialogue()
@@ -401,6 +435,7 @@ func _on_settings_menu_incorrect_password() -> void:
 	shake_screen(5, 5)
 
 func _on_settings_menu_correct_password() -> void:
+	if !active: return
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
 		DialogueManager.stop_all_dialogue()
 		DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.global_position, ["Wow well done!"], "blue", 2, $DialogueMarkers/SettingsButtonMarker)
@@ -411,13 +446,16 @@ func _on_settings_menu_correct_password() -> void:
 
 
 func _on_item_drop_zone_mouse_entered() -> void:
+	if !active: return
 	cursor_in_item_drop_zone = true
 
 func _on_item_drop_zone_mouse_exited() -> void:
+	if !active: return
 	cursor_in_item_drop_zone = false
 
 
 func _on_wrench_click() -> void:
+	if !active: return
 	
 	print("WRENCH CLICKED")
 	
@@ -428,6 +466,7 @@ func _on_wrench_click() -> void:
 	$Menus/SettingsMenu.detatch_screwdriver()
 
 func _on_crumpled_password_hint_click() -> void:
+	if !active: return
 	
 	print("CRUMPLED PASSWORD HINT CLICKED")
 	
@@ -437,6 +476,7 @@ func _on_crumpled_password_hint_click() -> void:
 	crumpled_password_hint.hide()
 
 func _on_fire_extinguisher_click() -> void:
+	if !active: return
 	
 	print("FIRE EXTINGUISHER CLICKED")
 	
@@ -447,19 +487,23 @@ func _on_fire_extinguisher_click() -> void:
 
 
 func _show_instructions(text:String) -> void:
+	if !active: return
 	for instruction_lable in $ItemInstructions.get_children():
 		instruction_lable.text = text
 	$ItemInstructions.show()
 
 func _on_main_menu_a_collected(global_pos:Vector2) -> void:
+	if !active: return
 	$CollectedLetters.collect_a_1(global_pos)
 
 func _on_r_collect() -> void:
+	if !active: return
 	$CollectableLetters/R.hide()
 	$CollectedLetters.collect_r($CollectableLetters/R.global_position)
 
 
 func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
+	if !active: return
 	if (
 		snap_point == $Camera/SecretSettingsCameraMarker &&
 		(stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN)
@@ -497,6 +541,7 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
 
 func _begin_cave_of_wonders_monologue() -> void:
+	if !active: return
 	var lines:Array[String] = []
 	if !$Menus/CaveOfWonders.t_2_revealed:
 		lines = [
@@ -514,6 +559,7 @@ func _begin_cave_of_wonders_monologue() -> void:
 
 
 func _on_secret_settings_menu_toggle_free_roam_camera(toggled_on: bool) -> void:
+	if !active: return
 	$Camera/FreeRoamCamera.enable_free_roam()
 	if toggled_on:
 		_show_instructions("<MIDDLE MOUSE or RIGHT CLICK and DRAG to pan camera>")
@@ -523,6 +569,7 @@ func _on_secret_settings_menu_toggle_free_roam_camera(toggled_on: bool) -> void:
 
 
 func _on_secret_settings_menu_toggle_camera_zoom(toggled_on: bool) -> void:
+	if !active: return
 	$Camera/FreeRoamCamera.enable_zoom()
 	if toggled_on:
 		_show_instructions("<MOUSE SCROLL to zoom in and out>")
@@ -532,6 +579,7 @@ func _on_secret_settings_menu_toggle_camera_zoom(toggled_on: bool) -> void:
 
 
 func _on_cave_of_wonders_secret_received() -> void:
+	if !active: return
 	
 	if stage != Stage.LETTERS_MISSING:
 		var lines:Array[String] = [
@@ -582,37 +630,51 @@ func _on_cave_of_wonders_secret_received() -> void:
 			$Menus/CaveOfWonders.talking_about_paper = false
 
 func _on_cave_of_wonders_t_2_collected(global_pos:Vector2) -> void:
+	if !active: return
 	$CollectedLetters.collect_t_2(global_pos)
 
 func _on_main_menu_hammer_man_escaped(global_pos:Vector2) -> void:
+	if !active: return
 	hammer_man.global_position = global_pos
 	hammer_man.show()
 	hammer_man.active = true
 
 func _on_main_menu_hammer_man_level_changed() -> void:
+	if !active: return
 	if hammer_man != null:
 		hammer_man.hide()
 		hammer_man.active = false
 
 func _on_main_menu_s_collected(global_pos:Vector2) -> void:
+	if !active: return
 	$CollectedLetters.collect_s(global_pos)
 
 func _on_secret_settings_menu_t_1_collected(global_pos:Vector2) -> void:
+	if !active: return
 	$CollectedLetters.collect_t_1(global_pos)
 
 
 func _on_collected_letters_all_letters_collected() -> void:
+	if !active: return
 	stage = Stage.ALL_LETTERS_COLLECTED
 	if $Camera/FreeRoamCamera.position == $Camera/MainMenuCameraMarker.position:
 		reform_start_button()
 
 
 func _on_hammer_man_block_break() -> void:
+	if !active: return
 	shake_screen(5,5)
 
 
 func _on_true_start_button_mouse_entered() -> void:
+	if !active: return
 	$TrueStartButton.scale = Vector2(1.05,1.05)
 
 func _on_true_start_button_mouse_exited() -> void:
+	if !active: return
 	$TrueStartButton.scale = Vector2(1,1)
+
+
+func _on_true_start_button_click() -> void:
+	if stage == Stage.READY_TO_START_GAME:
+		start_game.emit()
