@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 
 func fire(new_target:Vector2):
 	
-	$LaserNoise.play()
+	if !Global.sfx_muted: $LaserNoise.play()
 	
 	target = $Line2D.to_local(new_target)
 	

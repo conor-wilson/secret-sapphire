@@ -1,6 +1,8 @@
 extends Node2D
 
 signal start_game
+signal mute_sfx_toggled
+signal mute_music_toggled
 
 var active:bool = true
 
@@ -106,7 +108,7 @@ func _on_secret_settings_menu_shake_screen(strength: float, fade: float) -> void
 
 func shake_screen(strength:float, fade:float):
 	if !active: return
-	$Camera/FreeRoamCamera/VibrationNoise.play()
+	if !Global.sfx_muted: $Camera/FreeRoamCamera/VibrationNoise.play()
 	screen_shake_strength = strength
 	if fade != 0:
 		screen_shake_fade = fade
@@ -139,7 +141,7 @@ func _on_main_menu_start_button_exploded() -> void:
 	$Sound/DetectiveMusic.stop()
 	
 	if stage != Stage.HELP_BOT_MONOLOGUING:
-		if stage == Stage.BEGINNING: $Sound/StaticNoise.volume_db = -10
+		if stage == Stage.BEGINNING && !Global.sfx_muted: $Sound/StaticNoise.volume_db = -10
 		$Sound/StaticNoise.play()
 	
 	# Shake the screen
@@ -696,14 +698,31 @@ func _on_true_start_button_mouse_exited() -> void:
 
 
 func _on_true_start_button_click() -> void:
-	print("ASDF")
-	print("STAGE: ", stage)
 	if stage == Stage.READY_TO_START_GAME:
-		print("QWER")
 		start_game.emit()
 
 
 func _on_main_menu_panel_broken() -> void:
 	if stage != Stage.HELP_BOT_MONOLOGUING:
-		$Sound/StaticNoise.volume_db = -3
+		if !Global.sfx_muted: $Sound/StaticNoise.volume_db = -3
 		$Sound/StaticNoise.play()
+
+
+func _on_settings_menu_mute_sfx_toggled() -> void:
+	if Global.sfx_muted:
+		$Sound/StaticNoise.volume_db = -80
+	else:
+		$Sound/StaticNoise.volume_db = -3
+	mute_sfx_toggled.emit()
+
+
+func _on_settings_menu_mute_music_toggled() -> void:
+	if Global.music_muted:
+		$Sound/DetectiveMusic.volume_db = -80
+		$Sound/MainMusic.volume_db = -80
+		$Sound/EeryMusic.volume_db = -80
+	else:
+		$Sound/DetectiveMusic.volume_db = 0
+		$Sound/MainMusic.volume_db = 0
+		$Sound/EeryMusic.volume_db = 0
+	mute_music_toggled.emit()

@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvp3k2yn1w8rb"]
+[gd_scene load_steps=7 format=3 uid="uid://dvp3k2yn1w8rb"]
 
 [ext_resource type="Script" path="res://scenes/cave_of_wonders.gd" id="1_2gn2m"]
 [ext_resource type="Texture2D" uid="uid://bjc3ogtd7g8s4" path="res://assets/art/Cave.png" id="1_db4o6"]
 [ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/collectable_letter.tscn" id="3_ii8et"]
 [ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/RunningLetters/running_t.tres" id="4_j2g5j"]
-[ext_resource type="AudioStream" uid="uid://b38sb58jdd2cs" path="res://assets/audio/suspense-e-investigacao-hipervigilrpg-211156.mp3" id="5_pv802"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wrdc1"]
 radius = 72.0
@@ -40,12 +39,6 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="T2"]
 position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_ovjao")
-
-[node name="Sound" type="Node2D" parent="."]
-
-[node name="EeryMusic" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("5_pv802")
-autoplay = true
 
 [connection signal="input_event" from="CaveMouth" to="." method="_on_cave_mouth_input_event"]
 [connection signal="collect" from="T2" to="." method="_on_t_2_collect"]

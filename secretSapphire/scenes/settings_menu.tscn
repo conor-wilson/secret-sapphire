@@ -167,6 +167,8 @@ position = Vector2(90, 76)
 [node name="SelectNoise" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("10_4j5bp")
 
+[connection signal="box_toggled" from="CenterContainer/MarginContainer/VBoxContainer/MuteSFXContainer/MuteSFXButton" to="." method="_on_mute_sfx_button_box_toggled"]
+[connection signal="box_toggled" from="CenterContainer/MarginContainer/VBoxContainer/MuteMusicContainer/MuteMusicButton" to="." method="_on_mute_music_button_box_toggled"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/SecretSettingsContainer/SecretSettingsButton" to="." method="_on_secret_settings_button_pressed"]
 [connection signal="text_submitted" from="CenterContainer/MarginContainer/VBoxContainer/UsernameBox" to="." method="_on_username_box_text_submitted"]
 [connection signal="text_submitted" from="CenterContainer/MarginContainer/VBoxContainer/PasswordBox" to="." method="_on_password_box_text_submitted"]

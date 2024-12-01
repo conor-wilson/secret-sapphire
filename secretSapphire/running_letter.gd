@@ -65,7 +65,7 @@ func _on_jump_timer_timeout() -> void:
 
 func _jump():
 	$Sound/JumpingNoise.pitch_scale = randf_range(0.9,1.1)
-	$Sound/JumpingNoise.play()
+	if !Global.sfx_muted: $Sound/JumpingNoise.play()
 	state = State.JUMPING
 	await $AnimatedSprite2D.frame_changed
 	await $AnimatedSprite2D.frame_changed

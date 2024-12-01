@@ -61,7 +61,7 @@ func handle_jumpability():
 		$Timers/CoyoteTimer.start()
 
 func jump():
-	$Sound/JumpNoise.play()
+	if !Global.sfx_muted: $Sound/JumpNoise.play()
 	can_jump = false
 	$Timers/CoyoteTimer.stop()
 	$Timers/JumpBufferTimer.stop()

@@ -12,4 +12,5 @@ script = ExtResource("1_lvo15")
 [node name="SearchForTheSecretSapphire" parent="." instance=ExtResource("3_wl75p")]
 visible = false
 
+[connection signal="mute_music_toggled" from="Menus" to="." method="_on_menus_mute_music_toggled"]
 [connection signal="start_game" from="Menus" to="." method="_on_menus_start_game"]

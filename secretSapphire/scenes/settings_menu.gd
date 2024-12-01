@@ -7,6 +7,8 @@ signal correct_username
 signal incorrect_username
 signal correct_password
 signal incorrect_password
+signal mute_sfx_toggled
+signal mute_music_toggled
 
 # TODO: Implement a generic way to check case-insentitively
 var accepted_usernames:Array[String] = [
@@ -53,7 +55,7 @@ func unlock_secret_settings():
 	$CenterContainer/MarginContainer/VBoxContainer/SecretSettingsContainer/SecretSettingsButton.text = "secret settings"
 
 func _on_secret_settings_button_pressed() -> void:
-	$Sound/SelectNoise.play()
+	if !Global.sfx_muted: $Sound/SelectNoise.play()
 	if secret_settings_locked:
 		username_box.show()
 		username_box.grab_focus()
@@ -86,7 +88,7 @@ func _on_password_box_text_submitted(new_text: String) -> void:
 		incorrect_password.emit()
 
 func _on_back_button_pressed() -> void:
-	$Sound/SelectNoise.play()
+	if !Global.sfx_muted: $Sound/SelectNoise.play()
 	back_pressed.emit()
 	username_box.release_focus()
 	password_box.release_focus()
@@ -136,3 +138,11 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 		#$HelpBot.grow()
 		#await get_tree().create_timer(2.5).timeout
 		#$HelpBot.start_leaving()
+
+func _on_mute_sfx_button_box_toggled(toggled_on: bool) -> void:
+	Global.sfx_muted = toggled_on
+	mute_sfx_toggled.emit()
+
+func _on_mute_music_button_box_toggled(toggled_on: bool) -> void:
+	Global.music_muted = toggled_on
+	mute_music_toggled.emit()

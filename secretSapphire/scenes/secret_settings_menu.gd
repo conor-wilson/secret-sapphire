@@ -37,7 +37,7 @@ func _on_cage_smash() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	$Sound/SelectNoise.play()
+	if !Global.sfx_muted: $Sound/SelectNoise.play()
 	back_pressed.emit()
 
 func unlock_free_roaming_camera() -> void:

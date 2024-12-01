@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=31 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/menus.gd" id="1_n6v3l"]
 [ext_resource type="PackedScene" uid="uid://hmfard6sqx6h" path="res://scenes/free_roam_camera.tscn" id="2_f0b52"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://dyfhd34jb30ta" path="res://assets/audio/detective-stories-198357.mp3" id="19_6jqg8"]
 [ext_resource type="AudioStream" uid="uid://bq72alqswhjul" path="res://assets/audio/mixkit-creepy-radio-frequency-2558-[AudioTrimmer.com].mp3" id="20_y437t"]
 [ext_resource type="AudioStream" uid="uid://ce51ek4qxj744" path="res://assets/audio/mystery-of-the-investigation-215184.mp3" id="22_pas85"]
+[ext_resource type="AudioStream" uid="uid://b38sb58jdd2cs" path="res://assets/audio/suspense-e-investigacao-hipervigilrpg-211156.mp3" id="23_o0sdu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o1dt"]
 radius = 6.0104
@@ -301,6 +302,11 @@ position = Vector2(1728, 321)
 stream = ExtResource("22_pas85")
 max_distance = 3000.0
 
+[node name="EeryMusic" type="AudioStreamPlayer2D" parent="Sound"]
+position = Vector2(4238, -1428)
+stream = ExtResource("23_o0sdu")
+autoplay = true
+
 [connection signal="snap" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_snap"]
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]
 [connection signal="hammer_man_escaped" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_escaped"]
@@ -315,6 +321,8 @@ max_distance = 3000.0
 [connection signal="correct_username" from="Menus/SettingsMenu" to="." method="_on_settings_menu_correct_username"]
 [connection signal="incorrect_password" from="Menus/SettingsMenu" to="." method="_on_settings_menu_incorrect_password"]
 [connection signal="incorrect_username" from="Menus/SettingsMenu" to="." method="_on_settings_menu_incorrect_username"]
+[connection signal="mute_music_toggled" from="Menus/SettingsMenu" to="." method="_on_settings_menu_mute_music_toggled"]
+[connection signal="mute_sfx_toggled" from="Menus/SettingsMenu" to="." method="_on_settings_menu_mute_sfx_toggled"]
 [connection signal="secret_settings_pressed" from="Menus/SettingsMenu" to="." method="_on_settings_menu_secret_settings_pressed"]
 [connection signal="shake_screen" from="Menus/SettingsMenu" to="." method="_on_settings_menu_shake_screen"]
 [connection signal="back_pressed" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_back_pressed"]

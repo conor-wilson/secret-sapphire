@@ -78,7 +78,7 @@ func display_text(new_text:String):
 func _display_letter():
 	
 	$BlipNoise.pitch_scale = randf_range(pitch_modifier-0.05,pitch_modifier+0.05)
-	$BlipNoise.play()
+	if !Global.sfx_muted: $BlipNoise.play()
 	
 	_follow_node_if_exists()
 	label.text += text[letter_index]

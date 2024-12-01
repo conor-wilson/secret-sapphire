@@ -25,7 +25,7 @@ func _on_start_button_click() -> void:
 	shake_screen.emit(10, 5.0)
 
 func _on_settings_button_pressed() -> void:
-	$Sound/SelectNoise.play()
+	if !Global.sfx_muted: $Sound/SelectNoise.play()
 	settings_pressed.emit()
 
 

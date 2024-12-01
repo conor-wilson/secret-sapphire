@@ -21,7 +21,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 # TODO: Make the individual components in this function configurable
 func detatch(strength:float=1):
 	$ImpactNoise.pitch_scale = randf_range(0.5,2)
-	if !Global.suppress_impact_noises: $ImpactNoise.play()
+	if !Global.sfx_muted: $ImpactNoise.play()
 	gravity_scale = 1
 	idle = false
 	apply_impulse(Vector2(randf_range(-strength,strength),-20*strength), Vector2(randf_range(-2.5*strength,2.5*strength),0))
@@ -31,13 +31,13 @@ func detatch(strength:float=1):
 #
 # TODO: Make the range values in here configurable.
 func apply_random_force():
-	if !Global.suppress_impact_noises: $ImpactNoise.play()
+	if !Global.sfx_muted: $ImpactNoise.play()
 	var x_force:float = randf_range(-750, 750)
 	var y_force:float = randf_range(-750, 0)
 	apply_impulse(Vector2(x_force,y_force))
 
 func _on_body_entered(body: Node) -> void:
 	if !idle && breakable:
-		if !Global.suppress_impact_noises: $ImpactNoise.play()
+		if !Global.sfx_muted: $ImpactNoise.play()
 		smash.emit()
 		queue_free()
