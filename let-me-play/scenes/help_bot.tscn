@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://bcttde4rl6c7u"]
+[gd_scene load_steps=80 format=3 uid="uid://bcttde4rl6c7u"]
 
 [ext_resource type="Script" path="res://scenes/help_bot.gd" id="1_b6jo1"]
 [ext_resource type="Texture2D" uid="uid://1cwslcas3huc" path="res://assets/art/HelpBot-Sheet.png" id="1_nxjie"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b63t8bt78w8t1" path="res://scenes/laser.tscn" id="4_khedk"]
 [ext_resource type="Texture2D" uid="uid://72xyusf4s8ca" path="res://assets/art/Explosion-Sheet.png" id="4_swxx6"]
 [ext_resource type="Texture2D" uid="uid://bhumivffmec6g" path="res://assets/art/HelpBotBecomeEvil-Sheet.png" id="6_p8ct4"]
+[ext_resource type="AudioStream" uid="uid://n4ujjlwhpeg5" path="res://assets/audio/explosion-80108.mp3" id="8_nhyrt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8btmh"]
 atlas = ExtResource("3_gvqsg")
@@ -559,5 +560,11 @@ shape = SubResource("RectangleShape2D_oh5jh")
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="ExplosionNoise" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("8_nhyrt")
+volume_db = -2.646
 
 [connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]

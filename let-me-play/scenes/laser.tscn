@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b63t8bt78w8t1"]
+[gd_scene load_steps=5 format=3 uid="uid://b63t8bt78w8t1"]
 
 [ext_resource type="Script" path="res://laser.gd" id="1_ptiqu"]
 [ext_resource type="Texture2D" uid="uid://cehmp6afuprf1" path="res://icon.svg" id="2_ea6n5"]
+[ext_resource type="AudioStream" uid="uid://0mnxwh5hv3w5" path="res://assets/audio/laser-45816.mp3" id="3_pg2u0"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3a0nt"]
 b = Vector2(160, 0)
@@ -26,3 +27,6 @@ default_color = Color(0.67451, 0.196078, 0.196078, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/Area2D"]
 shape = SubResource("SegmentShape2D_3a0nt")
+
+[node name="LaserNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pg2u0")

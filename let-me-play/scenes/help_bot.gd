@@ -122,6 +122,9 @@ func shoot(pos:Vector2):
 	$Laser.fire(pos)
 
 func explode():
+	
+	#Global.suppress_impact_noises = true
+	
 	$BlinkTimer.stop()
 	$AnimatedSprite2D.play("hell_bot_explosion")
 	
@@ -133,9 +136,12 @@ func explode():
 	await $AnimatedSprite2D.frame_changed
 	await $AnimatedSprite2D.frame_changed
 	await $AnimatedSprite2D.frame_changed
+	$SFX/ExplosionNoise.play()
 	await $AnimatedSprite2D.frame_changed
 	await $AnimatedSprite2D.frame_changed
 	boom.emit()
 	
 	await $AnimatedSprite2D.animation_finished
 	_on_blink_timer_timeout()
+	
+	#Global.suppress_impact_noises = false

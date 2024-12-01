@@ -31,6 +31,8 @@ func _process(delta: float) -> void:
 
 func fire(new_target:Vector2):
 	
+	$LaserNoise.play()
+	
 	target = $Line2D.to_local(new_target)
 	
 	width_y = 2
