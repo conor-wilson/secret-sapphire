@@ -1,23 +1,23 @@
 [gd_scene load_steps=26 format=3 uid="uid://drpjvxm3qjcl7"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
-[ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="1_mw4j5"]
-[ext_resource type="PackedScene" uid="uid://hmfard6sqx6h" path="res://scenes/free_roam_camera.tscn" id="2_qs646"]
-[ext_resource type="PackedScene" uid="uid://cfjp23jay1xyw" path="res://scenes/settings_menu.tscn" id="3_vdc1c"]
-[ext_resource type="PackedScene" uid="uid://vff026q47yk" path="res://scenes/secret_settings_menu.tscn" id="4_u0lve"]
-[ext_resource type="PackedScene" uid="uid://bcttde4rl6c7u" path="res://scenes/help_bot.tscn" id="5_lf0pf"]
-[ext_resource type="PackedScene" uid="uid://dvp3k2yn1w8rb" path="res://scenes/cave_of_wonders.tscn" id="6_o5rlv"]
-[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="6_s1drs"]
-[ext_resource type="Texture2D" uid="uid://difhinmukve4m" path="res://assets/art/Wrench.png" id="7_85cok"]
-[ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="8_kk8my"]
-[ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/FireExtinguisher.png" id="8_mmbyy"]
-[ext_resource type="Texture2D" uid="uid://4damehrpitmi" path="res://assets/art/CrumpledPaper.png" id="11_ytw5d"]
-[ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="13_atri8"]
-[ext_resource type="PackedScene" uid="uid://dgb87ltag6my4" path="res://scenes/foam.tscn" id="14_kuj0x"]
-[ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/collectable_letter.tscn" id="16_ea6f3"]
-[ext_resource type="PackedScene" uid="uid://be8gnb7g2r1qb" path="res://scenes/collected_letters.tscn" id="17_mc8ah"]
-[ext_resource type="PackedScene" uid="uid://bplobt2yqsrkn" path="res://scenes/hammer_man.tscn" id="19_h4bd0"]
-[ext_resource type="Texture2D" uid="uid://y8wgjwjjrbhx" path="res://assets/art/SmallStartButton.png" id="21_23dhw"]
+[ext_resource type="Script" path="res://scenes/menus.gd" id="1_n6v3l"]
+[ext_resource type="PackedScene" uid="uid://hmfard6sqx6h" path="res://scenes/free_roam_camera.tscn" id="2_f0b52"]
+[ext_resource type="PackedScene" uid="uid://5ctllddc4obb" path="res://scenes/main_menu.tscn" id="3_mqdpw"]
+[ext_resource type="PackedScene" uid="uid://cfjp23jay1xyw" path="res://scenes/settings_menu.tscn" id="4_78aek"]
+[ext_resource type="PackedScene" uid="uid://vff026q47yk" path="res://scenes/secret_settings_menu.tscn" id="5_rhiqq"]
+[ext_resource type="PackedScene" uid="uid://dvp3k2yn1w8rb" path="res://scenes/cave_of_wonders.tscn" id="6_r2f2f"]
+[ext_resource type="PackedScene" uid="uid://bcttde4rl6c7u" path="res://scenes/help_bot.tscn" id="7_bh0tg"]
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="8_o8ma5"]
+[ext_resource type="Texture2D" uid="uid://difhinmukve4m" path="res://assets/art/Wrench.png" id="9_kg5t1"]
+[ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/FireExtinguisher.png" id="10_aa2fp"]
+[ext_resource type="Texture2D" uid="uid://4damehrpitmi" path="res://assets/art/CrumpledPaper.png" id="11_ffab4"]
+[ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="12_hpcjg"]
+[ext_resource type="PackedScene" uid="uid://be8gnb7g2r1qb" path="res://scenes/collected_letters.tscn" id="13_3vrp3"]
+[ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/collectable_letter.tscn" id="14_duyw0"]
+[ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="15_nd253"]
+[ext_resource type="PackedScene" uid="uid://dgb87ltag6my4" path="res://scenes/foam.tscn" id="16_mei6b"]
+[ext_resource type="PackedScene" uid="uid://bplobt2yqsrkn" path="res://scenes/hammer_man.tscn" id="17_s1o7x"]
+[ext_resource type="Texture2D" uid="uid://y8wgjwjjrbhx" path="res://assets/art/SmallStartButton.png" id="18_pi5ji"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o1dt"]
 radius = 6.0104
@@ -31,12 +31,12 @@ height = 62.0
 size = Vector2(1104, 592)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0o4ac"]
-font = ExtResource("8_kk8my")
+font = ExtResource("12_hpcjg")
 font_size = 32
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hbp62"]
-font = ExtResource("8_kk8my")
+font = ExtResource("12_hpcjg")
 font_size = 32
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
 
@@ -47,12 +47,12 @@ height = 44.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6cai"]
 size = Vector2(158, 62)
 
-[node name="Main" type="Node2D"]
-script = ExtResource("1_lvo15")
+[node name="Menus" type="Node2D"]
+script = ExtResource("1_n6v3l")
 
 [node name="Camera" type="Node2D" parent="."]
 
-[node name="FreeRoamCamera" parent="Camera" node_paths=PackedStringArray("snap_points") instance=ExtResource("2_qs646")]
+[node name="FreeRoamCamera" parent="Camera" node_paths=PackedStringArray("snap_points") instance=ExtResource("2_f0b52")]
 position = Vector2(576, 324)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -73,18 +73,18 @@ position = Vector2(4238, -1428)
 
 [node name="Menus" type="Node2D" parent="."]
 
-[node name="MainMenu" parent="Menus" instance=ExtResource("1_mw4j5")]
+[node name="MainMenu" parent="Menus" instance=ExtResource("3_mqdpw")]
 
-[node name="SettingsMenu" parent="Menus" instance=ExtResource("3_vdc1c")]
+[node name="SettingsMenu" parent="Menus" instance=ExtResource("4_78aek")]
 position = Vector2(1152, 0)
 
-[node name="SecretSettingsMenu" parent="Menus" instance=ExtResource("4_u0lve")]
+[node name="SecretSettingsMenu" parent="Menus" instance=ExtResource("5_rhiqq")]
 position = Vector2(2304, 0)
 
-[node name="CaveOfWonders" parent="Menus" instance=ExtResource("6_o5rlv")]
+[node name="CaveOfWonders" parent="Menus" instance=ExtResource("6_r2f2f")]
 position = Vector2(4238, -1428)
 
-[node name="HelpBot" parent="." instance=ExtResource("5_lf0pf")]
+[node name="HelpBot" parent="." instance=ExtResource("7_bh0tg")]
 position = Vector2(2879, 289)
 
 [node name="DialogueMarkers" type="Node2D" parent="."]
@@ -142,21 +142,21 @@ position = Vector2(507, 305)
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Wrench" parent="Items" instance=ExtResource("6_s1drs")]
+[node name="Wrench" parent="Items" instance=ExtResource("8_o8ma5")]
 position = Vector2(1545, 179)
 collision_layer = 1024
 breakable = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Items/Wrench"]
 scale = Vector2(2, 2)
-texture = ExtResource("7_85cok")
+texture = ExtResource("9_kg5t1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Wrench"]
 rotation = -0.785397
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_0o1dt")
 
-[node name="FireExtinguisher" parent="Items" instance=ExtResource("6_s1drs")]
+[node name="FireExtinguisher" parent="Items" instance=ExtResource("8_o8ma5")]
 position = Vector2(-120, 496)
 collision_layer = 1024
 breakable = false
@@ -164,20 +164,20 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Items/FireExtinguisher"]
 scale = Vector2(2, 2)
-texture = ExtResource("8_mmbyy")
+texture = ExtResource("10_aa2fp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/FireExtinguisher"]
 position = Vector2(-16, 1)
 shape = SubResource("CapsuleShape2D_ej1cw")
 
-[node name="CrumpledPasswordHint" parent="Items" instance=ExtResource("6_s1drs")]
+[node name="CrumpledPasswordHint" parent="Items" instance=ExtResource("8_o8ma5")]
 position = Vector2(248, 536)
 collision_layer = 1024
 breakable = false
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Items/CrumpledPasswordHint"]
-texture = ExtResource("11_ytw5d")
+texture = ExtResource("11_ffab4")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Items/CrumpledPasswordHint"]
 polygon = PackedVector2Array(8, -45, 16, -35, 24, -34, 43, -30, 43, -20, 46, -18, 43, -11, 40, -3, 46, 7, 42, 15, 38, 20, 39, 27, 38, 35, 28, 41, 21, 46, 5, 42, 0, 42, -13, 47, -22, 42, -31, 47, -36, 43, -38, 33, -35, 28, -37, 19, -46, -2, -46, -14, -40, -22, -39, -25, -39, -31, -32, -37, -30, -40, -26, -40, -19, -36, -12, -39, -9, -40, 0, -43)
@@ -240,11 +240,11 @@ label_settings = SubResource("LabelSettings_hbp62")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CollectedLetters" parent="." instance=ExtResource("17_mc8ah")]
+[node name="CollectedLetters" parent="." instance=ExtResource("13_3vrp3")]
 
 [node name="CollectableLetters" type="Node2D" parent="."]
 
-[node name="R" parent="CollectableLetters" instance=ExtResource("16_ea6f3")]
+[node name="R" parent="CollectableLetters" instance=ExtResource("14_duyw0")]
 visible = false
 position = Vector2(20, -54)
 can_collect = true
@@ -252,20 +252,20 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/R"]
 position = Vector2(0, -10)
-sprite_frames = ExtResource("13_atri8")
+sprite_frames = ExtResource("15_nd253")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/R"]
 shape = SubResource("CapsuleShape2D_f4r0k")
 
-[node name="Foam" parent="." instance=ExtResource("14_kuj0x")]
+[node name="Foam" parent="." instance=ExtResource("16_mei6b")]
 position = Vector2(184, -144)
 
-[node name="HammerMan" parent="." instance=ExtResource("19_h4bd0")]
+[node name="HammerMan" parent="." instance=ExtResource("17_s1o7x")]
 position = Vector2(-123, 339)
 
-[node name="TrueStartButton" parent="." instance=ExtResource("6_s1drs")]
+[node name="TrueStartButton" parent="." instance=ExtResource("8_o8ma5")]
 visible = false
 position = Vector2(576, 550)
 collision_layer = 8192
@@ -273,7 +273,7 @@ breakable = false
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="TrueStartButton"]
-texture = ExtResource("21_23dhw")
+texture = ExtResource("18_pi5ji")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrueStartButton"]
 shape = SubResource("RectangleShape2D_u6cai")
