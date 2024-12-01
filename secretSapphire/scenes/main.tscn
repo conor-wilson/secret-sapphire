@@ -1,16 +1,133 @@
-[gd_scene load_steps=4 format=3 uid="uid://duh2whuig04ys"]
+[gd_scene load_steps=11 format=3 uid="uid://duh2whuig04ys"]
 
 [ext_resource type="PackedScene" uid="uid://drpjvxm3qjcl7" path="res://scenes/menus.tscn" id="1_7ucwg"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://byovsr0mrrcte" path="res://scenes/search_for_the_secret_sapphire.tscn" id="3_wl75p"]
+[ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="4_oiyas"]
+[ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="5_ua2gr"]
+[ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_8mhct"]
 
-[node name="Main" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_3j0bf"]
+font = ExtResource("4_oiyas")
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ve4v"]
+font = ExtResource("5_ua2gr")
+font_size = 39
+font_color = Color(0.796078, 0.858824, 0.988235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k8f7h"]
+font = ExtResource("4_oiyas")
+font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_esnhb"]
+
+[node name="Main" type="Node"]
 script = ExtResource("1_lvo15")
 
 [node name="Menus" parent="." instance=ExtResource("1_7ucwg")]
 
 [node name="SearchForTheSecretSapphire" parent="." instance=ExtResource("3_wl75p")]
-visible = false
+
+[node name="CreditScreen" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CreditScreen"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "A game by Conor Wilson / @QuietLantern"
+label_settings = SubResource("LabelSettings_3j0bf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleScreen" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="TitleScreen"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "THE SEARCH FOR THE
+SECRET SAPPHIRE"
+label_settings = SubResource("LabelSettings_2ve4v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VictoryScreen" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="VictoryScreen"]
+layout_mode = 0
+offset_top = -88.0
+offset_right = 1152.0
+offset_bottom = 560.0
+text = "THE SEARCH FOR THE
+SECRET SAPPHIRE"
+label_settings = SubResource("LabelSettings_2ve4v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VictoryScreen"]
+layout_mode = 0
+offset_top = 123.0
+offset_right = 1152.0
+offset_bottom = 151.0
+text = "Congratulations! You have completed"
+label_settings = SubResource("LabelSettings_k8f7h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VictoryScreen"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 317.0
+offset_right = 1152.0
+offset_bottom = 345.0
+text = "Thanks for playing!"
+label_settings = SubResource("LabelSettings_k8f7h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="VictoryScreen"]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 416.0
+offset_right = 681.0
+offset_bottom = 466.0
+focus_mode = 0
+theme = ExtResource("6_8mhct")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.247059, 0.247059, 0.454902, 1)
+theme_override_colors/font_focus_color = Color(0.247059, 0.247059, 0.454902, 1)
+theme_override_colors/font_color = Color(0.796078, 0.858824, 0.988235, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_esnhb")
+text = "PLAY AGAIN"
+flat = true
+
+[node name="MainMenu" type="Button" parent="VictoryScreen"]
+offset_left = 469.0
+offset_top = 470.0
+offset_right = 681.0
+offset_bottom = 520.0
+focus_mode = 0
+theme = ExtResource("6_8mhct")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.247059, 0.247059, 0.454902, 1)
+theme_override_colors/font_focus_color = Color(0.247059, 0.247059, 0.454902, 1)
+theme_override_colors/font_color = Color(0.796078, 0.858824, 0.988235, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_esnhb")
+text = "MAIN MENU"
+flat = true
 
 [connection signal="mute_music_toggled" from="Menus" to="." method="_on_menus_mute_music_toggled"]
 [connection signal="start_game" from="Menus" to="." method="_on_menus_start_game"]
+[connection signal="victory" from="SearchForTheSecretSapphire" to="." method="_on_search_for_the_secret_sapphire_victory"]
+[connection signal="pressed" from="VictoryScreen/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="VictoryScreen/MainMenu" to="." method="_on_main_menu_pressed"]

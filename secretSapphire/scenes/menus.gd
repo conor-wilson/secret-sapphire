@@ -555,7 +555,19 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 		if $Menus/CaveOfWonders.talking_about_paper == true:
 			return
 		
-		if stage == Stage.LETTERS_MISSING:
+		if stage == Stage.READY_TO_START_GAME:
+			var lines:Array[String] = [
+				"Congratulations on defeating the Help Bot.",
+				"I know the DEV would be proud of you.",
+				"They would want to thank you for fixing the game and playing it.",
+				"And they would want to apologise for any inconveniences you met along the way.",
+				"They would also request that you do not look at the code for this game.",
+				"As they are aware that it is a jumbled mess.",
+				"Such is the way of Game Jams I suppose."
+			]
+			DialogueManager.stop_all_dialogue()
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
+		elif stage == Stage.LETTERS_MISSING:
 			_begin_cave_of_wonders_monologue()
 		elif stage == Stage.HELP_BOT_MONOLOGUING:
 			return
@@ -570,6 +582,21 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 
 func _begin_cave_of_wonders_monologue() -> void:
 	if !active: return
+	
+	if stage == Stage.READY_TO_START_GAME:
+		var lines:Array[String] = [
+			"Congratulations on defeating the Help Bot.",
+			"I know the DEV would be proud of you.",
+			"They would want to thank you for fixing the game and playing it.",
+			"And they would want to apologise for any inconveniences you met along the way.",
+			"They would also request that you do not look at the code for this game.",
+			"As they are aware that it is a jumbled mess.",
+			"Such is the way of Game Jams I suppose."
+		]
+		DialogueManager.stop_all_dialogue()
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
+		return
+	
 	var lines:Array[String] = []
 	if !$Menus/CaveOfWonders.t_2_revealed:
 		lines = [
@@ -801,6 +828,7 @@ func _start_help_bot_death():
 	if !active: return
 	stage = Stage.HELP_BOT_DYING
 	
+	$HelpBot.speed = 500
 	$HelpBot.idle_speed = 500
 	
 	DialogueManager.stop_all_dialogue()

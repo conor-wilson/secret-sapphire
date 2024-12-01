@@ -58,6 +58,7 @@ func _on_red_button_input_event(viewport: Node, event: InputEvent, shape_idx: in
 func _on_sapphire_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !active: return
 	if event.is_action_pressed("click") && safe_open:
+		$Instructions.text = "<You have found the SECRET SAPPHIRE!>"
 		victory.emit()
 		print("GAME WON!")
 		
