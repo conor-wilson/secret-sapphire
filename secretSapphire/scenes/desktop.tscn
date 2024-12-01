@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=51 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -8,7 +8,6 @@
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_bxrir"]
 [ext_resource type="Texture2D" uid="uid://4448nynviyr7" path="res://assets/art/DesktopIcons/AntiVirusIcon.png" id="5_cnua8"]
 [ext_resource type="Texture2D" uid="uid://dktusqtn6cvee" path="res://assets/art/DesktopIcons/TurtlePNGIcon.png" id="5_nvnsj"]
-[ext_resource type="Texture2D" uid="uid://bg08a67krt40a" path="res://assets/art/DesktopIcons/ChatIcon.png" id="6_p5jv4"]
 [ext_resource type="Texture2D" uid="uid://76dqtp78a0vq" path="res://assets/art/DesktopIcons/NotesIcon.png" id="7_aeekl"]
 [ext_resource type="Texture2D" uid="uid://4h1rmfve728d" path="res://assets/art/DesktopIcons/TurtleHatPNGIcon.png" id="9_lhpti"]
 [ext_resource type="Texture2D" uid="uid://b2nxns8kce635" path="res://assets/art/DesktopIcons/TurtleGifIcon.png" id="10_xvui1"]
@@ -207,30 +206,6 @@ offset_top = 32.0
 offset_right = 47.0
 offset_bottom = 55.0
 text = "Virusbuster"
-label_settings = SubResource("LabelSettings_sv1yq")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ChatIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre") instance=ExtResource("3_yrive")]
-position = Vector2(224, 352)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
-is_icon = true
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/ChatIcon"]
-scale = Vector2(2, 2)
-texture = ExtResource("6_p5jv4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/ChatIcon"]
-shape = SubResource("RectangleShape2D_iyifw")
-
-[node name="Label" type="Label" parent="DesktopIcons/ChatIcon"]
-offset_left = -47.0
-offset_top = 32.0
-offset_right = 47.0
-offset_bottom = 55.0
-text = "ClickChat"
 label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
