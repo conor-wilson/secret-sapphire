@@ -41,7 +41,7 @@ func jump():
 	await $Sprites/S.frame_changed
 	jumping = true
 	vel_y = -jump_speed
-	
+	$Sound/JumpNoise.play()
 	
 	await get_tree().create_timer(0.5).timeout
 	

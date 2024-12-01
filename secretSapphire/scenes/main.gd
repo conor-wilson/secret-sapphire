@@ -18,7 +18,3 @@ func _on_menus_mute_music_toggled() -> void:
 		$SearchForTheSecretSapphire/Music.volume_db = -80
 	else:
 		$SearchForTheSecretSapphire/Music.volume_db = 0
-
-
-func _on_menus_mute_sfx_toggled() -> void:
-	pass # Replace with function body.
