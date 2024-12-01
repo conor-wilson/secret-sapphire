@@ -1,7 +1,7 @@
 extends Node2D
 
 signal secret_received
-signal t_2_collected
+signal t_2_collected(global_pos:Vector2)
 
 var talking_about_paper:bool = false
 var t_2_revealed:bool = false
@@ -27,4 +27,4 @@ func _on_cave_mouth_input_event(viewport: Node, event: InputEvent, shape_idx: in
 
 
 func _on_t_2_collect() -> void:
-	t_2_collected.emit()
+	t_2_collected.emit($T2.global_position)

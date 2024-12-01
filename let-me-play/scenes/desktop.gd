@@ -1,8 +1,8 @@
 extends Node2D
 
 signal tap
-signal s_collected
-signal a_collected
+signal s_collected(global_pos:Vector2)
+signal a_collected(global_pos:Vector2)
 signal hammer_man_escaped(global_pos:Vector2)
 signal hammer_man_block_break
 signal hammer_man_death
@@ -239,7 +239,7 @@ func _on_fire_extinguisher_input_event(viewport: Node, event: InputEvent, shape_
 
 
 func _on_a_collect() -> void:
-	a_collected.emit()
+	a_collected.emit($DesktopWindows/TurtleMemeWEBP/A.global_position)
 
 func _on_hammer_man_exe_close_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
@@ -255,8 +255,8 @@ func _on_hammer_man_game_block_break() -> void:
 func _on_hammer_man_game_level_changed() -> void:
 	hammer_man_level_changed.emit()
 
-func _on_hammer_man_game_s_collected() -> void:
-	s_collected.emit()
+func _on_hammer_man_game_s_collected(global_pos:Vector2) -> void:
+	s_collected.emit(global_pos)
 
 func _on_hammer_man_game_hammer_man_death() -> void:
 	hammer_man_death.emit()

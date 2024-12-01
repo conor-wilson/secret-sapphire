@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 		for sprite in $Sprites.get_children():
 			vel_y += 0.98*delta
 			sprite.position.y += vel_y
+	
 
 
 func reset():
@@ -52,27 +53,42 @@ func jump():
 
 func collect_s(global_from:Vector2):
 	$Sprites/S.show()
-	$Sprites/S.position = $IdleMarkers/S.position
+	$Sprites/S.global_position = global_from
+	var tween = get_tree().create_tween()
+	tween.tween_property($Sprites/S, "global_position", $IdleMarkers/S.global_position, 0.5).set_ease(Tween.EASE_OUT)
+	await tween.finished
 	check_all_letters_collected()
 
 func collect_t_1(global_from:Vector2):
 	$Sprites/T1.show()
-	$Sprites/T1.position = $IdleMarkers/T1.position
+	$Sprites/T1.global_position = global_from
+	var tween = get_tree().create_tween()
+	tween.tween_property($Sprites/T1, "global_position", $IdleMarkers/T1.global_position, 1).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
 	check_all_letters_collected()
 
 func collect_a_1(global_from:Vector2):
 	$Sprites/A1.show()
-	$Sprites/A1.position = $IdleMarkers/A1.position
+	$Sprites/A1.global_position = global_from
+	var tween = get_tree().create_tween()
+	tween.tween_property($Sprites/A1, "global_position", $IdleMarkers/A1.global_position, 1).set_ease(Tween.EASE_OUT)
+	await tween.finished
 	check_all_letters_collected()
 
 func collect_r(global_from:Vector2):
 	$Sprites/R.show()
-	$Sprites/R.position = $IdleMarkers/R.position
+	$Sprites/R.global_position = global_from
+	var tween = get_tree().create_tween()
+	tween.tween_property($Sprites/R, "global_position", $IdleMarkers/R.global_position, 1).set_ease(Tween.EASE_OUT)
+	await tween.finished
 	check_all_letters_collected()
 
 func collect_t_2(global_from:Vector2):
 	$Sprites/T2.show()
-	$Sprites/T2.position = $IdleMarkers/T2.position
+	$Sprites/T2.global_position = global_from
+	var tween = get_tree().create_tween()
+	tween.tween_property($Sprites/T2, "global_position", $IdleMarkers/T2.global_position, 1).set_ease(Tween.EASE_OUT)
+	await tween.finished
 	check_all_letters_collected()
 
 func check_all_letters_collected():

@@ -4,7 +4,7 @@ signal hammer_man_escaped(global_pos:Vector2)
 signal level_changed
 signal block_break
 signal hammer_man_death
-signal s_collected
+signal s_collected(global_pos:Vector2)
 
 @onready var levels:Array[Node2D] = [
 	$Levels/TitleScreen,
@@ -115,6 +115,5 @@ func _on_blinker_timer_timeout() -> void:
 	else:
 		$Levels/TitleScreen/Controls.show()
 
-
 func _on_s_collect() -> void:
-	s_collected.emit()
+	s_collected.emit($Levels/Level3/S.global_position)

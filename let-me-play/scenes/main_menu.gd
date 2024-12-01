@@ -3,8 +3,8 @@ extends Node2D
 signal settings_pressed
 signal shake_screen(strength:float, fade:float)
 signal start_button_exploded
-signal s_collected
-signal a_collected
+signal s_collected(global_pos:Vector2)
+signal a_collected(global_pos:Vector2)
 signal hammer_man_escaped(global_pos:Vector2)
 signal hammer_man_level_changed
 
@@ -123,11 +123,11 @@ func get_letter_positions() -> Array[Vector2]:
 func activate_desktop():
 	$Desktop.set_active_mode()
 
-func _on_desktop_a_collected() -> void:
-	a_collected.emit()
+func _on_desktop_a_collected(global_pos:Vector2) -> void:
+	a_collected.emit(global_pos)
 
-func _on_desktop_s_collected() -> void:
-	s_collected.emit()
+func _on_desktop_s_collected(global_pos:Vector2) -> void:
+	s_collected.emit(global_pos)
 
 func _on_crumpled_sticky_note_click() -> void:
 	$InteractiveElements/CrumpledStickyNote.hide()

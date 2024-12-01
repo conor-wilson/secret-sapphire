@@ -6,7 +6,7 @@ signal shake_screen(strength:float, fade:float)
 signal back_pressed
 signal toggle_free_roam_camera(toggled_on:bool)
 signal toggle_camera_zoom(toggled_on:bool)
-signal t_1_collected
+signal t_1_collected(global_pos:Vector2)
 
 func _process(delta: float) -> void:
 	if !$T1.can_collect:
@@ -69,4 +69,4 @@ func hide_letter():
 	$SpecialBreakableBlocks.show()
 
 func _on_t_1_collect() -> void:
-	t_1_collected.emit()
+	t_1_collected.emit($T1.global_position)
