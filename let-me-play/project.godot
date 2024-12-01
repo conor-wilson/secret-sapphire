@@ -110,6 +110,7 @@ slam={
 2d_physics/layer_11="items"
 2d_physics/layer_12="hammer_man_character"
 2d_physics/layer_13="hammer_man_level"
+2d_physics/layer_14="true_start_button"
 
 [rendering]
 

@@ -148,16 +148,22 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("click"):
 		$Foam.stop_following()
 
-##
-### TODO: This is purely for debugging. This function should be removed once it's
-### no-longer needed.
-##func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("debugbutton"):
-		#if $Camera/FreeRoamCamera.free_roam_mode_enabled:
-			#$Camera/FreeRoamCamera.disable_free_roam($Camera/MainMenuCameraMarker.global_position)
-		#else:
-			#$Camera/FreeRoamCamera.enable_free_roam()
+#
+## TODO: This is purely for debugging. This function should be removed once it's
+## no-longer needed.
+#func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debugbutton"):
+		reform_start_button()
 
+func reform_start_button():
+	$CollectedLetters.jump()
+	
+	await $CollectedLetters.jump_finished
+	
+	$TrueStartButton.show()
+	shake_screen(20,5)
+	$TrueStartButton.detatch(40)
+	
 
 func _drop_held_item():
 	
@@ -443,12 +449,12 @@ func _show_instructions(text:String) -> void:
 	$ItemInstructions.show()
 
 func _on_main_menu_a_collected() -> void:
-	$CollectedLetters/A1.show()
+	$CollectedLetters.collect_a_1(Vector2.ZERO) # TODO
 
 
 func _on_r_collect() -> void:
 	$CollectableLetters/R.hide()
-	$CollectedLetters/R.show()
+	$CollectedLetters.collect_r(Vector2.ZERO) # TODO
 
 
 func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
@@ -568,7 +574,7 @@ func _on_cave_of_wonders_secret_received() -> void:
 			$Menus/CaveOfWonders.talking_about_paper = false
 
 func _on_cave_of_wonders_t_2_collected() -> void:
-	$CollectedLetters/T2.show()
+	$CollectedLetters.collect_t_2(Vector2.ZERO) # TODO
 
 func _on_main_menu_hammer_man_escaped(global_pos: Vector2) -> void:
 	hammer_man.global_position = global_pos
@@ -581,7 +587,7 @@ func _on_main_menu_hammer_man_level_changed() -> void:
 		hammer_man.active = false
 
 func _on_main_menu_s_collected() -> void:
-	$CollectedLetters/S.show()
+	$CollectedLetters.collect_s(Vector2.ZERO) # TODO
 
 func _on_secret_settings_menu_t_1_collected() -> void:
-	$CollectedLetters/T1.show()
+	$CollectedLetters.collect_t_1(Vector2.ZERO) # TODO

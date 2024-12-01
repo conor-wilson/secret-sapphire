@@ -11,14 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://difhinmukve4m" path="res://assets/art/Wrench.png" id="7_85cok"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="8_kk8my"]
 [ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/FireExtinguisher.png" id="8_mmbyy"]
-[ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/RunningLetters/running_s.tres" id="10_wm5o8"]
-[ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/RunningLetters/running_t.tres" id="11_2eygt"]
 [ext_resource type="Texture2D" uid="uid://4damehrpitmi" path="res://assets/art/CrumpledPaper.png" id="11_ytw5d"]
-[ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="12_hat1b"]
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="13_atri8"]
 [ext_resource type="PackedScene" uid="uid://dgb87ltag6my4" path="res://scenes/foam.tscn" id="14_kuj0x"]
 [ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/collectable_letter.tscn" id="16_ea6f3"]
+[ext_resource type="PackedScene" uid="uid://be8gnb7g2r1qb" path="res://scenes/collected_letters.tscn" id="17_mc8ah"]
 [ext_resource type="PackedScene" uid="uid://bplobt2yqsrkn" path="res://scenes/hammer_man.tscn" id="19_h4bd0"]
+[ext_resource type="Texture2D" uid="uid://y8wgjwjjrbhx" path="res://assets/art/SmallStartButton.png" id="21_23dhw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o1dt"]
 radius = 6.0104
@@ -44,6 +43,9 @@ font_color = Color(0.333333, 0.333333, 0.333333, 1)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4r0k"]
 radius = 13.0
 height = 44.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6cai"]
+size = Vector2(158, 62)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lvo15")
@@ -238,77 +240,7 @@ label_settings = SubResource("LabelSettings_hbp62")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CollectedLetters" type="Node2D" parent="."]
-
-[node name="S" type="Area2D" parent="CollectedLetters"]
-visible = false
-position = Vector2(64, 576)
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectedLetters/S"]
-sprite_frames = ExtResource("10_wm5o8")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectedLetters/S"]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_f4r0k")
-
-[node name="T1" type="Area2D" parent="CollectedLetters"]
-visible = false
-position = Vector2(96, 576)
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectedLetters/T1"]
-sprite_frames = ExtResource("11_2eygt")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectedLetters/T1"]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_f4r0k")
-
-[node name="A1" type="Area2D" parent="CollectedLetters"]
-visible = false
-position = Vector2(128, 576)
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectedLetters/A1"]
-sprite_frames = ExtResource("12_hat1b")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectedLetters/A1"]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_f4r0k")
-
-[node name="R" type="Area2D" parent="CollectedLetters"]
-visible = false
-position = Vector2(168, 576)
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectedLetters/R"]
-sprite_frames = ExtResource("13_atri8")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectedLetters/R"]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_f4r0k")
-
-[node name="T2" type="Area2D" parent="CollectedLetters"]
-visible = false
-position = Vector2(200, 576)
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectedLetters/T2"]
-sprite_frames = ExtResource("11_2eygt")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectedLetters/T2"]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_f4r0k")
+[node name="CollectedLetters" parent="." instance=ExtResource("17_mc8ah")]
 
 [node name="CollectableLetters" type="Node2D" parent="."]
 
@@ -332,6 +264,19 @@ position = Vector2(184, -144)
 
 [node name="HammerMan" parent="." instance=ExtResource("19_h4bd0")]
 position = Vector2(-123, 339)
+
+[node name="TrueStartButton" parent="." instance=ExtResource("6_s1drs")]
+visible = false
+position = Vector2(576, 550)
+collision_layer = 8192
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TrueStartButton"]
+texture = ExtResource("21_23dhw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrueStartButton"]
+shape = SubResource("RectangleShape2D_u6cai")
 
 [connection signal="snap" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_snap"]
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]

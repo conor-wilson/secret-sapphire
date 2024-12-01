@@ -1,5 +1,6 @@
 class_name RunningLetter extends CharacterBody2D
 
+# TODO: Fix bug where sometimes letters get stuck without animations
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0

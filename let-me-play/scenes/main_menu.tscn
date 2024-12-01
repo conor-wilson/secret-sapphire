@@ -228,7 +228,7 @@ flat = true
 visible = false
 
 [node name="S" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
-position = Vector2(507, 585)
+position = Vector2(519, 576)
 collision_layer = 4
 collision_mask = 5
 breakable = false
@@ -241,7 +241,7 @@ texture = ExtResource("12_oif4b")
 polygon = PackedVector2Array(-12, -11, -7, -16, 7, -16, 12, -11, 12, -9, 10, -7, 8, -7, 5, -10, -5, -10, -6, -9, -6, -4, -5, -3, 7, -3, 12, 2, 12, 10, 6, 16, -7, 16, -12, 11, -12, 9, -10, 7, -8, 7, -5, 10, 5, 10, 6, 9, 6, 4, 5, 3, -7, 3, -12, -2)
 
 [node name="T1" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
-position = Vector2(542, 586)
+position = Vector2(546, 576)
 collision_layer = 4
 collision_mask = 5
 breakable = false
@@ -254,7 +254,7 @@ texture = ExtResource("13_mlhma")
 polygon = PackedVector2Array(-10, -16, 10, -16, 13, -13, 10, -10, 3, -10, 3, 14, 1, 16, -1, 16, -3, 14, -3, -10, -10, -10, -13, -13)
 
 [node name="A1" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
-position = Vector2(576, 586)
+position = Vector2(569, 576)
 collision_layer = 4
 collision_mask = 5
 breakable = false
@@ -267,7 +267,7 @@ texture = ExtResource("14_7kfov")
 polygon = PackedVector2Array(1, -16, 16, 13, 16, 15, 15, 16, 11, 16, 7, 7, -7, 7, -11, 16, -15, 16, -16, 15, -16, 13, -1, -16)
 
 [node name="R" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
-position = Vector2(609, 584)
+position = Vector2(597, 576)
 collision_layer = 4
 collision_mask = 5
 breakable = false
@@ -280,7 +280,7 @@ texture = ExtResource("15_1jtme")
 polygon = PackedVector2Array(-7, -16, 5, -16, 10, -11, 10, -2, 7, 1, 11, 14, 9, 16, 7, 16, 5, 14, 2, 4, -4, 4, -4, 14, -6, 16, -8, 16, -10, 14, -10, -13)
 
 [node name="T2" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
-position = Vector2(638, 586)
+position = Vector2(622, 576)
 collision_layer = 4
 collision_mask = 5
 breakable = false

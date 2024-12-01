@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://be8gnb7g2r1qb"]
+
+[ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/RunningLetters/running_s.tres" id="1_1u63f"]
+[ext_resource type="Script" path="res://scenes/collected_letters.gd" id="1_m7ov3"]
+[ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/RunningLetters/running_t.tres" id="2_7m3y2"]
+[ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/RunningLetters/running_r.tres" id="3_lg2ll"]
+[ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="4_mb8o6"]
+
+[node name="CollectedLetters" type="Node2D"]
+script = ExtResource("1_m7ov3")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="S" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(514, 576)
+sprite_frames = ExtResource("1_1u63f")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="T1" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(541, 576)
+sprite_frames = ExtResource("2_7m3y2")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="R" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(609, 576)
+sprite_frames = ExtResource("3_lg2ll")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="T2" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(636, 576)
+sprite_frames = ExtResource("2_7m3y2")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="A1" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(573, 576)
+sprite_frames = ExtResource("4_mb8o6")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="IdleMarkers" type="Node2D" parent="."]
+
+[node name="S" type="Marker2D" parent="IdleMarkers"]
+position = Vector2(514, 576)
+
+[node name="T1" type="Marker2D" parent="IdleMarkers"]
+position = Vector2(541, 576)
+
+[node name="A1" type="Marker2D" parent="IdleMarkers"]
+position = Vector2(573, 576)
+
+[node name="R" type="Marker2D" parent="IdleMarkers"]
+position = Vector2(609, 576)
+
+[node name="T2" type="Marker2D" parent="IdleMarkers"]
+position = Vector2(636, 576)
