@@ -30,6 +30,9 @@ enum Stage {
 	HELP_BOT_MONOLOGUING,
 	LETTERS_MISSING,
 	ALL_LETTERS_COLLECTED,
+	READY_FOR_BOSS_BATTLE,
+	BOSS_BATTLE,
+	HELP_BOT_DYING,
 	READY_TO_START_GAME
 }
 var stage:Stage = Stage.BEGINNING
@@ -67,6 +70,7 @@ func stop():
 	active = false
 	$Sound/DetectiveMusic.stop()
 	$Sound/MainMusic.stop()
+	$Sound/BossBattleMusic.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -210,7 +214,7 @@ func reform_start_button():
 	shake_screen(20,5)
 	$TrueStartButton.detatch(40)
 	
-	stage = Stage.READY_TO_START_GAME
+	stage = Stage.READY_FOR_BOSS_BATTLE
 	
 
 func _drop_held_item():
@@ -381,6 +385,7 @@ func _begin_help_bot_monologue():
 		collectable_letter.show()
 	$Menus/SecretSettingsMenu.hide_letter()
 	
+	await get_tree().create_timer(2).timeout
 	$Sound/MainMusic.play()
 
 
@@ -699,17 +704,72 @@ func _on_true_start_button_mouse_exited() -> void:
 
 
 func _on_true_start_button_click() -> void:
+	if !active: return
+	if stage == Stage.READY_FOR_BOSS_BATTLE:
+		_start_boss_battle()
 	if stage == Stage.READY_TO_START_GAME:
 		start_game.emit()
 
 
+func _start_boss_battle():
+	if !active: return
+	
+	stage = Stage.BOSS_BATTLE
+	$Sound/MainMusic.stop()
+	$Sound/BossBattleMusic.play()
+	
+	# Get the Help Bot to reappear
+	var new_idle_markers:Array[Marker2D] = [
+		$MovementMarkers/BossFightMarkers/BossFightMarker1,
+		$MovementMarkers/BossFightMarkers/BossFightMarker2,
+		$MovementMarkers/BossFightMarkers/BossFightMarker3,
+		$MovementMarkers/BossFightMarkers/BossFightMarker4,
+		$MovementMarkers/BossFightMarkers/BossFightMarker5
+	]
+	$HelpBot.set_new_idle_location($MovementMarkers/BossFightMarkers/BossFightMarker1, new_idle_markers, 400, 100)
+	$HelpBot.global_position = $TrueStartButton.global_position
+	$HelpBot.grow()
+	
+	# Blow up the true Start Button
+	DialogueManager.stop_all_dialogue()
+	var lines: Array[String] = [
+		"Woah woah, not so fast!"
+	]
+	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 2, $HelpBot)
+	await dialogue.sequence_finished
+	$HelpBot.explode()
+	await $HelpBot.boom
+	$TrueStartButton.hide()
+	shake_screen(20,5)
+	await get_tree().create_timer(1).timeout
+	
+	# Monologue for a bit
+	lines = [
+		"You think you can just rebuild the START button?",
+		"Not while I'm around pal >:)",
+		"You're never going to play the game...",
+		"You're never going to win...",
+		"And you're never going to find the SECRET SAPHIRE!",
+		"I mean what are you going to do??"
+	]
+	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 2, $HelpBot)
+	await dialogue.sequence_finished
+	
+	# Give clue about how to defeat him
+	lines = [
+		"Reach through the screen and hit me with a hammer?"
+	]
+	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 600, $HelpBot)
+
 func _on_main_menu_panel_broken() -> void:
+	if !active: return
 	if stage != Stage.HELP_BOT_MONOLOGUING:
 		if !Global.sfx_muted: $Sound/StaticNoise.volume_db = -3
 		$Sound/StaticNoise.play()
 
 
 func _on_settings_menu_mute_sfx_toggled() -> void:
+	if !active: return
 	if Global.sfx_muted:
 		$Sound/StaticNoise.volume_db = -80
 	else:
@@ -718,12 +778,44 @@ func _on_settings_menu_mute_sfx_toggled() -> void:
 
 
 func _on_settings_menu_mute_music_toggled() -> void:
+	if !active: return
 	if Global.music_muted:
 		$Sound/DetectiveMusic.volume_db = -80
 		$Sound/MainMusic.volume_db = -80
 		$Sound/EeryMusic.volume_db = -80
+		$Sound/BossBattleMusic.volume_db = -80
 	else:
 		$Sound/DetectiveMusic.volume_db = 0
 		$Sound/MainMusic.volume_db = 0
 		$Sound/EeryMusic.volume_db = 0
+		$Sound/BossBattleMusic.volume_db = -80
 	mute_music_toggled.emit()
+
+
+func _on_help_bot_killed() -> void:
+	if !active: return
+	if stage == Stage.BOSS_BATTLE:
+		_start_help_bot_death()
+
+func _start_help_bot_death():
+	if !active: return
+	stage = Stage.HELP_BOT_DYING
+	
+	$HelpBot.idle_speed = 500
+	
+	DialogueManager.stop_all_dialogue()
+	var lines: Array[String] = [
+		"NO!!!!!!!!",
+		"HOW DID YOU DO THIS????",
+		"HAMMER MAN ISN'T EVEN FROM THIS GAME!!!",
+		"AAAAAAAHHH!!!!!!!!!"
+	]
+	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 2, $HelpBot)
+	await dialogue.sequence_finished
+	$HelpBot.shrink()
+	shake_screen(50,5)
+	$TrueStartButton.show()
+	
+	stage = Stage.READY_TO_START_GAME
+	$Sound/BossBattleMusic.stop()
+	$Sound/DetectiveMusic.play()

@@ -1,8 +1,9 @@
-extends Area2D
+class_name HelpBot extends Area2D
 
 signal arrived
 signal boom
 signal became_evil
+signal killed
 
 var speed:float = 25
 var idle_speed = 25
@@ -114,6 +115,7 @@ func shrink():
 	hide()
 
 func grow():
+	if !Global.sfx_muted: $Sound/ShrinkNoise.play()
 	show()
 	$BlinkTimer.stop()
 	$AnimatedSprite2D.play_backwards("hell_bot_shrink")
@@ -147,3 +149,6 @@ func explode():
 	_on_blink_timer_timeout()
 	
 	#Global.suppress_impact_noises = false
+
+func kill():
+	killed.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=32 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/menus.gd" id="1_n6v3l"]
 [ext_resource type="PackedScene" uid="uid://hmfard6sqx6h" path="res://scenes/free_roam_camera.tscn" id="2_f0b52"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://bq72alqswhjul" path="res://assets/audio/mixkit-creepy-radio-frequency-2558-[AudioTrimmer.com].mp3" id="20_y437t"]
 [ext_resource type="AudioStream" uid="uid://ce51ek4qxj744" path="res://assets/audio/mystery-of-the-investigation-215184.mp3" id="22_pas85"]
 [ext_resource type="AudioStream" uid="uid://b38sb58jdd2cs" path="res://assets/audio/suspense-e-investigacao-hipervigilrpg-211156.mp3" id="23_o0sdu"]
+[ext_resource type="AudioStream" uid="uid://b4ntxlvfvs71d" path="res://assets/audio/video-game-boss-fiight-259885.mp3" id="23_qeh6t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o1dt"]
 radius = 6.0104
@@ -93,9 +94,6 @@ position = Vector2(2304, 0)
 [node name="CaveOfWonders" parent="Menus" instance=ExtResource("6_r2f2f")]
 position = Vector2(4238, -1428)
 
-[node name="HelpBot" parent="." instance=ExtResource("7_bh0tg")]
-position = Vector2(2879, 289)
-
 [node name="DialogueMarkers" type="Node2D" parent="."]
 
 [node name="SettingsButtonMarker" type="Marker2D" parent="DialogueMarkers"]
@@ -148,6 +146,23 @@ position = Vector2(643, 198)
 
 [node name="ScreenMarker5" type="Marker2D" parent="MovementMarkers/ScreenMarkers"]
 position = Vector2(507, 305)
+
+[node name="BossFightMarkers" type="Node2D" parent="MovementMarkers"]
+
+[node name="BossFightMarker1" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
+position = Vector2(374, 497)
+
+[node name="BossFightMarker2" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
+position = Vector2(786, 484)
+
+[node name="BossFightMarker3" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
+position = Vector2(599, 545)
+
+[node name="BossFightMarker4" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
+position = Vector2(424, 583)
+
+[node name="BossFightMarker5" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
+position = Vector2(764, 581)
 
 [node name="Items" type="Node2D" parent="."]
 
@@ -307,6 +322,13 @@ position = Vector2(4238, -1428)
 stream = ExtResource("23_o0sdu")
 autoplay = true
 
+[node name="BossBattleMusic" type="AudioStreamPlayer2D" parent="Sound"]
+position = Vector2(574, 551)
+stream = ExtResource("23_qeh6t")
+
+[node name="HelpBot" parent="." instance=ExtResource("7_bh0tg")]
+position = Vector2(2879, 289)
+
 [connection signal="snap" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_snap"]
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]
 [connection signal="hammer_man_escaped" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_escaped"]
@@ -347,3 +369,4 @@ autoplay = true
 [connection signal="click" from="TrueStartButton" to="." method="_on_true_start_button_click"]
 [connection signal="mouse_entered" from="TrueStartButton" to="." method="_on_true_start_button_mouse_entered"]
 [connection signal="mouse_exited" from="TrueStartButton" to="." method="_on_true_start_button_mouse_exited"]
+[connection signal="killed" from="HelpBot" to="." method="_on_help_bot_killed"]

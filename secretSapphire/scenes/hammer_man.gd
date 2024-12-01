@@ -130,7 +130,14 @@ func break_blocks_in_zone(zone:Area2D) -> bool:
 	
 	# Check to see if zone overlaps with any enemies
 	for area in zone.get_overlapping_areas():
+		
+		# Blob Enemy
 		if area is BlobEnemy && area.active:
+			area.kill()
+			broke_block = true
+		
+		# Help Bot
+		if area is HelpBot:
 			area.kill()
 			broke_block = true
 	
