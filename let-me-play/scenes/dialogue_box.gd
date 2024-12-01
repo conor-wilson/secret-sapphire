@@ -1,6 +1,7 @@
 class_name DialogueBox extends MarginContainer
 
 # TODO: Review this code and tidy it all up
+# TODO: Make it so the pitch can be scaled via an exported var so that cave of wonders has a deeper voice
 
 @onready var label: Label = $MarginContainer/Label
 @onready var timer: Timer = $Timer
@@ -70,6 +71,9 @@ func display_text(new_text:String):
 	_display_letter()
 
 func _display_letter():
+	
+	$BlipNoise.pitch_scale = randf_range(0.95,1.05)
+	$BlipNoise.play()
 	
 	_follow_node_if_exists()
 	label.text += text[letter_index]
