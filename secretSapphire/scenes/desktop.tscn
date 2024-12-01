@@ -376,6 +376,7 @@ close_button = NodePath("CloseButton")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/Antivirus"]
 tile_map_data = PackedByteArray("AAD6//r/AAAFAAAAAAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAA=")
+enabled = false
 tile_set = ExtResource("2_b782f")
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Antivirus"]
@@ -566,6 +567,7 @@ metadata/_edit_group_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TurtlePNG"]
 tile_map_data = PackedByteArray("AAD6//r/AAAFAAAAAAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAA=")
+enabled = false
 tile_set = ExtResource("2_b782f")
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TurtlePNG"]
@@ -591,6 +593,7 @@ metadata/_edit_group_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TurtleHatPNG"]
 tile_map_data = PackedByteArray("AAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAD6//r/AAAFAAAAAAA=")
+enabled = false
 tile_set = ExtResource("2_b782f")
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TurtleHatPNG"]
@@ -616,6 +619,7 @@ metadata/_edit_group_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/HappyTurtleGIF"]
 tile_map_data = PackedByteArray("AAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAD6//r/AAAFAAAAAAA=")
+enabled = false
 tile_set = ExtResource("2_b782f")
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/HappyTurtleGIF"]
@@ -662,10 +666,7 @@ shape = SubResource("RectangleShape2D_ih88g")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TMNTJPG"]
 tile_map_data = PackedByteArray("AAD6//r/AAAFAAAAAAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAA=")
-tile_set = ExtResource("2_b782f")
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="DesktopWindows/TMNTJPG"]
-tile_map_data = PackedByteArray("AAD6//r/AAAFAAAAAAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAA=")
+enabled = false
 tile_set = ExtResource("2_b782f")
 
 [node name="TurtleMemeWEBP" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
@@ -677,6 +678,7 @@ close_button = NodePath("CloseButton")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TurtleMemeWEBP"]
 tile_map_data = PackedByteArray("AAD6//n/AAAFAAAAAAD7//n/AAAFAAAAAAD8//n/AAAFAAAAAAD9//n/AAAFAAAAAAD+//n/AAAFAAAAAAD///n/AAAFAAAAAAAAAPn/AAAFAAAAAAABAPn/AAAFAAAAAAACAPn/AAAFAAAAAAADAPn/AAAFAAAAAAAEAPn/AAAFAAAAAAAFAPn/AAAFAAAAAAA=")
+enabled = false
 tile_set = ExtResource("2_b782f")
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP"]

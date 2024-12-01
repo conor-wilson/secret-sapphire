@@ -132,6 +132,8 @@ func _on_settings_menu_back_pressed() -> void:
 	
 	if stage == Stage.HELP_BOT_WAITING_TO_MONOLOGUE:
 		_begin_help_bot_monologue()
+	elif stage == Stage.ALL_LETTERS_COLLECTED:
+		reform_start_button() 
 
 func _on_secret_settings_menu_back_pressed() -> void:
 	if !active: return
