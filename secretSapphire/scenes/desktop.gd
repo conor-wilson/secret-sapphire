@@ -17,7 +17,7 @@ var mode:Mode = Mode.DISABLED
 func _ready() -> void:
 	mode = Mode.DISABLED
 
-const this_is_actually_fine_message:String = "\"THIS ACTUALLY IS FINE!\nTRY THIS: ←↑←↑→↓←↑\""
+const this_is_actually_fine_message:String = "\"THIS ACTUALLY IS FINE!\nTRY THIS:                      \""
 
 func _process(delta: float) -> void:
 	
@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 		$DesktopWindows/TurtleMemeWEBP/Caption.text != this_is_actually_fine_message
 	):
 		$DesktopWindows/TurtleMemeWEBP/Caption.text = this_is_actually_fine_message
+		$DesktopWindows/TurtleMemeWEBP/Arrows.show()
 
 func _on_screen_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	

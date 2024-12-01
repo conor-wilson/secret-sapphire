@@ -414,7 +414,7 @@ func _start_help_bot_deception_sequence():
 	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, "blue", 2, $HelpBot)
 	
 	await dialogue.sequence_finished
-	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["↑ ↓ ↑ ↓ ← → ← →"], "blue", 600, $HelpBot)
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["UP DOWN UP DOWN LEFT RIGHT LEFT RIGHT"], "blue", 600, $HelpBot)
 
 
 func _on_settings_menu_incorrect_username() -> void:
@@ -440,7 +440,7 @@ func _on_settings_menu_correct_username() -> void:
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
 		var lines: Array[String] = [
 			"Nice job! \\(^o^)/",
-			"Looks like, you'll also need his password...",
+			"Looks like you'll also need his password...",
 			"It can't be that hard to guess, I'm sure you'll figure it out!"
 		]
 		DialogueManager.stop_all_dialogue()

@@ -112,6 +112,7 @@ text = "PLAY AGAIN"
 flat = true
 
 [node name="MainMenu" type="Button" parent="VictoryScreen"]
+layout_mode = 0
 offset_left = 469.0
 offset_top = 470.0
 offset_right = 681.0
