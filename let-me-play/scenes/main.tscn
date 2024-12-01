@@ -309,4 +309,6 @@ shape = SubResource("RectangleShape2D_u6cai")
 [connection signal="mouse_exited" from="ItemDropZones/SettingsMenu" to="." method="_on_item_drop_zone_mouse_exited"]
 [connection signal="mouse_entered" from="ItemDropZones/SecretSettingsMenu" to="." method="_on_item_drop_zone_mouse_entered"]
 [connection signal="mouse_exited" from="ItemDropZones/SecretSettingsMenu" to="." method="_on_item_drop_zone_mouse_exited"]
+[connection signal="all_letters_collected" from="CollectedLetters" to="." method="_on_collected_letters_all_letters_collected"]
 [connection signal="collect" from="CollectableLetters/R" to="." method="_on_r_collect"]
+[connection signal="block_break" from="HammerMan" to="." method="_on_hammer_man_block_break"]

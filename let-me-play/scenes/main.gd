@@ -22,7 +22,8 @@ enum Stage {
 	HELP_BOT_FREED,
 	HELP_BOT_WAITING_TO_MONOLOGUE,
 	HELP_BOT_MONOLOGUING,
-	LETTERS_MISSING
+	LETTERS_MISSING,
+	ALL_LETTERS_COLLECTED
 }
 var stage:Stage = Stage.BEGINNING
 
@@ -148,14 +149,16 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("click"):
 		$Foam.stop_following()
 
-#
-## TODO: This is purely for debugging. This function should be removed once it's
-## no-longer needed.
-#func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debugbutton"):
-		reform_start_button()
+##
+### TODO: This is purely for debugging. This function should be removed once it's
+### no-longer needed.
+##func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debugbutton"):
+		#reform_start_button()
 
 func reform_start_button():
+	await get_tree().create_timer(1).timeout
+	
 	$CollectedLetters.jump()
 	
 	await $CollectedLetters.jump_finished
@@ -470,6 +473,12 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 	):
 		_begin_help_bot_monologue()
 	
+	if (
+		snap_point == $Camera/MainMenuCameraMarker && 
+		stage == Stage.ALL_LETTERS_COLLECTED 
+	):
+		reform_start_button()
+	
 	if snap_point == $Camera/CaveOfWondersCameraMarker:
 		
 		if $Menus/CaveOfWonders.talking_about_paper == true:
@@ -591,3 +600,13 @@ func _on_main_menu_s_collected() -> void:
 
 func _on_secret_settings_menu_t_1_collected() -> void:
 	$CollectedLetters.collect_t_1(Vector2.ZERO) # TODO
+
+
+func _on_collected_letters_all_letters_collected() -> void:
+	stage = Stage.ALL_LETTERS_COLLECTED
+	if $Camera/FreeRoamCamera.position == $Camera/MainMenuCameraMarker.position:
+		reform_start_button()
+
+
+func _on_hammer_man_block_break() -> void:
+	shake_screen(5,5)

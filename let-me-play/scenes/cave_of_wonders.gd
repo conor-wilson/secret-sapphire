@@ -22,7 +22,7 @@ func reveal_t_2():
 	t_2_revealed = true
 
 func _on_cave_mouth_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("click"):
+	if event.is_action_pressed("click") || event.is_action_pressed("right_click"):
 		secret_received.emit()
 
 
