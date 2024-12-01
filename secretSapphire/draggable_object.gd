@@ -113,9 +113,15 @@ func _on_double_clicked() -> void:
 	if is_icon && openable_window != null:
 		openable_window.global_position = global_position + Vector2(0, 64)
 		openable_window.show()
+		for child in openable_window.get_children():
+			if child is TileMapLayer:
+				child.enabled = true
 
 func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !disabled && !is_icon && event.is_action_pressed("click") && CursorManager.current_cursor == CursorManager.CURSOR:
 		hide()
 		draggable = false
+		for child in get_children():
+			if child is TileMapLayer:
+				child.enabled = false
 		
