@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=33 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hib26"]
@@ -12,6 +12,7 @@
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_43f6x"]
 [ext_resource type="Texture2D" uid="uid://y8wgjwjjrbhx" path="res://assets/art/SmallStartButton.png" id="8_nhvuo"]
 [ext_resource type="Texture2D" uid="uid://op2bmdwt6xln" path="res://assets/art/Screw.png" id="8_yx54q"]
+[ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="9_qhg6l"]
 [ext_resource type="Texture2D" uid="uid://pvl4opjitbn6" path="res://assets/art/Letters1.png" id="12_oif4b"]
 [ext_resource type="PackedScene" uid="uid://lvqqxc7ln6wx" path="res://scenes/running_letter.tscn" id="13_7j4n4"]
 [ext_resource type="Texture2D" uid="uid://c7am4spqld716" path="res://assets/art/Letters2.png" id="13_mlhma"]
@@ -66,16 +67,22 @@ bounce = 0.3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2u67"]
 size = Vector2(1024, 384)
 
+[sub_resource type="LabelSettings" id="LabelSettings_rnshd"]
+font = ExtResource("9_qhg6l")
+font_size = 39
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwsea"]
 size = Vector2(60, 156)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jk44i"]
 radius = 8.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_rnshd"]
+[sub_resource type="LabelSettings" id="LabelSettings_35xiq"]
 font = ExtResource("5_2a3fy")
 font_size = 96
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfed"]
 
@@ -134,8 +141,19 @@ texture = ExtResource("3_janoq")
 position = Vector2(576, 256)
 shape = SubResource("RectangleShape2D_p2u67")
 
+[node name="Title" type="Label" parent="InteractiveElements/Panel"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 362.0
+text = "THE  SEARCH  FOR  THE
+SECRET  SAPPHIRE"
+label_settings = SubResource("LabelSettings_rnshd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="StartButton" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
-position = Vector2(576, 368)
+position = Vector2(576, 384)
 collision_layer = 2
 metadata/_edit_group_ = true
 
@@ -192,8 +210,10 @@ texture = ExtResource("8_yx54q")
 shape = SubResource("CircleShape2D_jk44i")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 1152.0
-offset_bottom = 170.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 1148.0
+offset_bottom = 513.0
 theme_override_constants/margin_top = 175
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
@@ -201,8 +221,8 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "<JUST LET ME PLAY>"
-label_settings = SubResource("LabelSettings_rnshd")
+text = " "
+label_settings = SubResource("LabelSettings_35xiq")
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
