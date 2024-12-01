@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Let Me Play"
+config/name="The Search for the Secret Sapphire"
 run/main_scene="res://scenes/menus.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Sapphire.png"
 
 [autoload]
 
