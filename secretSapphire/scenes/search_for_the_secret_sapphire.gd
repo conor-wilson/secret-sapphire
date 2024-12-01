@@ -20,6 +20,16 @@ func reset():
 	safe_open = false
 	$Instructions.text = "Find the SECRET SAPPHIRE"
 
+func play():
+	show()
+	active = true
+	$Music.play()
+
+func stop():
+	hide()
+	active = false
+	$Music.stop()
+
 func _on_safe_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !active: return
 	if event.is_action_released("click"):

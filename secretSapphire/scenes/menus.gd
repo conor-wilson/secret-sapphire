@@ -55,6 +55,16 @@ func _ready() -> void:
 	]
 	$HelpBot.set_new_idle_location($MovementMarkers/CageMarkers/CageMarker1, idle_markers, 400, 10)
 
+func play():
+	show()
+	active = true
+	$Sound/DetectiveMusic.play()
+
+func stop():
+	hide()
+	active = false
+	$Sound/DetectiveMusic.stop()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
@@ -96,6 +106,7 @@ func _on_secret_settings_menu_shake_screen(strength: float, fade: float) -> void
 
 func shake_screen(strength:float, fade:float):
 	if !active: return
+	$Camera/FreeRoamCamera/VibrationNoise.play()
 	screen_shake_strength = strength
 	if fade != 0:
 		screen_shake_fade = fade
@@ -124,6 +135,12 @@ func _on_secret_settings_menu_back_pressed() -> void:
 
 func _on_main_menu_start_button_exploded() -> void:
 	if !active: return
+	
+	$Sound/DetectiveMusic.stop()
+	
+	if stage != Stage.HELP_BOT_MONOLOGUING:
+		if stage == Stage.BEGINNING: $Sound/StaticNoise.volume_db = -10
+		$Sound/StaticNoise.play()
 	
 	# Shake the screen
 	shake_screen(30.0, 5.0)
@@ -333,6 +350,7 @@ func _begin_help_bot_monologue():
 	
 	$HelpBot.explode()
 	await $HelpBot.boom
+	$Sound/StaticNoise.stop()
 	shake_screen(20,1)
 	$Menus/MainMenu.clear_static()
 	$Menus/MainMenu.detatch_sticky_note()
@@ -359,6 +377,8 @@ func _begin_help_bot_monologue():
 	for collectable_letter in $CollectableLetters.get_children():
 		collectable_letter.show()
 	$Menus/SecretSettingsMenu.hide_letter()
+	
+	$Sound/MainMusic.play()
 
 
 func _on_settings_menu_secret_settings_pressed() -> void:
@@ -676,5 +696,14 @@ func _on_true_start_button_mouse_exited() -> void:
 
 
 func _on_true_start_button_click() -> void:
+	print("ASDF")
+	print("STAGE: ", stage)
 	if stage == Stage.READY_TO_START_GAME:
+		print("QWER")
 		start_game.emit()
+
+
+func _on_main_menu_panel_broken() -> void:
+	if stage != Stage.HELP_BOT_MONOLOGUING:
+		$Sound/StaticNoise.volume_db = -3
+		$Sound/StaticNoise.play()

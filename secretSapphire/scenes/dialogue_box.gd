@@ -6,6 +6,8 @@ class_name DialogueBox extends MarginContainer
 @onready var label: Label = $MarginContainer/Label
 @onready var timer: Timer = $Timer
 
+var pitch_modifier:float = 1
+
 var follow_node:CanvasItem = null
 
 var line_queue: Array[String] = [] # The list of lines that are queued to be displayed.
@@ -14,7 +16,6 @@ const MAX_WIDTH = 288
 
 var text = ""
 var letter_index = 0
-
 
 const BLUE_BOX:Texture2D  = preload("res://assets/art/DialogueBox.png")
 const RED_BOX:Texture2D   = preload("res://assets/art/DialogueBox_Red.png")
@@ -31,15 +32,19 @@ func set_colour(colour:String):
 		"red":
 			$NinePatchRect.texture = RED_BOX
 			$MarginContainer/Label.add_theme_color_override("font_color", Color("ac3232"))
+			pitch_modifier = 0.75
 		"blue":
 			$NinePatchRect.texture = BLUE_BOX
 			$MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))
+			pitch_modifier = 1
 		"black":
 			$NinePatchRect.texture = BLACK_BOX
 			$MarginContainer/Label.add_theme_color_override("font_color", Color("000000"))
+			pitch_modifier = 0.5
 		_: 
 			$NinePatchRect.texture = BLUE_BOX
 			$MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))
+			pitch_modifier = 0.5
 
 func _process(delta: float) -> void:
 	_follow_node_if_exists()
@@ -72,7 +77,7 @@ func display_text(new_text:String):
 
 func _display_letter():
 	
-	$BlipNoise.pitch_scale = randf_range(0.95,1.05)
+	$BlipNoise.pitch_scale = randf_range(pitch_modifier-0.05,pitch_modifier+0.05)
 	$BlipNoise.play()
 	
 	_follow_node_if_exists()

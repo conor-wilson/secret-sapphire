@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bplobt2yqsrkn"]
+[gd_scene load_steps=13 format=3 uid="uid://bplobt2yqsrkn"]
 
 [ext_resource type="Script" path="res://scenes/hammer_man.gd" id="1_xriwn"]
 [ext_resource type="Texture2D" uid="uid://ew36lrsvo0g3" path="res://assets/art/HammerMan/HammerMan.png" id="2_375q2"]
 [ext_resource type="Texture2D" uid="uid://eud55xccloly" path="res://assets/art/HammerMan/HammerManRunning-Sheet.png" id="2_p1pe4"]
 [ext_resource type="Texture2D" uid="uid://bohi1q3vnhf77" path="res://assets/art/HammerMan/HammerManSlam-Sheet.png" id="4_wypc8"]
+[ext_resource type="AudioStream" uid="uid://brau47leu6abo" path="res://assets/audio/Retro Jump Classic 08.wav" id="5_jnhxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h1v86"]
 atlas = ExtResource("2_p1pe4")
@@ -125,6 +126,11 @@ wait_time = 0.06
 [node name="JumpBufferTimer" type="Timer" parent="Timers"]
 wait_time = 0.07
 one_shot = true
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="JumpNoise" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("5_jnhxm")
 
 [connection signal="slam_started" from="." to="." method="_on_slam_started"]
 [connection signal="timeout" from="Timers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

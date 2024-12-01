@@ -60,11 +60,12 @@ func _on_change_dir_timer_timeout() -> void:
 	$ChangeDirTimer.start(randf_range(0.1, 1))
 
 func _on_jump_timer_timeout() -> void:
-	$JumpTimer.start(randf_range(0.1, 3))
 	if is_on_floor():
 		_jump()
 
 func _jump():
+	$Sound/JumpingNoise.pitch_scale = randf_range(0.9,1.1)
+	$Sound/JumpingNoise.play()
 	state = State.JUMPING
 	await $AnimatedSprite2D.frame_changed
 	await $AnimatedSprite2D.frame_changed

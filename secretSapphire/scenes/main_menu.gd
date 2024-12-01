@@ -3,6 +3,7 @@ extends Node2D
 signal settings_pressed
 signal shake_screen(strength:float, fade:float)
 signal start_button_exploded
+signal panel_broken
 signal s_collected(global_pos:Vector2)
 signal a_collected(global_pos:Vector2)
 signal hammer_man_escaped(global_pos:Vector2)
@@ -69,6 +70,7 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 
 
 func _on_panel_smash() -> void:
+	panel_broken.emit()
 	shake_screen.emit(25,5)
 
 func _on_desktop_tap() -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://lvqqxc7ln6wx"]
+[gd_scene load_steps=8 format=3 uid="uid://lvqqxc7ln6wx"]
 
 [ext_resource type="Script" path="res://running_letter.gd" id="1_b1yc4"]
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="2_c6l87"]
+[ext_resource type="AudioStream" uid="uid://brau47leu6abo" path="res://assets/audio/Retro Jump Classic 08.wav" id="3_sgt8b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oh5f5"]
 radius = 12.0
@@ -56,6 +57,12 @@ shape = SubResource("RectangleShape2D_5ug51")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LandingDetector"]
 position = Vector2(0, 56)
 shape = SubResource("RectangleShape2D_g0lr5")
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="JumpingNoise" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("3_sgt8b")
+volume_db = -11.465
 
 [connection signal="timeout" from="ChangeDirTimer" to="." method="_on_change_dir_timer_timeout"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

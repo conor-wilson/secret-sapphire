@@ -3,7 +3,7 @@ class_name HammerMan extends CharacterBody2D
 signal block_break
 signal slam_started
 
-var active:bool = true
+var active:bool = false
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
@@ -61,6 +61,7 @@ func handle_jumpability():
 		$Timers/CoyoteTimer.start()
 
 func jump():
+	$Sound/JumpNoise.play()
 	can_jump = false
 	$Timers/CoyoteTimer.stop()
 	$Timers/JumpBufferTimer.stop()
