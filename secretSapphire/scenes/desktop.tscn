@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=52 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cotwwg0orvryt" path="res://assets/art/DesktopWindows/HappyTurtleGif-Sheet.png" id="15_ecr0k"]
 [ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/FireExtinguisher.png" id="15_xgsxi"]
 [ext_resource type="Texture2D" uid="uid://bp5uggpcfdq0p" path="res://assets/art/DesktopWindows/TMNTJPG.png" id="16_ho8k6"]
+[ext_resource type="FontFile" uid="uid://da6hr0nb4qkqg" path="res://assets/fonts/Whacky_Joe.ttf" id="17_pw4tl"]
 [ext_resource type="Texture2D" uid="uid://qobfft7r7lng" path="res://assets/art/DesktopWindows/TurtleMeme.png" id="17_yj0i8"]
 [ext_resource type="PackedScene" uid="uid://bmtqbkl3i7e1b" path="res://scenes/fire.tscn" id="20_npo72"]
 [ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/collectable_letter.tscn" id="22_gmy4o"]
@@ -48,6 +49,26 @@ size = Vector2(16, 16)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3c21"]
 radius = 7.0
 height = 36.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_wf0jh"]
+font = ExtResource("17_pw4tl")
+font_color = Color(0.615686, 0.615686, 0.615686, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n0ast"]
+font = ExtResource("5_bxrir")
+font_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wgdno"]
+font = ExtResource("5_bxrir")
+font_size = 32
+font_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gohla"]
+size = Vector2(144, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgxfr"]
+font = ExtResource("5_bxrir")
+font_color = Color(0.247059, 0.247059, 0.454902, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_m5gid"]
 font = ExtResource("5_bxrir")
@@ -376,7 +397,6 @@ position = Vector2(312, 256)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 close_button = NodePath("CloseButton")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Antivirus"]
 texture = ExtResource("14_trhyc")
@@ -392,7 +412,7 @@ position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
 [node name="FireExtinguisher" type="Area2D" parent="DesktopWindows/Antivirus"]
-position = Vector2(57, -51)
+position = Vector2(60, -40)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/FireExtinguisher"]
@@ -401,6 +421,55 @@ shape = SubResource("CapsuleShape2D_q3c21")
 [node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Antivirus/FireExtinguisher"]
 position = Vector2(8, 0)
 texture = ExtResource("15_xgsxi")
+
+[node name="Title" type="Label" parent="DesktopWindows/Antivirus"]
+offset_left = -72.0
+offset_top = -56.0
+offset_right = 48.0
+offset_bottom = -24.0
+text = "VirusBuster"
+label_settings = SubResource("LabelSettings_wf0jh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credit" type="Label" parent="DesktopWindows/Antivirus"]
+offset_left = -86.0
+offset_top = 64.0
+offset_right = 88.0
+offset_bottom = 88.0
+text = "Created by @QuietLantern"
+label_settings = SubResource("LabelSettings_n0ast")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ScanButtonText" type="Label" parent="DesktopWindows/Antivirus"]
+offset_left = -72.0
+offset_right = 72.0
+offset_bottom = 36.0
+text = "START SCAN"
+label_settings = SubResource("LabelSettings_wgdno")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScanButtonButton" type="Area2D" parent="DesktopWindows/Antivirus"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/ScanButtonButton"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_gohla")
+
+[node name="SeemsFine" type="Label" parent="DesktopWindows/Antivirus"]
+offset_left = -80.0
+offset_top = 32.0
+offset_right = 80.0
+offset_bottom = 64.0
+label_settings = SubResource("LabelSettings_fgxfr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VirusScanTimer" type="Timer" parent="DesktopWindows/Antivirus"]
+one_shot = true
 
 [node name="TodoTXT" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
 position = Vector2(592, 280)
@@ -890,7 +959,12 @@ position = Vector2(576, 256)
 [connection signal="mouse_entered" from="HomeButton" to="." method="_on_home_button_mouse_entered"]
 [connection signal="mouse_exited" from="HomeButton" to="." method="_on_home_button_mouse_exited"]
 [connection signal="double_clicked" from="DesktopIcons/HammerManEXEIcon" to="." method="_on_hammer_man_exe_icon_double_clicked"]
+[connection signal="input_event" from="DesktopWindows/Antivirus/CloseButton" to="." method="_on_close_button_input_event"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/FireExtinguisher" to="." method="_on_fire_extinguisher_input_event"]
+[connection signal="input_event" from="DesktopWindows/Antivirus/ScanButtonButton" to="." method="_on_scan_button_button_input_event"]
+[connection signal="mouse_entered" from="DesktopWindows/Antivirus/ScanButtonButton" to="." method="_on_scan_button_button_mouse_entered"]
+[connection signal="mouse_exited" from="DesktopWindows/Antivirus/ScanButtonButton" to="." method="_on_scan_button_button_mouse_exited"]
+[connection signal="timeout" from="DesktopWindows/Antivirus/VirusScanTimer" to="." method="_on_virus_scan_timer_timeout"]
 [connection signal="collect" from="DesktopWindows/TurtleMemeWEBP/A" to="." method="_on_a_collect"]
 [connection signal="block_break" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_block_break"]
 [connection signal="hammer_man_death" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_hammer_man_death"]
