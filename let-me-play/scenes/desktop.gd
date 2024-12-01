@@ -44,7 +44,7 @@ func _on_screen_input_event(viewport: Node, event: InputEvent, shape_idx: int) -
 
 func set_static_mode():
 	mode = Mode.STATIC
-	# TODO: Add a reset for all the static here
+	$StaticNoise.play()
 
 func set_active_mode():
 	mode = Mode.ACTIVE
@@ -61,6 +61,7 @@ func _get_mouse_cell_coords() -> Vector2i:
 	)
 
 func clear_all_static():
+	$StaticNoise.stop()
 	clearing_all = true
 	#
 	#var circle_origins:Array[Vector2i] = []

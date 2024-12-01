@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=47 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://8yqnj4mcp32" path="res://assets/art/DesktopIcons/HomeIcon.png" id="23_3xjlp"]
 [ext_resource type="PackedScene" uid="uid://dtxr5ergy7jvd" path="res://scenes/hammer_man_game.tscn" id="25_ruqgm"]
 [ext_resource type="TileSet" uid="uid://dqe6s2a32nf6q" path="res://scenes/static_tile_set.tres" id="26_totme"]
+[ext_resource type="AudioStream" uid="uid://bq72alqswhjul" path="res://assets/audio/mixkit-creepy-radio-frequency-2558-[AudioTrimmer.com].mp3" id="29_05y16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
 size = Vector2(48, 48)
@@ -885,6 +886,10 @@ shape = SubResource("RectangleShape2D_8tfpi")
 
 [node name="IconBoundaryCentre" type="Marker2D" parent="IconBoundary"]
 position = Vector2(576, 256)
+
+[node name="StaticNoise" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(576, 256)
+stream = ExtResource("29_05y16")
 
 [connection signal="input_event" from="HomeButton" to="." method="_on_home_button_input_event"]
 [connection signal="mouse_entered" from="HomeButton" to="." method="_on_home_button_mouse_entered"]
