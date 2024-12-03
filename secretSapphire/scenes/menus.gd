@@ -300,7 +300,7 @@ func _check_input_cache():
 		shake_screen(5,5)
 		$Menus/SecretSettingsMenu.unlock_camera_zoom()
 		$Camera/FreeRoamCamera.enable_zoom()
-		_show_instructions("MOUSE SCROLL to zoom in and out")
+		_show_instructions("<MOUSE SCROLL or CTRL+/- to zoom in and out>")
 
 func free_help_bot():
 	if !active: return
@@ -629,7 +629,7 @@ func _on_secret_settings_menu_toggle_camera_zoom(toggled_on: bool) -> void:
 	if !active: return
 	$Camera/FreeRoamCamera.enable_zoom()
 	if toggled_on:
-		_show_instructions("<MOUSE SCROLL to zoom in and out>")
+		_show_instructions("<MOUSE SCROLL or CTRL+/- to zoom in and out>")
 	else:
 		$ItemInstructions.hide()
 		$Camera/FreeRoamCamera.disable_zoom()
