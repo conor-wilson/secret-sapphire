@@ -169,7 +169,7 @@ func _start_what_was_that_sequence():
 			"Was that what I think it was? o_o",
 			"I told that DEV to fix the START button... ¬_¬",
 			"Oh well, luckily I can fix it for you ^_^",
-			"You'll have come and unlock me first though..."
+			"You'll have to come and unlock me first though..."
 		]
 		DialogueManager.stop_all_dialogue()
 		DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.position, lines, "blue", 2, $DialogueMarkers/SettingsButtonMarker)
@@ -554,8 +554,7 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 	
 	if snap_point == $Camera/CaveOfWondersCameraMarker:
 		
-		if $Menus/CaveOfWonders.talking_about_paper == true:
-			return
+		if $Menus/CaveOfWonders.talking_about_paper: return
 		
 		if stage == Stage.READY_TO_START_GAME:
 			var lines:Array[String] = [
@@ -584,7 +583,8 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 
 func _begin_cave_of_wonders_monologue() -> void:
 	if !active: return
-	
+	if $Menus/CaveOfWonders.talking_about_paper: return
+
 	if stage == Stage.READY_TO_START_GAME:
 		var lines:Array[String] = [
 			"Congratulations on defeating the Help Bot.",
@@ -637,6 +637,7 @@ func _on_secret_settings_menu_toggle_camera_zoom(toggled_on: bool) -> void:
 
 func _on_cave_of_wonders_secret_received() -> void:
 	if !active: return
+	if $Menus/CaveOfWonders.talking_about_paper: return
 	
 	if stage != Stage.LETTERS_MISSING:
 		var lines:Array[String] = [
@@ -672,8 +673,8 @@ func _on_cave_of_wonders_secret_received() -> void:
 			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
 		
 		CursorManager.CRUMPLED_PAPER:
-			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
 			$Menus/CaveOfWonders.talking_about_paper = true
+			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
 			var lines:Array[String] = [
 				"Ah, a secret password.",
 				"The DEV should be more careful of the secrets they leave lying around.",
