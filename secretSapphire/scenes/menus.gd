@@ -619,7 +619,7 @@ func _on_secret_settings_menu_toggle_free_roam_camera(toggled_on: bool) -> void:
 	if !active: return
 	$Camera/FreeRoamCamera.enable_free_roam()
 	if toggled_on:
-		_show_instructions("<MIDDLE MOUSE or RIGHT CLICK and DRAG to pan camera>")
+		_show_instructions("<MIDDLE MOUSE or CTRL+CLICK and DRAG to pan camera>")
 	else:
 		$ItemInstructions.hide()
 		$Camera/FreeRoamCamera.disable_free_roam($Camera/SecretSettingsCameraMarker.position)
