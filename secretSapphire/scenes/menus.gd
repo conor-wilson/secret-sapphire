@@ -457,11 +457,11 @@ func _on_settings_menu_incorrect_password() -> void:
 		
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
 		DialogueManager.stop_all_dialogue()
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.global_position, ["Hmm, I wonder if there's a TOOL somewhere that could help? ^.^"], "blue", 2, $DialogueMarkers/SettingsButtonMarker)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.global_position, ["Keep trying, you'll figure it out! ^.^"], "blue", 2, $DialogueMarkers/SettingsButtonMarker)
 		if $Menus/SettingsMenu.secret_settings_locked: 
-			DialogueManager.new_dialogue_sequence($DialogueMarkers/LockedSecretSettingsButtonMarker.global_position, ["Hmm, I wonder if there's a TOOL somewhere that could help? ^.^"], "blue", 2, $DialogueMarkers/LockedSecretSettingsButtonMarker)
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/LockedSecretSettingsButtonMarker.global_position, ["Keep trying, you'll figure it out! ^.^"], "blue", 2, $DialogueMarkers/LockedSecretSettingsButtonMarker)
 		else:
-			DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, ["Hmm, I wonder if there's a TOOL somewhere that could help? ^.^"], "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, ["Keep trying, you'll figure it out! ^.^"], "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
 	shake_screen(5, 5)
 
 func _on_settings_menu_correct_password() -> void:
