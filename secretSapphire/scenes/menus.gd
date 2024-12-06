@@ -850,3 +850,7 @@ func _start_help_bot_death():
 	stage = Stage.READY_TO_START_GAME
 	$Sound/BossBattleMusic.stop()
 	$Sound/DetectiveMusic.play()
+
+
+func _on_free_roam_camera_returned_home() -> void:
+	_on_free_roam_camera_snap($Camera/MainMenuCameraMarker)

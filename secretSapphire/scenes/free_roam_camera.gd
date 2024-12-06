@@ -1,6 +1,7 @@
 extends Camera2D
 
 signal snap(snap_point:Marker2D)
+signal returned_home
 
 var free_roam_mode_enabled:bool = false
 var zoom_mode_enabled:bool = false
@@ -32,6 +33,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("return") && free_roam_mode_enabled && home_point != null:
 		global_position = home_point.global_position
 		zoom = Vector2(1,1)
+		returned_home.emit()
 	
 	if free_roam_mode_enabled && moving && original_mouse_pos != null:
 		

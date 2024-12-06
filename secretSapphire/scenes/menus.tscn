@@ -330,6 +330,7 @@ stream = ExtResource("23_qeh6t")
 [node name="HelpBot" parent="." instance=ExtResource("7_bh0tg")]
 position = Vector2(2879, 289)
 
+[connection signal="returned_home" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_returned_home"]
 [connection signal="snap" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_snap"]
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]
 [connection signal="hammer_man_escaped" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_escaped"]
