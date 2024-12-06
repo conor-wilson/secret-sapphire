@@ -53,6 +53,7 @@ position = Vector2(10.5, 0)
 shape = SubResource("RectangleShape2D_5ug51")
 
 [node name="LandingDetector" type="Area2D" parent="."]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LandingDetector"]
 position = Vector2(0, 44)
