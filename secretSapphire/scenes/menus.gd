@@ -562,6 +562,7 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 				"I know the DEV would be proud of you.",
 				"They would want to thank you for fixing the game and playing it.",
 				"And they would want to apologise for any inconveniences you met along the way.",
+				"They would say \"Two patches mid-jam?? How broken is this piece of junk??\"",
 				"They would also request that you do not look at the code for this game.",
 				"As they are aware that it is a jumbled mess.",
 				"Such is the way of Game Jams I suppose."
