@@ -17,11 +17,39 @@ var original_pos:Vector2 = global_position
 @export var zoom_speed:float = 0.1
 @export var zoom_max:float = 3.0
 @export var zoom_min:float = 0.1
+@export var home_point:Marker2D
+@export var centre_point:Marker2D
+@export var free_roam_range_x:float = 5000
+@export var free_roam_range_y:float = 2500
 
 func _process(delta: float) -> void:
 	
+	if !moving && free_roam_mode_enabled:
+		$CanvasLayer/ReturnHomeInstructions.show()
+	else:
+		$CanvasLayer/ReturnHomeInstructions.hide()
+		
+	if Input.is_action_just_pressed("return") && free_roam_mode_enabled && home_point != null:
+		global_position = home_point.global_position
+		zoom = Vector2(1,1)
+	
 	if free_roam_mode_enabled && moving && original_mouse_pos != null:
-		position = original_pos - get_global_mouse_position() + original_mouse_pos
+		
+		if centre_point == null:
+			print_debug("No centre point provided for free-roam camera")
+			return
+			
+		var new_position:Vector2 = original_pos - get_global_mouse_position() + original_mouse_pos
+		
+		# Pan the camera on the x-axis if the limit hasn't been reached
+		if abs(new_position.x) - abs(centre_point.global_position.x) < free_roam_range_x:
+			global_position.x = new_position.x
+		else: print("Camera pan limit reached in x-Axis")
+		
+		# Pan the camera on the y-axis if the limit hasn't been reached
+		if abs(new_position.y) - abs(centre_point.global_position.y) < free_roam_range_y:
+			global_position.y = new_position.y
+		else: print("Camera pan limit reached in y-Axis")
 	
 	# TODO: This is a very noisy way to check for this. See if we can come up with something better.
 	if free_roam_mode_enabled && !moving:
