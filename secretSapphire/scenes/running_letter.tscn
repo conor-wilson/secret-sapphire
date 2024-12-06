@@ -15,7 +15,7 @@ size = Vector2(5, 20)
 size = Vector2(5, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0lr5"]
-size = Vector2(6, 70)
+size = Vector2(6, 46)
 
 [node name="RunningLetter" type="CharacterBody2D"]
 collision_layer = 32
@@ -55,7 +55,7 @@ shape = SubResource("RectangleShape2D_5ug51")
 [node name="LandingDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LandingDetector"]
-position = Vector2(0, 56)
+position = Vector2(0, 44)
 shape = SubResource("RectangleShape2D_g0lr5")
 
 [node name="Sound" type="Node2D" parent="."]
