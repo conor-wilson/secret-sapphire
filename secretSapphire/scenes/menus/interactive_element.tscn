@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7pp5suyru2lf"]
 
-[ext_resource type="Script" path="res://scenes/interactive_element.gd" id="1_fakqv"]
+[ext_resource type="Script" path="res://scenes/menus/interactive_element.gd" id="1_fakqv"]
 [ext_resource type="AudioStream" uid="uid://bb5splwfsha7d" path="res://assets/audio/Retro Impact Punch 07.wav" id="2_y0qn1"]
 
 [node name="InteractiveElement" type="RigidBody2D"]

@@ -7,7 +7,7 @@ var follow_node:CanvasItem = null
 
 var colour:String # TODO: This is jankey. Fix.
 
-@onready var dialogue_box_scene = preload("res://scenes/dialogue_box.tscn")
+@onready var dialogue_box_scene = preload("res://scenes/dialogue/dialogue_box.tscn")
 
 var dialogue_box # The current instantiation of the dialogue box scene that is being displayed.
 var line_queue: Array[String] = [] # The list of lines that are queued to be displayed.

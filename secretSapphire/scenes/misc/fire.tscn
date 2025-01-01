@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bmtqbkl3i7e1b"]
 
 [ext_resource type="Texture2D" uid="uid://b08lgh1vne8a4" path="res://assets/art/Fire-Sheet.png" id="1_ia4ea"]
-[ext_resource type="Script" path="res://scenes/fire.gd" id="2_amdga"]
+[ext_resource type="Script" path="res://scenes/misc/fire.gd" id="2_amdga"]
 [ext_resource type="Texture2D" uid="uid://ck17edmnhwy63" path="res://assets/art/Fire2-Sheet.png" id="2_x1a1f"]
 [ext_resource type="Texture2D" uid="uid://clc66bjdtlqjq" path="res://assets/art/Fire3-Sheet.png" id="3_fpfrb"]
 

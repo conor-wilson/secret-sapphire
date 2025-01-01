@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://s4xq3eosd21v"]
 
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="1_bxvqx"]
-[ext_resource type="Script" path="res://scenes/menu_button.gd" id="2_fpol0"]
+[ext_resource type="Script" path="res://scenes/menus/menu_button.gd" id="2_fpol0"]
 [ext_resource type="AudioStream" uid="uid://t76hd8ekf63" path="res://assets/audio/Select 1.wav" id="3_hflot"]
 
 [node name="MenuButton" type="Button"]

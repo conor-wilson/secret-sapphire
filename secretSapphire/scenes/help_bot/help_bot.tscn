@@ -1,10 +1,10 @@
 [gd_scene load_steps=82 format=3 uid="uid://bcttde4rl6c7u"]
 
-[ext_resource type="Script" path="res://scenes/help_bot.gd" id="1_b6jo1"]
+[ext_resource type="Script" path="res://scenes/help_bot/help_bot.gd" id="1_b6jo1"]
 [ext_resource type="Texture2D" uid="uid://1cwslcas3huc" path="res://assets/art/HelpBot-Sheet.png" id="1_nxjie"]
 [ext_resource type="Texture2D" uid="uid://o53y7lf7ihfd" path="res://assets/art/HellBot_Shrink-Sheet.png" id="3_2pc8o"]
 [ext_resource type="Texture2D" uid="uid://dq04wd1prr0t6" path="res://assets/art/HellBot-Sheet.png" id="3_gvqsg"]
-[ext_resource type="PackedScene" uid="uid://b63t8bt78w8t1" path="res://scenes/laser.tscn" id="4_khedk"]
+[ext_resource type="PackedScene" uid="uid://b63t8bt78w8t1" path="res://scenes/help_bot/laser.tscn" id="4_khedk"]
 [ext_resource type="Texture2D" uid="uid://72xyusf4s8ca" path="res://assets/art/Explosion-Sheet.png" id="4_swxx6"]
 [ext_resource type="Texture2D" uid="uid://bhumivffmec6g" path="res://assets/art/HelpBotBecomeEvil-Sheet.png" id="6_p8ct4"]
 [ext_resource type="AudioStream" uid="uid://n4ujjlwhpeg5" path="res://assets/audio/explosion-80108.mp3" id="8_nhyrt"]

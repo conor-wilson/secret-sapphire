@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dblssuru8cljv"]
 
-[ext_resource type="Script" path="res://draggable_object.gd" id="1_0do5p"]
+[ext_resource type="Script" path="res://scenes/desktop/draggable_object.gd" id="1_0do5p"]
 
 [node name="DraggableObject" type="Area2D"]
 collision_layer = 256

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://rhnhyq6qgvba"]
 
-[ext_resource type="Script" path="res://scenes/dialogue_box.gd" id="1_ibntv"]
+[ext_resource type="Script" path="res://scenes/dialogue/dialogue_box.gd" id="1_ibntv"]
 [ext_resource type="Texture2D" uid="uid://creoxhmeq31gu" path="res://assets/art/DialogueBox.png" id="1_ir24j"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="2_cbn5m"]
 [ext_resource type="AudioStream" uid="uid://xa0onw107h4n" path="res://assets/audio/Text 1.wav" id="4_w6y5f"]

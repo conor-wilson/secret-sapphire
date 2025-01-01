@@ -1,6 +1,6 @@
 extends Node
 
-@onready var dialogue_sequence_scene = preload("res://scenes/dialogue_sequence.tscn")
+@onready var dialogue_sequence_scene = preload("res://scenes/dialogue/dialogue_sequence.tscn")
 
 # TODO: Fix this janky function
 func stop_all_dialogue():

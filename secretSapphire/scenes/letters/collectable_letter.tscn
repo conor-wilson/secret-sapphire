@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddhqiieofpixr"]
 
-[ext_resource type="Script" path="res://scenes/collectable_letter.gd" id="1_dvxkb"]
+[ext_resource type="Script" path="res://scenes/letters/collectable_letter.gd" id="1_dvxkb"]
 [ext_resource type="AudioStream" uid="uid://d1d5m5t1awlpd" path="res://assets/audio/Retro Event StereoUP 02.wav" id="2_30g33"]
 
 [node name="CollectableLetter" type="Area2D"]

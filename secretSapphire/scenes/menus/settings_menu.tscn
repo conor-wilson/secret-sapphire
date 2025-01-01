@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=4 uid="uid://cfjp23jay1xyw"]
 
-[ext_resource type="Script" path="res://scenes/settings_menu.gd" id="1_g011e"]
-[ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menu_tile_set.tres" id="1_g236m"]
+[ext_resource type="Script" path="res://scenes/menus/settings_menu.gd" id="1_g011e"]
+[ext_resource type="TileSet" uid="uid://b35s45rp0yrck" path="res://scenes/menus/menu_tile_set.tres" id="1_g236m"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="2_ityvj"]
-[ext_resource type="TileSet" uid="uid://cumnmwk8n3qwe" path="res://scenes/breakable_menu_tiles.tres" id="3_pui2j"]
+[ext_resource type="TileSet" uid="uid://cumnmwk8n3qwe" path="res://scenes/menus/breakable_menu_tiles.tres" id="3_pui2j"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="4_558x5"]
-[ext_resource type="PackedScene" uid="uid://s4xq3eosd21v" path="res://scenes/menu_button.tscn" id="4_pbn47"]
+[ext_resource type="PackedScene" uid="uid://s4xq3eosd21v" path="res://scenes/menus/menu_button.tscn" id="4_pbn47"]
 [ext_resource type="Texture2D" uid="uid://b63820ss4q4ep" path="res://assets/art/checkBoxUnchecked.png" id="5_te0yd"]
-[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/interactive_element.tscn" id="6_447go"]
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/menus/interactive_element.tscn" id="6_447go"]
 [ext_resource type="Texture2D" uid="uid://q1bluytg0n3h" path="res://assets/art/ScrewDriver.png" id="7_lbls2"]
 [ext_resource type="AudioStream" uid="uid://t76hd8ekf63" path="res://assets/audio/Select 1.wav" id="10_4j5bp"]
 
