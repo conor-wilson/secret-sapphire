@@ -17,9 +17,9 @@ config/icon="res://Sapphire.png"
 
 [autoload]
 
-DialogueManager="*res://singletons/dialogue_manager.gd"
-CursorManager="*res://singletons/cursor_manager.gd"
-Global="*res://singletons/global.gd"
+DialogueManager="*res://scenes/dialogue/dialogue_manager.gd"
+CursorManager="*res://scenes/cursor/cursor_manager.gd"
+Global="*res://scenes/global.gd"
 
 [display]
 

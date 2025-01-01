@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://be8gnb7g2r1qb" path="res://scenes/letters/collected_letters.tscn" id="13_3vrp3"]
 [ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/letters/collectable_letter.tscn" id="14_duyw0"]
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/running_letters/running_r.tres" id="15_nd253"]
-[ext_resource type="PackedScene" uid="uid://dgb87ltag6my4" path="res://scenes/misc/foam.tscn" id="16_mei6b"]
+[ext_resource type="PackedScene" uid="uid://dgb87ltag6my4" path="res://scenes/cursor/foam.tscn" id="16_mei6b"]
 [ext_resource type="PackedScene" uid="uid://bplobt2yqsrkn" path="res://scenes/hammer_man/hammer_man.tscn" id="17_s1o7x"]
 [ext_resource type="Texture2D" uid="uid://y8wgjwjjrbhx" path="res://assets/art/menu_components/SmallStartButton.png" id="18_pi5ji"]
 [ext_resource type="AudioStream" uid="uid://dyfhd34jb30ta" path="res://assets/audio/detective-stories-198357.mp3" id="19_6jqg8"]

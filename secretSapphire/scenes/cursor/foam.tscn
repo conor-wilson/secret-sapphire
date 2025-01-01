@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dgb87ltag6my4"]
 
-[ext_resource type="Script" path="res://scenes/misc/foam.gd" id="1_b4846"]
+[ext_resource type="Script" path="res://scenes/cursor/foam.gd" id="1_b4846"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vc6d1"]
 particle_flag_disable_z = true
