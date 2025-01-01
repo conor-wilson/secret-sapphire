@@ -3,8 +3,8 @@ extends Button
 signal box_toggled(toggled_on:bool)
 
 # Checked and Unchecked box icon artwork
-const CHECK_BOX_UNCHECKED = preload("res://assets/art/checkBoxUnchecked.png")
-const CHECK_BOX_CHECKED = preload("res://assets/art/checkBoxChecked.png")
+const CHECK_BOX_UNCHECKED = preload("res://assets/art/menu_components/checkBoxUnchecked.png")
+const CHECK_BOX_CHECKED = preload("res://assets/art/menu_components/checkBoxChecked.png")
 
 # TODO: Descriptor
 @export var checkable : bool

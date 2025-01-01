@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://lvqqxc7ln6wx"]
 
 [ext_resource type="Script" path="res://scenes/letters/running_letter.gd" id="1_b1yc4"]
-[ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/RunningLetters/running_a.tres" id="2_c6l87"]
+[ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/running_letters/running_a.tres" id="2_c6l87"]
 [ext_resource type="AudioStream" uid="uid://brau47leu6abo" path="res://assets/audio/Retro Jump Classic 08.wav" id="3_sgt8b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oh5f5"]

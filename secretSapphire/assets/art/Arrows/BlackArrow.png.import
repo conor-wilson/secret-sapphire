@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbodcalhsjyyd"
-path="res://.godot/imported/BlackArrow.png-ce0b8598fc03e7fd7278ffbe45954a48.ctex"
+path="res://.godot/imported/BlackArrow.png-9c4cdce8baeb9d4d74ba253a25d602a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/Arrows/BlackArrow.png"
-dest_files=["res://.godot/imported/BlackArrow.png-ce0b8598fc03e7fd7278ffbe45954a48.ctex"]
+source_file="res://assets/art/arrows/BlackArrow.png"
+dest_files=["res://.godot/imported/BlackArrow.png-9c4cdce8baeb9d4d74ba253a25d602a8.ctex"]
 
 [params]
 

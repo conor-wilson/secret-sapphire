@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://scenes/hammer_man/hammer_man_game.gd" id="1_214vy"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="1_w6q41"]
-[ext_resource type="Texture2D" uid="uid://baikahbpd705q" path="res://assets/art/DesktopWindows/HammerManWindow.png" id="2_jl3ys"]
-[ext_resource type="Texture2D" uid="uid://w03ugnd6ku25" path="res://assets/art/HammerMan/Door.png" id="3_3sd48"]
+[ext_resource type="Texture2D" uid="uid://baikahbpd705q" path="res://assets/art/desktop_windows/HammerManWindow.png" id="2_jl3ys"]
+[ext_resource type="Texture2D" uid="uid://w03ugnd6ku25" path="res://assets/art/hammer_man/Door.png" id="3_3sd48"]
 [ext_resource type="PackedScene" uid="uid://bplobt2yqsrkn" path="res://scenes/hammer_man/hammer_man.tscn" id="3_i6xiq"]
 [ext_resource type="PackedScene" uid="uid://cuionsm2r5c28" path="res://scenes/hammer_man/blob_enemy.tscn" id="4_xcamb"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_k8oly"]
 [ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/letters/collectable_letter.tscn" id="6_w1k23"]
-[ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/RunningLetters/running_s.tres" id="7_lxtck"]
+[ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/running_letters/running_s.tres" id="7_lxtck"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nc13x"]
 font = ExtResource("5_k8oly")

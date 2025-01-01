@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://bplobt2yqsrkn"]
 
 [ext_resource type="Script" path="res://scenes/hammer_man/hammer_man.gd" id="1_xriwn"]
-[ext_resource type="Texture2D" uid="uid://ew36lrsvo0g3" path="res://assets/art/HammerMan/HammerMan.png" id="2_375q2"]
-[ext_resource type="Texture2D" uid="uid://eud55xccloly" path="res://assets/art/HammerMan/HammerManRunning-Sheet.png" id="2_p1pe4"]
-[ext_resource type="Texture2D" uid="uid://bohi1q3vnhf77" path="res://assets/art/HammerMan/HammerManSlam-Sheet.png" id="4_wypc8"]
+[ext_resource type="Texture2D" uid="uid://ew36lrsvo0g3" path="res://assets/art/hammer_man/HammerMan.png" id="2_375q2"]
+[ext_resource type="Texture2D" uid="uid://eud55xccloly" path="res://assets/art/hammer_man/HammerManRunning-Sheet.png" id="2_p1pe4"]
+[ext_resource type="Texture2D" uid="uid://bohi1q3vnhf77" path="res://assets/art/hammer_man/HammerManSlam-Sheet.png" id="4_wypc8"]
 [ext_resource type="AudioStream" uid="uid://brau47leu6abo" path="res://assets/audio/Retro Jump Classic 08.wav" id="5_jnhxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h1v86"]

@@ -1,9 +1,9 @@
 extends Node
 
-@onready var CURSOR:Resource = preload("res://assets/art/Cursor.png")
-@onready var WRENCH:Resource = preload("res://assets/art/Wrench.png")
-@onready var FIRE_EXTINGUISHER:Resource = preload("res://assets/art/FireExtinguisher.png")
-@onready var CRUMPLED_PAPER:Resource = preload("res://assets/art/CrumpledPaper.png")
+@onready var CURSOR:Resource = preload("res://assets/art/items/Cursor.png")
+@onready var WRENCH:Resource = preload("res://assets/art/items/Wrench.png")
+@onready var FIRE_EXTINGUISHER:Resource = preload("res://assets/art/items/FireExtinguisher.png")
+@onready var CRUMPLED_PAPER:Resource = preload("res://assets/art/items/CrumpledPaper.png")
 
 var current_cursor:Resource
 
