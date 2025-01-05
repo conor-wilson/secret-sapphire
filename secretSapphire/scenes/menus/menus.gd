@@ -69,45 +69,6 @@ func stop():
 	$Sound/MainMusic.stop()
 	$Sound/BossBattleMusic.stop()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	if !active: return
-	
-	apply_screen_shake(delta)
-
-func apply_screen_shake(delta: float):
-	
-	if !active: return
-	
-	# No shake required if the strength is below the shake threshold
-	if ScreenShakeManager.screen_shake_strength <= 0.001:
-		ScreenShakeManager.screen_shake_strength = 0
-		return
-	
-	# Shake the screen
-	var offset:Vector2 = Vector2(
-		randf_range(-ScreenShakeManager.screen_shake_strength, ScreenShakeManager.screen_shake_strength), 
-		randf_range(-ScreenShakeManager.screen_shake_strength, ScreenShakeManager.screen_shake_strength),
-	)
-	$Camera/FreeRoamCamera.offset = offset
-	
-	# Fade the screen shake for the next time
-	ScreenShakeManager.screen_shake_strength = lerpf(ScreenShakeManager.screen_shake_strength, 0, ScreenShakeManager.screen_shake_fade*delta)
-
-func _on_main_menu_shake_screen(strength:float, fade:float) -> void:
-	if !active: return
-	if stage != Stage.HELP_BOT_MONOLOGUING:
-		ScreenShakeManager.shake_screen(strength, fade)
-
-func _on_settings_menu_shake_screen(strength: float, fade: float) -> void:
-	if !active: return
-	ScreenShakeManager.shake_screen(strength, fade)
-
-func _on_secret_settings_menu_shake_screen(strength: float, fade: float) -> void:
-	if !active: return
-	ScreenShakeManager.shake_screen(strength, fade)
-
 func _on_main_menu_settings_pressed() -> void:
 	if !active: return
 	$Camera/FreeRoamCamera.position = $Camera/SettingsCameraMarker.position
@@ -140,9 +101,6 @@ func _on_main_menu_start_button_exploded() -> void:
 	if stage != Stage.HELP_BOT_MONOLOGUING:
 		if stage == Stage.BEGINNING && !Global.sfx_muted: $Sound/StaticNoise.volume_db = -10
 		$Sound/StaticNoise.play()
-	
-	# Shake the screen
-	ScreenShakeManager.shake_screen(30.0, 5.0)
 	
 	if stage == Stage.BEGINNING:
 		stage = Stage.START_BUTTON_BROKEN
@@ -203,7 +161,6 @@ func reform_start_button():
 	await $CollectedLetters.jump_finished
 	
 	$TrueStartButton.show()
-	ScreenShakeManager.shake_screen(20,5)
 	$TrueStartButton.detatch(40)
 	
 	stage = Stage.READY_FOR_BOSS_BATTLE
@@ -280,14 +237,12 @@ func _check_input_cache():
 	
 	if input_cache == unlock_free_roam_camera_cheat_code:
 		print("Unlocking Free Roam Camera...")
-		ScreenShakeManager.shake_screen(5,5)
 		$Menus/SecretSettingsMenu.unlock_free_roaming_camera()
 		$Camera/FreeRoamCamera.enable_free_roam()
 		_show_instructions("<MIDDLE MOUSE or CTRL+CLICK and DRAG to pan camera>")
 	
 	if input_cache == unlock_camera_zoom_cheat_code:
 		print("Unlocking Zoom Camera...")
-		ScreenShakeManager.shake_screen(5,5)
 		$Menus/SecretSettingsMenu.unlock_camera_zoom()
 		$Camera/FreeRoamCamera.enable_zoom()
 		_show_instructions("<MOUSE SCROLL or CTRL+/- to zoom in and out>")
@@ -297,7 +252,6 @@ func free_help_bot():
 	
 	stage = Stage.HELP_BOT_FREED
 	
-	ScreenShakeManager.shake_screen(5,5)
 	$Menus/SecretSettingsMenu.unlock_cage()
 
 	DialogueManager.stop_all_dialogue()
@@ -350,7 +304,6 @@ func _begin_help_bot_monologue():
 	$HelpBot.explode()
 	await $HelpBot.boom
 	$Sound/StaticNoise.stop()
-	ScreenShakeManager.shake_screen(20,1)
 	$Menus/MainMenu.clear_static()
 	$Menus/MainMenu.detatch_sticky_note()
 	
@@ -359,7 +312,6 @@ func _begin_help_bot_monologue():
 	
 	for pos in $Menus/MainMenu.get_letter_positions():
 		$HelpBot.shoot(pos)
-		ScreenShakeManager.shake_screen(5,5)
 		await get_tree().create_timer(0.2).timeout
 	
 	
@@ -423,8 +375,6 @@ func _on_settings_menu_incorrect_username() -> void:
 			DialogueManager.new_dialogue_sequence($DialogueMarkers/LockedSecretSettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/LockedSecretSettingsButtonMarker)
 		else:
 			DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
-	
-	ScreenShakeManager.shake_screen(5, 5)
 
 func _on_settings_menu_correct_username() -> void:
 	if !active: return
@@ -452,7 +402,6 @@ func _on_settings_menu_incorrect_password() -> void:
 			DialogueManager.new_dialogue_sequence($DialogueMarkers/LockedSecretSettingsButtonMarker.global_position, ["Keep trying, you'll figure it out! ^.^"], "blue", 2, $DialogueMarkers/LockedSecretSettingsButtonMarker)
 		else:
 			DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, ["Keep trying, you'll figure it out! ^.^"], "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
-	ScreenShakeManager.shake_screen(5, 5)
 
 func _on_settings_menu_correct_password() -> void:
 	if !active: return
@@ -710,11 +659,6 @@ func _on_collected_letters_all_letters_collected() -> void:
 		reform_start_button()
 
 
-func _on_hammer_man_block_break() -> void:
-	if !active: return
-	ScreenShakeManager.shake_screen(5,5)
-
-
 func _on_true_start_button_mouse_entered() -> void:
 	if !active: return
 	$TrueStartButton.scale = Vector2(1.05,1.05)
@@ -761,7 +705,6 @@ func _start_boss_battle():
 	$HelpBot.explode()
 	await $HelpBot.boom
 	$TrueStartButton.hide()
-	ScreenShakeManager.shake_screen(20,5)
 	await get_tree().create_timer(1).timeout
 	
 	# Monologue for a bit
@@ -835,7 +778,7 @@ func _start_help_bot_death():
 	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 2, $HelpBot)
 	await dialogue.sequence_finished
 	$HelpBot.shrink()
-	ScreenShakeManager.shake_screen(50,5)
+	ScreenShakeManager.shake_screen(30,5)
 	$TrueStartButton.show()
 	
 	stage = Stage.READY_TO_START_GAME

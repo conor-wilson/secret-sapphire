@@ -1,6 +1,5 @@
 class_name HammerMan extends CharacterBody2D
 
-signal block_break
 signal slam_started
 
 var active:bool = false
@@ -110,7 +109,7 @@ func slam_hammer():
 		break_2 = break_blocks_in_zone($HammerZoneRight2)
 	
 	if break_1 || break_2:
-		block_break.emit()
+		ScreenShakeManager.shake_screen(5,5)
 		print("BREAK!")
 
 func break_blocks_in_zone(zone:Area2D) -> bool:

@@ -290,6 +290,7 @@ visible = false
 position = Vector2(576, 550)
 collision_layer = 8192
 breakable = false
+detatch_shake_strength = 20.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="TrueStartButton"]
@@ -333,7 +334,6 @@ position = Vector2(2879, 289)
 [connection signal="panel_broken" from="Menus/MainMenu" to="." method="_on_main_menu_panel_broken"]
 [connection signal="s_collected" from="Menus/MainMenu" to="." method="_on_main_menu_s_collected"]
 [connection signal="settings_pressed" from="Menus/MainMenu" to="." method="_on_main_menu_settings_pressed"]
-[connection signal="shake_screen" from="Menus/MainMenu" to="." method="_on_main_menu_shake_screen"]
 [connection signal="start_button_exploded" from="Menus/MainMenu" to="." method="_on_main_menu_start_button_exploded"]
 [connection signal="back_pressed" from="Menus/SettingsMenu" to="." method="_on_settings_menu_back_pressed"]
 [connection signal="correct_password" from="Menus/SettingsMenu" to="." method="_on_settings_menu_correct_password"]
@@ -343,9 +343,7 @@ position = Vector2(2879, 289)
 [connection signal="mute_music_toggled" from="Menus/SettingsMenu" to="." method="_on_settings_menu_mute_music_toggled"]
 [connection signal="mute_sfx_toggled" from="Menus/SettingsMenu" to="." method="_on_settings_menu_mute_sfx_toggled"]
 [connection signal="secret_settings_pressed" from="Menus/SettingsMenu" to="." method="_on_settings_menu_secret_settings_pressed"]
-[connection signal="shake_screen" from="Menus/SettingsMenu" to="." method="_on_settings_menu_shake_screen"]
 [connection signal="back_pressed" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_back_pressed"]
-[connection signal="shake_screen" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_shake_screen"]
 [connection signal="t_1_collected" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_t_1_collected"]
 [connection signal="toggle_camera_zoom" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_toggle_camera_zoom"]
 [connection signal="toggle_free_roam_camera" from="Menus/SecretSettingsMenu" to="." method="_on_secret_settings_menu_toggle_free_roam_camera"]
@@ -362,7 +360,6 @@ position = Vector2(2879, 289)
 [connection signal="mouse_exited" from="ItemDropZones/SecretSettingsMenu" to="." method="_on_item_drop_zone_mouse_exited"]
 [connection signal="all_letters_collected" from="CollectedLetters" to="." method="_on_collected_letters_all_letters_collected"]
 [connection signal="collect" from="CollectableLetters/R" to="." method="_on_r_collect"]
-[connection signal="block_break" from="HammerMan" to="." method="_on_hammer_man_block_break"]
 [connection signal="click" from="TrueStartButton" to="." method="_on_true_start_button_click"]
 [connection signal="mouse_entered" from="TrueStartButton" to="." method="_on_true_start_button_mouse_entered"]
 [connection signal="mouse_exited" from="TrueStartButton" to="." method="_on_true_start_button_mouse_exited"]

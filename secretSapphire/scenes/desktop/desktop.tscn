@@ -1026,8 +1026,6 @@ position = Vector2(576, 256)
 [connection signal="mouse_exited" from="DesktopWindows/Antivirus/ScanButtonButton" to="." method="_on_scan_button_button_mouse_exited"]
 [connection signal="timeout" from="DesktopWindows/Antivirus/VirusScanTimer" to="." method="_on_virus_scan_timer_timeout"]
 [connection signal="collect" from="DesktopWindows/TurtleMemeWEBP/A" to="." method="_on_a_collect"]
-[connection signal="block_break" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_block_break"]
-[connection signal="hammer_man_death" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_hammer_man_death"]
 [connection signal="hammer_man_escaped" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_hammer_man_escaped"]
 [connection signal="level_changed" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_level_changed"]
 [connection signal="s_collected" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_s_collected"]

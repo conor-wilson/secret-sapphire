@@ -2,7 +2,6 @@ extends Node2D
 
 signal back_pressed
 signal secret_settings_pressed
-signal shake_screen(strength:float, fade:float)
 signal correct_username
 signal incorrect_username
 signal correct_password
@@ -73,6 +72,7 @@ func _on_username_box_text_submitted(new_text: String) -> void:
 	else:
 		username_box.clear()
 		incorrect_username.emit()
+		ScreenShakeManager.shake_screen(5, 5)
 
 func _on_password_box_text_submitted(new_text: String) -> void:
 	print("Password Entered: ", new_text)
@@ -86,26 +86,16 @@ func _on_password_box_text_submitted(new_text: String) -> void:
 	else:
 		password_box.clear()
 		incorrect_password.emit()
+		ScreenShakeManager.shake_screen(5, 5)
 
 func _on_back_button_pressed() -> void:
 	if !Global.sfx_muted: $Sound/SelectNoise.play()
 	back_pressed.emit()
 	username_box.release_focus()
 	password_box.release_focus()
-#
-#func move_wrench(new_pos:Vector2):
-	#$InteractiveElements/Wrench.show()
-	#await get_tree().create_timer(1).timeout
-	#$InteractiveElements/Wrench.position = new_pos
-	#await get_tree().create_timer(1).timeout
-	#_detatch_element_if_exists("InteractiveElements/Wrench", 1)
 
 func detatch_screwdriver():
 	_detatch_element_if_exists("InteractiveElements/Screwdriver", 10)
-	shake_screen.emit(5, 10)
-
-func _on_screwdriver_smash() -> void:
-	shake_screen.emit(5,5)
 
 # _correct_input returns true if the provided input string matches any of the
 # strings in the provided accpeted_strings array.
@@ -129,15 +119,6 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 	
 	# Detatch element
 	element.detatch(strength)
-#
-## TODO: This is purely for debugging. This function should be removed once it's
-## no-longer needed.
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("debugbutton"):
-		#$HelpBot.show()
-		#$HelpBot.grow()
-		#await get_tree().create_timer(2.5).timeout
-		#$HelpBot.start_leaving()
 
 func _on_mute_sfx_button_box_toggled(toggled_on: bool) -> void:
 	Global.sfx_muted = toggled_on

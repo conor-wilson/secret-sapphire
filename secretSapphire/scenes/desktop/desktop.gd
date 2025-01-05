@@ -1,11 +1,8 @@
 extends Node2D
 
-signal tap
 signal s_collected(global_pos:Vector2)
 signal a_collected(global_pos:Vector2)
 signal hammer_man_escaped(global_pos:Vector2)
-signal hammer_man_block_break
-signal hammer_man_death
 signal hammer_man_level_changed
 
 var clearing_all:bool
@@ -41,7 +38,7 @@ func _on_screen_input_event(viewport: Node, event: InputEvent, shape_idx: int) -
 	
 	if event.is_pressed() && event.is_action("click") && mode == Mode.STATIC:
 		_clear_static_circle(_get_mouse_cell_coords())
-		tap.emit()
+		ScreenShakeManager.shake_screen(5,5, clearing_all)
 
 func set_static_mode():
 	mode = Mode.STATIC
@@ -62,11 +59,10 @@ func _get_mouse_cell_coords() -> Vector2i:
 
 func clear_all_static():
 	clearing_all = true
-	#
-	#var circle_origins:Array[Vector2i] = []
+	
 	for i in range(100):
 		_clear_static_circle(Vector2i(randi_range(4,67), randi_range(5,28)))
-		tap.emit()
+		#ScreenShakeManager.shake_screen(5,5, clearing_all)
 		await get_tree().create_timer(0.005).timeout
 	
 	#clearing_all = true
@@ -249,17 +245,11 @@ func _on_hammer_man_exe_close_button_input_event(viewport: Node, event: InputEve
 func _on_hammer_man_game_hammer_man_escaped(global_pos: Vector2) -> void:
 	hammer_man_escaped.emit(global_pos)
 
-func _on_hammer_man_game_block_break() -> void:
-	hammer_man_block_break.emit()
-
 func _on_hammer_man_game_level_changed() -> void:
 	hammer_man_level_changed.emit()
 
 func _on_hammer_man_game_s_collected(global_pos:Vector2) -> void:
 	s_collected.emit(global_pos)
-
-func _on_hammer_man_game_hammer_man_death() -> void:
-	hammer_man_death.emit()
 
 
 func _on_scan_button_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

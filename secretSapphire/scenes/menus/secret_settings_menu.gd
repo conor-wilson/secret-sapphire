@@ -2,7 +2,6 @@ extends Node2D
 
 # TODO: Add a bunch of dialogue that explains what's going on...
 
-signal shake_screen(strength:float, fade:float)
 signal back_pressed
 signal toggle_free_roam_camera(toggled_on:bool)
 signal toggle_camera_zoom(toggled_on:bool)
@@ -32,10 +31,6 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 	element.detatch(strength)
 
 
-func _on_cage_smash() -> void:
-	shake_screen.emit(10,5)
-
-
 func _on_back_button_pressed() -> void:
 	if !Global.sfx_muted: $Sound/SelectNoise.play()
 	back_pressed.emit()
@@ -49,13 +44,6 @@ func unlock_camera_zoom() -> void:
 	_detatch_element_if_exists("Locks/CameraZoomLock", 20)
 	$CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/EnableCameraZoomBox/EnableCameraZoom.disabled = false
 	$CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/EnableCameraZoomBox/EnableCameraZoom.update_icon(true)
-
-
-func _on_free_roam_camera_lock_smash() -> void:
-	shake_screen.emit(10,5)
-
-func _on_camera_zoom_lock_smash() -> void:
-	shake_screen.emit(10,5)
 
 
 func _on_enable_free_roam_camera_box_toggled(toggled_on: bool) -> void:

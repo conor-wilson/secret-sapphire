@@ -2,8 +2,6 @@ extends Node2D
 
 signal hammer_man_escaped(global_pos:Vector2)
 signal level_changed
-signal block_break
-signal hammer_man_death
 signal s_collected(global_pos:Vector2)
 
 @onready var levels:Array[Node2D] = [
@@ -96,18 +94,15 @@ func _on_level_3_door_body_entered(body: Node2D) -> void:
 
 func _on_level_1_blob_enemy_hit() -> void:
 	start_level($Levels/Level1)
-	hammer_man_death.emit()
+	ScreenShakeManager.shake_screen(5,5)
 
 func _on_level_2_blob_enemy_hit() -> void:
 	start_level($Levels/Level2)
-	hammer_man_death.emit()
+	ScreenShakeManager.shake_screen(5,5)
 
 func _on_level_3_blob_enemy_hit() -> void:
 	start_level($Levels/Level3)
-	hammer_man_death.emit()
-
-func _on_hammer_man_block_break() -> void:
-	block_break.emit()
+	ScreenShakeManager.shake_screen(5,5)
 
 func _on_blinker_timer_timeout() -> void:
 	if $Levels/TitleScreen/Controls.visible:

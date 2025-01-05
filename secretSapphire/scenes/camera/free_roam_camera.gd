@@ -117,13 +117,14 @@ func apply_screen_shake(delta: float):
 	# Fade the screen shake for the next time
 	ScreenShakeManager.screen_shake_strength = lerpf(ScreenShakeManager.screen_shake_strength, 0, ScreenShakeManager.screen_shake_fade*delta)
 
-func screen_shake_noise(strength:float):
+func screen_shake_noise(strength:float, supress_noise:bool):
 	if !Global.sfx_muted:
 		#TODO: Make it clearer what's going on below
 		$VibrationNoise.pitch_scale = 0.04*(min_vibration_noise_pitch-max_vibration_noise_pitch)*strength+1.2*max_vibration_noise_pitch-0.2*min_vibration_noise_pitch
 		$VibrationNoise.pitch_scale = $VibrationNoise.pitch_scale + randf_range(-vibraction_noise_pitch_variation, vibraction_noise_pitch_variation)
 		print("Strength:", strength, "Pitch:",$VibrationNoise.pitch_scale)
-		$VibrationNoise.play()
+		
+		if !supress_noise: $VibrationNoise.play()
 
 ## Roaming Feature Setters
 

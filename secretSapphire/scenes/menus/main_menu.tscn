@@ -133,6 +133,7 @@ polygon = PackedVector2Array(8, -45, 16, -35, 24, -34, 43, -30, 43, -20, 46, -18
 
 [node name="Panel" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 collision_layer = 2
+break_shake_strength = 25.0
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Panel"]
 position = Vector2(576, 256)
@@ -156,6 +157,7 @@ vertical_alignment = 1
 [node name="StartButton" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 position = Vector2(576, 384)
 collision_layer = 2
+break_shake_strength = 30.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/StartButton"]
@@ -169,6 +171,9 @@ shape = SubResource("RectangleShape2D_nwsea")
 [node name="Screw1" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 position = Vector2(88, 88)
 collision_layer = 2
+detatch_shake_strength = 5.0
+break_shake_strength = 0.0
+break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw1"]
@@ -180,6 +185,9 @@ shape = SubResource("CircleShape2D_jk44i")
 [node name="Screw2" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 position = Vector2(1064, 88)
 collision_layer = 2
+detatch_shake_strength = 5.0
+break_shake_strength = 0.0
+break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw2"]
@@ -191,6 +199,9 @@ shape = SubResource("CircleShape2D_jk44i")
 [node name="Screw3" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 position = Vector2(88, 424)
 collision_layer = 2
+detatch_shake_strength = 5.0
+break_shake_strength = 0.0
+break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw3"]
@@ -202,6 +213,9 @@ shape = SubResource("CircleShape2D_jk44i")
 [node name="Screw4" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 position = Vector2(1064, 424)
 collision_layer = 2
+detatch_shake_strength = 5.0
+break_shake_strength = 0.0
+break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw4"]
@@ -363,12 +377,9 @@ vertical_alignment = 2
 stream = ExtResource("23_0uyfe")
 
 [connection signal="a_collected" from="Desktop" to="." method="_on_desktop_a_collected"]
-[connection signal="hammer_man_block_break" from="Desktop" to="." method="_on_desktop_hammer_man_block_break"]
-[connection signal="hammer_man_death" from="Desktop" to="." method="_on_desktop_hammer_man_death"]
 [connection signal="hammer_man_escaped" from="Desktop" to="." method="_on_desktop_hammer_man_escaped"]
 [connection signal="hammer_man_level_changed" from="Desktop" to="." method="_on_desktop_hammer_man_level_changed"]
 [connection signal="s_collected" from="Desktop" to="." method="_on_desktop_s_collected"]
-[connection signal="tap" from="Desktop" to="." method="_on_desktop_tap"]
 [connection signal="click" from="InteractiveElements/CrumpledStickyNote" to="." method="_on_crumpled_sticky_note_click"]
 [connection signal="smash" from="InteractiveElements/Panel" to="." method="_on_panel_smash"]
 [connection signal="click" from="InteractiveElements/StartButton" to="." method="_on_start_button_click"]

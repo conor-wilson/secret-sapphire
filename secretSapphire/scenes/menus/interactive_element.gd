@@ -4,6 +4,10 @@ signal click
 signal smash
 
 @export var breakable:bool = true
+@export var detatch_shake_strength:float = 10
+@export var detatch_shake_fade:float = 5
+@export var break_shake_strength:float = 10
+@export var break_shake_fade:float = 5
 
 var idle:bool 
 
@@ -20,6 +24,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 
 # TODO: Make the individual components in this function configurable
 func detatch(strength:float=1):
+	ScreenShakeManager.shake_screen(detatch_shake_strength, detatch_shake_fade)
 	gravity_scale = 1
 	idle = false
 	apply_impulse(Vector2(randf_range(-strength,strength),-20*strength), Vector2(randf_range(-2.5*strength,2.5*strength),0))
@@ -35,5 +40,9 @@ func apply_random_force():
 
 func _on_body_entered(body: Node) -> void:
 	if !idle && breakable:
+		
+		if break_shake_strength > 0:
+			ScreenShakeManager.shake_screen(break_shake_strength, break_shake_fade)
+		
 		smash.emit()
 		queue_free()

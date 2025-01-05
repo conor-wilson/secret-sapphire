@@ -142,6 +142,9 @@ vertical_alignment = 2
 z_index = 10
 position = Vector2(391, 179)
 collision_layer = 2
+detatch_shake_strength = 5.0
+detatch_shake_fade = 10.0
+break_shake_strength = 5.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screwdriver"]

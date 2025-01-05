@@ -1,7 +1,6 @@
 extends Node2D
 
 signal settings_pressed
-signal shake_screen(strength:float, fade:float)
 signal start_button_exploded
 signal panel_broken
 signal s_collected(global_pos:Vector2)
@@ -22,7 +21,6 @@ func _on_start_button_smash() -> void:
 
 func _on_start_button_click() -> void:
 	$InteractiveElements/StartButton.detatch(10)
-	shake_screen.emit(10, 5.0)
 
 func _on_settings_button_pressed() -> void:
 	if !Global.sfx_muted: $Sound/SelectNoise.play()
@@ -72,10 +70,6 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 
 func _on_panel_smash() -> void:
 	panel_broken.emit()
-	shake_screen.emit(25,5)
-
-func _on_desktop_tap() -> void:
-	shake_screen.emit(5,5)
 
 func clear_static():
 	_detatch_element_if_exists("InteractiveElements/Screw1")
@@ -140,14 +134,8 @@ func _on_crumpled_sticky_note_click() -> void:
 func _on_desktop_hammer_man_escaped(global_pos: Vector2) -> void:
 	hammer_man_escaped.emit(global_pos)
 
-func _on_desktop_hammer_man_block_break() -> void:
-	shake_screen.emit(5,5)
-
 func _on_desktop_hammer_man_level_changed() -> void:
 	hammer_man_level_changed.emit()
-
-func _on_desktop_hammer_man_death() -> void:
-	shake_screen.emit(5,5)
 
 
 func _on_start_button_mouse_entered() -> void:

@@ -124,6 +124,7 @@ func grow():
 
 func shoot(pos:Vector2):
 	$Laser.fire(pos)
+	ScreenShakeManager.shake_screen(5,5)
 
 func explode():
 	
@@ -144,6 +145,7 @@ func explode():
 	await $AnimatedSprite2D.frame_changed
 	await $AnimatedSprite2D.frame_changed
 	boom.emit()
+	ScreenShakeManager.shake_screen(30,2)
 	
 	await $AnimatedSprite2D.animation_finished
 	_on_blink_timer_timeout()

@@ -280,5 +280,4 @@ position = Vector2(41, 154)
 [connection signal="collect" from="Levels/Level3/S" to="." method="_on_s_collect"]
 [connection signal="hit" from="Levels/Level3/BlobEnemy" to="." method="_on_level_3_blob_enemy_hit"]
 [connection signal="body_entered" from="Levels/Level3/Level3Door" to="." method="_on_level_3_door_body_entered"]
-[connection signal="block_break" from="HammerMan" to="." method="_on_hammer_man_block_break"]
 [connection signal="body_entered" from="EscapeZone" to="." method="_on_escape_zone_body_entered"]
