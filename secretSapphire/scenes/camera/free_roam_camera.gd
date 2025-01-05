@@ -23,6 +23,16 @@ var original_pos:Vector2 = global_position
 @export var free_roam_range_x:float = 5000
 @export var free_roam_range_y:float = 2500
 
+@export var max_vibration_noise_pitch:float = 1.5
+@export var min_vibration_noise_pitch:float = 0.5
+@export var vibraction_noise_pitch_variation:float = 0.3
+
+
+func _ready() -> void:
+	ScreenShakeManager.shake.connect(screen_shake_noise)
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
 	apply_screen_shake(delta)
@@ -89,6 +99,33 @@ func _input(event: InputEvent) -> void:
 		zoom.y += zoom_speed
 		#$Static.scale.x -= 1
 		#$Static.scale.y -= 1
+
+func apply_screen_shake(delta: float):
+	
+	# No shake required if the strength is below the shake threshold
+	if ScreenShakeManager.screen_shake_strength <= 0.001:
+		ScreenShakeManager.screen_shake_strength = 0
+		return
+	
+	# Shake the screen
+	var new_offset:Vector2 = Vector2(
+		randf_range(-ScreenShakeManager.screen_shake_strength, ScreenShakeManager.screen_shake_strength), 
+		randf_range(-ScreenShakeManager.screen_shake_strength, ScreenShakeManager.screen_shake_strength),
+	)
+	offset = new_offset
+	
+	# Fade the screen shake for the next time
+	ScreenShakeManager.screen_shake_strength = lerpf(ScreenShakeManager.screen_shake_strength, 0, ScreenShakeManager.screen_shake_fade*delta)
+
+func screen_shake_noise(strength:float):
+	if !Global.sfx_muted:
+		#TODO: Make it clearer what's going on below
+		$VibrationNoise.pitch_scale = 0.04*(min_vibration_noise_pitch-max_vibration_noise_pitch)*strength+1.2*max_vibration_noise_pitch-0.2*min_vibration_noise_pitch
+		$VibrationNoise.pitch_scale = $VibrationNoise.pitch_scale + randf_range(-vibraction_noise_pitch_variation, vibraction_noise_pitch_variation)
+		print("Strength:", strength, "Pitch:",$VibrationNoise.pitch_scale)
+		$VibrationNoise.play()
+
+## Roaming Feature Setters
 
 func enable_free_roam():
 	free_roam_mode_enabled = true
