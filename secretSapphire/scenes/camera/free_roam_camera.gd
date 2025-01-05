@@ -25,6 +25,8 @@ var original_pos:Vector2 = global_position
 
 func _process(delta: float) -> void:
 	
+	apply_screen_shake(delta)
+	
 	if !moving && free_roam_mode_enabled:
 		$CanvasLayer/ReturnHomeInstructions.show()
 	else:

@@ -20,6 +20,7 @@ config/icon="res://Sapphire.png"
 DialogueManager="*res://scenes/dialogue/dialogue_manager.gd"
 CursorManager="*res://scenes/cursor/cursor_manager.gd"
 Global="*res://scenes/global.gd"
+ScreenShakeManager="*res://scenes/camera/screen_shake_manager.gd"
 
 [display]
 
