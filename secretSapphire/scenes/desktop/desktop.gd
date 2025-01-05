@@ -148,6 +148,13 @@ const circle_matrix_full:Array[Vector2i] = [
 # a way to shorten this down and have no-more duplicated code.
 func _clear_static_circle(origin:Vector2i):
 	
+	# TODO: Fix the commented code and use it to address the above TODO
+	## Spawn a new ExpandingCircle
+	#var circle:ExpandingCircle = ExpandingCircle.new()
+	#add_child(circle)
+	#await get_tree().create_timer(0.2).timeout
+	#circle.spawn() 
+	
 	# Clear static in a circle
 	for coords in circle_matrix_6:
 		$Static.erase_cell(coords+origin)

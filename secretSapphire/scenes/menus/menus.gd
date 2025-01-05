@@ -145,13 +145,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("click"):
 		$Foam.stop_following()
 
-##
-### TODO: This is purely for debugging. This function should be removed once it's
-### no-longer needed.
-##func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("debugbutton"):
-		#reform_start_button()
-
 func reform_start_button():
 	if !active: return
 	await get_tree().create_timer(1).timeout
