@@ -76,70 +76,39 @@ func clear_all_static():
 		
 		if i%30 == 0:
 			await get_tree().create_timer(0.001).timeout
-	
 
-const circle_matrix_0:Array[Vector2i] = [
-									  Vector2i(-1,-3), 				   Vector2i(1,-3),
-					  				   				   				   				   				  
-	Vector2i(-3,-1),  				   				   				   				   				   Vector2i(3,-1), 
-	 				   				   				   				   				   				   				  
-	Vector2i(-3, 1),  				   				   				   				   				   Vector2i(3, 1),
-					  				   				   				   				   				  
-									  Vector2i(-1, 3),  			   Vector2i(1, 3),
-]
-const circle_matrix_1:Array[Vector2i] = [
-									  				  Vector2i(0,-3), 				 
-					 Vector2i(-2,-2), 												   Vector2i(2,-2),
-					 				  												   				   				  
-	Vector2i(-3, 0), 																				   Vector2i(3, 0),
-					 																				   				  
-					 Vector2i(-2, 2), 												   Vector2i(2, 2),
-									  				  Vector2i(0, 3), 				  
-]
-const circle_matrix_2:Array[Vector2i] = [
-					 Vector2i(-1,-2),                 Vector2i(1,-2),
-	Vector2i(-2,-1),                                                  Vector2i(2,-1),
-																					 
-	Vector2i(-2, 1),                                                  Vector2i(2, 1),
-					 Vector2i(-1, 2),                 Vector2i(1, 2),
-]
-const circle_matrix_3:Array[Vector2i] = [
-									  Vector2i(0,-2),                 
-																					 
-	Vector2i(-2, 0),                                                  Vector2i(2, 0),
-																					 
-									  Vector2i(0, 2),                 
-]
-const circle_matrix_4:Array[Vector2i] = [
-																	 
-					 Vector2i(-1,-1),                 Vector2i(1,-1),                
-																					 
-					 Vector2i(-1, 1),                 Vector2i(1, 1),                
-																	 
-]
-const circle_matrix_5:Array[Vector2i] = [
-																	 
-									  Vector2i(0,-1),                                
-					 Vector2i(-1, 0),                 Vector2i(1, 0),                
-									  Vector2i(0, 1),                                
-																	 
-]
-const circle_matrix_6:Array[Vector2i] = [
-																	 
-																					 
-									  Vector2i(0, 0),                                
-																					 
-																	 
-]
-const circle_matrix_full:Array[Vector2i] = [
-									  Vector2i(-1,-3), Vector2i(0,-3), Vector2i(1,-3),
-					 Vector2i(-2,-2), Vector2i(-1,-2), Vector2i(0,-2), Vector2i(1,-2), Vector2i(2,-2),
-	Vector2i(-3,-1), Vector2i(-2,-1), Vector2i(-1,-1), Vector2i(0,-1), Vector2i(1,-1), Vector2i(2,-1), Vector2i(3,-1), 
-	Vector2i(-3, 0), Vector2i(-2, 0), Vector2i(-1, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0),
-	Vector2i(-3, 1), Vector2i(-2, 1), Vector2i(-1, 1), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1),
-					 Vector2i(-2, 2), Vector2i(-1, 2), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2),
-									  Vector2i(-1, 3), Vector2i(0, 3), Vector2i(1, 3),
-]
+
+ # TODO: Rename the below functions and merge them together
+
+func _clear_single_circle(origin:Vector2i, radius:float):
+	var max_y:float = ceil(origin.y+radius)
+	var min_y:float = floor(origin.y-radius)
+	
+	for y in range(min_y, max_y):
+		var dy:float = origin.y - y
+		var dx:float = floor(sqrt(radius*radius - dy*dy))
+		
+		var x1:float = origin.x - dx
+		var x2:float = origin.x + dx
+		$Static.erase_cell(Vector2i(x1,y))
+		$Static.erase_cell(Vector2i(x2,y))
+	
+	$Static.erase_cell(Vector2i(origin.x,max_y-1))
+
+func _build_static_in_single_circle(origin:Vector2i, radius:float):
+	var max_y:float = ceil(origin.y+radius)
+	var min_y:float = floor(origin.y-radius)
+	
+	for y in range(min_y, max_y):
+		var dy:float = origin.y - y
+		var dx:float = floor(sqrt(radius*radius - dy*dy))
+		
+		var x1:float = origin.x - dx
+		var x2:float = origin.x + dx
+		$Static.set_cell(Vector2i(x1,y), 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
+		$Static.set_cell(Vector2i(x2,y), 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
+	
+	$Static.set_cell(Vector2i(origin.x,max_y), 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
 
 # _clear_circle clears a circle of static centred at the provided origin point, 
 # and then replaces it again with random static tiles.
@@ -148,60 +117,39 @@ const circle_matrix_full:Array[Vector2i] = [
 # a way to shorten this down and have no-more duplicated code.
 func _clear_static_circle(origin:Vector2i):
 	
-	# TODO: Fix the commented code and use it to address the above TODO
-	## Spawn a new ExpandingCircle
-	#var circle:ExpandingCircle = ExpandingCircle.new()
-	#add_child(circle)
-	#await get_tree().create_timer(0.2).timeout
-	#circle.spawn() 
+	# TODO: Use a loop here (or maybe a tween) instead of hard-coding timer awaits before signing
+	# off on the above TODO
 	
 	# Clear static in a circle
-	for coords in circle_matrix_6:
-		$Static.erase_cell(coords+origin)
-	#await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_5:
-		$Static.erase_cell(coords+origin)
+	_clear_single_circle(origin, 0.5)
+	_clear_single_circle(origin, 1)
 	await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_4:
-		$Static.erase_cell(coords+origin)
-	#await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_3:
-		$Static.erase_cell(coords+origin)
+	_clear_single_circle(origin, 1.5)
+	_clear_single_circle(origin, 2)
 	await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_2:
-		$Static.erase_cell(coords+origin)
-	#await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_1:
-		$Static.erase_cell(coords+origin)
+	_clear_single_circle(origin, 2.5)
+	_clear_single_circle(origin, 3)
 	await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_0:
-		$Static.erase_cell(coords+origin)
+	_clear_single_circle(origin, 3.5)
 	
 	if clearing_all:
 		return
 	
 	# Rebuild the static in the circle
 	await get_tree().create_timer(0.2).timeout
-	for coords in circle_matrix_0:
-		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
+	_build_static_in_single_circle(origin, 3.5)
 	await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_1:
-		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
+	_build_static_in_single_circle(origin, 3)
 	await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_2:
-		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
+	_build_static_in_single_circle(origin, 2.5)
 	await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_3:
-		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
+	_build_static_in_single_circle(origin, 2)
 	await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_4:
-		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
+	_build_static_in_single_circle(origin, 1.5)
 	await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_5:
-		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
+	_build_static_in_single_circle(origin, 1)
 	await get_tree().create_timer(0.02).timeout
-	for coords in circle_matrix_6:
-		$Static.set_cell(coords+origin, 1, Vector2i(0,randi_range(0,1)), randi_range(1,8))
+	_build_static_in_single_circle(origin, 0.5)
 	await get_tree().create_timer(0.02).timeout
 
 
