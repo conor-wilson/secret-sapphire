@@ -6,6 +6,12 @@
 
 **IF YOU'VE COME HERE TO FIND ANSWERS TO THE PUZZLES:** At present, none of the puzzles in _The Search for the Secret Sapphire_ are designed with the intention of the player coming here to the source code to solve them. There are hints to all of the puzzles on the game's itch.io page. That being said, solving the puzzles in a meta way is very much in the spirit of this game, so do as you will and good luck finding the Sapphire!
 
+## Note to fellow Godot developers
+
+Hello! Anyone who would like to clone this repo and check out the Godot project itself is very much encouraged! However, unfortunately the audio and font files in this project are not tracked. This is to adhere to distribution licences. This means that if you try to build the project, you be unsuccessful unless you replace the missing files with your own fonts and audio. 
+
+In a future change, I will address this issue by adding some appropriate replacement files to allow the game to at least be buildable. Apologies for any inconvenience caused! 
+
 ## Development Progress
 
 **DISCLAIMER: THIS CODE IS A WORK IN PROGRESS!** This was a month-long game jam, but it was a relatively ambitious project for me, so a lot of corners were cut to get it done in time. This meant that much of the standards of Good Code practice were tossed asside. I'm working on fixing this (and updating it for the post-jam build), but I've created a few branches to preserve the energy of the game jam version of the code in case people are interested: 
@@ -13,12 +19,6 @@
 - [Code at time of game submission](https://github.com/conor-wilson/gameoff2024/tree/code-at-time-of-submission)
 - [Code at time of mid-jam patch](https://github.com/conor-wilson/gameoff2024/tree/mid-jam-patch) - This includes some game-breaking bug fixes.
 - [Post-Jam code](https://github.com/conor-wilson/gameoff2024) - This is the main branch and is still under development. It includes post-jam tidy-ups and fixes.
-
-## Note to fellow Godot developers
-
-Hello! Anyone who would like to clone this repo and check out the Godot project itself is very much encouraged! However, unfortunately the audio and font files in this project are not tracked. This is to adhere to distribution licences. This means that if you try to build the project, you be unsuccessful unless you replace the missing files with your own fonts and audio. 
-
-In a future change, I will address this issue by adding some appropriate replacement files to allow the game to at least be buildable. Apologies for any inconvenience caused! 
 
 ## Game Description: 
 
