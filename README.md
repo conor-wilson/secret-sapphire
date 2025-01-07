@@ -8,8 +8,8 @@
 
 **DISCLAIMER: THIS CODE IS A WORK IN PROGRESS!** This was a month-long game jam, but it was a relatively ambitious project for me, so a lot of corners were cut to get it done in time. This meant that much of the standards of Good Code practice were tossed asside. I'm working on fixing this (and updating it for the post-jam build), but I've created a few branches to preserve the energy of the game jam version of the code in case people are interested: 
 
-- [Code at time of game submission](https://github.com/conor-wilson/gameoff2024)
-- [Code at time of mid-jam patch](https://github.com/conor-wilson/gameoff2024) (this includes some game-breaking bug fixes)
+- [Code at time of game submission](https://github.com/conor-wilson/gameoff2024/tree/code-at-time-of-submission)
+- [Code at time of mid-jam patch](https://github.com/conor-wilson/gameoff2024/tree/mid-jam-patch) (this includes some game-breaking bug fixes)
 - [Post-Jam code](https://github.com/conor-wilson/gameoff2024) (this is the main branch and is still under development. It includes post-jam tidy-ups and fixes)
 
 ## Game Description: 
