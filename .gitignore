@@ -14,4 +14,8 @@ export_presets.cfg
 data_*/
 mono_crash.*.json
 
+# Self-imposed ignores
 builds/*
+*.mp3
+*.wav
+*.ttf
