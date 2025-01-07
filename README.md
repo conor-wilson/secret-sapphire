@@ -2,6 +2,8 @@
 
 [Click here to play the game!](https://quietlantern.itch.io/the-search-for-the-secret-sapphire)
 
+![SapphireBanner](https://github.com/user-attachments/assets/dae39324-3309-4bce-926c-4b0207262c96)
+
 **IF YOU'VE COME HERE TO FIND ANSWERS TO THE PUZZLES:** At present, none of the puzzles in _The Search for the Secret Sapphire_ are designed with the intention of the player coming here to the source code to solve them. There are hints to all of the puzzles on the game's itch.io page. That being said, solving the puzzles in a meta way is very much in the spirit of this game, so do as you will and good luck finding the Sapphire!
 
 ## Development Progress
