@@ -62,11 +62,11 @@ If you're struggling with some of the puzzles, here's a couple of hints to help 
 ​  - Suspense e investigação - HipervigilRPG​ by descreveaiRPG​​​​​
   - Video Game Boss Fiight​​ by IHateTuesdays
   - Sneaky Piz - Quirky Orchestral Loop​ by Sonican
-- **Sound Effects:** 
-​  - ​200 Free SFX​ by Kronbits​
+- **Sound Effects:**
+  - ​200 Free SFX​ by Kronbits​
   - 8-bit / 16-bit Sound Effects (x25) Pack​ by JDWasabi
-​  - Explosion​ by morganpurkis (Freesound)
-​  - Laser​ by Kronos1001 (Freesound)
+  - Explosion​ by morganpurkis (Freesound)
+  - Laser​ by Kronos1001 (Freesound)
 - **Title Font:** Font+ [Antiquity Print] by SciGho
 - **Other Fonts:**
   - m6x11 by Daniel Linssen (aka managore)
