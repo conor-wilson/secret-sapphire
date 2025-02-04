@@ -35,7 +35,7 @@ func _on_screen_input_event(viewport: Node, event: InputEvent, shape_idx: int) -
 		return
 	
 	if event.is_pressed() && event.is_action("click") && mode == Mode.STATIC:
-		$Static.clear_static_circle(_get_mouse_cell_coords())
+		$Static.clear_circle(_get_mouse_cell_coords())
 		ScreenShakeManager.shake_screen(5,5, $Static.clearing_all)
 
 func set_static_mode():
@@ -56,7 +56,7 @@ func _get_mouse_cell_coords() -> Vector2i:
 	)
 
 func clear_all_static():
-	$Static.clear_all_static()
+	$Static.clear_all()
 
 func _on_screen_body_entered(body: Node2D) -> void:
 	if body is RunningLetter:

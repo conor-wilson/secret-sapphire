@@ -104,7 +104,7 @@ func _get_circle_matrix_coords(origin:Vector2i, matrix:Array) -> Array[Vector2i]
 #
 # TODO: This function and the above matrices are HORRIBLY hard-coded. Figure out
 # a way to shorten this down and have no-more duplicated code.
-func clear_static_circle(origin:Vector2i):
+func clear_circle(origin:Vector2i):
 	
 	# Clear static in a circle
 	for coords in _get_circle_matrix_coords(origin, circle_matrix_6):
@@ -156,11 +156,11 @@ func clear_static_circle(origin:Vector2i):
 	await get_tree().create_timer(0.02).timeout
 
 
-func clear_all_static():
+func clear_all():
 	clearing_all = true
 	
 	for i in range(100):
-		clear_static_circle(Vector2i(randi_range(4,67), randi_range(5,28)))
+		clear_circle(Vector2i(randi_range(4,67), randi_range(5,28)))
 		#ScreenShakeManager.shake_screen(5,5, clearing_all)
 		await get_tree().create_timer(0.005).timeout
 	
