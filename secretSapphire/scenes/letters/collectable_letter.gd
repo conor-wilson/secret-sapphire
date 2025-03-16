@@ -9,6 +9,6 @@ func set_can_collect(can_collect:bool):
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if can_collect && event.is_action_pressed("click") && CursorManager.current_cursor == CursorManager.CURSOR:
-		$Sound/CollectNoise.play()
+		if !Global.sfx_muted: $Sound/CollectNoise.play()
 		collect.emit()
 		hide()
