@@ -27,7 +27,7 @@
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/running_letters/running_a.tres" id="23_2ysj3"]
 [ext_resource type="Texture2D" uid="uid://8yqnj4mcp32" path="res://assets/art/desktop_icons/HomeIcon.png" id="23_3xjlp"]
 [ext_resource type="PackedScene" uid="uid://dtxr5ergy7jvd" path="res://scenes/hammer_man/hammer_man_game.tscn" id="25_ruqgm"]
-[ext_resource type="Texture2D" uid="uid://b1auvb2hx0hhi" path="res://assets/art/Arrows/DarkGreyArrow.png" id="27_kfy1a"]
+[ext_resource type="Texture2D" uid="uid://b1auvb2hx0hhi" path="res://assets/art/arrows/DarkGreyArrow.png" id="27_kfy1a"]
 [ext_resource type="PackedScene" uid="uid://xu30uiocq2k" path="res://scenes/desktop/static.tscn" id="29_57ei7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
@@ -1024,6 +1024,9 @@ position = Vector2(576, 256)
 [connection signal="mouse_exited" from="DesktopWindows/Antivirus/ScanButtonButton" to="." method="_on_scan_button_button_mouse_exited"]
 [connection signal="timeout" from="DesktopWindows/Antivirus/VirusScanTimer" to="." method="_on_virus_scan_timer_timeout"]
 [connection signal="collect" from="DesktopWindows/TurtleMemeWEBP/A" to="." method="_on_a_collect"]
+[connection signal="hammer_man_escaped" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_hammer_man_escaped"]
+[connection signal="level_changed" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_level_changed"]
+[connection signal="s_collected" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_s_collected"]
 [connection signal="input_event" from="DesktopWindows/HammerManEXE/CloseButton" to="." method="_on_hammer_man_exe_close_button_input_event"]
 [connection signal="body_entered" from="Screen" to="." method="_on_screen_body_entered"]
 [connection signal="body_exited" from="Screen" to="." method="_on_screen_body_exited"]

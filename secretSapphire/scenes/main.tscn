@@ -127,6 +127,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_esnhb")
 text = "MAIN MENU"
 flat = true
 
+[connection signal="mute_music_toggled" from="Menus" to="." method="_on_menus_mute_music_toggled"]
+[connection signal="start_game" from="Menus" to="." method="_on_menus_start_game"]
 [connection signal="victory" from="SearchForTheSecretSapphire" to="." method="_on_search_for_the_secret_sapphire_victory"]
 [connection signal="pressed" from="VictoryScreen/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="VictoryScreen/MainMenu" to="." method="_on_main_menu_pressed"]
