@@ -781,3 +781,11 @@ func _start_help_bot_death():
 
 func _on_free_roam_camera_returned_home() -> void:
 	_on_free_roam_camera_snap($Camera/MainMenuCameraMarker)
+
+# _on_item_boundery_body_exited ensures that on the rare occasion that items glitch into
+# the void, they will respawn back in the main menu.
+func _on_item_boundery_body_exited(body: Node2D) -> void:
+	if body is InteractiveElement:
+		if body.global_position.distance_to($ItemBoundery/ItemRespawnPoint.global_position) > 5000:
+			body.linear_velocity = Vector2.ZERO
+			body.global_position = $ItemBoundery/ItemRespawnPoint.global_position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=32 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/menus/menus.gd" id="1_n6v3l"]
 [ext_resource type="PackedScene" uid="uid://hmfard6sqx6h" path="res://scenes/camera/free_roam_camera.tscn" id="2_f0b52"]
@@ -51,6 +51,9 @@ height = 44.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6cai"]
 size = Vector2(158, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xla6"]
+size = Vector2(25472, 12672)
 
 [node name="Menus" type="Node2D"]
 script = ExtResource("1_n6v3l")
@@ -326,6 +329,17 @@ stream = ExtResource("23_qeh6t")
 [node name="HelpBot" parent="." instance=ExtResource("7_bh0tg")]
 position = Vector2(2879, 289)
 
+[node name="ItemBoundery" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemBoundery"]
+shape = SubResource("RectangleShape2D_5xla6")
+debug_color = Color(0, 0.688334, 0.7, 0.14902)
+
+[node name="ItemRespawnPoint" type="Marker2D" parent="ItemBoundery"]
+position = Vector2(576, 320)
+
 [connection signal="returned_home" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_returned_home"]
 [connection signal="snap" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_snap"]
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]
@@ -364,3 +378,5 @@ position = Vector2(2879, 289)
 [connection signal="mouse_entered" from="TrueStartButton" to="." method="_on_true_start_button_mouse_entered"]
 [connection signal="mouse_exited" from="TrueStartButton" to="." method="_on_true_start_button_mouse_exited"]
 [connection signal="killed" from="HelpBot" to="." method="_on_help_bot_killed"]
+[connection signal="body_entered" from="ItemBoundery" to="." method="_on_item_boundery_body_entered"]
+[connection signal="body_exited" from="ItemBoundery" to="." method="_on_item_boundery_body_exited"]
