@@ -73,7 +73,7 @@ func _on_hammer_man_exe_icon_double_clicked() -> void:
 
 
 func _on_home_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("click") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+	if event.is_action_pressed("click") && !event.is_action_pressed("pan") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
 		for window in $DesktopWindows.get_children():
 			window.hide()
 
@@ -89,7 +89,7 @@ func _on_home_button_mouse_exited() -> void:
 
 
 func _on_fire_extinguisher_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("click") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+	if event.is_action_pressed("click") && !event.is_action_pressed("pan") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
 		$DesktopWindows/Antivirus/FireExtinguisher.hide()
 		CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
 
@@ -98,7 +98,7 @@ func _on_a_collect() -> void:
 	a_collected.emit($DesktopWindows/TurtleMemeWEBP/A.global_position)
 
 func _on_hammer_man_exe_close_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("click"):
+	if event.is_action_pressed("click") && !event.is_action_pressed("pan"):
 		$DesktopWindows/HammerManEXE/HammerManGame.close()
 
 
@@ -113,7 +113,7 @@ func _on_hammer_man_game_s_collected(global_pos:Vector2) -> void:
 
 
 func _on_scan_button_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if mode == Mode.ACTIVE && event.is_action_pressed("click"):
+	if mode == Mode.ACTIVE && event.is_action_pressed("click") && !event.is_action_pressed("pan"):
 		$DesktopWindows/Antivirus/SeemsFine.text = "scanning..."
 		$DesktopWindows/Antivirus/VirusScanTimer.start()
 
@@ -121,7 +121,7 @@ func _on_virus_scan_timer_timeout() -> void:
 	$DesktopWindows/Antivirus/SeemsFine.text = "seems fine idk."
 
 func _on_close_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("click"):
+	if event.is_action_pressed("click") && !event.is_action_pressed("pan"):
 		$DesktopWindows/Antivirus/SeemsFine.text = ""
 
 func _on_scan_button_button_mouse_entered() -> void:

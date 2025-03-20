@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	
 	if draggable: 
 		initial_pos = global_position
-		if Input.is_action_just_pressed("click"):
+		if Input.is_action_just_pressed("click") && !Input.is_action_pressed("pan"):
 			
 			if !$DoubleClickTimer.is_stopped():
 				double_clicked.emit()
@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 			offset = get_global_mouse_position() - global_position
 			Global.is_dragging = true
 			
-		if Input.is_action_pressed("click"):
+		if Input.is_action_pressed("click") && !Input.is_action_pressed("pan"):
 			global_position = get_global_mouse_position() - offset
 		elif Input.is_action_just_released("click"):
 			
@@ -118,7 +118,7 @@ func _on_double_clicked() -> void:
 				child.enabled = true
 
 func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if !disabled && !is_icon && event.is_action_pressed("click") && CursorManager.current_cursor == CursorManager.CURSOR:
+	if !disabled && !is_icon && event.is_action_pressed("click") && !event.is_action_pressed("pan") && CursorManager.current_cursor == CursorManager.CURSOR:
 		hide()
 		draggable = false
 		for child in get_children():
