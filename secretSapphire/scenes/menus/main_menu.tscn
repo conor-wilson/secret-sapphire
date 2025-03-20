@@ -79,7 +79,7 @@ shadow_offset = Vector2(2, 2)
 size = Vector2(60, 156)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jk44i"]
-radius = 8.0
+radius = 12.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_35xiq"]
 font = ExtResource("5_2a3fy")
@@ -169,7 +169,7 @@ rotation = 1.57079
 shape = SubResource("RectangleShape2D_nwsea")
 
 [node name="Screw1" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
-position = Vector2(88, 88)
+position = Vector2(96, 96)
 collision_layer = 2
 detatch_shake_strength = 5.0
 break_shake_strength = 0.0
@@ -183,7 +183,7 @@ texture = ExtResource("8_yx54q")
 shape = SubResource("CircleShape2D_jk44i")
 
 [node name="Screw2" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
-position = Vector2(1064, 88)
+position = Vector2(1056, 96)
 collision_layer = 2
 detatch_shake_strength = 5.0
 break_shake_strength = 0.0
@@ -197,7 +197,7 @@ texture = ExtResource("8_yx54q")
 shape = SubResource("CircleShape2D_jk44i")
 
 [node name="Screw3" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
-position = Vector2(88, 424)
+position = Vector2(96, 416)
 collision_layer = 2
 detatch_shake_strength = 5.0
 break_shake_strength = 0.0
@@ -211,7 +211,7 @@ texture = ExtResource("8_yx54q")
 shape = SubResource("CircleShape2D_jk44i")
 
 [node name="Screw4" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
-position = Vector2(1064, 424)
+position = Vector2(1056, 416)
 collision_layer = 2
 detatch_shake_strength = 5.0
 break_shake_strength = 0.0
@@ -225,10 +225,8 @@ texture = ExtResource("8_yx54q")
 shape = SubResource("CircleShape2D_jk44i")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 1148.0
-offset_bottom = 513.0
+offset_right = 1152.0
+offset_bottom = 648.0
 theme_override_constants/margin_top = 175
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
