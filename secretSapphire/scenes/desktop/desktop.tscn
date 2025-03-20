@@ -290,7 +290,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TurtleGifIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
-position = Vector2(960, 184)
+position = Vector2(976, 296)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
@@ -340,7 +340,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TurtleMemeWEBPIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
-position = Vector2(976, 296)
+position = Vector2(960, 184)
 draggable_boundary = NodePath("../../IconBoundary")
 draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
