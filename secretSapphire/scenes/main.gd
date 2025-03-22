@@ -34,14 +34,6 @@ func _ready() -> void:
 	$TitleScreen.hide()
 	$VictoryScreen.hide()
 
-func _process(delta):
-	
-	# TODO: This is my ad-hoc fix for a gamebreaking bug that can cause the
-	# desktop to be un-interactable. It's definitely an inefficient solution
-	# that doesn't really address the actual problem, but it 
-	if !Input.is_action_pressed("click"):
-		Global.is_dragging = false
-
 
 func _on_menus_start_game() -> void:
 	#$TransitionScreen.transition()

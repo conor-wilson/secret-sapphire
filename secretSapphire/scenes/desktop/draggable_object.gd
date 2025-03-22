@@ -8,7 +8,7 @@ class_name DraggableObject extends Node2D
 signal double_clicked
 
 var disabled:bool = true
-var draggable:bool = false
+var mouse_hover:bool = false
 
 var offset: Vector2
 var initial_pos:Vector2
@@ -29,66 +29,60 @@ func _process(delta: float) -> void:
 	if disabled || CursorManager.current_cursor != CursorManager.CURSOR:
 		return
 	
-	if draggable: 
-		initial_pos = global_position
+	if CursorManager.current_dragging_object == self:
+		follow_cursor()
+	
+	if mouse_hover:
+		
 		if Input.is_action_just_pressed("click") && !Input.is_action_pressed("pan"):
 			
-			if !$DoubleClickTimer.is_stopped():
+			if $DoubleClickTimer.is_stopped():
+				$DoubleClickTimer.start()
+			else:
 				double_clicked.emit()
 			
 			offset = get_global_mouse_position() - global_position
-			Global.is_dragging = true
-			
-		if Input.is_action_pressed("click") && !Input.is_action_pressed("pan"):
-			
-			var new_position:Vector2 = get_global_mouse_position() - offset
-			
-			if new_position.x > max_global_x:
-				new_position.x = max_global_x
-			if new_position.x < min_global_x:
-				new_position.x = min_global_x
-			if new_position.y > max_global_y:
-				new_position.y = max_global_y
-			if new_position.y < min_global_y:
-				new_position.y = min_global_y
-			
-			global_position = new_position
-			
-		elif Input.is_action_just_released("click"):
-			
-			$DoubleClickTimer.start()
-			
-			Global.is_dragging = false
-			
-			# TODO: Have a look at this and see if we can apply it to the HellBot's movements
-			#var tween = get_tree().create_tween()
-			#if is_inside_dropable:
-				#tween.tween_property(self, "position", body_ref.position, 0.2).set_ease(Tween.EASE_OUT)
-			#else is_inside_dropable:
-				#tween.tween_property(self, "global_position", initial_pos, 0.2).set_ease(Tween.EASE_OUT)
+			CursorManager.current_dragging_object = self
+		
+		# TODO: Have a look at this and see if we can apply it to the HellBot's movements
+		#var tween = get_tree().create_tween()
+		#if is_inside_dropable:
+			#tween.tween_property(self, "position", body_ref.position, 0.2).set_ease(Tween.EASE_OUT)
+		#else is_inside_dropable:
+			#tween.tween_property(self, "global_position", initial_pos, 0.2).set_ease(Tween.EASE_OUT)
 
+func follow_cursor() -> void:
+	
+	var new_position:Vector2 = get_global_mouse_position() - offset
+	
+	if new_position.x > max_global_x:
+		new_position.x = max_global_x
+	if new_position.x < min_global_x:
+		new_position.x = min_global_x
+	if new_position.y > max_global_y:
+		new_position.y = max_global_y
+	if new_position.y < min_global_y:
+		new_position.y = min_global_y
+	
+	global_position = new_position
 
 func _on_mouse_entered() -> void:
 	
 	if disabled || CursorManager.current_cursor != CursorManager.CURSOR:
 		return
 	
-	if not Global.is_dragging:
-		draggable = true
-		
-		if is_icon:
-			scale = Vector2(1.05, 1.05)
+	mouse_hover = true
+	if is_icon:
+		scale = Vector2(1.05, 1.05)
 
 func _on_mouse_exited() -> void:
 	
 	if disabled:
 		return
 	
-	if not Global.is_dragging:
-		draggable = false
-		if is_icon:
-			scale = Vector2(1,1)
-
+	mouse_hover = false
+	if is_icon:
+		scale = Vector2(1,1)
 
 func _on_double_clicked() -> void:
 	if is_icon && openable_window != null:
@@ -101,8 +95,6 @@ func _on_double_clicked() -> void:
 func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !disabled && !is_icon && event.is_action_pressed("click") && !event.is_action_pressed("pan") && CursorManager.current_cursor == CursorManager.CURSOR:
 		hide()
-		draggable = false
 		for child in get_children():
 			if child is TileMapLayer:
 				child.enabled = false
-		
