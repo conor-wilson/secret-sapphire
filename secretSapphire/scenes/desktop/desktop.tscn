@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=51 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -134,9 +134,6 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5awlk"]
 size = Vector2(1008, 368)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tfpi"]
-size = Vector2(816, 256)
-
 [node name="Desktop" type="Node2D"]
 z_index = -2
 script = ExtResource("1_wj53n")
@@ -147,6 +144,7 @@ position = Vector2(576, 256)
 texture = ExtResource("2_j3mel")
 
 [node name="HomeButton" type="Area2D" parent="."]
+z_index = -3
 position = Vector2(112, 400)
 collision_layer = 64
 collision_mask = 0
@@ -161,10 +159,8 @@ texture = ExtResource("23_3xjlp")
 [node name="DesktopIcons" type="Node2D" parent="."]
 z_index = -2
 
-[node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
+[node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 248)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/HammerManEXE")
 metadata/_edit_group_ = true
@@ -186,10 +182,8 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AntivirusIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
+[node name="AntivirusIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 144)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/Antivirus")
 metadata/_edit_group_ = true
@@ -211,12 +205,11 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NotesIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
+[node name="NotesIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(456, 224)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TodoTXT")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/NotesIcon"]
 scale = Vector2(2, 2)
@@ -238,10 +231,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
-[node name="TurtlePNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtlePNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(840, 160)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtlePNG")
 metadata/_edit_group_ = true
@@ -263,10 +254,8 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleHatPNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtleHatPNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(792, 256)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtleHatPNG")
 metadata/_edit_group_ = true
@@ -289,10 +278,8 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleGifIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtleGifIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(976, 296)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/HappyTurtleGIF")
 metadata/_edit_group_ = true
@@ -314,10 +301,8 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TMNTJPGIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
+[node name="TMNTJPGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(832, 360)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TMNTJPG")
 metadata/_edit_group_ = true
@@ -339,10 +324,8 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleMemeWEBPIcon" parent="DesktopIcons" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtleMemeWEBPIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(960, 184)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtleMemeWEBP")
 metadata/_edit_group_ = true
@@ -367,12 +350,14 @@ vertical_alignment = 1
 [node name="DesktopWindows" type="Node2D" parent="."]
 z_index = -2
 
-[node name="Antivirus" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+[node name="Antivirus" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(312, 256)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
+max_global_x = 976.0
+min_global_y = 176.0
+max_global_y = 512.0
 close_button = NodePath("CloseButton")
+metadata/_edit_group_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/Antivirus"]
 tile_map_data = PackedByteArray("AAD6//r/AAAFAAAAAAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAA=")
@@ -452,10 +437,11 @@ vertical_alignment = 1
 [node name="VirusScanTimer" type="Timer" parent="DesktopWindows/Antivirus"]
 one_shot = true
 
-[node name="TodoTXT" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+[node name="TodoTXT" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
 position = Vector2(592, 280)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
+max_global_x = 976.0
+min_global_y = 208.0
+max_global_y = 544.0
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -557,11 +543,12 @@ text = "- [x] Find more turtle pix"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="TurtlePNG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+[node name="TurtlePNG" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(832, 240)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
+max_global_x = 976.0
+min_global_y = 176.0
+max_global_y = 512.0
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -583,11 +570,12 @@ shape = SubResource("RectangleShape2D_rcyqw")
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="TurtleHatPNG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+[node name="TurtleHatPNG" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(368, 384)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
+max_global_x = 976.0
+min_global_y = 176.0
+max_global_y = 512.0
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -609,11 +597,12 @@ shape = SubResource("RectangleShape2D_rcyqw")
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="HappyTurtleGIF" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+[node name="HappyTurtleGIF" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(496, 232)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
+max_global_x = 976.0
+min_global_y = 176.0
+max_global_y = 512.0
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -643,11 +632,12 @@ shape = SubResource("RectangleShape2D_rcyqw")
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="TMNTJPG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+[node name="TMNTJPG" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(720, 192)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
+max_global_x = 976.0
+min_global_y = 176.0
+max_global_y = 512.0
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -669,12 +659,14 @@ tile_map_data = PackedByteArray("AAD6//r/AAAFAAAAAAD7//r/AAAFAAAAAAD8//r/AAAFAAA
 enabled = false
 tile_set = ExtResource("2_b782f")
 
-[node name="TurtleMemeWEBP" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+[node name="TurtleMemeWEBP" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(712, 272)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
+max_global_x = 976.0
+min_global_y = 192.0
+max_global_y = 528.0
 close_button = NodePath("CloseButton")
+metadata/_edit_group_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TurtleMemeWEBP"]
 tile_map_data = PackedByteArray("AAD6//n/AAAFAAAAAAD7//n/AAAFAAAAAAD8//n/AAAFAAAAAAD9//n/AAAFAAAAAAD+//n/AAAFAAAAAAD///n/AAAFAAAAAAAAAPn/AAAFAAAAAAABAPn/AAAFAAAAAAACAPn/AAAFAAAAAAADAPn/AAAFAAAAAAAEAPn/AAAFAAAAAAAFAPn/AAAFAAAAAAA=")
@@ -963,11 +955,12 @@ rotation = -3.14159
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_kfy1a")
 
-[node name="HammerManEXE" parent="DesktopWindows" node_paths=PackedStringArray("draggable_boundary", "draggable_boundary_centre", "close_button") instance=ExtResource("3_yrive")]
+[node name="HammerManEXE" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(320, 232)
-draggable_boundary = NodePath("../../IconBoundary")
-draggable_boundary_centre = NodePath("../../IconBoundary/IconBoundaryCentre")
+max_global_x = 976.0
+min_global_y = 176.0
+max_global_y = 512.0
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -1001,17 +994,6 @@ collision_mask = 97
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen"]
 position = Vector2(576, 256)
 shape = SubResource("RectangleShape2D_5awlk")
-
-[node name="IconBoundary" type="Area2D" parent="."]
-collision_layer = 64
-collision_mask = 256
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="IconBoundary"]
-position = Vector2(616, 256)
-shape = SubResource("RectangleShape2D_8tfpi")
-
-[node name="IconBoundaryCentre" type="Marker2D" parent="IconBoundary"]
-position = Vector2(576, 256)
 
 [connection signal="input_event" from="HomeButton" to="." method="_on_home_button_input_event"]
 [connection signal="mouse_entered" from="HomeButton" to="." method="_on_home_button_mouse_entered"]
