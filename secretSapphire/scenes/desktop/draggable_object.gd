@@ -22,6 +22,8 @@ var boundary_exit_pos:Vector2
 func _ready() -> void:
 	if !is_icon && close_button != null:
 		close_button.input_event.connect(_on_close_input_event)
+	else:
+		set_z_index(-1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -79,11 +81,14 @@ func _resolve_hover():
 		disabled || 
 		CursorManager.current_cursor != CursorManager.CURSOR ||
 		(CursorManager.current_dragging_object != null && CursorManager.current_dragging_object != self)
+		|| CursorManager.current_hovering_object != null
 	):
 		return
 	
 	mouse_hover = true
+	CursorManager.current_hovering_object = self
 	if is_icon:
+		set_z_index(0)
 		scale = Vector2(1.05, 1.05)
 
 # _resolve_no_hover checks to see if the DraggableObject can be considered
@@ -95,7 +100,9 @@ func _resolve_no_hover():
 		return
 	
 	mouse_hover = false
+	CursorManager.current_hovering_object = null
 	if is_icon:
+		set_z_index(-1)
 		scale = Vector2(1,1)
 
 func _on_double_clicked() -> void:

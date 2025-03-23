@@ -8,6 +8,7 @@ extends Node
 
 var current_cursor:Resource
 var current_dragging_object:DraggableObject = null
+var current_hovering_object:DraggableObject = null
 var last_dragging_object:DraggableObject = null
 
 func _process(delta: float) -> void:
