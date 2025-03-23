@@ -66,11 +66,19 @@ func follow_cursor() -> void:
 	
 	global_position = new_position
 
-func _check_for_hover():
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	_resolve_hover()
+
+func _on_mouse_exited() -> void:
+	_resolve_no_hover()
+
+# _resolve_hover checks to see if the DraggableObject can be considered hovered,
+# and applies any required changes based on the outcome of that check.
+func _resolve_hover():
 	if (
 		disabled || 
 		CursorManager.current_cursor != CursorManager.CURSOR ||
-		CursorManager.current_dragging_object != null
+		(CursorManager.current_dragging_object != null && CursorManager.current_dragging_object != self)
 	):
 		return
 	
@@ -78,11 +86,11 @@ func _check_for_hover():
 	if is_icon:
 		scale = Vector2(1.05, 1.05)
 
-func _on_mouse_entered() -> void:
-	_check_for_hover()
+# _resolve_no_hover checks to see if the DraggableObject can be considered
+# no-longer hovered, and applies any required changes based on the outcome of
+# that check.
+func _resolve_no_hover():
 
-func _on_mouse_exited() -> void:
-	
 	if disabled:
 		return
 	
@@ -104,7 +112,3 @@ func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) ->
 		for child in get_children():
 			if child is TileMapLayer:
 				child.enabled = false
-
-
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	_check_for_hover()
