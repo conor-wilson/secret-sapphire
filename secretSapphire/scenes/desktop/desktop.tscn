@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=53 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -41,7 +41,7 @@ font = ExtResource("5_bxrir")
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rcyqw"]
-size = Vector2(192, 16)
+size = Vector2(192, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih88g"]
 size = Vector2(16, 16)
@@ -69,6 +69,9 @@ size = Vector2(144, 32)
 [sub_resource type="LabelSettings" id="LabelSettings_fgxfr"]
 font = ExtResource("5_bxrir")
 font_color = Color(0.247059, 0.247059, 0.454902, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hnlp"]
+size = Vector2(192, 256)
 
 [sub_resource type="LabelSettings" id="LabelSettings_m5gid"]
 font = ExtResource("5_bxrir")
@@ -117,6 +120,9 @@ _data = {
 "happy_turtle_gif": SubResource("Animation_rw62o")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_de7jb"]
+size = Vector2(192, 224)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_skiw6"]
 radius = 16.0
 height = 44.0
@@ -126,7 +132,7 @@ font = ExtResource("5_bxrir")
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ime56"]
-size = Vector2(192, 16)
+size = Vector2(192, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfer5"]
 size = Vector2(16, 16)
@@ -368,7 +374,6 @@ tile_set = ExtResource("2_b782f")
 texture = ExtResource("14_trhyc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus"]
-position = Vector2(0, -88)
 shape = SubResource("RectangleShape2D_rcyqw")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/Antivirus"]
@@ -438,7 +443,7 @@ vertical_alignment = 1
 one_shot = true
 
 [node name="TodoTXT" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
-position = Vector2(591, 280)
+position = Vector2(592, 280)
 max_global_x = 976.0
 min_global_y = 208.0
 max_global_y = 544.0
@@ -453,8 +458,7 @@ tile_set = ExtResource("2_b782f")
 texture = ExtResource("14_8688o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TodoTXT"]
-position = Vector2(0, -120)
-shape = SubResource("RectangleShape2D_rcyqw")
+shape = SubResource("RectangleShape2D_5hnlp")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/TodoTXT"]
 
@@ -561,7 +565,6 @@ tile_set = ExtResource("2_b782f")
 texture = ExtResource("14_6xl12")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtlePNG"]
-position = Vector2(0, -88)
 shape = SubResource("RectangleShape2D_rcyqw")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtlePNG"]
@@ -588,7 +591,6 @@ tile_set = ExtResource("2_b782f")
 texture = ExtResource("14_85gd2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleHatPNG"]
-position = Vector2(0, -88)
 shape = SubResource("RectangleShape2D_rcyqw")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtleHatPNG"]
@@ -623,7 +625,6 @@ libraries = {
 autoplay = "happy_turtle_gif"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HappyTurtleGIF"]
-position = Vector2(0, -88)
 shape = SubResource("RectangleShape2D_rcyqw")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/HappyTurtleGIF"]
@@ -645,7 +646,6 @@ metadata/_edit_group_ = true
 texture = ExtResource("16_ho8k6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TMNTJPG"]
-position = Vector2(0, -88)
 shape = SubResource("RectangleShape2D_rcyqw")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/TMNTJPG"]
@@ -677,8 +677,7 @@ tile_set = ExtResource("2_b782f")
 texture = ExtResource("17_yj0i8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP"]
-position = Vector2(0, -104)
-shape = SubResource("RectangleShape2D_rcyqw")
+shape = SubResource("RectangleShape2D_de7jb")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtleMemeWEBP"]
 
@@ -968,7 +967,6 @@ metadata/_edit_group_ = true
 position = Vector2(-96, -96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE"]
-position = Vector2(0, -88)
 shape = SubResource("RectangleShape2D_ime56")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/HammerManEXE"]
