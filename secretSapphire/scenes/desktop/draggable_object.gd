@@ -66,14 +66,20 @@ func follow_cursor() -> void:
 	
 	global_position = new_position
 
-func _on_mouse_entered() -> void:
-	
-	if disabled || CursorManager.current_cursor != CursorManager.CURSOR:
+func _check_for_hover():
+	if (
+		disabled || 
+		CursorManager.current_cursor != CursorManager.CURSOR ||
+		CursorManager.current_dragging_object != null
+	):
 		return
 	
 	mouse_hover = true
 	if is_icon:
 		scale = Vector2(1.05, 1.05)
+
+func _on_mouse_entered() -> void:
+	_check_for_hover()
 
 func _on_mouse_exited() -> void:
 	
@@ -98,3 +104,7 @@ func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) ->
 		for child in get_children():
 			if child is TileMapLayer:
 				child.enabled = false
+
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	_check_for_hover()

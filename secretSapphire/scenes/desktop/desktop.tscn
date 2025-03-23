@@ -438,7 +438,7 @@ vertical_alignment = 1
 one_shot = true
 
 [node name="TodoTXT" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
-position = Vector2(592, 280)
+position = Vector2(591, 280)
 max_global_x = 976.0
 min_global_y = 208.0
 max_global_y = 544.0
@@ -1005,6 +1005,7 @@ shape = SubResource("RectangleShape2D_5awlk")
 [connection signal="mouse_entered" from="DesktopWindows/Antivirus/ScanButtonButton" to="." method="_on_scan_button_button_mouse_entered"]
 [connection signal="mouse_exited" from="DesktopWindows/Antivirus/ScanButtonButton" to="." method="_on_scan_button_button_mouse_exited"]
 [connection signal="timeout" from="DesktopWindows/Antivirus/VirusScanTimer" to="." method="_on_virus_scan_timer_timeout"]
+[connection signal="input_event" from="DesktopWindows/TodoTXT" to="." method="_on_todo_txt_input_event"]
 [connection signal="collect" from="DesktopWindows/TurtleMemeWEBP/A" to="." method="_on_a_collect"]
 [connection signal="hammer_man_escaped" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_hammer_man_escaped"]
 [connection signal="level_changed" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_level_changed"]
