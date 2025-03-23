@@ -99,7 +99,7 @@ func _resolve_no_hover():
 		scale = Vector2(1,1)
 
 func _on_double_clicked() -> void:
-	if is_icon && openable_window != null:
+	if is_icon && openable_window != null && CursorManager.last_dragging_object == self:
 		openable_window.global_position = global_position + Vector2(0, 64)
 		openable_window.show()
 		for child in openable_window.get_children():

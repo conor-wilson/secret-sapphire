@@ -8,13 +8,16 @@ extends Node
 
 var current_cursor:Resource
 var current_dragging_object:DraggableObject = null
+var last_dragging_object:DraggableObject = null
 
 func _process(delta: float) -> void:
 	if !Input.is_action_pressed("click"):
 		# TODO: This is the second iteration of my ad-hoc fix for a gamebreaking
 		# bug that can cause the desktop to be un-interactable. It's definitely
 		# an inefficient solution that doesn't really address the actual
-		# problem, but it is good enough for now (and maybe forever) 
+		# problem, but it is good enough for now (and maybe forever)
+		if current_dragging_object != null:
+			last_dragging_object = current_dragging_object
 		current_dragging_object = null
 
 func set_mouse_cursor(source:Resource):
