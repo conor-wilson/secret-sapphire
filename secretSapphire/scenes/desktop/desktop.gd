@@ -57,6 +57,7 @@ func _get_mouse_cell_coords() -> Vector2i:
 
 func clear_all_static():
 	$Static.clear_all()
+	mode = Mode.DISABLED # TODO: Maybe we should wait until the static is cleared to disable the static? This would require a signal.
 
 func _on_screen_body_entered(body: Node2D) -> void:
 	if body is RunningLetter:
