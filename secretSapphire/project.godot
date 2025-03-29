@@ -21,6 +21,7 @@ DialogueManager="*res://scenes/dialogue/dialogue_manager.gd"
 CursorManager="*res://scenes/cursor/cursor_manager.gd"
 Global="*res://scenes/global.gd"
 ScreenShakeManager="*res://scenes/camera/screen_shake_manager.gd"
+HammerManManager="*res://scenes/hammer_man/hammer_man_manager.gd"
 
 [display]
 

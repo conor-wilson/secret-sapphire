@@ -12,6 +12,9 @@ var moving:bool = false
 var slamming:bool = false
 var can_jump:bool = false
 
+func _ready() -> void:
+	HammerManManager.set_hammer_man_singleton(self)
+
 func _physics_process(delta: float) -> void:
 	
 	if !active:

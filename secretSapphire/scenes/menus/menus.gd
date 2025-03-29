@@ -1,4 +1,4 @@
-extends Node2D
+class_name Menus extends Node2D
 
 signal start_game
 signal mute_sfx_toggled
@@ -14,7 +14,6 @@ var cursor_in_item_drop_zone:bool = false
 @onready var wrench: InteractiveElement = $Items/Wrench
 @onready var fire_extinguisher: InteractiveElement = $Items/FireExtinguisher
 @onready var crumpled_password_hint: InteractiveElement = $Items/CrumpledPasswordHint
-@onready var hammer_man: HammerMan = $HammerMan
 
 # Stage indicates where we are in the game's story so that we can keep track of 
 # dialogue
@@ -36,12 +35,12 @@ var stage:Stage = Stage.BEGINNING
 
 func _ready() -> void:
 	
+	HammerManManager.set_menus_singleton(self)
+	
 	if !active: return
 	
 	fire_extinguisher.hide()
 	crumpled_password_hint.hide()
-	hammer_man.hide()
-	hammer_man.active = false
 	
 	stage = Stage.BEGINNING
 	
@@ -623,18 +622,6 @@ func _on_cave_of_wonders_secret_received() -> void:
 func _on_cave_of_wonders_t_2_collected(global_pos:Vector2) -> void:
 	if !active: return
 	$CollectedLetters.collect_t_2(global_pos)
-
-func _on_main_menu_hammer_man_escaped(global_pos:Vector2) -> void:
-	if !active: return
-	hammer_man.global_position = global_pos
-	hammer_man.show()
-	hammer_man.active = true
-
-func _on_main_menu_hammer_man_level_changed() -> void:
-	if !active: return
-	if hammer_man != null:
-		hammer_man.hide()
-		hammer_man.active = false
 
 func _on_main_menu_s_collected(global_pos:Vector2) -> void:
 	if !active: return

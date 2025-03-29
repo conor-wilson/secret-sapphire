@@ -1,6 +1,5 @@
-extends Node2D
+class_name HammerManGame extends Node2D
 
-signal hammer_man_escaped(global_pos:Vector2)
 signal level_changed
 signal s_collected(global_pos:Vector2)
 
@@ -15,6 +14,7 @@ signal s_collected(global_pos:Vector2)
 @onready var current_level:Node2D = $Levels/TitleScreen
 
 func _ready() -> void:
+	HammerManManager.set_hammer_man_game_singleton(self)
 	start_level($Levels/TitleScreen)
 
 func _process(delta: float) -> void:
@@ -22,12 +22,14 @@ func _process(delta: float) -> void:
 		$Levels/Level3/S.can_collect = check_s_collectable()
 
 func open():
-	$HammerMan.active = true
-	$HammerMan.show()
+	HammerManManager.move_to_game()
+	HammerManManager.hammer_man.active = true
+	HammerManManager.hammer_man.show()
 	start_level($Levels/TitleScreen)
 
 func close():
-	$HammerMan.active = false
+	HammerManManager.move_to_game()
+	HammerManManager.hammer_man.active = false
 	start_level(null)
 
 func start_level(desired_level:Node2D):
@@ -53,7 +55,7 @@ func start_level(desired_level:Node2D):
 	# Show the desired level and move HammerMan to start position
 	if desired_level != null:
 		desired_level.show()
-	$HammerMan.position = $HammerManSpawnPoint.position
+	HammerManManager.hammer_man.position = $HammerManSpawnPoint.position
 	level_changed.emit()
 
 func check_s_collectable() -> bool:
@@ -68,12 +70,13 @@ func check_s_collectable() -> bool:
 	
 	return true
 
-func _on_escape_zone_body_entered(body: Node2D) -> void:
+func _on_game_zone_body_entered(body: Node2D) -> void:
 	if body is HammerMan:
-		body.hide()
-		body.active = false
-		hammer_man_escaped.emit(body.global_position)
-		$HammerMan.position = $HammerManSpawnPoint.position
+		HammerManManager.move_to_game()
+
+func _on_game_zone_body_exited(body: Node2D) -> void:
+	if body is HammerMan:
+		HammerManManager.move_to_desktop()
 
 
 func _on_level_0_door_body_entered(body: Node2D) -> void:

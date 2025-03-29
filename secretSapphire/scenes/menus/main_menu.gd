@@ -5,7 +5,6 @@ signal start_button_exploded
 signal panel_broken
 signal s_collected(global_pos:Vector2)
 signal a_collected(global_pos:Vector2)
-signal hammer_man_escaped(global_pos:Vector2)
 signal hammer_man_level_changed
 
 var panel_screw_count:int = 4
@@ -129,10 +128,6 @@ func _on_desktop_s_collected(global_pos:Vector2) -> void:
 func _on_crumpled_sticky_note_click() -> void:
 	$InteractiveElements/CrumpledStickyNote.hide()
 	CursorManager.set_mouse_cursor(CursorManager.CRUMPLED_PAPER)
-
-
-func _on_desktop_hammer_man_escaped(global_pos: Vector2) -> void:
-	hammer_man_escaped.emit(global_pos)
 
 func _on_desktop_hammer_man_level_changed() -> void:
 	hammer_man_level_changed.emit()

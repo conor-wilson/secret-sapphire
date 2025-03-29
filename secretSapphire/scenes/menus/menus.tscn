@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene load_steps=31 format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" path="res://scenes/menus/menus.gd" id="1_n6v3l"]
 [ext_resource type="PackedScene" uid="uid://hmfard6sqx6h" path="res://scenes/camera/free_roam_camera.tscn" id="2_f0b52"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/letters/collectable_letter.tscn" id="14_duyw0"]
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/running_letters/running_r.tres" id="15_nd253"]
 [ext_resource type="PackedScene" uid="uid://dgb87ltag6my4" path="res://scenes/cursor/foam.tscn" id="16_mei6b"]
-[ext_resource type="PackedScene" uid="uid://bplobt2yqsrkn" path="res://scenes/hammer_man/hammer_man.tscn" id="17_s1o7x"]
 [ext_resource type="Texture2D" uid="uid://y8wgjwjjrbhx" path="res://assets/art/menu_components/SmallStartButton.png" id="18_pi5ji"]
 [ext_resource type="AudioStream" uid="uid://dyfhd34jb30ta" path="res://assets/audio/detective-stories-198357.mp3" id="19_6jqg8"]
 [ext_resource type="AudioStream" uid="uid://bq72alqswhjul" path="res://assets/audio/mixkit-creepy-radio-frequency-2558-[AudioTrimmer.com].mp3" id="20_y437t"]
@@ -285,9 +284,6 @@ shape = SubResource("CapsuleShape2D_f4r0k")
 [node name="Foam" parent="." instance=ExtResource("16_mei6b")]
 position = Vector2(184, -144)
 
-[node name="HammerMan" parent="." instance=ExtResource("17_s1o7x")]
-position = Vector2(-123, 339)
-
 [node name="TrueStartButton" parent="." instance=ExtResource("8_o8ma5")]
 visible = false
 position = Vector2(576, 550)
@@ -343,7 +339,6 @@ position = Vector2(576, 320)
 [connection signal="returned_home" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_returned_home"]
 [connection signal="snap" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_snap"]
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]
-[connection signal="hammer_man_escaped" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_escaped"]
 [connection signal="hammer_man_level_changed" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_level_changed"]
 [connection signal="panel_broken" from="Menus/MainMenu" to="." method="_on_main_menu_panel_broken"]
 [connection signal="s_collected" from="Menus/MainMenu" to="." method="_on_main_menu_s_collected"]

@@ -375,7 +375,6 @@ vertical_alignment = 2
 stream = ExtResource("23_0uyfe")
 
 [connection signal="a_collected" from="Desktop" to="." method="_on_desktop_a_collected"]
-[connection signal="hammer_man_escaped" from="Desktop" to="." method="_on_desktop_hammer_man_escaped"]
 [connection signal="hammer_man_level_changed" from="Desktop" to="." method="_on_desktop_hammer_man_level_changed"]
 [connection signal="s_collected" from="Desktop" to="." method="_on_desktop_s_collected"]
 [connection signal="click" from="InteractiveElements/CrumpledStickyNote" to="." method="_on_crumpled_sticky_note_click"]

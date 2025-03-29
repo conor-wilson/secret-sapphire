@@ -1,8 +1,7 @@
-extends Node2D
+class_name Desktop extends Node2D
 
 signal s_collected(global_pos:Vector2)
 signal a_collected(global_pos:Vector2)
-signal hammer_man_escaped(global_pos:Vector2)
 signal hammer_man_level_changed
 
 enum Mode {DISABLED, STATIC, ACTIVE}
@@ -10,6 +9,7 @@ var mode:Mode = Mode.DISABLED
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	HammerManManager.set_desktop_singleton(self)
 	mode = Mode.DISABLED
 
 const this_is_actually_fine_message:String = "\"THIS ACTUALLY IS FINE!\nTRY THIS:                      \""
@@ -67,6 +67,9 @@ func _on_screen_body_entered(body: Node2D) -> void:
 func _on_screen_body_exited(body: Node2D) -> void:
 	if body is RunningLetter:
 		body.set_can_enter_desktop(false)
+	
+	if body is HammerMan:
+		HammerManManager.move_to_menus()
 
 
 func _on_hammer_man_exe_icon_double_clicked() -> void:
@@ -101,10 +104,6 @@ func _on_a_collect() -> void:
 func _on_hammer_man_exe_close_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click") && !event.is_action_pressed("pan"):
 		$DesktopWindows/HammerManEXE/HammerManGame.close()
-
-
-func _on_hammer_man_game_hammer_man_escaped(global_pos: Vector2) -> void:
-	hammer_man_escaped.emit(global_pos)
 
 func _on_hammer_man_game_level_changed() -> void:
 	hammer_man_level_changed.emit()

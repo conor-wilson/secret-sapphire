@@ -987,7 +987,7 @@ tile_set = ExtResource("2_b782f")
 
 [node name="Screen" type="Area2D" parent="."]
 collision_layer = 64
-collision_mask = 97
+collision_mask = 2145
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen"]
 position = Vector2(576, 256)
@@ -1005,7 +1005,6 @@ shape = SubResource("RectangleShape2D_5awlk")
 [connection signal="timeout" from="DesktopWindows/Antivirus/VirusScanTimer" to="." method="_on_virus_scan_timer_timeout"]
 [connection signal="input_event" from="DesktopWindows/TodoTXT" to="." method="_on_todo_txt_input_event"]
 [connection signal="collect" from="DesktopWindows/TurtleMemeWEBP/A" to="." method="_on_a_collect"]
-[connection signal="hammer_man_escaped" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_hammer_man_escaped"]
 [connection signal="level_changed" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_level_changed"]
 [connection signal="s_collected" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_s_collected"]
 [connection signal="input_event" from="DesktopWindows/HammerManEXE/CloseButton" to="." method="_on_hammer_man_exe_close_button_input_event"]
