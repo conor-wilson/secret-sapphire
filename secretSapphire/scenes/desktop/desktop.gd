@@ -68,7 +68,7 @@ func _on_screen_body_exited(body: Node2D) -> void:
 	if body is RunningLetter:
 		body.set_can_enter_desktop(false)
 	
-	if body is HammerMan:
+	if body is HammerMan && body.get_parent() == self:
 		HammerManManager.move_to_menus()
 
 
