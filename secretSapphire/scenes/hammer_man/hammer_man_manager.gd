@@ -22,6 +22,9 @@ var menus:Menus
 # avoid the race condition.
 var hammer_man_reparentable:bool = true 
 
+func _process(_delta: float) -> void:
+	hammer_man_reparentable = true
+
 func set_hammer_man_singleton(new_hammer_man:HammerMan):
 	if hammer_man == null:
 		hammer_man = new_hammer_man
@@ -53,7 +56,7 @@ func move_to_game():
 		hammer_man_reparentable = false
 		hammer_man.reparent(hammer_man_game)
 		hammer_man.z_index = 0
-		get_tree().create_timer(0.01).timeout.connect(_set_hammer_man_reparentable)
+		_set_hammer_man_desktop_collision(false)
 
 func move_to_desktop():
 	if hammer_man_reparentable:
@@ -61,7 +64,7 @@ func move_to_desktop():
 		hammer_man_reparentable = false
 		hammer_man.reparent(desktop)
 		hammer_man.z_index = 1
-		get_tree().create_timer(0.01).timeout.connect(_set_hammer_man_reparentable)
+		_set_hammer_man_desktop_collision(true)
 
 func move_to_menus():
 	if hammer_man_reparentable:
@@ -69,7 +72,10 @@ func move_to_menus():
 		hammer_man_reparentable = false
 		hammer_man.reparent(menus)
 		hammer_man.z_index = 0
-		get_tree().create_timer(0.01).timeout.connect(_set_hammer_man_reparentable)
+		_set_hammer_man_desktop_collision(true)
 
-func _set_hammer_man_reparentable():
-	hammer_man_reparentable = true
+# _set_hammer_man_desktop_collision sets HammerMan to be interactable or not
+# with the desktop boarder and objects. This allows the HammerMan window to be
+# able to move below the desktop boarder
+func _set_hammer_man_desktop_collision(val:bool):
+	hammer_man.set_collision_mask_value(15, val)
