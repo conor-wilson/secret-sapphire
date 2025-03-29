@@ -6,7 +6,21 @@ var hammer_man_game:HammerManGame
 var desktop:Desktop
 var menus:Menus
 
-var hammer_man_reparentable:bool = true
+# This var (and its logic below) ensures that we don't end up in any race
+# conditions that cause infinite loops (caused due to hammer_man.reparent()
+# momentarily freeing hammer_man from the tree). My solution for this is jankey, 
+# and is essentially using dead-reckoning, but given that this is a game-jam
+# game, I think that's okay. If I was to do this as a long-term project, I would
+# completely rework the way that all of this works, but life is too short, and
+# my eagerness to move onto more projects is greater than my eagerness to fix
+# the invisible issues in this code that players have a 0% chance of
+# encountering. 
+#
+# Basically, if you're a programmer and you're looking at this as an example: 
+# don't do it this way. You have time that I did not while I was making this
+# game during the jam. Use that time to wire up some signals or something to
+# avoid the race condition.
+var hammer_man_reparentable:bool = true 
 
 func set_hammer_man_singleton(new_hammer_man:HammerMan):
 	if hammer_man == null:
@@ -38,6 +52,7 @@ func move_to_game():
 		print("REPARENTING HAMMERMAN TO HAMMERMAN GAME")
 		hammer_man_reparentable = false
 		hammer_man.reparent(hammer_man_game)
+		hammer_man.z_index = 0
 		get_tree().create_timer(0.01).timeout.connect(_set_hammer_man_reparentable)
 
 func move_to_desktop():
@@ -45,6 +60,7 @@ func move_to_desktop():
 		print("REPARENTING HAMMERMAN TO DESKTOP")
 		hammer_man_reparentable = false
 		hammer_man.reparent(desktop)
+		hammer_man.z_index = 1
 		get_tree().create_timer(0.01).timeout.connect(_set_hammer_man_reparentable)
 
 func move_to_menus():
@@ -52,16 +68,8 @@ func move_to_menus():
 		print("REPARENTING HAMMERMAN TO MENUS")
 		hammer_man_reparentable = false
 		hammer_man.reparent(menus)
+		hammer_man.z_index = 0
 		get_tree().create_timer(0.01).timeout.connect(_set_hammer_man_reparentable)
 
 func _set_hammer_man_reparentable():
 	hammer_man_reparentable = true
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
