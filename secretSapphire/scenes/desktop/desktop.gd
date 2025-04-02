@@ -112,22 +112,27 @@ func _on_hammer_man_game_s_collected(global_pos:Vector2) -> void:
 	s_collected.emit(global_pos)
 
 
-func _on_scan_button_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if mode == Mode.ACTIVE && event.is_action_pressed("click") && !event.is_action_pressed("pan"):
-		$DesktopWindows/Antivirus/SeemsFine.text = "scanning..."
-		$DesktopWindows/Antivirus/VirusScanTimer.start()
+func _on_scan_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+		if event.is_action_pressed("click") && !event.is_action_pressed("pan"):
+			$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1.10, 1.10)
+			$DesktopWindows/Antivirus/SeemsFine.text = "scanning..."
+			$DesktopWindows/Antivirus/VirusScanTimer.start()
+	
+		if event.is_action_released("click"):
+			$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1.05, 1.05)
 
 func _on_virus_scan_timer_timeout() -> void:
 	$DesktopWindows/Antivirus/SeemsFine.text = "seems fine idk."
 
 func _on_close_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("click") && !event.is_action_pressed("pan"):
+	if event.is_action_pressed("click") && !event.is_action_pressed("pan") && CursorManager.current_cursor == CursorManager.CURSOR:
 		$DesktopWindows/Antivirus/SeemsFine.text = ""
 
-func _on_scan_button_button_mouse_entered() -> void:
-	if mode == Mode.ACTIVE:
-		$DesktopWindows/Antivirus/ScanButtonText.scale = Vector2(1.05, 1.05)
+func _on_scan_button_mouse_entered() -> void:
+	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+		$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1.05, 1.05)
 
-func _on_scan_button_button_mouse_exited() -> void:
-	if mode == Mode.ACTIVE:
-		$DesktopWindows/Antivirus/ScanButtonText.scale = Vector2(1, 1)
+func _on_scan_button_mouse_exited() -> void:
+	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+		$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1, 1)

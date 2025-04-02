@@ -59,13 +59,13 @@ font_color = Color(0.615686, 0.615686, 0.615686, 1)
 font = ExtResource("5_bxrir")
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gohla"]
+size = Vector2(144, 32)
+
 [sub_resource type="LabelSettings" id="LabelSettings_wgdno"]
 font = ExtResource("5_bxrir")
 font_size = 32
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gohla"]
-size = Vector2(144, 32)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgxfr"]
 font = ExtResource("5_bxrir")
@@ -364,7 +364,6 @@ max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
 close_button = NodePath("CloseButton")
-metadata/_edit_group_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/Antivirus"]
 tile_map_data = PackedByteArray("AAD6//r/AAAFAAAAAAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAA=")
@@ -414,22 +413,30 @@ label_settings = SubResource("LabelSettings_n0ast")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="ScanButtonText" type="Label" parent="DesktopWindows/Antivirus"]
+[node name="ScanButton" type="Area2D" parent="DesktopWindows/Antivirus"]
+position = Vector2(0, 16)
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/ScanButton"]
+shape = SubResource("RectangleShape2D_gohla")
+
+[node name="ScanButtonText" type="Label" parent="DesktopWindows/Antivirus/ScanButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -72.0
+offset_top = -16.0
 offset_right = 72.0
-offset_bottom = 36.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "START SCAN"
 label_settings = SubResource("LabelSettings_wgdno")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ScanButtonButton" type="Area2D" parent="DesktopWindows/Antivirus"]
-collision_layer = 64
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/ScanButtonButton"]
-position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_gohla")
 
 [node name="SeemsFine" type="Label" parent="DesktopWindows/Antivirus"]
 offset_left = -80.0
@@ -1000,9 +1007,9 @@ shape = SubResource("RectangleShape2D_5awlk")
 [connection signal="double_clicked" from="DesktopIcons/HammerManEXEIcon" to="." method="_on_hammer_man_exe_icon_double_clicked"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/CloseButton" to="." method="_on_close_button_input_event"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/FireExtinguisher" to="." method="_on_fire_extinguisher_input_event"]
-[connection signal="input_event" from="DesktopWindows/Antivirus/ScanButtonButton" to="." method="_on_scan_button_button_input_event"]
-[connection signal="mouse_entered" from="DesktopWindows/Antivirus/ScanButtonButton" to="." method="_on_scan_button_button_mouse_entered"]
-[connection signal="mouse_exited" from="DesktopWindows/Antivirus/ScanButtonButton" to="." method="_on_scan_button_button_mouse_exited"]
+[connection signal="input_event" from="DesktopWindows/Antivirus/ScanButton" to="." method="_on_scan_button_input_event"]
+[connection signal="mouse_entered" from="DesktopWindows/Antivirus/ScanButton" to="." method="_on_scan_button_mouse_entered"]
+[connection signal="mouse_exited" from="DesktopWindows/Antivirus/ScanButton" to="." method="_on_scan_button_mouse_exited"]
 [connection signal="timeout" from="DesktopWindows/Antivirus/VirusScanTimer" to="." method="_on_virus_scan_timer_timeout"]
 [connection signal="input_event" from="DesktopWindows/TodoTXT" to="." method="_on_todo_txt_input_event"]
 [connection signal="collect" from="DesktopWindows/TurtleMemeWEBP/A" to="." method="_on_a_collect"]
