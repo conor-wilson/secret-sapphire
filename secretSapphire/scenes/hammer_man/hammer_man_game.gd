@@ -71,28 +71,28 @@ func check_s_collectable() -> bool:
 	return true
 
 func _on_game_zone_body_entered(body: Node2D) -> void:
-	if body is HammerMan:
+	if body is HammerMan && HammerManManager.current_environment != HammerManManager.Environments.MENUS: # TODO: This is a bit long-winded, and it's copypasted below. Fix in a future version.
 		HammerManManager.move_to_game()
 
 func _on_game_zone_body_exited(body: Node2D) -> void:
-	if body is HammerMan:
+	if body is HammerMan && HammerManManager.current_environment != HammerManManager.Environments.MENUS:
 		HammerManManager.move_to_desktop()
 
 
 func _on_level_0_door_body_entered(body: Node2D) -> void:
-	if body is HammerMan && current_level == $Levels/TitleScreen:
+	if body is HammerMan && current_level == $Levels/TitleScreen && HammerManManager.current_environment == HammerManManager.Environments.GAME: # TODO: This is a bit long-winded, and it's copypasted below. Fix in a future version.
 		start_level($Levels/Level1)
 
 func _on_level_1_door_body_entered(body: Node2D) -> void:
-	if body is HammerMan && current_level == $Levels/Level1:
+	if body is HammerMan && current_level == $Levels/Level1 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
 		start_level($Levels/Level2)
 
 func _on_level_2_door_body_entered(body: Node2D) -> void:
-	if body is HammerMan && current_level == $Levels/Level2:
+	if body is HammerMan && current_level == $Levels/Level2 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
 		start_level($Levels/Level3)
 
 func _on_level_3_door_body_entered(body: Node2D) -> void:
-	if body is HammerMan && current_level == $Levels/Level3:
+	if body is HammerMan && current_level == $Levels/Level3 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
 		start_level($Levels/VictoryScreen)
 
 func _on_level_1_blob_enemy_hit() -> void:

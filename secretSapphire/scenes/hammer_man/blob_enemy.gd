@@ -41,5 +41,5 @@ func _on_floor_detection_right_body_exited(body: Node2D) -> void:
 		direction = Vector2.LEFT
 
 func _on_body_entered(body: Node2D) -> void:
-	if active && body is HammerMan:
+	if active && body is HammerMan && HammerManManager.current_environment == HammerManManager.Environments.GAME:
 		hit.emit()

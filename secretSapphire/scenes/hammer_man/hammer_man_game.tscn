@@ -31,7 +31,7 @@ font = ExtResource("5_k8oly")
 font_color = Color(0.615686, 0.615686, 0.615686, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kh20f"]
-size = Vector2(176, 176)
+size = Vector2(176, 160)
 
 [node name="HammerManGame" type="Node2D"]
 script = ExtResource("1_214vy")
@@ -262,7 +262,7 @@ collision_layer = 64
 collision_mask = 2048
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameZone"]
-position = Vector2(96, 96)
+position = Vector2(96, 104)
 shape = SubResource("RectangleShape2D_kh20f")
 
 [node name="HammerManSpawnPoint" type="Marker2D" parent="."]

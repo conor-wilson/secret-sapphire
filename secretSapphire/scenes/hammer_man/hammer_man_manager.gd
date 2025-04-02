@@ -6,6 +6,9 @@ var hammer_man_game:HammerManGame
 var desktop:Desktop
 var menus:Menus
 
+enum Environments {GAME, DESKTOP, MENUS}
+var current_environment:Environments = Environments.GAME
+
 # This var (and its logic below) ensures that we don't end up in any race
 # conditions that cause infinite loops (caused due to hammer_man.reparent()
 # momentarily freeing hammer_man from the tree). My solution for this is jankey, 
@@ -53,29 +56,47 @@ func set_menus_singleton(new_menus:Menus):
 func move_to_game():
 	if hammer_man_reparentable:
 		print("REPARENTING HAMMERMAN TO HAMMERMAN GAME")
+		current_environment = Environments.GAME
 		hammer_man_reparentable = false
 		hammer_man.reparent(hammer_man_game)
 		hammer_man.z_index = 0
-		_set_hammer_man_desktop_collision(false)
+		_set_hammer_man_game_terrain_collision(true)
+		_set_hammer_man_desktop_terrain_collision(false)
+		_set_hammer_man_menus_terrain_collision(false)
 
 func move_to_desktop():
 	if hammer_man_reparentable:
 		print("REPARENTING HAMMERMAN TO DESKTOP")
+		current_environment = Environments.DESKTOP
 		hammer_man_reparentable = false
 		hammer_man.reparent(desktop)
 		hammer_man.z_index = 1
-		_set_hammer_man_desktop_collision(true)
+		_set_hammer_man_game_terrain_collision(true)
+		_set_hammer_man_desktop_terrain_collision(true)
+		_set_hammer_man_menus_terrain_collision(false)
 
 func move_to_menus():
 	if hammer_man_reparentable:
 		print("REPARENTING HAMMERMAN TO MENUS")
+		current_environment = Environments.MENUS
 		hammer_man_reparentable = false
 		hammer_man.reparent(menus)
 		hammer_man.z_index = 0
-		_set_hammer_man_desktop_collision(true)
+		_set_hammer_man_game_terrain_collision(false)
+		_set_hammer_man_desktop_terrain_collision(false)
+		_set_hammer_man_menus_terrain_collision(true)
 
 # _set_hammer_man_desktop_collision sets HammerMan to be interactable or not
 # with the desktop boarder and objects. This allows the HammerMan window to be
 # able to move below the desktop boarder
-func _set_hammer_man_desktop_collision(val:bool):
+func _set_hammer_man_game_terrain_collision(val:bool):
+	hammer_man.set_collision_mask_value(13, val)
+
+# _set_hammer_man_desktop_collision sets HammerMan to be interactable or not
+# with the desktop boarder and objects. This allows the HammerMan window to be
+# able to move below the desktop boarder
+func _set_hammer_man_desktop_terrain_collision(val:bool):
 	hammer_man.set_collision_mask_value(15, val)
+
+func _set_hammer_man_menus_terrain_collision(val:bool):
+	hammer_man.set_collision_mask_value(1, val)
