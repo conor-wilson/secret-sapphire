@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=61 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cme26wu70ydrw" path="res://assets/art/desktop_windows/todoTXT.png" id="14_8688o"]
 [ext_resource type="Texture2D" uid="uid://dojtrgtgvcjdf" path="res://assets/art/desktop_windows/AntiVirus.png" id="14_trhyc"]
 [ext_resource type="Texture2D" uid="uid://cotwwg0orvryt" path="res://assets/art/desktop_windows/HappyTurtleGif-Sheet.png" id="15_ecr0k"]
+[ext_resource type="Texture2D" uid="uid://duskocckpcou3" path="res://assets/art/desktop_windows/RecyclingBin.png" id="15_u2vah"]
 [ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/items/FireExtinguisher.png" id="15_xgsxi"]
 [ext_resource type="Texture2D" uid="uid://bp5uggpcfdq0p" path="res://assets/art/desktop_windows/TMNTJPG.png" id="16_ho8k6"]
 [ext_resource type="FontFile" uid="uid://da6hr0nb4qkqg" path="res://assets/fonts/Whacky_Joe.ttf" id="17_pw4tl"]
@@ -30,8 +31,12 @@
 [ext_resource type="Texture2D" uid="uid://b1auvb2hx0hhi" path="res://assets/art/arrows/DarkGreyArrow.png" id="27_kfy1a"]
 [ext_resource type="PackedScene" uid="uid://xu30uiocq2k" path="res://scenes/desktop/static.tscn" id="29_57ei7"]
 [ext_resource type="TileSet" uid="uid://6qerjyeamcbs" path="res://scenes/desktop/hammer_man_desktop_tiles.tres" id="29_lmll0"]
+[ext_resource type="Texture2D" uid="uid://dyncku344ffb" path="res://assets/art/desktop_icons/RecyclingBinIcon.png" id="31_hbmeb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgtq4"]
 size = Vector2(48, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyifw"]
@@ -40,6 +45,20 @@ size = Vector2(60, 60)
 [sub_resource type="LabelSettings" id="LabelSettings_sv1yq"]
 font = ExtResource("5_bxrir")
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r267x"]
+size = Vector2(192, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt6ni"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kow7r"]
+size = Vector2(80, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p3xq6"]
+font = ExtResource("5_bxrir")
+font_size = 32
+font_color = Color(0.615686, 0.615686, 0.615686, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rcyqw"]
 size = Vector2(192, 192)
@@ -165,6 +184,19 @@ texture = ExtResource("23_3xjlp")
 
 [node name="DesktopIcons" type="Node2D" parent="."]
 z_index = -2
+
+[node name="RecyclingBinIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+position = Vector2(112, 120)
+is_draggable = false
+is_icon = true
+openable_window = NodePath("../../DesktopWindows/RecyclingBin")
+metadata/_edit_group_ = true
+
+[node name="RecyclingBinIcon" type="Sprite2D" parent="DesktopIcons/RecyclingBinIcon"]
+texture = ExtResource("31_hbmeb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/RecyclingBinIcon"]
+shape = SubResource("RectangleShape2D_dgtq4")
 
 [node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 248)
@@ -357,13 +389,60 @@ vertical_alignment = 1
 [node name="DesktopWindows" type="Node2D" parent="."]
 z_index = -2
 
-[node name="Antivirus" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
+[node name="RecyclingBin" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
 visible = false
-position = Vector2(312, 256)
+position = Vector2(288, 280)
 max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
 close_button = NodePath("CloseButton")
+
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/RecyclingBin"]
+texture = ExtResource("15_u2vah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/RecyclingBin"]
+shape = SubResource("RectangleShape2D_r267x")
+
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/RecyclingBin"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/RecyclingBin/CloseButton"]
+position = Vector2(-88, -88)
+shape = SubResource("RectangleShape2D_dt6ni")
+
+[node name="EmptyButton" type="Area2D" parent="DesktopWindows/RecyclingBin"]
+position = Vector2(32, -48)
+collision_layer = 64
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/RecyclingBin/EmptyButton"]
+shape = SubResource("RectangleShape2D_kow7r")
+
+[node name="EmptyButtonText" type="Label" parent="DesktopWindows/RecyclingBin/EmptyButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -16.0
+offset_right = 72.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EMPTY"
+label_settings = SubResource("LabelSettings_p3xq6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Antivirus" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
+visible = false
+position = Vector2(800, 208)
+max_global_x = 976.0
+min_global_y = 176.0
+max_global_y = 512.0
+close_button = NodePath("CloseButton")
+metadata/_edit_group_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/Antivirus"]
 tile_map_data = PackedByteArray("AAD6//r/AAAFAAAAAAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAA=")
@@ -1005,7 +1084,10 @@ shape = SubResource("RectangleShape2D_5awlk")
 [connection signal="mouse_entered" from="HomeButton" to="." method="_on_home_button_mouse_entered"]
 [connection signal="mouse_exited" from="HomeButton" to="." method="_on_home_button_mouse_exited"]
 [connection signal="double_clicked" from="DesktopIcons/HammerManEXEIcon" to="." method="_on_hammer_man_exe_icon_double_clicked"]
-[connection signal="input_event" from="DesktopWindows/Antivirus/CloseButton" to="." method="_on_close_button_input_event"]
+[connection signal="input_event" from="DesktopWindows/RecyclingBin/EmptyButton" to="." method="_on_empty_button_input_event"]
+[connection signal="mouse_entered" from="DesktopWindows/RecyclingBin/EmptyButton" to="." method="_on_empty_button_mouse_entered"]
+[connection signal="mouse_exited" from="DesktopWindows/RecyclingBin/EmptyButton" to="." method="_on_empty_button_mouse_exited"]
+[connection signal="input_event" from="DesktopWindows/Antivirus/CloseButton" to="." method="_on_virus_scan_close_button_input_event"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/FireExtinguisher" to="." method="_on_fire_extinguisher_input_event"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/ScanButton" to="." method="_on_scan_button_input_event"]
 [connection signal="mouse_entered" from="DesktopWindows/Antivirus/ScanButton" to="." method="_on_scan_button_mouse_entered"]

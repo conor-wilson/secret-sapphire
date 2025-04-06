@@ -1,5 +1,7 @@
 class_name DraggableObject extends Node2D
 
+@export var is_draggable:bool = true
+
 @export var min_global_x:float = 176 # The minimum global x position
 @export var max_global_x:float = 1040 # The maximum global x position
 @export var min_global_y:float = 112 # The minimum global y position
@@ -31,7 +33,7 @@ func _process(delta: float) -> void:
 	if disabled || CursorManager.current_cursor != CursorManager.CURSOR:
 		return
 	
-	if CursorManager.current_dragging_object == self:
+	if CursorManager.current_dragging_object == self && is_draggable:
 		follow_cursor()
 	
 	if mouse_hover:
