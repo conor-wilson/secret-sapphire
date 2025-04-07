@@ -98,7 +98,7 @@ func _on_main_menu_start_button_exploded() -> void:
 	$Sound/DetectiveMusic.stop()
 	
 	if stage != Stage.HELP_BOT_MONOLOGUING:
-		if stage == Stage.BEGINNING && !Global.sfx_muted: $Sound/StaticNoise.volume_db = -10
+		if stage == Stage.BEGINNING && !Global.sfx_muted: $Sound/StaticNoise.volume_db = _get_static_noise_volume()
 		$Sound/StaticNoise.play()
 	
 	if stage == Stage.BEGINNING:
@@ -708,33 +708,32 @@ func _start_boss_battle():
 func _on_main_menu_panel_broken() -> void:
 	if !active: return
 	if stage != Stage.HELP_BOT_MONOLOGUING:
-		if !Global.sfx_muted: $Sound/StaticNoise.volume_db = -3
+		if !Global.music_muted: $Sound/StaticNoise.volume_db = -3
 		$Sound/StaticNoise.play()
-
-
-func _on_settings_menu_mute_sfx_toggled() -> void:
-	if !active: return
-	if Global.sfx_muted:
-		$Sound/StaticNoise.volume_db = -80
-	else:
-		$Sound/StaticNoise.volume_db = -3
-	mute_sfx_toggled.emit()
 
 
 func _on_settings_menu_mute_music_toggled() -> void:
 	if !active: return
 	if Global.music_muted:
 		$Sound/DetectiveMusic.volume_db = -80
+		$Sound/StaticNoise.volume_db = -80
 		$Sound/MainMusic.volume_db = -80
 		$Sound/EeryMusic.volume_db = -80
 		$Sound/BossBattleMusic.volume_db = -80
 	else:
 		$Sound/DetectiveMusic.volume_db = 0
+		$Sound/StaticNoise.volume_db = _get_static_noise_volume()
 		$Sound/MainMusic.volume_db = 0
 		$Sound/EeryMusic.volume_db = 0
-		$Sound/BossBattleMusic.volume_db = -80
+		$Sound/BossBattleMusic.volume_db = 0
 	mute_music_toggled.emit()
 
+# _get_static_noise_volume returns the appropriate dB level for the static noise
+# given whether the Panel is broken or not.
+func _get_static_noise_volume() -> int:
+	if $Menus/MainMenu/InteractiveElements/Panel != null:
+		return -10
+	return -3
 
 func _on_help_bot_killed() -> void:
 	if !active: return
