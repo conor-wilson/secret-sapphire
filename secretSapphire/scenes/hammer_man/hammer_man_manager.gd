@@ -83,7 +83,7 @@ func move_to_menus():
 		hammer_man.reparent(menus)
 		hammer_man.z_index = 0
 		_set_hammer_man_game_terrain_collision(false)
-		_set_hammer_man_desktop_terrain_collision(false)
+		_set_hammer_man_desktop_terrain_collision(true)
 		_set_hammer_man_menus_terrain_collision(true)
 
 # _set_hammer_man_desktop_collision sets HammerMan to be interactable or not
