@@ -69,7 +69,7 @@ func _on_screen_body_exited(body: Node2D) -> void:
 		body.set_can_enter_desktop(false)
 	
 	if body is HammerMan && body.get_parent() == self: # TODO: Maybe the get_parent() bit of this check should be in the HammerManManager script?
-		HammerManManager.move_to_menus()
+		HammerManManager.call_deferred("move_to_menus")
 
 
 func _on_hammer_man_exe_icon_double_clicked() -> void:

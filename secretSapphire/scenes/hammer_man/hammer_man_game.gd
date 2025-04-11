@@ -22,13 +22,13 @@ func _process(delta: float) -> void:
 		$Levels/Level3/S.can_collect = check_s_collectable()
 
 func open():
-	HammerManManager.move_to_game()
+	HammerManManager.call_deferred("move_to_game")
 	HammerManManager.hammer_man.active = true
 	HammerManManager.hammer_man.show()
 	start_level($Levels/TitleScreen)
 
 func close():
-	HammerManManager.move_to_game()
+	HammerManManager.call_deferred("move_to_game")
 	HammerManManager.hammer_man.active = false
 	start_level(null)
 
@@ -72,11 +72,11 @@ func check_s_collectable() -> bool:
 
 func _on_game_zone_body_entered(body: Node2D) -> void:
 	if body is HammerMan && HammerManManager.current_environment != HammerManManager.Environments.MENUS: # TODO: This is a bit long-winded, and it's copypasted below. Fix in a future version.
-		HammerManManager.move_to_game()
+		HammerManManager.call_deferred("move_to_game")
 
 func _on_game_zone_body_exited(body: Node2D) -> void:
 	if body is HammerMan && HammerManManager.current_environment != HammerManManager.Environments.MENUS:
-		HammerManManager.move_to_desktop()
+		HammerManManager.call_deferred("move_to_desktop")
 
 
 func _on_level_0_door_body_entered(body: Node2D) -> void:
