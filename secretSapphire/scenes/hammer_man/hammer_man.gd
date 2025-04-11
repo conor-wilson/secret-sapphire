@@ -139,7 +139,7 @@ func break_blocks_in_zone(zone:Area2D) -> bool:
 			broke_block = true
 		
 		# Help Bot
-		if area is HelpBot:
+		if area is HelpBot && HammerManManager.current_environment == HammerManManager.Environments.MENUS:
 			area.kill()
 			broke_block = true
 	
