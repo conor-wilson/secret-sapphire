@@ -422,7 +422,7 @@ func _on_wrench_click() -> void:
 	
 	_drop_held_item()
 	CursorManager.set_mouse_cursor(CursorManager.WRENCH)
-	_show_instructions("<RIGHT CLICK to drop WRENCH>")
+	_show_instructions("<WRENCH: L-CLICK to use, R-CLICK to drop>")
 	wrench.hide()
 	$Menus/SettingsMenu.detatch_screwdriver()
 
@@ -433,7 +433,7 @@ func _on_crumpled_password_hint_click() -> void:
 	
 	_drop_held_item()
 	CursorManager.set_mouse_cursor(CursorManager.CRUMPLED_PAPER)
-	_show_instructions("<RIGHT CLICK to drop CRUMPLED PASSWORD HINT>")
+	_show_instructions("<CRUMPLED PASSWORD HINT: L-CLICK to use, R-CLICK to drop>")
 	crumpled_password_hint.hide()
 
 func _on_fire_extinguisher_click() -> void:
@@ -443,7 +443,7 @@ func _on_fire_extinguisher_click() -> void:
 	
 	_drop_held_item()
 	CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
-	_show_instructions("<RIGHT CLICK to drop FIRE EXTINGUISHER>")
+	_show_instructions("<FIRE EXTINGUISHER: L-CLICK to use, R-CLICK to drop>")
 	fire_extinguisher.hide()
 
 
