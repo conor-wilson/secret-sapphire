@@ -13,11 +13,23 @@ var disabled:bool = true
 var mouse_hover:bool = false
 
 var offset: Vector2
-var initial_pos:Vector2
-var boundary_exit_pos:Vector2
 
+# Indicates if the object is an icon that can open a window.
 @export var is_icon:bool = false
+
+# The window that the object will open (if it is an icon) when double clicked.
 @export var openable_window:DraggableObject
+
+# The offset that is given to the object when it is "openned". This can be
+# applied in positive and negative x/y directions depending on where the object
+# is openned from relative to the maximum global x and y values.
+@export var open_position_offset:Vector2 = Vector2(128+16, 64)
+
+# The minimum whitespace that is left between the edge of the object and the
+# desktop boarder when it is "opened".
+@export var min_open_boarder_whitespace:float = 16
+
+# The close button (if it is a window)
 @export var close_button:Area2D
 
 
@@ -29,15 +41,35 @@ func _ready() -> void:
 
 func open(pos:Vector2) -> void: 
 	
-	# Ensure new position is within the min/max boundaries
-	if pos.x < min_global_x:   pos.x = min_global_x
-	elif pos.x > max_global_x: pos.x = max_global_x
-	if pos.y < min_global_y:   pos.y = min_global_y
-	elif pos.y > max_global_y: pos.y = max_global_y
+	# Derrive the max and min values of the new position
+	var new_pos_max_x:float = pos.x + open_position_offset.x
+	var new_pos_min_x:float = pos.x - open_position_offset.x
+	var new_pos_max_y:float = pos.y + open_position_offset.y
+	var new_pos_min_y:float = pos.y - open_position_offset.y
+	
+	# Determine which of the new position values to use
+	var new_pos:Vector2 
+	if   new_pos_max_x > (max_global_x-min_open_boarder_whitespace): new_pos.x = new_pos_min_x
+	elif new_pos_min_x < (min_global_x+min_open_boarder_whitespace): new_pos.x = new_pos_max_x
+	else: new_pos.x = new_pos_max_x
+	if   new_pos_max_y > (max_global_y-min_open_boarder_whitespace): new_pos.y = new_pos_min_y
+	elif new_pos_min_y < (min_global_y+min_open_boarder_whitespace): new_pos.y = new_pos_max_y
+	else: new_pos.y = new_pos_max_y
+	
+	# Ensure the new position is within the max/min boundaries (with a 16px offset to make things look a bit nicer)
+	if   new_pos.x > (max_global_x-min_open_boarder_whitespace): new_pos.x = (max_global_x-min_open_boarder_whitespace)
+	elif new_pos.x < (min_global_x+min_open_boarder_whitespace): new_pos.x = (min_global_x+min_open_boarder_whitespace)
+	if   new_pos.y > (max_global_y-min_open_boarder_whitespace): new_pos.y = (max_global_y-min_open_boarder_whitespace)
+	elif new_pos.y < (min_global_y+min_open_boarder_whitespace): new_pos.y = (min_global_y+min_open_boarder_whitespace)
 	
 	# Move to new position and open the object
-	global_position = pos
+	global_position = new_pos
+	
+	# Open the object and activate its children
 	show()
+	for child in get_children():
+		if child is TileMapLayer:
+			child.enabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -122,11 +154,7 @@ func _resolve_no_hover():
 func _on_double_clicked() -> void:
 	if is_icon && openable_window != null && CursorManager.last_dragging_object == self:
 		
-		openable_window.open(global_position + Vector2(0, 64))
-		
-		for child in openable_window.get_children():
-			if child is TileMapLayer:
-				child.enabled = true
+		openable_window.open(global_position)
 
 func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !disabled && !is_icon && event.is_action_pressed("click") && !event.is_action_pressed("pan") && CursorManager.current_cursor == CursorManager.CURSOR:
