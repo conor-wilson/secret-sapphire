@@ -81,7 +81,7 @@ func move_to_menus():
 		current_environment = Environments.MENUS
 		hammer_man_reparentable = false
 		hammer_man.reparent(menus)
-		hammer_man.z_index = 0
+		hammer_man.z_index = 1
 		_set_hammer_man_game_terrain_collision(false)
 		_set_hammer_man_desktop_terrain_collision(true)
 		_set_hammer_man_menus_terrain_collision(true)
