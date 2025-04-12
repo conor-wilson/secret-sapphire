@@ -27,6 +27,18 @@ func _ready() -> void:
 	else:
 		set_z_index(-1)
 
+func open(pos:Vector2) -> void: 
+	
+	# Ensure new position is within the min/max boundaries
+	if pos.x < min_global_x:   pos.x = min_global_x
+	elif pos.x > max_global_x: pos.x = max_global_x
+	if pos.y < min_global_y:   pos.y = min_global_y
+	elif pos.y > max_global_y: pos.y = max_global_y
+	
+	# Move to new position and open the object
+	global_position = pos
+	show()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
@@ -109,8 +121,9 @@ func _resolve_no_hover():
 
 func _on_double_clicked() -> void:
 	if is_icon && openable_window != null && CursorManager.last_dragging_object == self:
-		openable_window.global_position = global_position + Vector2(0, 64)
-		openable_window.show()
+		
+		openable_window.open(global_position + Vector2(0, 64))
+		
 		for child in openable_window.get_children():
 			if child is TileMapLayer:
 				child.enabled = true
