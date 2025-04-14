@@ -2,10 +2,10 @@ class_name DraggableObject extends Node2D
 
 @export var is_draggable:bool = true
 
-@export var min_global_x:float = 176 # The minimum global x position
+@export var min_global_x:float = 176  # The minimum global x position
 @export var max_global_x:float = 1040 # The maximum global x position
-@export var min_global_y:float = 112 # The minimum global y position
-@export var max_global_y:float = 400 # The maximum global y position
+@export var min_global_y:float = 112  # The minimum global y position
+@export var max_global_y:float = 400  # The maximum global y position
 
 signal double_clicked
 

@@ -200,6 +200,7 @@ shape = SubResource("RectangleShape2D_dgtq4")
 
 [node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 248)
+min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/HammerManEXE")
 metadata/_edit_group_ = true
@@ -223,6 +224,7 @@ vertical_alignment = 1
 
 [node name="AntivirusIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 144)
+min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/Antivirus")
 metadata/_edit_group_ = true
@@ -246,6 +248,7 @@ vertical_alignment = 1
 
 [node name="NotesIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(456, 224)
+min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TodoTXT")
 metadata/_edit_group_ = true
@@ -272,6 +275,7 @@ metadata/_edit_group_ = true
 
 [node name="TurtlePNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(840, 160)
+min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtlePNG")
 metadata/_edit_group_ = true
@@ -295,6 +299,7 @@ vertical_alignment = 1
 
 [node name="TurtleHatPNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(792, 256)
+min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtleHatPNG")
 metadata/_edit_group_ = true
@@ -319,6 +324,7 @@ vertical_alignment = 1
 
 [node name="TurtleGifIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(976, 296)
+min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/HappyTurtleGIF")
 metadata/_edit_group_ = true
@@ -342,6 +348,7 @@ vertical_alignment = 1
 
 [node name="TMNTJPGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(832, 360)
+min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TMNTJPG")
 metadata/_edit_group_ = true
@@ -365,6 +372,7 @@ vertical_alignment = 1
 
 [node name="TurtleMemeWEBPIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(960, 184)
+min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtleMemeWEBP")
 metadata/_edit_group_ = true
