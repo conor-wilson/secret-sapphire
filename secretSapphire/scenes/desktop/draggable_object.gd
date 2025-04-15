@@ -7,6 +7,8 @@ class_name DraggableObject extends Node2D
 @export var min_global_y:float = 112  # The minimum global y position
 @export var max_global_y:float = 400  # The maximum global y position
 
+var unteathered:bool = false
+
 signal double_clicked
 
 var disabled:bool = true
@@ -32,12 +34,24 @@ var offset: Vector2
 # The close button (if it is a window)
 @export var close_button:Area2D
 
+@export var recycling_bin_window:DraggableObject
 
 func _ready() -> void:
 	if !is_icon && close_button != null:
 		close_button.input_event.connect(_on_close_input_event)
 	else:
 		set_z_index(-1)
+
+func bin() -> void: 
+	if !is_icon || !is_draggable: return
+	
+	if recycling_bin_window != null:
+		global_position = recycling_bin_window.global_position
+		reparent(recycling_bin_window)
+	
+	if openable_window != null:
+		openable_window.close()
+	
 
 func open(pos:Vector2) -> void: 
 	
@@ -103,14 +117,15 @@ func follow_cursor() -> void:
 	
 	var new_position:Vector2 = get_global_mouse_position() - offset
 	
-	if new_position.x > max_global_x:
-		new_position.x = max_global_x
-	if new_position.x < min_global_x:
-		new_position.x = min_global_x
-	if new_position.y > max_global_y:
-		new_position.y = max_global_y
-	if new_position.y < min_global_y:
-		new_position.y = min_global_y
+	if !unteathered:
+		if new_position.x > max_global_x:
+			new_position.x = max_global_x
+		if new_position.x < min_global_x:
+			new_position.x = min_global_x
+		if new_position.y > max_global_y:
+			new_position.y = max_global_y
+		if new_position.y < min_global_y:
+			new_position.y = min_global_y
 	
 	global_position = new_position
 
@@ -158,7 +173,10 @@ func _on_double_clicked() -> void:
 
 func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !disabled && !is_icon && event.is_action_pressed("click") && !event.is_action_pressed("pan") && CursorManager.current_cursor == CursorManager.CURSOR:
-		hide()
-		for child in get_children():
-			if child is TileMapLayer:
-				child.enabled = false
+		close()
+	
+func close():
+	hide()
+	for child in get_children():
+		if child is TileMapLayer:
+			child.enabled = false

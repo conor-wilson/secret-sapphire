@@ -155,3 +155,28 @@ func _on_empty_button_mouse_entered() -> void:
 func _on_empty_button_mouse_exited() -> void:
 	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
 		$DesktopWindows/RecyclingBin/EmptyButton.scale = Vector2(1, 1)
+
+
+func _on_recycling_bin_icon_mouse_entered() -> void:
+	$DesktopIcons/RecyclingBinIcon.scale = Vector2(1.05, 1.05)
+	if Input.is_action_pressed("click") && CursorManager.current_dragging_object != null:
+		if CursorManager.current_dragging_object.is_icon:
+			CursorManager.current_dragging_object.unteathered = true # TODO: Tween the object to the current mouse position
+			var tween = get_tree().create_tween()
+			tween.tween_property(CursorManager.current_dragging_object, "scale", Vector2(0.5, 0.5), 0.05)
+
+
+func _on_recycling_bin_icon_mouse_exited() -> void:
+	$DesktopIcons/RecyclingBinIcon.scale = Vector2(1, 1)
+	if Input.is_action_pressed("click") && CursorManager.current_dragging_object != null:
+		if CursorManager.current_dragging_object.is_icon:
+			CursorManager.current_dragging_object.unteathered = false # TODO: Tween the object to the current mouse position
+			var tween = get_tree().create_tween()
+			tween.tween_property(CursorManager.current_dragging_object, "scale", Vector2(1.05, 1.05), 0.05)
+
+
+func _on_recycling_bin_icon_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_released("click") && CursorManager.current_dragging_object != null:
+		CursorManager.current_dragging_object.bin()
+		print("LAST: ", CursorManager.last_dragging_object)
+		print("CURRENT: ", CursorManager.current_dragging_object)

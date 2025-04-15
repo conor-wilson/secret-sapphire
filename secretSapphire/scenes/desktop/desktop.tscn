@@ -198,11 +198,12 @@ texture = ExtResource("31_hbmeb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/RecyclingBinIcon"]
 shape = SubResource("RectangleShape2D_dgtq4")
 
-[node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 248)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/HammerManEXE")
+recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/HammerManEXEIcon"]
@@ -222,11 +223,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AntivirusIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="AntivirusIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 144)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/Antivirus")
+recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/AntivirusIcon"]
@@ -246,11 +248,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NotesIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="NotesIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
 position = Vector2(456, 224)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TodoTXT")
+recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/NotesIcon"]
@@ -273,11 +276,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
-[node name="TurtlePNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtlePNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
 position = Vector2(840, 160)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtlePNG")
+recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtlePNGIcon"]
@@ -297,11 +301,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleHatPNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtleHatPNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
 position = Vector2(792, 256)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtleHatPNG")
+recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleHatPNGIcon"]
@@ -322,11 +327,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleGifIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtleGifIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
 position = Vector2(976, 296)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/HappyTurtleGIF")
+recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleGifIcon"]
@@ -346,11 +352,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TMNTJPGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="TMNTJPGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
 position = Vector2(832, 360)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TMNTJPG")
+recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TMNTJPGIcon"]
@@ -370,11 +377,12 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleMemeWEBPIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtleMemeWEBPIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
 position = Vector2(960, 184)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtleMemeWEBP")
+recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleMemeWEBPIcon"]
@@ -399,6 +407,7 @@ z_index = -2
 
 [node name="RecyclingBin" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
 visible = false
+z_index = -2
 position = Vector2(288, 280)
 max_global_x = 976.0
 min_global_y = 176.0
@@ -1091,6 +1100,9 @@ shape = SubResource("RectangleShape2D_5awlk")
 [connection signal="input_event" from="HomeButton" to="." method="_on_home_button_input_event"]
 [connection signal="mouse_entered" from="HomeButton" to="." method="_on_home_button_mouse_entered"]
 [connection signal="mouse_exited" from="HomeButton" to="." method="_on_home_button_mouse_exited"]
+[connection signal="input_event" from="DesktopIcons/RecyclingBinIcon" to="." method="_on_recycling_bin_icon_input_event"]
+[connection signal="mouse_entered" from="DesktopIcons/RecyclingBinIcon" to="." method="_on_recycling_bin_icon_mouse_entered"]
+[connection signal="mouse_exited" from="DesktopIcons/RecyclingBinIcon" to="." method="_on_recycling_bin_icon_mouse_exited"]
 [connection signal="double_clicked" from="DesktopIcons/HammerManEXEIcon" to="." method="_on_hammer_man_exe_icon_double_clicked"]
 [connection signal="input_event" from="DesktopWindows/RecyclingBin/EmptyButton" to="." method="_on_empty_button_input_event"]
 [connection signal="mouse_entered" from="DesktopWindows/RecyclingBin/EmptyButton" to="." method="_on_empty_button_mouse_entered"]
