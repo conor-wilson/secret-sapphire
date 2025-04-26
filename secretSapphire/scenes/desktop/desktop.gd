@@ -136,3 +136,18 @@ func _on_scan_button_mouse_entered() -> void:
 func _on_scan_button_mouse_exited() -> void:
 	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
 		$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1, 1)
+
+
+func _on_recycling_bin_icon_click() -> void:
+	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+		$RecyclingBinIcon.detatch(5)
+
+
+func _on_recycling_bin_icon_mouse_entered() -> void:
+	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+		$RecyclingBinIcon.scale = Vector2(1.05, 1.05)
+
+func _on_recycling_bin_icon_mouse_exited() -> void:
+	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+		$RecyclingBinIcon.scale = Vector2(1, 1)
+		

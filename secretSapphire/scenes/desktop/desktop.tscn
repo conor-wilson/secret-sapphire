@@ -1,9 +1,10 @@
-[gd_scene load_steps=55 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=56 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
 [ext_resource type="Texture2D" uid="uid://d6k4h82q3rpu" path="res://assets/art/menu_components/DesktopBG.png" id="2_j3mel"]
 [ext_resource type="PackedScene" uid="uid://dblssuru8cljv" path="res://scenes/desktop/draggable_object.tscn" id="3_yrive"]
+[ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/menus/interactive_element.tscn" id="4_500wu"]
 [ext_resource type="Texture2D" uid="uid://bg0tki0m17kgd" path="res://assets/art/desktop_icons/HammerManIcon.png" id="4_y3ib0"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_bxrir"]
 [ext_resource type="Texture2D" uid="uid://4448nynviyr7" path="res://assets/art/desktop_icons/AntiVirusIcon.png" id="5_cnua8"]
@@ -164,9 +165,17 @@ shape = SubResource("RectangleShape2D_4sq1c")
 [node name="Sprite2D" type="Sprite2D" parent="HomeButton"]
 texture = ExtResource("23_3xjlp")
 
-[node name="RecyclingBinIcon" type="Sprite2D" parent="."]
+[node name="RecyclingBinIcon" parent="." instance=ExtResource("4_500wu")]
 position = Vector2(112, 112)
+collision_layer = 2
+collision_mask = 16385
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RecyclingBinIcon"]
 texture = ExtResource("31_hbmeb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RecyclingBinIcon"]
+polygon = PackedVector2Array(13, 24, 19, -12, 17, -14, -17, -14, -19, -12, -13, 24)
 
 [node name="DesktopIcons" type="Node2D" parent="."]
 z_index = -2
@@ -1018,6 +1027,9 @@ shape = SubResource("RectangleShape2D_5awlk")
 [connection signal="input_event" from="HomeButton" to="." method="_on_home_button_input_event"]
 [connection signal="mouse_entered" from="HomeButton" to="." method="_on_home_button_mouse_entered"]
 [connection signal="mouse_exited" from="HomeButton" to="." method="_on_home_button_mouse_exited"]
+[connection signal="click" from="RecyclingBinIcon" to="." method="_on_recycling_bin_icon_click"]
+[connection signal="mouse_entered" from="RecyclingBinIcon" to="." method="_on_recycling_bin_icon_mouse_entered"]
+[connection signal="mouse_exited" from="RecyclingBinIcon" to="." method="_on_recycling_bin_icon_mouse_exited"]
 [connection signal="double_clicked" from="DesktopIcons/HammerManEXEIcon" to="." method="_on_hammer_man_exe_icon_double_clicked"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/CloseButton" to="." method="_on_virus_scan_close_button_input_event"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/FireExtinguisher" to="." method="_on_fire_extinguisher_input_event"]
