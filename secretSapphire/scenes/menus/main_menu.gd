@@ -14,8 +14,9 @@ var panel_screw_count:int = 4
 func _on_start_button_smash() -> void:
 	$RigidLetters.show()
 	for letter in $RigidLetters.get_children():
-		letter.detatch()
-		letter.apply_random_force()
+		if letter is InteractiveElement:
+			letter.detatch()
+			letter.apply_random_force()
 	start_button_exploded.emit()
 
 func _on_start_button_click() -> void:

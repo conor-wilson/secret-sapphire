@@ -122,6 +122,7 @@ return={
 2d_physics/layer_13="hammer_man_game_level"
 2d_physics/layer_14="true_start_button"
 2d_physics/layer_15="hammer_man_desktop_level"
+2d_physics/layer_16="scraps"
 
 [rendering]
 

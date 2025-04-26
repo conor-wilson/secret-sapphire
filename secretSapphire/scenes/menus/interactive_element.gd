@@ -33,9 +33,9 @@ func detatch(strength:float=1):
 # direction, and in any X direction)
 #
 # TODO: Make the range values in here configurable.
-func apply_random_force():
-	var x_force:float = randf_range(-750, 750)
-	var y_force:float = randf_range(-750, 0)
+func apply_random_force(min_force:float = 150, max_force:float = 750):
+	var x_force:float = randf_range(min_force, max_force) * [-1,1].pick_random()
+	var y_force:float = randf_range(-max_force, -min_force)
 	apply_impulse(Vector2(x_force,y_force))
 
 func _on_body_entered(body: Node) -> void:

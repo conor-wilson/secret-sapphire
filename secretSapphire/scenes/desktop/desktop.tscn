@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=61 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -9,8 +9,13 @@
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_bxrir"]
 [ext_resource type="Texture2D" uid="uid://4448nynviyr7" path="res://assets/art/desktop_icons/AntiVirusIcon.png" id="5_cnua8"]
 [ext_resource type="Texture2D" uid="uid://dktusqtn6cvee" path="res://assets/art/desktop_icons/TurtlePNGIcon.png" id="5_nvnsj"]
+[ext_resource type="Texture2D" uid="uid://difn28ihreq46" path="res://assets/art/recycling_bin_contents/Scrap1.png" id="6_87aq6"]
+[ext_resource type="Texture2D" uid="uid://cci2v3xmvxkhs" path="res://assets/art/recycling_bin_contents/Scrap2.png" id="7_80e7u"]
 [ext_resource type="Texture2D" uid="uid://76dqtp78a0vq" path="res://assets/art/desktop_icons/NotesIcon.png" id="7_aeekl"]
+[ext_resource type="Texture2D" uid="uid://cield5vq07k3r" path="res://assets/art/recycling_bin_contents/Scrap3.png" id="8_2uucb"]
 [ext_resource type="Texture2D" uid="uid://4h1rmfve728d" path="res://assets/art/desktop_icons/TurtleHatPNGIcon.png" id="9_lhpti"]
+[ext_resource type="Texture2D" uid="uid://cleilbemrlw8w" path="res://assets/art/recycling_bin_contents/Scrap4.png" id="9_ptjwv"]
+[ext_resource type="Texture2D" uid="uid://fu5ufw02je6p" path="res://assets/art/recycling_bin_contents/Scrap5.png" id="10_mbtxq"]
 [ext_resource type="Texture2D" uid="uid://b2nxns8kce635" path="res://assets/art/desktop_icons/TurtleGifIcon.png" id="10_xvui1"]
 [ext_resource type="Texture2D" uid="uid://hsumkm1akbo5" path="res://assets/art/desktop_icons/TMNTIcon.png" id="11_78lqk"]
 [ext_resource type="Texture2D" uid="uid://cw0alt2k6h8w1" path="res://assets/art/desktop_icons/TurtleMemeIcon.png" id="12_mkfbq"]
@@ -176,6 +181,139 @@ texture = ExtResource("31_hbmeb")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RecyclingBinIcon"]
 polygon = PackedVector2Array(13, 24, 19, -12, 17, -14, -17, -14, -19, -12, -13, 24)
+
+[node name="RigidScraps" type="Node2D" parent="."]
+visible = false
+
+[node name="Scrap1" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(92, 421)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap1"]
+texture = ExtResource("6_87aq6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap1"]
+polygon = PackedVector2Array(-5, 8, -1, 8, 1, 6, 1, 8, 5, 8, 7, 6, 7, 2, 6, 1, 6, 0, 8, -2, 8, -3, 3, -8, 0, -8, -2, -6, -4, -6, -8, -2, -8, 1, -7, 2, -6, 5, -5, 6)
+
+[node name="Scrap2" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(112, 421)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap2"]
+texture = ExtResource("7_80e7u")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap2"]
+polygon = PackedVector2Array(0, 8, -1, 7, -3, 7, -3, 4, -4, 4, -6, 2, -6, -2, -5, -3, -5, -5, -2, -5, -1, -6, 0, -6, 4, -4, 6, -4, 8, -2, 8, 0, 6.96875, 1.03125, 7, 3, 4.9375, 3.0625, 3, 5, 2, 7, 1, 8)
+
+[node name="Scrap3" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(135, 423)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap3"]
+texture = ExtResource("8_2uucb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap3"]
+polygon = PackedVector2Array(-2, 8, 4, 5, 5, 4, 5, 1, 7, -1, 7, -5, 5, -7, -2, -7, -4, -3, -5, -2, -7, -2, -7, 2, -5, 3, -4, 4, -4, 8)
+
+[node name="Scrap4" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(103, 376)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap4"]
+texture = ExtResource("9_ptjwv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap4"]
+polygon = PackedVector2Array(3, 6, 4, 5, 6, 1, 6, -1, 8, -3, 8, -4, 5, -7, 4, -7, 3, -8, -1, -8, -3, -6, -3, -5, -5, -5, -8, -2, -8, 1, -7, 2, -3, 4, -2, 7, -1, 8)
+
+[node name="Scrap5" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(124, 376)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap5"]
+texture = ExtResource("10_mbtxq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap5"]
+polygon = PackedVector2Array(1, 8, 2, 7, 5, 7, 5, 1, 7, 0, 8, -1, 8, -4, 4, -8, 1, -8, -3, -6, -4, -5, -4, -2, -5, -1, -8, -1, -8, 1, -6, 5, -3, 5, 0, 8)
+
+[node name="Scrap6" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(103, 406)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap6"]
+texture = ExtResource("6_87aq6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap6"]
+polygon = PackedVector2Array(-5, 8, -1, 8, 1, 6, 1, 8, 5, 8, 7, 6, 7, 2, 6, 1, 6, 0, 8, -2, 8, -3, 3, -8, 0, -8, -2, -6, -4, -6, -8, -2, -8, 1, -7, 2, -6, 5, -5, 6)
+
+[node name="Scrap7" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(123, 406)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap7"]
+texture = ExtResource("7_80e7u")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap7"]
+polygon = PackedVector2Array(0, 8, -1, 7, -3, 7, -3, 4, -4, 4, -6, 2, -6, -2, -5, -3, -5, -5, -2, -5, -1, -6, 0, -6, 4, -4, 6, -4, 8, -2, 8, 0, 6.96875, 1.03125, 7, 3, 4.9375, 3.0625, 3, 5, 2, 7, 1, 8)
+
+[node name="Scrap8" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(89, 392)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap8"]
+texture = ExtResource("8_2uucb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap8"]
+polygon = PackedVector2Array(-2, 8, 4, 5, 5, 4, 5, 1, 7, -1, 7, -5, 5, -7, -2, -7, -4, -3, -5, -2, -7, -2, -7, 2, -5, 3, -4, 4, -4, 8)
+
+[node name="Scrap9" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(113, 391)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap9"]
+texture = ExtResource("9_ptjwv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap9"]
+polygon = PackedVector2Array(3, 6, 4, 5, 6, 1, 6, -1, 8, -3, 8, -4, 5, -7, 4, -7, 3, -8, -1, -8, -3, -6, -3, -5, -5, -5, -8, -2, -8, 1, -7, 2, -3, 4, -2, 7, -1, 8)
+
+[node name="Scrap10" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(134, 391)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap10"]
+texture = ExtResource("10_mbtxq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap10"]
+polygon = PackedVector2Array(1, 8, 2, 7, 5, 7, 5, 1, 7, 0, 8, -1, 8, -4, 4, -8, 1, -8, -3, -6, -4, -5, -4, -2, -5, -1, -8, -1, -8, 1, -6, 5, -3, 5, 0, 8)
 
 [node name="DesktopIcons" type="Node2D" parent="."]
 z_index = -2
@@ -1030,6 +1168,7 @@ shape = SubResource("RectangleShape2D_5awlk")
 [connection signal="click" from="RecyclingBinIcon" to="." method="_on_recycling_bin_icon_click"]
 [connection signal="mouse_entered" from="RecyclingBinIcon" to="." method="_on_recycling_bin_icon_mouse_entered"]
 [connection signal="mouse_exited" from="RecyclingBinIcon" to="." method="_on_recycling_bin_icon_mouse_exited"]
+[connection signal="smash" from="RecyclingBinIcon" to="." method="_on_recycling_bin_icon_smash"]
 [connection signal="double_clicked" from="DesktopIcons/HammerManEXEIcon" to="." method="_on_hammer_man_exe_icon_double_clicked"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/CloseButton" to="." method="_on_virus_scan_close_button_input_event"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/FireExtinguisher" to="." method="_on_fire_extinguisher_input_event"]
