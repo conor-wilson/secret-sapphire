@@ -34,24 +34,11 @@ var offset: Vector2
 # The close button (if it is a window)
 @export var close_button:Area2D
 
-@export var recycling_bin_window:DraggableObject
-
 func _ready() -> void:
 	if !is_icon && close_button != null:
 		close_button.input_event.connect(_on_close_input_event)
 	else:
 		set_z_index(-1)
-
-func bin() -> void: 
-	if !is_icon || !is_draggable: return
-	
-	if recycling_bin_window != null:
-		global_position = recycling_bin_window.global_position
-		reparent(recycling_bin_window)
-	
-	if openable_window != null:
-		openable_window.close()
-	
 
 func open(pos:Vector2) -> void: 
 	

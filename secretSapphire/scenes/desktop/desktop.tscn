@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=55 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://cme26wu70ydrw" path="res://assets/art/desktop_windows/todoTXT.png" id="14_8688o"]
 [ext_resource type="Texture2D" uid="uid://dojtrgtgvcjdf" path="res://assets/art/desktop_windows/AntiVirus.png" id="14_trhyc"]
 [ext_resource type="Texture2D" uid="uid://cotwwg0orvryt" path="res://assets/art/desktop_windows/HappyTurtleGif-Sheet.png" id="15_ecr0k"]
-[ext_resource type="Texture2D" uid="uid://duskocckpcou3" path="res://assets/art/desktop_windows/RecyclingBin.png" id="15_u2vah"]
 [ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/items/FireExtinguisher.png" id="15_xgsxi"]
 [ext_resource type="Texture2D" uid="uid://bp5uggpcfdq0p" path="res://assets/art/desktop_windows/TMNTJPG.png" id="16_ho8k6"]
 [ext_resource type="FontFile" uid="uid://da6hr0nb4qkqg" path="res://assets/fonts/Whacky_Joe.ttf" id="17_pw4tl"]
@@ -36,29 +35,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
 size = Vector2(48, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgtq4"]
-size = Vector2(48, 48)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyifw"]
 size = Vector2(60, 60)
 
 [sub_resource type="LabelSettings" id="LabelSettings_sv1yq"]
 font = ExtResource("5_bxrir")
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r267x"]
-size = Vector2(192, 192)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt6ni"]
-size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kow7r"]
-size = Vector2(80, 32)
-
-[sub_resource type="LabelSettings" id="LabelSettings_p3xq6"]
-font = ExtResource("5_bxrir")
-font_size = 32
-font_color = Color(0.615686, 0.615686, 0.615686, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rcyqw"]
 size = Vector2(192, 192)
@@ -182,28 +164,18 @@ shape = SubResource("RectangleShape2D_4sq1c")
 [node name="Sprite2D" type="Sprite2D" parent="HomeButton"]
 texture = ExtResource("23_3xjlp")
 
+[node name="RecyclingBinIcon" type="Sprite2D" parent="."]
+position = Vector2(112, 112)
+texture = ExtResource("31_hbmeb")
+
 [node name="DesktopIcons" type="Node2D" parent="."]
 z_index = -2
 
-[node name="RecyclingBinIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
-position = Vector2(112, 120)
-is_draggable = false
-is_icon = true
-openable_window = NodePath("../../DesktopWindows/RecyclingBin")
-metadata/_edit_group_ = true
-
-[node name="RecyclingBinIcon" type="Sprite2D" parent="DesktopIcons/RecyclingBinIcon"]
-texture = ExtResource("31_hbmeb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/RecyclingBinIcon"]
-shape = SubResource("RectangleShape2D_dgtq4")
-
-[node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
+[node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 248)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/HammerManEXE")
-recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/HammerManEXEIcon"]
@@ -223,12 +195,11 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AntivirusIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
+[node name="AntivirusIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 144)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/Antivirus")
-recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/AntivirusIcon"]
@@ -248,12 +219,11 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NotesIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
+[node name="NotesIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(456, 224)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TodoTXT")
-recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/NotesIcon"]
@@ -276,12 +246,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
-[node name="TurtlePNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
+[node name="TurtlePNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(840, 160)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtlePNG")
-recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtlePNGIcon"]
@@ -301,12 +270,11 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleHatPNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
+[node name="TurtleHatPNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(792, 256)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtleHatPNG")
-recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleHatPNGIcon"]
@@ -327,12 +295,11 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleGifIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
+[node name="TurtleGifIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(976, 296)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/HappyTurtleGIF")
-recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleGifIcon"]
@@ -352,12 +319,11 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TMNTJPGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
+[node name="TMNTJPGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(832, 360)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TMNTJPG")
-recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TMNTJPGIcon"]
@@ -377,12 +343,11 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleMemeWEBPIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window", "recycling_bin_window") instance=ExtResource("3_yrive")]
+[node name="TurtleMemeWEBPIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(960, 184)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtleMemeWEBP")
-recycling_bin_window = NodePath("../../DesktopWindows/RecyclingBin")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleMemeWEBPIcon"]
@@ -404,53 +369,6 @@ vertical_alignment = 1
 
 [node name="DesktopWindows" type="Node2D" parent="."]
 z_index = -2
-
-[node name="RecyclingBin" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
-visible = false
-z_index = -2
-position = Vector2(288, 280)
-max_global_x = 976.0
-min_global_y = 176.0
-max_global_y = 512.0
-close_button = NodePath("CloseButton")
-
-[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/RecyclingBin"]
-texture = ExtResource("15_u2vah")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/RecyclingBin"]
-shape = SubResource("RectangleShape2D_r267x")
-
-[node name="CloseButton" type="Area2D" parent="DesktopWindows/RecyclingBin"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/RecyclingBin/CloseButton"]
-position = Vector2(-88, -88)
-shape = SubResource("RectangleShape2D_dt6ni")
-
-[node name="EmptyButton" type="Area2D" parent="DesktopWindows/RecyclingBin"]
-position = Vector2(32, -48)
-collision_layer = 64
-collision_mask = 0
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/RecyclingBin/EmptyButton"]
-shape = SubResource("RectangleShape2D_kow7r")
-
-[node name="EmptyButtonText" type="Label" parent="DesktopWindows/RecyclingBin/EmptyButton"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -72.0
-offset_top = -16.0
-offset_right = 72.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "EMPTY"
-label_settings = SubResource("LabelSettings_p3xq6")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Antivirus" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
 visible = false
@@ -1100,13 +1018,7 @@ shape = SubResource("RectangleShape2D_5awlk")
 [connection signal="input_event" from="HomeButton" to="." method="_on_home_button_input_event"]
 [connection signal="mouse_entered" from="HomeButton" to="." method="_on_home_button_mouse_entered"]
 [connection signal="mouse_exited" from="HomeButton" to="." method="_on_home_button_mouse_exited"]
-[connection signal="input_event" from="DesktopIcons/RecyclingBinIcon" to="." method="_on_recycling_bin_icon_input_event"]
-[connection signal="mouse_entered" from="DesktopIcons/RecyclingBinIcon" to="." method="_on_recycling_bin_icon_mouse_entered"]
-[connection signal="mouse_exited" from="DesktopIcons/RecyclingBinIcon" to="." method="_on_recycling_bin_icon_mouse_exited"]
 [connection signal="double_clicked" from="DesktopIcons/HammerManEXEIcon" to="." method="_on_hammer_man_exe_icon_double_clicked"]
-[connection signal="input_event" from="DesktopWindows/RecyclingBin/EmptyButton" to="." method="_on_empty_button_input_event"]
-[connection signal="mouse_entered" from="DesktopWindows/RecyclingBin/EmptyButton" to="." method="_on_empty_button_mouse_entered"]
-[connection signal="mouse_exited" from="DesktopWindows/RecyclingBin/EmptyButton" to="." method="_on_empty_button_mouse_exited"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/CloseButton" to="." method="_on_virus_scan_close_button_input_event"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/FireExtinguisher" to="." method="_on_fire_extinguisher_input_event"]
 [connection signal="input_event" from="DesktopWindows/Antivirus/ScanButton" to="." method="_on_scan_button_input_event"]
