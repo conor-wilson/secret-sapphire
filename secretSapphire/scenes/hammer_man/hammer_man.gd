@@ -7,6 +7,9 @@ var active:bool = false
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 
+const PUSH_FORCE:float = 80.0
+var min_push_normal_x:float = 0.95
+
 var direction:Vector2 = Vector2.RIGHT
 var moving:bool = false
 var slamming:bool = false
@@ -52,6 +55,8 @@ func _physics_process(delta: float) -> void:
 	set_sprite()
 	
 	move_and_slide()
+	
+	push_rigid_bodies()
 
 # handle_jumpability detects whether the player should be able to jump, and adjusts the
 # can_jump var accordingly.
@@ -146,6 +151,20 @@ func break_blocks_in_zone(zone:Area2D) -> bool:
 	# Report if a block was broken
 	return broke_block
 
+func push_rigid_bodies():
+	
+	# Push any rigid bodies that HammerMan has encountered
+	for i in get_slide_collision_count():
+		var collision:KinematicCollision2D = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider is RigidBody2D:
+			
+			var normal_x:float = collision.get_normal().x
+			
+			if abs(normal_x) > min_push_normal_x:
+				var direction_x:int = -normal_x / abs(normal_x)
+				collider.apply_central_impulse(Vector2(direction_x*PUSH_FORCE, 0))
+	
 
 func _on_slam_started() -> void:
 	slamming = true

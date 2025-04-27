@@ -39,6 +39,10 @@ func apply_random_force(min_force:float = 150, max_force:float = 750):
 	apply_impulse(Vector2(x_force,y_force))
 
 func _on_body_entered(body: Node) -> void:
+	
+	if body is HammerMan: 
+		apply_random_force()
+	
 	if !idle && breakable:
 		
 		if break_shake_strength > 0:
