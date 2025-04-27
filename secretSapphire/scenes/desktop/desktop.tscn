@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=74 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -18,10 +18,14 @@
 [ext_resource type="Texture2D" uid="uid://fu5ufw02je6p" path="res://assets/art/recycling_bin_contents/Scrap5.png" id="10_mbtxq"]
 [ext_resource type="Texture2D" uid="uid://b2nxns8kce635" path="res://assets/art/desktop_icons/TurtleGifIcon.png" id="10_xvui1"]
 [ext_resource type="Texture2D" uid="uid://hsumkm1akbo5" path="res://assets/art/desktop_icons/TMNTIcon.png" id="11_78lqk"]
+[ext_resource type="Texture2D" uid="uid://dn7ighn4kvwnq" path="res://assets/art/recycling_bin_contents/GodotLogo.png" id="11_pwlfk"]
+[ext_resource type="Texture2D" uid="uid://bw0g675h44vdg" path="res://assets/art/recycling_bin_contents/Email.png" id="12_0cbwi"]
 [ext_resource type="Texture2D" uid="uid://cw0alt2k6h8w1" path="res://assets/art/desktop_icons/TurtleMemeIcon.png" id="12_mkfbq"]
+[ext_resource type="Texture2D" uid="uid://bex12yovkp5i8" path="res://assets/art/recycling_bin_contents/File.png" id="13_tl8a5"]
 [ext_resource type="Texture2D" uid="uid://chjr22080rb6k" path="res://assets/art/desktop_windows/TurtlePNG.png" id="14_6xl12"]
 [ext_resource type="Texture2D" uid="uid://bio866fmnbbrt" path="res://assets/art/desktop_windows/TurtleHatPNG.png" id="14_85gd2"]
 [ext_resource type="Texture2D" uid="uid://cme26wu70ydrw" path="res://assets/art/desktop_windows/todoTXT.png" id="14_8688o"]
+[ext_resource type="Texture2D" uid="uid://d30c5jne1j10k" path="res://assets/art/recycling_bin_contents/Folder.png" id="14_semdl"]
 [ext_resource type="Texture2D" uid="uid://dojtrgtgvcjdf" path="res://assets/art/desktop_windows/AntiVirus.png" id="14_trhyc"]
 [ext_resource type="Texture2D" uid="uid://cotwwg0orvryt" path="res://assets/art/desktop_windows/HappyTurtleGif-Sheet.png" id="15_ecr0k"]
 [ext_resource type="Texture2D" uid="uid://dslaby48dc3jl" path="res://assets/art/items/FireExtinguisher.png" id="15_xgsxi"]
@@ -40,6 +44,39 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
 size = Vector2(48, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f4lp4"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3bl16"]
+radius = 6.08276
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i305j"]
+radius = 4.94977
+height = 14.1421
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8m81"]
+radius = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pdh3w"]
+radius = 4.94974
+height = 15.5563
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8r524"]
+radius = 7.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgwa3"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ykyp"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7nws6"]
+radius = 5.0
+height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyifw"]
 size = Vector2(60, 60)
@@ -164,11 +201,11 @@ collision_layer = 64
 collision_mask = 0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HomeButton"]
-shape = SubResource("RectangleShape2D_4sq1c")
-
 [node name="Sprite2D" type="Sprite2D" parent="HomeButton"]
 texture = ExtResource("23_3xjlp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomeButton"]
+shape = SubResource("RectangleShape2D_4sq1c")
 
 [node name="RecyclingBinIcon" parent="." instance=ExtResource("4_500wu")]
 position = Vector2(112, 112)
@@ -186,7 +223,7 @@ polygon = PackedVector2Array(13, 24, 19, -12, 17, -14, -17, -14, -19, -12, -13, 
 visible = false
 
 [node name="Scrap1" parent="RigidScraps" instance=ExtResource("4_500wu")]
-position = Vector2(92, 421)
+position = Vector2(92, 417)
 collision_layer = 32768
 collision_mask = 49153
 breakable = false
@@ -195,11 +232,11 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap1"]
 texture = ExtResource("6_87aq6")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap1"]
-polygon = PackedVector2Array(-5, 8, -1, 8, 1, 6, 1, 8, 5, 8, 7, 6, 7, 2, 6, 1, 6, 0, 8, -2, 8, -3, 3, -8, 0, -8, -2, -6, -4, -6, -8, -2, -8, 1, -7, 2, -6, 5, -5, 6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap1"]
+shape = SubResource("CircleShape2D_f4lp4")
 
 [node name="Scrap2" parent="RigidScraps" instance=ExtResource("4_500wu")]
-position = Vector2(112, 421)
+position = Vector2(135, 397)
 collision_layer = 32768
 collision_mask = 49153
 breakable = false
@@ -208,11 +245,11 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap2"]
 texture = ExtResource("7_80e7u")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap2"]
-polygon = PackedVector2Array(0, 8, -1, 7, -3, 7, -3, 4, -4, 4, -6, 2, -6, -2, -5, -3, -5, -5, -2, -5, -1, -6, 0, -6, 4, -4, 6, -4, 8, -2, 8, 0, 6.96875, 1.03125, 7, 3, 4.9375, 3.0625, 3, 5, 2, 7, 1, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap2"]
+shape = SubResource("CircleShape2D_3bl16")
 
 [node name="Scrap3" parent="RigidScraps" instance=ExtResource("4_500wu")]
-position = Vector2(135, 423)
+position = Vector2(137, 419)
 collision_layer = 32768
 collision_mask = 49153
 breakable = false
@@ -221,8 +258,9 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap3"]
 texture = ExtResource("8_2uucb")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap3"]
-polygon = PackedVector2Array(-2, 8, 4, 5, 5, 4, 5, 1, 7, -1, 7, -5, 5, -7, -2, -7, -4, -3, -5, -2, -7, -2, -7, 2, -5, 3, -4, 4, -4, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap3"]
+rotation = 0.785397
+shape = SubResource("CapsuleShape2D_i305j")
 
 [node name="Scrap4" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(103, 376)
@@ -234,11 +272,12 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap4"]
 texture = ExtResource("9_ptjwv")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap4"]
-polygon = PackedVector2Array(3, 6, 4, 5, 6, 1, 6, -1, 8, -3, 8, -4, 5, -7, 4, -7, 3, -8, -1, -8, -3, -6, -3, -5, -5, -5, -8, -2, -8, 1, -7, 2, -3, 4, -2, 7, -1, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap4"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_x8m81")
 
 [node name="Scrap5" parent="RigidScraps" instance=ExtResource("4_500wu")]
-position = Vector2(124, 376)
+position = Vector2(116, 404)
 collision_layer = 32768
 collision_mask = 49153
 breakable = false
@@ -247,73 +286,110 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap5"]
 texture = ExtResource("10_mbtxq")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap5"]
-polygon = PackedVector2Array(1, 8, 2, 7, 5, 7, 5, 1, 7, 0, 8, -1, 8, -4, 4, -8, 1, -8, -3, -6, -4, -5, -4, -2, -5, -1, -8, -1, -8, 1, -6, 5, -3, 5, 0, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap5"]
+position = Vector2(1, -1)
+rotation = 0.785397
+shape = SubResource("CapsuleShape2D_pdh3w")
 
-[node name="Scrap6" parent="RigidScraps" instance=ExtResource("4_500wu")]
-position = Vector2(103, 406)
+[node name="GodotLogo" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(119, 384)
 collision_layer = 32768
 collision_mask = 49153
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap6"]
-texture = ExtResource("6_87aq6")
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/GodotLogo"]
+texture = ExtResource("11_pwlfk")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap6"]
-polygon = PackedVector2Array(-5, 8, -1, 8, 1, 6, 1, 8, 5, 8, 7, 6, 7, 2, 6, 1, 6, 0, 8, -2, 8, -3, 3, -8, 0, -8, -2, -6, -4, -6, -8, -2, -8, 1, -7, 2, -6, 5, -5, 6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/GodotLogo"]
+position = Vector2(0, -1)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_8r524")
 
-[node name="Scrap7" parent="RigidScraps" instance=ExtResource("4_500wu")]
-position = Vector2(123, 406)
+[node name="Email1" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(138, 376)
 collision_layer = 32768
 collision_mask = 49153
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap7"]
-texture = ExtResource("7_80e7u")
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Email1"]
+texture = ExtResource("12_0cbwi")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap7"]
-polygon = PackedVector2Array(0, 8, -1, 7, -3, 7, -3, 4, -4, 4, -6, 2, -6, -2, -5, -3, -5, -5, -2, -5, -1, -6, 0, -6, 4, -4, 6, -4, 8, -2, 8, 0, 6.96875, 1.03125, 7, 3, 4.9375, 3.0625, 3, 5, 2, 7, 1, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Email1"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_qgwa3")
 
-[node name="Scrap8" parent="RigidScraps" instance=ExtResource("4_500wu")]
-position = Vector2(89, 392)
+[node name="Email2" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(100, 395)
 collision_layer = 32768
 collision_mask = 49153
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap8"]
-texture = ExtResource("8_2uucb")
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Email2"]
+texture = ExtResource("12_0cbwi")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap8"]
-polygon = PackedVector2Array(-2, 8, 4, 5, 5, 4, 5, 1, 7, -1, 7, -5, 5, -7, -2, -7, -4, -3, -5, -2, -7, -2, -7, 2, -5, 3, -4, 4, -4, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Email2"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_qgwa3")
 
-[node name="Scrap9" parent="RigidScraps" instance=ExtResource("4_500wu")]
-position = Vector2(113, 391)
+[node name="Email3" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(117, 423)
 collision_layer = 32768
 collision_mask = 49153
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap9"]
-texture = ExtResource("9_ptjwv")
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Email3"]
+texture = ExtResource("12_0cbwi")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap9"]
-polygon = PackedVector2Array(3, 6, 4, 5, 6, 1, 6, -1, 8, -3, 8, -4, 5, -7, 4, -7, 3, -8, -1, -8, -3, -6, -3, -5, -5, -5, -8, -2, -8, 1, -7, 2, -3, 4, -2, 7, -1, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Email3"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_qgwa3")
 
-[node name="Scrap10" parent="RigidScraps" instance=ExtResource("4_500wu")]
-position = Vector2(134, 391)
+[node name="File1" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(104, 409)
 collision_layer = 32768
 collision_mask = 49153
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap10"]
-texture = ExtResource("10_mbtxq")
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/File1"]
+texture = ExtResource("13_tl8a5")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidScraps/Scrap10"]
-polygon = PackedVector2Array(1, 8, 2, 7, 5, 7, 5, 1, 7, 0, 8, -1, 8, -4, 4, -8, 1, -8, -3, -6, -4, -5, -4, -2, -5, -1, -8, -1, -8, 1, -6, 5, -3, 5, 0, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/File1"]
+rotation = 3.14159
+shape = SubResource("CapsuleShape2D_3ykyp")
+
+[node name="File2" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(128, 409)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/File2"]
+texture = ExtResource("13_tl8a5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/File2"]
+rotation = 3.14159
+shape = SubResource("CapsuleShape2D_3ykyp")
+
+[node name="Folder" parent="RigidScraps" instance=ExtResource("4_500wu")]
+position = Vector2(89, 383)
+collision_layer = 32768
+collision_mask = 49153
+breakable = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Folder"]
+texture = ExtResource("14_semdl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Folder"]
+position = Vector2(0, 1)
+rotation = 4.71238
+shape = SubResource("CapsuleShape2D_7nws6")
 
 [node name="DesktopIcons" type="Node2D" parent="."]
 z_index = -2
