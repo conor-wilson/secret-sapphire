@@ -52,11 +52,13 @@ func _physics_process(delta: float) -> void:
 	if !moving:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
+	#print(moving)
+	
 	set_sprite()
 	
 	move_and_slide()
 	
-	push_rigid_bodies()
+	#push_rigid_bodies()
 
 # handle_jumpability detects whether the player should be able to jump, and adjusts the
 # can_jump var accordingly.
@@ -151,20 +153,31 @@ func break_blocks_in_zone(zone:Area2D) -> bool:
 	# Report if a block was broken
 	return broke_block
 
-func push_rigid_bodies():
-	
-	# Push any rigid bodies that HammerMan has encountered
-	for i in get_slide_collision_count():
-		var collision:KinematicCollision2D = get_slide_collision(i)
-		var collider = collision.get_collider()
-		if collider is RigidBody2D:
-			
-			var normal_x:float = collision.get_normal().x
-			
-			if abs(normal_x) > min_push_normal_x:
-				var direction_x:int = -normal_x / abs(normal_x)
-				collider.apply_central_impulse(Vector2(direction_x*PUSH_FORCE, 0))
-	
+#func push_rigid_bodies():
+	#
+	## Push any rigid bodies that HammerMan has encountered
+	#for i in get_slide_collision_count():
+		#var collision:KinematicCollision2D = get_slide_collision(i)
+		#var collider = collision.get_collider()
+		#if collider is RigidBody2D:
+			#
+			#var normal_x:float = collision.get_normal().x
+			#
+			#if abs(normal_x) > min_push_normal_x:
+				#
+				#var push_direction:Vector2 = Vector2(-normal_x, 0).normalized()
+				#
+				#print("PUSH DIRECTION: ", push_direction)
+				#print("DIRECTION:      ", direction)
+				#print("MOVING:         ", moving)
+				#
+				#if moving && push_direction == direction:
+					#print("PUSH!")
+					#collider.apply_central_force(push_direction*PUSH_FORCE)
+				#else:
+					#print("STOP!")
+					#collider.linear_damp(push_direction)
+
 
 func _on_slam_started() -> void:
 	slamming = true

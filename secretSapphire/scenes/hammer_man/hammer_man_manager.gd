@@ -97,7 +97,7 @@ func _set_hammer_man_game_terrain_collision(val:bool):
 # able to move below the desktop boarder
 func _set_hammer_man_desktop_terrain_collision(val:bool):
 	hammer_man.set_collision_mask_value(15, val)
-	hammer_man.set_collision_mask_value(16, val)
+	hammer_man.set_collision_layer_value(16, val)
 
 func _set_hammer_man_menus_terrain_collision(val:bool):
 	hammer_man.set_collision_mask_value(1, val)
