@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=80 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -54,6 +54,9 @@ font_color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rcyqw"]
 size = Vector2(192, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8sj50"]
+size = Vector2(192, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih88g"]
 size = Vector2(16, 16)
@@ -436,12 +439,13 @@ vertical_alignment = 1
 [node name="DesktopWindows" type="Node2D" parent="."]
 z_index = -2
 
-[node name="Antivirus" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
+[node name="Antivirus" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(800, 208)
 max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
+draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -455,6 +459,12 @@ texture = ExtResource("14_trhyc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus"]
 shape = SubResource("RectangleShape2D_rcyqw")
+
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/Antivirus"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/DraggableArea"]
+position = Vector2(0, -86)
+shape = SubResource("RectangleShape2D_8sj50")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/Antivirus"]
 
@@ -530,11 +540,12 @@ vertical_alignment = 1
 [node name="VirusScanTimer" type="Timer" parent="DesktopWindows/Antivirus"]
 one_shot = true
 
-[node name="TodoTXT" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
+[node name="TodoTXT" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 position = Vector2(592, 280)
 max_global_x = 976.0
 min_global_y = 208.0
 max_global_y = 544.0
+draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -547,6 +558,12 @@ texture = ExtResource("14_8688o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TodoTXT"]
 shape = SubResource("RectangleShape2D_5hnlp")
+
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TodoTXT"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TodoTXT/DraggableArea"]
+position = Vector2(0, -118)
+shape = SubResource("RectangleShape2D_8sj50")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/TodoTXT"]
 
@@ -635,12 +652,13 @@ text = "- [x] Find more turtle pix"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="TurtlePNG" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
+[node name="TurtlePNG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(832, 240)
 max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
+draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -655,18 +673,25 @@ texture = ExtResource("14_6xl12")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtlePNG"]
 shape = SubResource("RectangleShape2D_rcyqw")
 
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TurtlePNG"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtlePNG/DraggableArea"]
+position = Vector2(0, -86)
+shape = SubResource("RectangleShape2D_8sj50")
+
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtlePNG"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtlePNG/CloseButton"]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="TurtleHatPNG" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
+[node name="TurtleHatPNG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(368, 384)
 max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
+draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -681,18 +706,25 @@ texture = ExtResource("14_85gd2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleHatPNG"]
 shape = SubResource("RectangleShape2D_rcyqw")
 
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TurtleHatPNG"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleHatPNG/DraggableArea"]
+position = Vector2(0, -86)
+shape = SubResource("RectangleShape2D_8sj50")
+
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtleHatPNG"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleHatPNG/CloseButton"]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="HappyTurtleGIF" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
+[node name="HappyTurtleGIF" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(496, 232)
 max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
+draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -715,18 +747,25 @@ autoplay = "happy_turtle_gif"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HappyTurtleGIF"]
 shape = SubResource("RectangleShape2D_rcyqw")
 
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/HappyTurtleGIF"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HappyTurtleGIF/DraggableArea"]
+position = Vector2(0, -86)
+shape = SubResource("RectangleShape2D_8sj50")
+
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/HappyTurtleGIF"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HappyTurtleGIF/CloseButton"]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="TMNTJPG" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
+[node name="TMNTJPG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(720, 192)
 max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
+draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -741,18 +780,25 @@ texture = ExtResource("16_ho8k6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TMNTJPG"]
 shape = SubResource("RectangleShape2D_rcyqw")
 
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TMNTJPG"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TMNTJPG/DraggableArea"]
+position = Vector2(0, -86)
+shape = SubResource("RectangleShape2D_8sj50")
+
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/TMNTJPG"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TMNTJPG/CloseButton"]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="TurtleMemeWEBP" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
+[node name="TurtleMemeWEBP" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(712, 272)
 max_global_x = 976.0
 min_global_y = 192.0
 max_global_y = 528.0
+draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -766,6 +812,12 @@ texture = ExtResource("17_yj0i8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP"]
 shape = SubResource("RectangleShape2D_de7jb")
+
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TurtleMemeWEBP"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP/DraggableArea"]
+position = Vector2(0, -102)
+shape = SubResource("RectangleShape2D_8sj50")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtleMemeWEBP"]
 
@@ -1042,12 +1094,13 @@ rotation = -3.14159
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_kfy1a")
 
-[node name="HammerManEXE" parent="DesktopWindows" node_paths=PackedStringArray("close_button") instance=ExtResource("3_yrive")]
+[node name="HammerManEXE" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(320, 232)
 max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
+draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
@@ -1056,6 +1109,12 @@ position = Vector2(-96, -96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE"]
 shape = SubResource("RectangleShape2D_ime56")
+
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/HammerManEXE"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE/DraggableArea"]
+position = Vector2(0, -86)
+shape = SubResource("RectangleShape2D_8sj50")
 
 [node name="CloseButton" type="Area2D" parent="DesktopWindows/HammerManEXE"]
 

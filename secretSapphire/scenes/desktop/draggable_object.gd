@@ -1,4 +1,4 @@
-class_name DraggableObject extends Node2D
+class_name DraggableObject extends Area2D
 
 @export var is_draggable:bool = true
 
@@ -13,11 +13,14 @@ signal double_clicked
 
 var disabled:bool = true
 var mouse_hover:bool = false
+var mouse_in_draggable_area:bool = false
 
 var offset: Vector2
 
 # Indicates if the object is an icon that can open a window.
 @export var is_icon:bool = false
+
+@export var draggable_area:Area2D
 
 # The window that the object will open (if it is an icon) when double clicked.
 @export var openable_window:DraggableObject
@@ -39,6 +42,18 @@ func _ready() -> void:
 		close_button.input_event.connect(_on_close_input_event)
 	else:
 		set_z_index(-1)
+	
+	if draggable_area == null: 
+		draggable_area = self as Area2D
+	draggable_area.mouse_entered.connect(_on_draggable_area_mouse_entered)
+	draggable_area.mouse_exited.connect(_on_draggable_area_mouse_exited)
+
+
+func _on_draggable_area_mouse_entered():
+	mouse_in_draggable_area = true
+
+func _on_draggable_area_mouse_exited():
+	mouse_in_draggable_area = false
 
 func open(pos:Vector2) -> void: 
 	
@@ -81,7 +96,7 @@ func _process(delta: float) -> void:
 	if CursorManager.current_dragging_object == self && is_draggable:
 		follow_cursor()
 	
-	if mouse_hover:
+	if mouse_hover && mouse_in_draggable_area:
 		
 		if Input.is_action_just_pressed("click") && !Input.is_action_pressed("pan"):
 			
