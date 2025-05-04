@@ -72,31 +72,10 @@ func _on_screen_body_exited(body: Node2D) -> void:
 		HammerManManager.call_deferred("move_to_menus")
 
 
+## HAMMER MAN STUFF
+
 func _on_hammer_man_exe_icon_double_clicked() -> void:
 	$DesktopWindows/HammerManEXE/HammerManGame.open()
-
-
-func _on_home_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("click") && !event.is_action_pressed("pan") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
-		for window in $DesktopWindows.get_children():
-			window.hide()
-
-
-func _on_home_button_mouse_entered() -> void:
-	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
-		$HomeButton.scale = Vector2(1.05, 1.05)
-
-
-func _on_home_button_mouse_exited() -> void:
-	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
-		$HomeButton.scale = Vector2(1, 1)
-
-
-func _on_fire_extinguisher_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("click") && !event.is_action_pressed("pan") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
-		$DesktopWindows/Antivirus/FireExtinguisher.hide()
-		CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
-
 
 func _on_a_collect() -> void:
 	a_collected.emit($DesktopWindows/TurtleMemeWEBP/A.global_position)
@@ -112,6 +91,8 @@ func _on_hammer_man_game_s_collected(global_pos:Vector2) -> void:
 	s_collected.emit(global_pos)
 
 
+## VIRUS SCANNER STUFF
+
 func _on_virus_scan_timer_timeout() -> void:
 	$DesktopWindows/Antivirus/SeemsFine.text = "seems fine idk."
 
@@ -120,34 +101,57 @@ func _on_virus_scan_close_button_input_event(viewport: Node, event: InputEvent, 
 		$DesktopWindows/Antivirus/SeemsFine.text = ""
 
 func _on_scan_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
-		if event.is_action_pressed("click") && !event.is_action_pressed("pan"):
-			$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1.10, 1.10)
-			$DesktopWindows/Antivirus/SeemsFine.text = "scanning..."
-			$DesktopWindows/Antivirus/VirusScanTimer.start()
-	
-		if event.is_action_released("click"):
-			$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1.05, 1.05)
-
-func _on_scan_button_mouse_entered() -> void:
-	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
-		$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1.05, 1.05)
+	if (
+		mode == Mode.ACTIVE && 
+		CursorManager.current_cursor == CursorManager.CURSOR
+		):
+		
+		if (
+			CursorManager.current_dragging_object == null && 
+			CursorManager.current_hovering_object == $DesktopWindows/Antivirus
+			):
+			
+			if event.is_action_pressed("click") && !event.is_action_pressed("pan"):
+				$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1.10, 1.10)
+				$DesktopWindows/Antivirus/SeemsFine.text = "scanning..."
+				$DesktopWindows/Antivirus/VirusScanTimer.start()
+			
+			elif event is InputEventMouse:
+				$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1.05, 1.05)
+		
+		elif event is InputEventMouse:
+			$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1, 1)
 
 func _on_scan_button_mouse_exited() -> void:
 	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
 		$DesktopWindows/Antivirus/ScanButton.scale = Vector2(1, 1)
 
+func _on_fire_extinguisher_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("click") && !event.is_action_pressed("pan") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+		$DesktopWindows/Antivirus/FireExtinguisher.hide()
+		CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
 
-func _on_recycling_bin_icon_mouse_entered() -> void:
-	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
-		$RecyclingBinIcon.scale = Vector2(1.05, 1.05)
+
+## RECYCLING BIN STUFF
+
+func _on_recycling_bin_icon_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if mode == Mode.ACTIVE && event is InputEventMouse && CursorManager.current_cursor == CursorManager.CURSOR:
+		if CursorManager.current_hovering_object == null && CursorManager.current_dragging_object == null:
+			$RecyclingBinIcon.scale = Vector2(1.05, 1.05)
+		else: 
+			$RecyclingBinIcon.scale = Vector2(1, 1)
 
 func _on_recycling_bin_icon_mouse_exited() -> void:
 	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
 		$RecyclingBinIcon.scale = Vector2(1, 1)
 
 func _on_recycling_bin_icon_click() -> void:
-	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+	if (
+		mode == Mode.ACTIVE && 
+		CursorManager.current_cursor == CursorManager.CURSOR && 
+		CursorManager.current_dragging_object == null && 
+		CursorManager.current_hovering_object == null
+		):
 		$RecyclingBinIcon.detatch(5)
 
 func _on_recycling_bin_icon_smash() -> void:
@@ -157,3 +161,32 @@ func _on_recycling_bin_icon_smash() -> void:
 		if scrap is InteractiveElement:
 			scrap.detatch()
 			scrap.apply_random_force(450, 550)
+
+
+## HOME BUTTON STUFF
+
+func _on_home_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if (
+		mode == Mode.ACTIVE && 
+		CursorManager.current_cursor == CursorManager.CURSOR
+		):
+		
+		if (
+			CursorManager.current_dragging_object == null && 
+			CursorManager.current_hovering_object == null
+			):
+			
+			if event.is_action_pressed("click") && !event.is_action_pressed("pan"):
+				$HomeButton.scale = Vector2(1.10, 1.10)
+				for window in $DesktopWindows.get_children():
+					window.hide()
+			
+			elif event is InputEventMouse:
+				$HomeButton.scale = Vector2(1.05, 1.05)
+		
+		elif event is InputEventMouse:
+			$HomeButton.scale = Vector2(1, 1)
+
+func _on_home_button_mouse_exited() -> void:
+	if mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
+		$HomeButton.scale = Vector2(1, 1)
