@@ -226,6 +226,7 @@ texture = ExtResource("23_3xjlp")
 shape = SubResource("RectangleShape2D_4sq1c")
 
 [node name="RecyclingBinIcon" parent="." instance=ExtResource("4_500wu")]
+z_index = -3
 position = Vector2(112, 112)
 collision_layer = 2
 collision_mask = 65536
@@ -441,7 +442,7 @@ z_index = -2
 
 [node name="Antivirus" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
-position = Vector2(800, 208)
+position = Vector2(389, 344)
 max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
@@ -654,7 +655,7 @@ vertical_alignment = 1
 
 [node name="TurtlePNG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
-position = Vector2(832, 240)
+position = Vector2(973, 343)
 max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
@@ -687,7 +688,7 @@ shape = SubResource("RectangleShape2D_ih88g")
 
 [node name="TurtleHatPNG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
-position = Vector2(368, 384)
+position = Vector2(785, 365)
 max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
@@ -720,7 +721,7 @@ shape = SubResource("RectangleShape2D_ih88g")
 
 [node name="HappyTurtleGIF" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
-position = Vector2(496, 232)
+position = Vector2(191, 348)
 max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0

@@ -38,10 +38,13 @@ var offset: Vector2
 @export var close_button:Area2D
 
 func _ready() -> void:
-	if !is_icon && close_button != null:
-		close_button.input_event.connect(_on_close_input_event)
+	if is_icon:
+		set_z_index(-2)
 	else:
 		set_z_index(-1)
+	
+	if close_button != null:
+		close_button.input_event.connect(_on_close_input_event)
 	
 	if draggable_area == null: 
 		draggable_area = self as Area2D
@@ -234,7 +237,7 @@ func _start_hovering():
 	CursorManager.current_hovering_object = self
 	
 	if is_icon:
-		set_z_index(0)
+		set_z_index(-1)
 		scale = Vector2(1.05, 1.05)
 
 
@@ -248,7 +251,7 @@ func stop_hovering():
 	mouse_hover = false
 	
 	if is_icon:
-		set_z_index(-1)
+		set_z_index(-2)
 		scale = Vector2(1,1)
 
 func move_to_top_of_parent():
