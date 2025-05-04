@@ -65,7 +65,8 @@ func move_to_game():
 		_set_hammer_man_menus_terrain_collision(false)
 
 func move_to_desktop():
-	if hammer_man_reparentable:
+	# We have a few extra checks here to attempt to ensure the HammerMan has escaped his game in the intended way. 
+	if hammer_man_reparentable && hammer_man_game.is_level_three() && hammer_man_game.hammer_man_in_escape_zone:
 		print("REPARENTING HAMMERMAN TO DESKTOP")
 		current_environment = Environments.DESKTOP
 		hammer_man_reparentable = false

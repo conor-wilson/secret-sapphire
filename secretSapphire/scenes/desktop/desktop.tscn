@@ -1325,24 +1325,24 @@ collision_mask = 2145
 position = Vector2(576, 256)
 shape = SubResource("RectangleShape2D_5awlk")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBorder" type="StaticBody2D" parent="."]
 collision_layer = 65536
 collision_mask = 32768
 physics_material_override = SubResource("PhysicsMaterial_kq6gu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBorder"]
 position = Vector2(8, 256)
 shape = SubResource("RectangleShape2D_p62x3")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBorder"]
 position = Vector2(1144, 272)
 shape = SubResource("RectangleShape2D_p62x3")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBorder"]
 position = Vector2(576, 8)
 shape = SubResource("RectangleShape2D_y6gij")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBorder"]
 position = Vector2(576, 504)
 shape = SubResource("RectangleShape2D_bvaam")
 

@@ -12,6 +12,7 @@ signal s_collected(global_pos:Vector2)
 ]
 
 @onready var current_level:Node2D = $Levels/TitleScreen
+var hammer_man_in_escape_zone:bool = false
 
 func _ready() -> void:
 	HammerManManager.set_hammer_man_game_singleton(self)
@@ -70,6 +71,10 @@ func check_s_collectable() -> bool:
 	
 	return true
 
+func is_level_three():
+	return current_level == $Levels/Level3
+
+
 func _on_game_zone_body_entered(body: Node2D) -> void:
 	if body is HammerMan && HammerManManager.current_environment != HammerManManager.Environments.MENUS: # TODO: This is a bit long-winded, and it's copypasted below. Fix in a future version.
 		HammerManManager.call_deferred("move_to_game")
@@ -115,3 +120,11 @@ func _on_blinker_timer_timeout() -> void:
 
 func _on_s_collect() -> void:
 	s_collected.emit($Levels/Level3/S.global_position)
+
+func _on_exit_zone_body_entered(body: Node2D) -> void:
+	if body is HammerMan:
+		hammer_man_in_escape_zone = true
+
+func _on_exit_zone_body_exited(body: Node2D) -> void:
+	if body is HammerMan:
+		hammer_man_in_escape_zone = false
