@@ -1101,6 +1101,7 @@ max_global_x = 976.0
 min_global_y = 176.0
 max_global_y = 512.0
 draggable_area = NodePath("DraggableArea")
+open_position_offset = Vector2(144, -32)
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
