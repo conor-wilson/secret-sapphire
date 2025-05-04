@@ -8,8 +8,12 @@ collision_layer = 256
 collision_mask = 64
 script = ExtResource("1_0do5p")
 
-[node name="DoubleClickTimer" type="Timer" parent="."]
-wait_time = 0.5
+[node name="FirstClickTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="SecondClickTimer" type="Timer" parent="."]
+wait_time = 0.4
 one_shot = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

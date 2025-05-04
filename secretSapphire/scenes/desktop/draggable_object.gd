@@ -55,22 +55,37 @@ func _process(delta: float) -> void:
 	if disabled || CursorManager.current_cursor != CursorManager.CURSOR:
 		return
 	
+	var moved:bool = false
 	if CursorManager.current_dragging_object == self && is_draggable:
-		follow_cursor()
+		moved = follow_cursor()
+	
+	# Reset the double-click system if the object has been moved
+	if moved: 
+		$FirstClickTimer.stop()
+		$SecondClickTimer.stop()
 	
 	if mouse_hover:
 		
 		if Input.is_action_just_pressed("click") && !Input.is_action_pressed("pan"):
 			
-			if $DoubleClickTimer.is_stopped():
-				move_to_top_of_parent()
-				$DoubleClickTimer.start()
-			else:
-				double_clicked.emit()
+			# Bring the DraggableObject to the top of the draw order
+			move_to_top_of_parent()
 			
+			# Track progress of clicks
+			if $FirstClickTimer.is_stopped():
+				$FirstClickTimer.start()
+			else:
+				$SecondClickTimer.start()
+			
+			# Resolve dragging functionality
 			if mouse_in_draggable_area:
 				offset = get_global_mouse_position() - global_position
 				CursorManager.current_dragging_object = self
+		
+		# Resolve double click
+		if Input.is_action_just_released("click") && !Input.is_action_just_released("pan"):
+			if !$SecondClickTimer.is_stopped():
+				double_clicked.emit()
 		
 		# TODO: Have a look at this and see if we can apply it to the HellBot's movements
 		#var tween = get_tree().create_tween()
@@ -112,7 +127,7 @@ func open(pos:Vector2) -> void:
 		if child is TileMapLayer:
 			child.enabled = true
 
-func follow_cursor() -> void:
+func follow_cursor() -> bool:
 	
 	var new_position:Vector2 = get_global_mouse_position() - offset
 	
@@ -126,7 +141,11 @@ func follow_cursor() -> void:
 		if new_position.y < min_global_y:
 			new_position.y = min_global_y
 	
+	var moved:bool = global_position.distance_to(new_position) > 0
+	
 	global_position = new_position
+	
+	return moved
 
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
