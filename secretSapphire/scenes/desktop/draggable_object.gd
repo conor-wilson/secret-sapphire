@@ -49,11 +49,36 @@ func _ready() -> void:
 	draggable_area.mouse_exited.connect(_on_draggable_area_mouse_exited)
 
 
-func _on_draggable_area_mouse_entered():
-	mouse_in_draggable_area = true
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	
+	if disabled || CursorManager.current_cursor != CursorManager.CURSOR:
+		return
+	
+	if CursorManager.current_dragging_object == self && is_draggable:
+		follow_cursor()
+	
+	if mouse_hover:
+		
+		if Input.is_action_just_pressed("click") && !Input.is_action_pressed("pan"):
+			
+			if $DoubleClickTimer.is_stopped():
+				move_to_top_of_parent()
+				$DoubleClickTimer.start()
+			else:
+				double_clicked.emit()
+			
+			if mouse_in_draggable_area:
+				offset = get_global_mouse_position() - global_position
+				CursorManager.current_dragging_object = self
+		
+		# TODO: Have a look at this and see if we can apply it to the HellBot's movements
+		#var tween = get_tree().create_tween()
+		#if is_inside_dropable:
+			#tween.tween_property(self, "position", body_ref.position, 0.2).set_ease(Tween.EASE_OUT)
+		#else is_inside_dropable:
+			#tween.tween_property(self, "global_position", initial_pos, 0.2).set_ease(Tween.EASE_OUT)
 
-func _on_draggable_area_mouse_exited():
-	mouse_in_draggable_area = false
 
 func open(pos:Vector2) -> void: 
 	
@@ -87,34 +112,6 @@ func open(pos:Vector2) -> void:
 		if child is TileMapLayer:
 			child.enabled = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	if disabled || CursorManager.current_cursor != CursorManager.CURSOR:
-		return
-	
-	if CursorManager.current_dragging_object == self && is_draggable:
-		follow_cursor()
-	
-	if mouse_hover && mouse_in_draggable_area:
-		
-		if Input.is_action_just_pressed("click") && !Input.is_action_pressed("pan"):
-			
-			if $DoubleClickTimer.is_stopped():
-				$DoubleClickTimer.start()
-			else:
-				double_clicked.emit()
-			
-			offset = get_global_mouse_position() - global_position
-			CursorManager.current_dragging_object = self
-		
-		# TODO: Have a look at this and see if we can apply it to the HellBot's movements
-		#var tween = get_tree().create_tween()
-		#if is_inside_dropable:
-			#tween.tween_property(self, "position", body_ref.position, 0.2).set_ease(Tween.EASE_OUT)
-		#else is_inside_dropable:
-			#tween.tween_property(self, "global_position", initial_pos, 0.2).set_ease(Tween.EASE_OUT)
-
 func follow_cursor() -> void:
 	
 	var new_position:Vector2 = get_global_mouse_position() - offset
@@ -131,42 +128,114 @@ func follow_cursor() -> void:
 	
 	global_position = new_position
 
+
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	_resolve_hover()
+	if disabled:
+		return
+	
+	# NOTE: We use the input_event signal here instead of the mouse_entered signal because we need
+	# to account for when the cursor mouses onto this DraggableObject from another DraggableObject 
+	# with a higher draw-order whose collision area overlaps with this DraggableObject.
+	if (
+		event is InputEventMouseMotion && 
+		_should_become_current_hovering_object()
+		):
+		_start_hovering()
 
 func _on_mouse_exited() -> void:
-	_resolve_no_hover()
-
-# _resolve_hover checks to see if the DraggableObject can be considered hovered,
-# and applies any required changes based on the outcome of that check.
-func _resolve_hover():
-	if (
-		disabled || 
-		CursorManager.current_cursor != CursorManager.CURSOR ||
-		(CursorManager.current_dragging_object != null && CursorManager.current_dragging_object != self)
-		|| CursorManager.current_hovering_object != null
-	):
+	if disabled:
 		return
+	
+	stop_hovering()
+
+# _should_become_current_hovering_object returns true if the DraggableObject should become the new
+# current hovering object in the CursorManager. This is done using a series of checks that increase
+# from broad to intricate, returning at the broadest possible check. 
+func _should_become_current_hovering_object() -> bool:
+	
+	# If the player is holding an object return true.
+	if !CursorManager.current_cursor_is(CursorManager.CURSOR):
+		return false
+	
+	# If the cursor is dragging another DraggableObject, return false
+	if CursorManager.current_dragging_object != null && CursorManager.current_dragging_object != self:
+		return false
+	
+	# If the cursor isn't hovering over anything, return true
+	var current_hovering_object:DraggableObject = CursorManager.current_hovering_object
+	if current_hovering_object == null:
+		return true
+	
+	# If the cursor is already hovering over this Draggable object, return false (because we don't
+	# need to change anything)
+	if current_hovering_object == self:
+		return false
+	
+	# If the z-indexes aren't equal, return true if this DraggableObject is drawn above the
+	# currently hovered DraggableObject
+	if current_hovering_object.z_index != z_index:
+		return current_hovering_object.z_index < z_index
+	
+	# Icons should always give way to non-icons in the hover order
+	if is_icon && !current_hovering_object.is_icon:
+		return false
+	if !is_icon && current_hovering_object.is_icon:
+		return true
+	
+	# If this DraggableObject and the currently hovered DraggableObject don't have the same parent,
+	# we can't resolve the hover, so default to true.
+	var parent:Node = get_parent()
+	if parent != current_hovering_object.get_parent():
+		return true
+	
+	# If this DraggableObject and the currently hovered DraggableObject do have the same parent,
+	# determine which of the two are drawn on top, and return true if that is this DraggableObject.
+	var current_hovering_object_index:int = 0
+	var self_index:int = 0
+	var count:int = 0
+	for child in parent.get_children():
+		
+		if child == self:
+			self_index = count
+		if child == current_hovering_object:
+			current_hovering_object_index = count
+		
+		count = count + 1
+	
+	return self_index > current_hovering_object_index
+
+# _start_hovering applies the changes that should occur when the DraggableObject is being hovered
+# over by the mouse.
+func _start_hovering():
+	
+	if CursorManager.current_hovering_object != null:
+		CursorManager.current_hovering_object.stop_hovering()
 	
 	mouse_hover = true
 	CursorManager.current_hovering_object = self
+	
 	if is_icon:
 		set_z_index(0)
 		scale = Vector2(1.05, 1.05)
 
-# _resolve_no_hover checks to see if the DraggableObject can be considered
-# no-longer hovered, and applies any required changes based on the outcome of
-# that check.
-func _resolve_no_hover():
 
-	if disabled:
-		return
+# stop_hovering applies the changes that should occur when the DraggableObject is no-longer being
+# hovered over by the mouse.
+func stop_hovering():
+	
+	if CursorManager.current_hovering_object == self:
+		CursorManager.current_hovering_object = null
 	
 	mouse_hover = false
-	CursorManager.current_hovering_object = null
+	
 	if is_icon:
 		set_z_index(-1)
 		scale = Vector2(1,1)
+
+func move_to_top_of_parent():
+	var parent:Node = get_parent()
+	reparent(parent.get_parent())
+	reparent(parent)
 
 func _on_double_clicked() -> void:
 	if is_icon && openable_window != null && CursorManager.last_dragging_object == self:
@@ -176,9 +245,15 @@ func _on_double_clicked() -> void:
 func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !disabled && !is_icon && event.is_action_pressed("click") && !event.is_action_pressed("pan") && CursorManager.current_cursor == CursorManager.CURSOR:
 		close()
-	
+
 func close():
 	hide()
 	for child in get_children():
 		if child is TileMapLayer:
 			child.enabled = false
+
+func _on_draggable_area_mouse_entered():
+	mouse_in_draggable_area = true
+
+func _on_draggable_area_mouse_exited():
+	mouse_in_draggable_area = false
