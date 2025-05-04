@@ -129,7 +129,7 @@ func _start_what_was_that_sequence():
 func _input(event: InputEvent) -> void:
 	if !active: return
 	
-	if event.is_action("right_click"):
+	if !CursorManager.current_cursor_is(CursorManager.CURSOR) && event.is_action("right_click"):
 		_drop_held_item()
 		
 	if event.is_action_type() && event.is_pressed():
@@ -158,13 +158,13 @@ func reform_start_button():
 	stage = Stage.READY_FOR_BOSS_BATTLE
 	
 
-func _drop_held_item():
-	if !active: return
+func _drop_held_item() -> bool:
+	if !active: return false
 	
-	if CursorManager.current_cursor != CursorManager.CURSOR && !cursor_in_item_drop_zone:
+	if !cursor_in_item_drop_zone:
 		print("cannot drop item")
 		ScreenShakeManager.shake_screen(5,5)
-		return
+		return false
 	
 	match CursorManager.current_cursor:
 		CursorManager.WRENCH:
@@ -179,6 +179,8 @@ func _drop_held_item():
 			new_wrench.position = get_local_mouse_position()
 			new_wrench.detatch(20)
 			wrench = new_wrench
+			
+			return true
 		
 		CursorManager.CRUMPLED_PAPER:
 			$ItemInstructions.hide()
@@ -192,6 +194,8 @@ func _drop_held_item():
 			new_crumpled_password_hint.position = get_local_mouse_position()
 			new_crumpled_password_hint.detatch(50)
 			crumpled_password_hint = new_crumpled_password_hint
+			
+			return true
 		
 		CursorManager.FIRE_EXTINGUISHER:
 			$ItemInstructions.hide()
@@ -206,6 +210,11 @@ func _drop_held_item():
 			new_fire_extinguisher.position = get_local_mouse_position()
 			new_fire_extinguisher.detatch(20)
 			fire_extinguisher = new_fire_extinguisher
+			
+			return true
+		
+		_: 
+			return true
 
 
 const free_help_bot_cheat_code:Array[String] = [
@@ -420,7 +429,10 @@ func _on_wrench_click() -> void:
 	
 	print("WRENCH CLICKED")
 	
-	_drop_held_item()
+	# Attempt to drop the current item
+	if !_drop_held_item(): return
+	
+	# Pick up the wrench
 	CursorManager.set_mouse_cursor(CursorManager.WRENCH)
 	_show_instructions("<WRENCH: L-CLICK to use, R-CLICK to drop>")
 	wrench.hide()
@@ -431,7 +443,10 @@ func _on_crumpled_password_hint_click() -> void:
 	
 	print("CRUMPLED PASSWORD HINT CLICKED")
 	
-	_drop_held_item()
+	# Attempt to drop the current item
+	if !_drop_held_item(): return
+	
+	# Pick up the crumpled password hint
 	CursorManager.set_mouse_cursor(CursorManager.CRUMPLED_PAPER)
 	_show_instructions("<CRUMPLED PASSWORD HINT: L-CLICK to use, R-CLICK to drop>")
 	crumpled_password_hint.hide()
@@ -441,7 +456,10 @@ func _on_fire_extinguisher_click() -> void:
 	
 	print("FIRE EXTINGUISHER CLICKED")
 	
-	_drop_held_item()
+	# Attempt to drop the current item
+	if !_drop_held_item(): return
+	
+	# Pick up the fire extinguisher
 	CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
 	_show_instructions("<FIRE EXTINGUISHER: L-CLICK to use, R-CLICK to drop>")
 	fire_extinguisher.hide()
@@ -772,6 +790,6 @@ func _on_free_roam_camera_returned_home() -> void:
 # the void, they will respawn back in the main menu.
 func _on_item_boundery_body_exited(body: Node2D) -> void:
 	if body is InteractiveElement:
-		if body.global_position.distance_to($ItemBoundery/ItemRespawnPoint.global_position) > 5000:
+		if body.global_position.distance_to($ItemBoundery/ItemRespawnPoint.global_position) > 10:
 			body.linear_velocity = Vector2.ZERO
 			body.global_position = $ItemBoundery/ItemRespawnPoint.global_position

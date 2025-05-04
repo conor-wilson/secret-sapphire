@@ -141,7 +141,7 @@ func follow_cursor() -> bool:
 		if new_position.y < min_global_y:
 			new_position.y = min_global_y
 	
-	var moved:bool = global_position.distance_to(new_position) > 0
+	var moved:bool = global_position.distance_to(new_position) > 1
 	
 	global_position = new_position
 	

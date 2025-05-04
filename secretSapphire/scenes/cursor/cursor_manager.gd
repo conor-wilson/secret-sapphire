@@ -39,6 +39,6 @@ func _get_hotspot(source:Resource) -> Vector2:
 		FIRE_EXTINGUISHER: 
 			return Vector2(0, 4)
 		CRUMPLED_PAPER:
-			return Vector2(64, 64)
+			return Vector2(48, 48)
 		_:
 			return Vector2.ZERO

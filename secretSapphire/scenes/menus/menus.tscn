@@ -32,7 +32,7 @@ radius = 12.0
 height = 62.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tj3n1"]
-size = Vector2(1104, 592)
+size = Vector2(1088, 576)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0o4ac"]
 font = ExtResource("12_hpcjg")
@@ -52,7 +52,7 @@ height = 44.0
 size = Vector2(158, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xla6"]
-size = Vector2(25472, 12672)
+size = Vector2(3520, 736)
 
 [node name="Menus" type="Node2D"]
 script = ExtResource("1_n6v3l")
@@ -330,6 +330,7 @@ collision_layer = 512
 collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemBoundery"]
+position = Vector2(1728, 336)
 shape = SubResource("RectangleShape2D_5xla6")
 debug_color = Color(0, 0.688334, 0.7, 0.14902)
 
