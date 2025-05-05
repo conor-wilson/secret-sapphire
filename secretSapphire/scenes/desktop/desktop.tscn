@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=81 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -202,6 +202,9 @@ size = Vector2(1280, 144)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bvaam"]
 size = Vector2(1280, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bags5"]
+size = Vector2(32, 64)
 
 [node name="Desktop" type="Node2D"]
 z_index = -2
@@ -1347,6 +1350,14 @@ shape = SubResource("RectangleShape2D_y6gij")
 position = Vector2(576, 504)
 shape = SubResource("RectangleShape2D_bvaam")
 
+[node name="HammerManEscapeZone" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerManEscapeZone"]
+position = Vector2(64, 112)
+shape = SubResource("RectangleShape2D_bags5")
+
 [connection signal="input_event" from="HomeButton" to="." method="_on_home_button_input_event"]
 [connection signal="mouse_exited" from="HomeButton" to="." method="_on_home_button_mouse_exited"]
 [connection signal="click" from="RecyclingBinIcon" to="." method="_on_recycling_bin_icon_click"]
@@ -1367,3 +1378,5 @@ shape = SubResource("RectangleShape2D_bvaam")
 [connection signal="body_entered" from="Screen" to="." method="_on_screen_body_entered"]
 [connection signal="body_exited" from="Screen" to="." method="_on_screen_body_exited"]
 [connection signal="input_event" from="Screen" to="." method="_on_screen_input_event"]
+[connection signal="body_entered" from="HammerManEscapeZone" to="." method="_on_escape_zone_body_entered"]
+[connection signal="body_exited" from="HammerManEscapeZone" to="." method="_on_escape_zone_body_exited"]

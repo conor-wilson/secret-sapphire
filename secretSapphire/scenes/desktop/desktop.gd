@@ -4,15 +4,17 @@ signal s_collected(global_pos:Vector2)
 signal a_collected(global_pos:Vector2)
 signal hammer_man_level_changed
 
+const this_is_actually_fine_message:String = "\"THIS ACTUALLY IS FINE!\nTRY THIS:                      \""
+
 enum Mode {DISABLED, STATIC, ACTIVE}
 var mode:Mode = Mode.DISABLED
+
+var hammer_man_in_escape_zone:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	HammerManManager.set_desktop_singleton(self)
 	mode = Mode.DISABLED
-
-const this_is_actually_fine_message:String = "\"THIS ACTUALLY IS FINE!\nTRY THIS:                      \""
 
 func _process(delta: float) -> void:
 	
@@ -62,6 +64,9 @@ func clear_all_static():
 func _on_screen_body_entered(body: Node2D) -> void:
 	if body is RunningLetter:
 		body.set_can_enter_desktop(true)
+	
+	if body is HammerMan:
+		HammerManManager.call_deferred("move_to_desktop")
 
 
 func _on_screen_body_exited(body: Node2D) -> void:
@@ -89,6 +94,14 @@ func _on_hammer_man_game_level_changed() -> void:
 
 func _on_hammer_man_game_s_collected(global_pos:Vector2) -> void:
 	s_collected.emit(global_pos)
+
+func _on_escape_zone_body_entered(body: Node2D) -> void:
+	if body is HammerMan:
+		hammer_man_in_escape_zone = true
+
+func _on_escape_zone_body_exited(body: Node2D) -> void:
+	if body is HammerMan:
+		hammer_man_in_escape_zone = false
 
 
 ## VIRUS SCANNER STUFF
