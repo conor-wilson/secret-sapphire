@@ -1133,7 +1133,7 @@ visible = false
 [node name="Scrap1" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(92, 417)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true
@@ -1147,7 +1147,7 @@ shape = SubResource("CircleShape2D_f4lp4")
 [node name="Scrap2" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(135, 397)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true
@@ -1161,7 +1161,7 @@ shape = SubResource("CircleShape2D_3bl16")
 [node name="Scrap3" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(137, 419)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true
@@ -1176,7 +1176,7 @@ shape = SubResource("CapsuleShape2D_i305j")
 [node name="Scrap4" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(103, 376)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true
@@ -1191,7 +1191,7 @@ shape = SubResource("CircleShape2D_x8m81")
 [node name="Scrap5" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(116, 404)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true
@@ -1207,7 +1207,7 @@ shape = SubResource("CapsuleShape2D_pdh3w")
 [node name="GodotLogo" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(119, 384)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true
@@ -1223,7 +1223,7 @@ shape = SubResource("CapsuleShape2D_8r524")
 [node name="Email1" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(138, 376)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true
@@ -1238,7 +1238,7 @@ shape = SubResource("CapsuleShape2D_qgwa3")
 [node name="Email2" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(100, 395)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true
@@ -1253,7 +1253,7 @@ shape = SubResource("CapsuleShape2D_qgwa3")
 [node name="Email3" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(117, 423)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true
@@ -1268,7 +1268,7 @@ shape = SubResource("CapsuleShape2D_qgwa3")
 [node name="File1" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(104, 409)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true
@@ -1283,7 +1283,7 @@ shape = SubResource("CapsuleShape2D_3ykyp")
 [node name="File2" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(128, 409)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true
@@ -1298,7 +1298,7 @@ shape = SubResource("CapsuleShape2D_3ykyp")
 [node name="Folder" parent="RigidScraps" instance=ExtResource("4_500wu")]
 position = Vector2(89, 383)
 collision_layer = 32768
-collision_mask = 98304
+collision_mask = 65536
 physics_material_override = SubResource("PhysicsMaterial_ki3de")
 breakable = false
 metadata/_edit_group_ = true

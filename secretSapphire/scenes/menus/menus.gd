@@ -793,3 +793,9 @@ func _on_item_boundery_body_exited(body: Node2D) -> void:
 		if body.global_position.distance_to($ItemBoundery/ItemRespawnPoint.global_position) > 10:
 			body.linear_velocity = Vector2.ZERO
 			body.global_position = $ItemBoundery/ItemRespawnPoint.global_position
+
+# _on_hammer_man_boundery_body_entered ensures that if HammerMan glitches into
+# the void (which he very much can do), he is respawned back in his game.
+func _on_hammer_man_boundery_body_entered(body: Node2D) -> void:
+	if body is HammerMan:
+		HammerManManager.fix_hammer_man_out_of_bounds()

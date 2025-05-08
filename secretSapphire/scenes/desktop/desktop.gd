@@ -173,6 +173,7 @@ func _on_recycling_bin_icon_smash() -> void:
 	for scrap in $RigidScraps.get_children():
 		if scrap is InteractiveElement:
 			scrap.detatch()
+			scrap.set_collision_mask_value(16, true) # Doing this now prevents HammerMan from hitting them when they're not visible yet
 			scrap.apply_random_force(450, 550)
 
 

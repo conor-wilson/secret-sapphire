@@ -80,25 +80,19 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("pan"):
-		print("Starting Dragging")
 		original_mouse_pos = get_global_mouse_position()
 		original_pos = global_position
 		moving = true
 	elif event.is_action_released("pan"):
-		print("Stopping Dragging")
 		moving = false
 	
 	if zoom_mode_enabled && event.is_action_pressed("scroll_down") && zoom.x > zoom_min:
 		zoom.x -= zoom_speed
 		zoom.y -= zoom_speed
-		#$Static.scale.x += 1
-		#$Static.scale.y += 1
 	
 	if zoom_mode_enabled && event.is_action_pressed("scroll_up") && zoom.x < zoom_max:
 		zoom.x += zoom_speed
 		zoom.y += zoom_speed
-		#$Static.scale.x -= 1
-		#$Static.scale.y -= 1
 
 func apply_screen_shake(delta: float):
 	
@@ -122,7 +116,7 @@ func screen_shake_noise(strength:float, supress_noise:bool):
 		#TODO: Make it clearer what's going on below
 		$VibrationNoise.pitch_scale = 0.04*(min_vibration_noise_pitch-max_vibration_noise_pitch)*strength+1.2*max_vibration_noise_pitch-0.2*min_vibration_noise_pitch
 		$VibrationNoise.pitch_scale = $VibrationNoise.pitch_scale + randf_range(-vibraction_noise_pitch_variation, vibraction_noise_pitch_variation)
-		print("Strength:", strength, "Pitch:",$VibrationNoise.pitch_scale)
+		print("Shake Strength:", strength, "Shake Pitch:",$VibrationNoise.pitch_scale)
 		
 		if !supress_noise: $VibrationNoise.play()
 

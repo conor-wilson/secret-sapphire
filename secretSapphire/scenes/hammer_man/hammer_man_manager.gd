@@ -94,11 +94,19 @@ func _set_hammer_man_game_terrain_collision(val:bool):
 	hammer_man.set_collision_mask_value(13, val)
 
 # _set_hammer_man_desktop_collision sets HammerMan to be interactable or not
-# with the desktop boarder and objects. This allows the HammerMan window to be
-# able to move below the desktop boarder
+# with the desktop boarder and objects.
 func _set_hammer_man_desktop_terrain_collision(val:bool):
 	hammer_man.set_collision_mask_value(15, val)
 	hammer_man.set_collision_layer_value(16, val)
 
+# _set_hammer_man_desktop_collision sets HammerMan to be interactable or not
+# with the menus boarder and objects.
 func _set_hammer_man_menus_terrain_collision(val:bool):
 	hammer_man.set_collision_mask_value(1, val)
+
+# fix_hammer_man_out_of_bounds resets HammerMan to an in-bound state within his
+# game (intended to be called when HammerMan goes out of bounds).
+func fix_hammer_man_out_of_bounds():
+	self.call_deferred("move_to_game")
+	hammer_man_game.start_level(hammer_man_game.current_level)
+	ScreenShakeManager.shake_screen(5,5)
