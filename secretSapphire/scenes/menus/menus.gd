@@ -686,6 +686,8 @@ func _start_boss_battle():
 	$Sound/MainMusic.stop()
 	$Sound/BossBattleMusic.play()
 	
+	if stage == Stage.HELP_BOT_DYING: return
+	
 	# Get the Help Bot to reappear
 	var new_idle_markers:Array[Marker2D] = [
 		$MovementMarkers/BossFightMarkers/BossFightMarker1,
@@ -710,6 +712,8 @@ func _start_boss_battle():
 	$TrueStartButton.hide()
 	await get_tree().create_timer(1).timeout
 	
+	if stage == Stage.HELP_BOT_DYING: return
+	
 	# Monologue for a bit
 	lines = [
 		"You think you can just rebuild the START button?",
@@ -721,6 +725,8 @@ func _start_boss_battle():
 	]
 	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 2, $HelpBot)
 	await dialogue.sequence_finished
+	
+	if stage == Stage.HELP_BOT_DYING: return
 	
 	# Give clue about how to defeat him
 	lines = [
