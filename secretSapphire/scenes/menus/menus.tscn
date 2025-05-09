@@ -154,10 +154,10 @@ position = Vector2(507, 305)
 [node name="BossFightMarkers" type="Node2D" parent="MovementMarkers"]
 
 [node name="BossFightMarker1" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
-position = Vector2(416, 552)
+position = Vector2(374, 497)
 
 [node name="BossFightMarker2" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
-position = Vector2(768, 544)
+position = Vector2(786, 484)
 
 [node name="BossFightMarker3" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
 position = Vector2(599, 545)

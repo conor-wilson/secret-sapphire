@@ -397,16 +397,42 @@ func _on_settings_menu_correct_username() -> void:
 		else:
 			DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
 
+var num_times_password_guessed:int = 0
+var wrench_found:bool = false
+
 func _on_settings_menu_incorrect_password() -> void:
 	if !active: return
-		
+	
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
+		
+		var lines: Array[String] = []
+		if num_times_password_guessed == 0:
+			lines = [
+				"Hmm... knowing the DEV, he's pretty forgetful x_x",
+				"I doubt he could remember his password without a clue...",
+			]
+		elif !wrench_found:
+			lines = [
+				"Huh, not quite v.v",
+				"Are there any useful TOOLS out there that can help you?",
+			]
+		else: 
+			lines = [
+				"Nope, still not it >.<",
+				"Don't worry, I'm sure we can UNSCREW the DEV's tangled mess ^_^",
+				"Remember, this is a point and click puzzle game!",
+				"If in doubt, try CLICKing everything...",
+				"...whether it's moving or STATIC ^_-",
+			]
+		
 		DialogueManager.stop_all_dialogue()
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.global_position, ["Keep trying, you'll figure it out! ^.^"], "blue", 2, $DialogueMarkers/SettingsButtonMarker)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/SettingsButtonMarker)
 		if $Menus/SettingsMenu.secret_settings_locked: 
-			DialogueManager.new_dialogue_sequence($DialogueMarkers/LockedSecretSettingsButtonMarker.global_position, ["Keep trying, you'll figure it out! ^.^"], "blue", 2, $DialogueMarkers/LockedSecretSettingsButtonMarker)
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/LockedSecretSettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/LockedSecretSettingsButtonMarker)
 		else:
-			DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, ["Keep trying, you'll figure it out! ^.^"], "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
+		
+		num_times_password_guessed += 1
 
 func _on_settings_menu_correct_password() -> void:
 	if !active: return
@@ -437,6 +463,7 @@ func _on_wrench_click() -> void:
 	if !_drop_held_item(): return
 	
 	# Pick up the wrench
+	wrench_found = true
 	CursorManager.set_mouse_cursor(CursorManager.WRENCH)
 	_show_instructions("<WRENCH: L-CLICK to use, R-CLICK to drop>")
 	wrench.hide()
