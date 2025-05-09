@@ -265,7 +265,14 @@ func _on_double_clicked() -> void:
 		openable_window.open(global_position)
 
 func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if !disabled && !is_icon && event.is_action_pressed("click") && !event.is_action_pressed("pan") && CursorManager.current_cursor == CursorManager.CURSOR:
+	if (
+		!disabled &&
+		!is_icon && 
+		event.is_action_pressed("click") && 
+		!event.is_action_pressed("pan") && 
+		CursorManager.current_cursor == CursorManager.CURSOR &&
+		CursorManager.current_hovering_object == self
+		):
 		close()
 
 func close():

@@ -543,10 +543,10 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 				"I know the DEV would be proud of you.",
 				"They would want to thank you for fixing the game and playing it.",
 				"And they would want to apologise for any inconveniences you met along the way.",
-				"They would say \"Two patches mid-jam?? How broken is this piece of junk??\"",
 				"They would also request that you do not look at the code for this game.",
 				"As they are aware that it is a jumbled mess.",
-				"Such is the way of Game Jams I suppose."
+				"I have no more secrets to give you.",
+				"But I will soon."
 			]
 			DialogueManager.stop_all_dialogue()
 			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
@@ -575,7 +575,8 @@ func _begin_cave_of_wonders_monologue() -> void:
 			"And they would want to apologise for any inconveniences you met along the way.",
 			"They would also request that you do not look at the code for this game.",
 			"As they are aware that it is a jumbled mess.",
-			"Such is the way of Game Jams I suppose."
+			"I have no more secrets to give you.",
+			"But I will soon."
 		]
 		DialogueManager.stop_all_dialogue()
 		DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
@@ -621,7 +622,7 @@ func _on_cave_of_wonders_secret_received() -> void:
 	if !active: return
 	if $Menus/CaveOfWonders.talking_about_paper: return
 	
-	if stage != Stage.LETTERS_MISSING:
+	if stage < Stage.LETTERS_MISSING:
 		var lines:Array[String] = [
 			"You, like me, are one who knows many secrets.",
 			"Although you are here too early.",
@@ -657,6 +658,8 @@ func _on_cave_of_wonders_secret_received() -> void:
 		CursorManager.CRUMPLED_PAPER:
 			$Menus/CaveOfWonders.talking_about_paper = true
 			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
+			$ItemInstructions.hide()
+			
 			var lines:Array[String] = [
 				"Ah, a secret password.",
 				"The DEV should be more careful of the secrets they leave lying around.",

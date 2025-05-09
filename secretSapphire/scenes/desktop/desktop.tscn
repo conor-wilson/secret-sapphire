@@ -589,7 +589,7 @@ offset_left = -80.0
 offset_top = -72.0
 offset_right = 57.0
 offset_bottom = -58.0
-text = "GitHub Game Off Work:"
+text = "Secret Sapphire Work:"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
