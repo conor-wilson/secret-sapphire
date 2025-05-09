@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bplobt2yqsrkn"]
+[gd_scene load_steps=14 format=3 uid="uid://bplobt2yqsrkn"]
 
 [ext_resource type="Script" path="res://scenes/hammer_man/hammer_man.gd" id="1_xriwn"]
 [ext_resource type="Texture2D" uid="uid://ew36lrsvo0g3" path="res://assets/art/hammer_man/HammerMan.png" id="2_375q2"]
@@ -68,6 +68,8 @@ height = 12.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_504md"]
 radius = 7.0
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_80kms"]
+
 [node name="HammerMan" type="CharacterBody2D"]
 collision_layer = 2048
 collision_mask = 4353
@@ -114,7 +116,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HammerZoneLeft2"]
 shape = SubResource("CapsuleShape2D_08jb5")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_504md")
 
@@ -131,6 +133,15 @@ one_shot = true
 
 [node name="JumpNoise" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("5_jnhxm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_80kms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_504md")
 
 [connection signal="slam_started" from="." to="." method="_on_slam_started"]
 [connection signal="timeout" from="Timers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
