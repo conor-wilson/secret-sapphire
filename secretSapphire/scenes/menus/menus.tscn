@@ -52,7 +52,7 @@ height = 44.0
 size = Vector2(158, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xla6"]
-size = Vector2(3520, 736)
+size = Vector2(3392, 576)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o57v0"]
 size = Vector2(192, 1504)
@@ -336,7 +336,7 @@ collision_layer = 512
 collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemBoundery"]
-position = Vector2(1728, 336)
+position = Vector2(1728, 320)
 shape = SubResource("RectangleShape2D_5xla6")
 debug_color = Color(0, 0.688334, 0.7, 0.14902)
 
@@ -366,6 +366,7 @@ shape = SubResource("RectangleShape2D_uubxr")
 [connection signal="returned_home" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_returned_home"]
 [connection signal="snap" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_snap"]
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]
+[connection signal="crumpled_paper_clicked" from="Menus/MainMenu" to="." method="_on_crumpled_password_hint_click"]
 [connection signal="hammer_man_level_changed" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_level_changed"]
 [connection signal="panel_broken" from="Menus/MainMenu" to="." method="_on_main_menu_panel_broken"]
 [connection signal="s_collected" from="Menus/MainMenu" to="." method="_on_main_menu_s_collected"]

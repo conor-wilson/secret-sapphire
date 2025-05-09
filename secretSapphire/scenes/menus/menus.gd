@@ -159,6 +159,7 @@ func reform_start_button():
 	
 
 func _drop_held_item() -> bool:
+	
 	if !active: return false
 	
 	if !cursor_in_item_drop_zone:
@@ -168,6 +169,7 @@ func _drop_held_item() -> bool:
 	
 	match CursorManager.current_cursor:
 		CursorManager.WRENCH:
+			
 			$ItemInstructions.hide()
 			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
 			
@@ -183,6 +185,7 @@ func _drop_held_item() -> bool:
 			return true
 		
 		CursorManager.CRUMPLED_PAPER:
+			
 			$ItemInstructions.hide()
 			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
 			
@@ -198,6 +201,7 @@ func _drop_held_item() -> bool:
 			return true
 		
 		CursorManager.FIRE_EXTINGUISHER:
+			
 			$ItemInstructions.hide()
 			CursorManager.set_mouse_cursor(CursorManager.CURSOR)
 			$Foam.stop_following()
@@ -450,6 +454,7 @@ func _on_crumpled_password_hint_click() -> void:
 	CursorManager.set_mouse_cursor(CursorManager.CRUMPLED_PAPER)
 	_show_instructions("<CRUMPLED PASSWORD HINT: L-CLICK to use, R-CLICK to drop>")
 	crumpled_password_hint.hide()
+	$Menus/MainMenu.hide_crumpled_paper()
 
 func _on_fire_extinguisher_click() -> void:
 	if !active: return
