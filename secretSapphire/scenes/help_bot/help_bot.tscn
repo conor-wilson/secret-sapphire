@@ -1,6 +1,6 @@
 [gd_scene load_steps=82 format=3 uid="uid://bcttde4rl6c7u"]
 
-[ext_resource type="Script" path="res://scenes/help_bot/help_bot.gd" id="1_b6jo1"]
+[ext_resource type="Script" uid="uid://2ftb6mq3ltfk" path="res://scenes/help_bot/help_bot.gd" id="1_b6jo1"]
 [ext_resource type="Texture2D" uid="uid://1cwslcas3huc" path="res://assets/art/help_bot/HelpBot-Sheet.png" id="1_nxjie"]
 [ext_resource type="Texture2D" uid="uid://o53y7lf7ihfd" path="res://assets/art/help_bot/HellBot_Shrink-Sheet.png" id="3_2pc8o"]
 [ext_resource type="Texture2D" uid="uid://dq04wd1prr0t6" path="res://assets/art/help_bot/HellBot-Sheet.png" id="3_gvqsg"]

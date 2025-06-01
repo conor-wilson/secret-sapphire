@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://be8gnb7g2r1qb"]
 
 [ext_resource type="SpriteFrames" uid="uid://cjnjhykip21o5" path="res://assets/art/running_letters/running_s.tres" id="1_1u63f"]
-[ext_resource type="Script" path="res://scenes/letters/collected_letters.gd" id="1_m7ov3"]
+[ext_resource type="Script" uid="uid://b2oheij4c7wkf" path="res://scenes/letters/collected_letters.gd" id="1_m7ov3"]
 [ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/running_letters/running_t.tres" id="2_7m3y2"]
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/running_letters/running_r.tres" id="3_lg2ll"]
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/running_letters/running_a.tres" id="4_mb8o6"]

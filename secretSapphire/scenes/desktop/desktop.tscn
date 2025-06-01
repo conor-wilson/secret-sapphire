@@ -1,6 +1,6 @@
 [gd_scene load_steps=81 format=4 uid="uid://bwd7js17uny6q"]
 
-[ext_resource type="Script" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
+[ext_resource type="Script" uid="uid://dy3v3clrgucsk" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
 [ext_resource type="Texture2D" uid="uid://d6k4h82q3rpu" path="res://assets/art/menu_components/DesktopBG.png" id="2_j3mel"]
 [ext_resource type="PackedScene" uid="uid://dblssuru8cljv" path="res://scenes/desktop/draggable_object.tscn" id="3_yrive"]
@@ -132,8 +132,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iichv"]
 _data = {
-"RESET": SubResource("Animation_q8fvx"),
-"happy_turtle_gif": SubResource("Animation_rw62o")
+&"RESET": SubResource("Animation_q8fvx"),
+&"happy_turtle_gif": SubResource("Animation_rw62o")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de7jb"]

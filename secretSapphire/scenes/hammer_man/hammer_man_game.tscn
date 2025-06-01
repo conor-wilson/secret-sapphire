@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=4 uid="uid://dtxr5ergy7jvd"]
 
-[ext_resource type="Script" path="res://scenes/hammer_man/hammer_man_game.gd" id="1_214vy"]
+[ext_resource type="Script" uid="uid://yok0qgwjx2g3" path="res://scenes/hammer_man/hammer_man_game.gd" id="1_214vy"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="1_w6q41"]
 [ext_resource type="Texture2D" uid="uid://baikahbpd705q" path="res://assets/art/desktop_windows/HammerManWindow.png" id="2_jl3ys"]
 [ext_resource type="Texture2D" uid="uid://w03ugnd6ku25" path="res://assets/art/hammer_man/Door.png" id="3_3sd48"]

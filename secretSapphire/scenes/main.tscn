@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://duh2whuig04ys"]
 
 [ext_resource type="PackedScene" uid="uid://drpjvxm3qjcl7" path="res://scenes/menus/menus.tscn" id="1_7ucwg"]
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_lvo15"]
+[ext_resource type="Script" uid="uid://bftu8upase4be" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://byovsr0mrrcte" path="res://scenes/search_for_sapphire/search_for_the_secret_sapphire.tscn" id="3_wl75p"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="4_oiyas"]
 [ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="5_ua2gr"]

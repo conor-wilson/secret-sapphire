@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dvp3k2yn1w8rb"]
 
-[ext_resource type="Script" path="res://scenes/menus/cave_of_wonders.gd" id="1_2gn2m"]
+[ext_resource type="Script" uid="uid://cle27a0wdgtw0" path="res://scenes/menus/cave_of_wonders.gd" id="1_2gn2m"]
 [ext_resource type="Texture2D" uid="uid://bjc3ogtd7g8s4" path="res://assets/art/menu_components/Cave.png" id="1_db4o6"]
 [ext_resource type="PackedScene" uid="uid://ddhqiieofpixr" path="res://scenes/letters/collectable_letter.tscn" id="3_ii8et"]
 [ext_resource type="SpriteFrames" uid="uid://b15mmw4hxryyy" path="res://assets/art/running_letters/running_t.tres" id="4_j2g5j"]

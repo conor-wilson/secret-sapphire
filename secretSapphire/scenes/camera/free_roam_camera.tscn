@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://hmfard6sqx6h"]
 
-[ext_resource type="Script" path="res://scenes/camera/free_roam_camera.gd" id="1_wp2lw"]
+[ext_resource type="Script" uid="uid://bbgs4bblyvsik" path="res://scenes/camera/free_roam_camera.gd" id="1_wp2lw"]
 [ext_resource type="TileSet" uid="uid://dqe6s2a32nf6q" path="res://scenes/desktop/static_tile_set.tres" id="2_8m0av"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="3_2jnnh"]
 [ext_resource type="AudioStream" uid="uid://bb5splwfsha7d" path="res://assets/audio/Retro Impact Punch 07.wav" id="4_xt4y0"]

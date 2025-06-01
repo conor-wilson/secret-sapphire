@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cuionsm2r5c28"]
 
-[ext_resource type="Script" path="res://scenes/hammer_man/blob_enemy.gd" id="1_lekqe"]
+[ext_resource type="Script" uid="uid://ct4vuylm47psv" path="res://scenes/hammer_man/blob_enemy.gd" id="1_lekqe"]
 [ext_resource type="Texture2D" uid="uid://vc0x6veeavi7" path="res://assets/art/hammer_man/HammerManBlob-Sheet.png" id="1_ya62f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4dqlq"]
