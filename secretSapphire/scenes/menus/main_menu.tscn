@@ -115,7 +115,7 @@ frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="InteractiveElements/StickyNote"]
 libraries = {
-"": SubResource("AnimationLibrary_n3yhk")
+&"": SubResource("AnimationLibrary_n3yhk")
 }
 autoplay = "sticky_note_animation"
 
@@ -251,8 +251,8 @@ focus_mode = 0
 theme = ExtResource("6_43f6x")
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
-theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
 text = "SETTINGS"
 flat = true

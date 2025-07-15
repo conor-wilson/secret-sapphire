@@ -37,7 +37,7 @@
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/running_letters/running_a.tres" id="23_2ysj3"]
 [ext_resource type="Texture2D" uid="uid://8yqnj4mcp32" path="res://assets/art/desktop_icons/HomeIcon.png" id="23_3xjlp"]
 [ext_resource type="PackedScene" uid="uid://dtxr5ergy7jvd" path="res://scenes/hammer_man/hammer_man_game.tscn" id="25_ruqgm"]
-[ext_resource type="Texture2D" uid="uid://b1auvb2hx0hhi" path="res://assets/art/arrows/DarkGreyArrow.png" id="27_kfy1a"]
+[ext_resource type="Texture2D" uid="uid://b1auvb2hx0hhi" path="res://assets/art/Arrows/DarkGreyArrow.png" id="27_kfy1a"]
 [ext_resource type="PackedScene" uid="uid://xu30uiocq2k" path="res://scenes/desktop/static.tscn" id="29_57ei7"]
 [ext_resource type="TileSet" uid="uid://6qerjyeamcbs" path="res://scenes/desktop/hammer_man_desktop_tiles.tres" id="29_lmll0"]
 [ext_resource type="Texture2D" uid="uid://dyncku344ffb" path="res://assets/art/desktop_icons/RecyclingBinIcon.png" id="31_hbmeb"]
@@ -742,7 +742,7 @@ frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DesktopWindows/HappyTurtleGIF/Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_iichv")
+&"": SubResource("AnimationLibrary_iichv")
 }
 autoplay = "happy_turtle_gif"
 
