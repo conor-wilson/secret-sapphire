@@ -114,7 +114,3 @@ If you're struggling with some of the puzzles, here's a couple of hints to help 
 - [Code at time of game submission](https://github.com/conor-wilson/gameoff2024/tree/code-at-time-of-submission)
 - [Code at time of mid-jam patch](https://github.com/conor-wilson/gameoff2024/tree/mid-jam-patch) - This includes some game-breaking bug fixes.
 - [Post-Jam code](https://github.com/conor-wilson/gameoff2024) - This is the main branch and is still under development. It includes post-jam tidy-ups and fixes.
-
-
-- asdf
-- asdf
