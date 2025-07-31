@@ -3,7 +3,7 @@ class_name BlobEnemy extends Area2D
 signal hit
 
 @export var direction:Vector2 = Vector2.LEFT
-@export var speed:float = 1
+@export var speed:float = 60
 
 var active:bool = true 
 
@@ -22,7 +22,7 @@ func respawn():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if active:
-		position += direction*speed
+		position += direction*speed*delta
 
 func _on_wall_detection_left_body_entered(body: Node2D) -> void:
 	if active:
