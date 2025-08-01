@@ -142,3 +142,7 @@ func _on_start_button_mouse_exited() -> void:
 
 func hide_crumpled_paper(): 
 	$InteractiveElements/CrumpledStickyNote.hide()
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

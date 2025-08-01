@@ -363,7 +363,7 @@ func _start_help_bot_deception_sequence():
 	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, "blue", 2, $HelpBot)
 	
 	await dialogue.sequence_finished
-	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["UP DOWN UP DOWN LEFT RIGHT LEFT RIGHT"], "blue", 600, $HelpBot)
+	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["UP DOWN UP DOWN LEFT RIGHT LEFT RIGHT"], "blue", 600, $HelpBot, false)
 
 
 func _on_settings_menu_incorrect_username() -> void:
@@ -762,7 +762,7 @@ func _start_boss_battle():
 	lines = [
 		"Reach through the screen and hit me with a hammer?"
 	]
-	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 600, $HelpBot)
+	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 600, $HelpBot, false)
 
 func _on_main_menu_panel_broken() -> void:
 	if !active: return
@@ -813,7 +813,7 @@ func _start_help_bot_death():
 		"HAMMER MAN ISN'T EVEN FROM THIS GAME!!!",
 		"AAAAAAAHHH!!!!!!!!!"
 	]
-	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 2, $HelpBot)
+	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 2, $HelpBot, false)
 	await dialogue.sequence_finished
 	$HelpBot.shrink()
 	ScreenShakeManager.shake_screen(30,5)

@@ -4,6 +4,7 @@ signal line_finished
 signal sequence_finished
 
 var follow_node:CanvasItem = null
+var skippable:bool = true
 
 var colour:String # TODO: This is jankey. Fix.
 
@@ -25,7 +26,7 @@ func _follow_node_if_exists():
 # start_dialogue starts the dialogue sequence, displaying the provided lines one
 # by one at the provided position. The optional linger_time input determines the
 # amount of seconds that each line should stay on the screen before moving on.
-func start_dialogue(position: Vector2, lines: Array[String], colour:String, linger_time:float=2, follow:CanvasItem = null): 
+func start_dialogue(position: Vector2, lines: Array[String], colour:String, linger_time:float=2, follow:CanvasItem = null, skippable:bool=true): 
 	
 	# Exit early if there's already an active dialogue box
 	if dialogue_box != null:
@@ -37,6 +38,7 @@ func start_dialogue(position: Vector2, lines: Array[String], colour:String, ling
 	dialogue_linger_time = linger_time
 	follow_node = follow
 	self.colour = colour
+	self.skippable = skippable
 	_follow_node_if_exists()
 	
 	# Start the dialogue
@@ -84,3 +86,7 @@ func _advance_dialogue() -> void:
 		return
 	
 	_show_dialogue_box()
+
+func _input(event: InputEvent) -> void:
+	if skippable && event.is_action_pressed("advance_dialogue"):
+		_advance_dialogue()
