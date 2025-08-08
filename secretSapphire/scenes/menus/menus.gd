@@ -750,7 +750,7 @@ func _start_boss_battle():
 		"Not while I'm around pal >:)",
 		"You're never going to play the game...",
 		"You're never going to win...",
-		"And you're never going to find the SECRET SAPHIRE!",
+		"And you're never going to find the SECRET SAPPHIRE!",
 		"I mean what are you going to do??"
 	]
 	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/MonologueMarker.global_position, lines, "red", 2, $HelpBot)
