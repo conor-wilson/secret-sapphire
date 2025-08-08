@@ -5,6 +5,7 @@ signal s_collected(global_pos:Vector2)
 
 @onready var levels:Array[Node2D] = [
 	$Levels/TitleScreen,
+	$Levels/LevelSelect,
 	$Levels/Level1,
 	$Levels/Level2,
 	$Levels/Level3,
@@ -13,6 +14,8 @@ signal s_collected(global_pos:Vector2)
 
 @onready var current_level:Node2D = $Levels/TitleScreen
 var hammer_man_in_escape_zone:bool = false
+
+var can_advance_level:bool = true
 
 func _ready() -> void:
 	HammerManManager.set_hammer_man_game_singleton(self)
@@ -35,6 +38,10 @@ func close():
 
 func start_level(desired_level:Node2D):
 	
+	# Move HammerMan to the start position
+	HammerManManager.hammer_man.position = $HammerManSpawnPoint.position
+	await get_tree().process_frame # Ensure that we wait for the movement to actually take place
+	
 	current_level = desired_level
 	
 	for level in levels:
@@ -53,10 +60,9 @@ func start_level(desired_level:Node2D):
 				else:
 					child.kill()
 	
-	# Show the desired level and move HammerMan to start position
+	# Show the desired level
 	if desired_level != null:
 		desired_level.show()
-	HammerManManager.hammer_man.position = $HammerManSpawnPoint.position
 	level_changed.emit()
 
 func check_s_collectable() -> bool:
@@ -86,18 +92,22 @@ func _on_game_zone_body_exited(body: Node2D) -> void:
 
 func _on_level_0_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/TitleScreen && HammerManManager.current_environment == HammerManManager.Environments.GAME: # TODO: This is a bit long-winded, and it's copypasted below. Fix in a future version.
-		start_level($Levels/Level1)
+		print("Level 0 Complete")
+		start_level($Levels/LevelSelect)
 
 func _on_level_1_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/Level1 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
-		start_level($Levels/Level2)
+		print("Level 1 Complete")
+		start_level($Levels/LevelSelect)
 
 func _on_level_2_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/Level2 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
-		start_level($Levels/Level3)
+		print("Level 2 Complete")
+		start_level($Levels/LevelSelect)
 
 func _on_level_3_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/Level3 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
+		print("Level 3 Complete")
 		start_level($Levels/VictoryScreen)
 
 func _on_level_1_blob_enemy_hit() -> void:
@@ -115,8 +125,10 @@ func _on_level_3_blob_enemy_hit() -> void:
 func _on_blinker_timer_timeout() -> void:
 	if $Levels/TitleScreen/Controls.visible:
 		$Levels/TitleScreen/Controls.hide()
+		$Levels/LevelSelect/LevelLabels.hide()
 	else:
 		$Levels/TitleScreen/Controls.show()
+		$Levels/LevelSelect/LevelLabels.show()
 
 func _on_s_collect() -> void:
 	s_collected.emit($Levels/Level3/S.global_position)
@@ -128,3 +140,25 @@ func _on_exit_zone_body_entered(body: Node2D) -> void:
 func _on_exit_zone_body_exited(body: Node2D) -> void:
 	if body is HammerMan:
 		hammer_man_in_escape_zone = false
+
+
+func _on_level_1_select_door_body_entered(body: Node2D) -> void:
+	if body is HammerMan && current_level == $Levels/LevelSelect && HammerManManager.current_environment == HammerManManager.Environments.GAME:
+		print("Level 1 Selected")
+		start_level($Levels/Level1)
+
+func _on_level_2_select_door_body_entered(body: Node2D) -> void:
+	if body is HammerMan && current_level == $Levels/LevelSelect && HammerManManager.current_environment == HammerManManager.Environments.GAME:
+		print("Level 2 Selected")
+		start_level($Levels/Level2)
+
+func _on_level_3_select_door_body_entered(body: Node2D) -> void:
+	if body is HammerMan && current_level == $Levels/LevelSelect && HammerManManager.current_environment == HammerManManager.Environments.GAME:
+		print("Level 3 Selected")
+		start_level($Levels/Level3)
+
+
+func _on_victory_door_body_entered(body: Node2D) -> void:
+	if body is HammerMan && current_level == $Levels/VictoryScreen && HammerManManager.current_environment == HammerManManager.Environments.GAME:
+		print("Level 3 Selected")
+		start_level($Levels/TitleScreen)
