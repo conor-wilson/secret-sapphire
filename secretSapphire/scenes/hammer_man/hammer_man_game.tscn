@@ -110,6 +110,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Level1" type="Label" parent="Levels/LevelSelect/LevelLabels"]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 146.0
 offset_right = 144.0
@@ -120,6 +121,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Level2" type="Label" parent="Levels/LevelSelect/LevelLabels"]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 98.0
 offset_right = 144.0
@@ -130,6 +132,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Level3" type="Label" parent="Levels/LevelSelect/LevelLabels"]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 50.0
 offset_right = 144.0

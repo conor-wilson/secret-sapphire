@@ -15,8 +15,6 @@ signal s_collected(global_pos:Vector2)
 @onready var current_level:Node2D = $Levels/TitleScreen
 var hammer_man_in_escape_zone:bool = false
 
-var can_advance_level:bool = true
-
 func _ready() -> void:
 	HammerManManager.set_hammer_man_game_singleton(self)
 	start_level($Levels/TitleScreen)
@@ -90,26 +88,6 @@ func _on_game_zone_body_exited(body: Node2D) -> void:
 		HammerManManager.call_deferred("move_to_desktop")
 
 
-func _on_level_0_door_body_entered(body: Node2D) -> void:
-	if body is HammerMan && current_level == $Levels/TitleScreen && HammerManManager.current_environment == HammerManManager.Environments.GAME: # TODO: This is a bit long-winded, and it's copypasted below. Fix in a future version.
-		print("Level 0 Complete")
-		start_level($Levels/LevelSelect)
-
-func _on_level_1_door_body_entered(body: Node2D) -> void:
-	if body is HammerMan && current_level == $Levels/Level1 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
-		print("Level 1 Complete")
-		start_level($Levels/LevelSelect)
-
-func _on_level_2_door_body_entered(body: Node2D) -> void:
-	if body is HammerMan && current_level == $Levels/Level2 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
-		print("Level 2 Complete")
-		start_level($Levels/LevelSelect)
-
-func _on_level_3_door_body_entered(body: Node2D) -> void:
-	if body is HammerMan && current_level == $Levels/Level3 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
-		print("Level 3 Complete")
-		start_level($Levels/VictoryScreen)
-
 func _on_level_1_blob_enemy_hit() -> void:
 	start_level($Levels/Level1)
 	ScreenShakeManager.shake_screen(5,5)
@@ -142,21 +120,46 @@ func _on_exit_zone_body_exited(body: Node2D) -> void:
 		hammer_man_in_escape_zone = false
 
 
+###################################################################
+## Level Completion logic (in the order that would be expected): ##
+###################################################################
+
+# TODO: This is all very copy/pasta. It would be nice to make it less-so. 
+
+func _on_level_0_door_body_entered(body: Node2D) -> void:
+	if body is HammerMan && current_level == $Levels/TitleScreen && HammerManManager.current_environment == HammerManManager.Environments.GAME: # TODO: This is a bit long-winded, and it's copypasted below. Fix in a future version.
+		print("Level 0 Complete")
+		start_level($Levels/LevelSelect)
+
 func _on_level_1_select_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/LevelSelect && HammerManManager.current_environment == HammerManManager.Environments.GAME:
 		print("Level 1 Selected")
 		start_level($Levels/Level1)
+
+func _on_level_1_door_body_entered(body: Node2D) -> void:
+	if body is HammerMan && current_level == $Levels/Level1 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
+		print("Level 1 Complete")
+		start_level($Levels/LevelSelect)
 
 func _on_level_2_select_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/LevelSelect && HammerManManager.current_environment == HammerManManager.Environments.GAME:
 		print("Level 2 Selected")
 		start_level($Levels/Level2)
 
+func _on_level_2_door_body_entered(body: Node2D) -> void:
+	if body is HammerMan && current_level == $Levels/Level2 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
+		print("Level 2 Complete")
+		start_level($Levels/LevelSelect)
+
 func _on_level_3_select_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/LevelSelect && HammerManManager.current_environment == HammerManManager.Environments.GAME:
 		print("Level 3 Selected")
 		start_level($Levels/Level3)
 
+func _on_level_3_door_body_entered(body: Node2D) -> void:
+	if body is HammerMan && current_level == $Levels/Level3 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
+		print("Level 3 Complete")
+		start_level($Levels/VictoryScreen)
 
 func _on_victory_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/VictoryScreen && HammerManManager.current_environment == HammerManManager.Environments.GAME:
