@@ -140,6 +140,7 @@ func _on_level_1_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/Level1 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
 		print("Level 1 Complete")
 		start_level($Levels/LevelSelect)
+		$Levels/LevelSelect/Level2Barrier.clear()
 
 func _on_level_2_select_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/LevelSelect && HammerManManager.current_environment == HammerManManager.Environments.GAME:
@@ -150,6 +151,7 @@ func _on_level_2_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/Level2 && HammerManManager.current_environment == HammerManManager.Environments.GAME:
 		print("Level 2 Complete")
 		start_level($Levels/LevelSelect)
+		$Levels/LevelSelect/Level3Barrier.clear()
 
 func _on_level_3_select_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/LevelSelect && HammerManManager.current_environment == HammerManManager.Environments.GAME:
