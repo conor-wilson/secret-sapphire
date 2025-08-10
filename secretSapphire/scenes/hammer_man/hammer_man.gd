@@ -2,7 +2,7 @@ class_name HammerMan extends CharacterBody2D
 
 signal slam_started
 
-var active:bool = true
+var active:bool = false
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
@@ -110,49 +110,18 @@ func slam_hammer():
 	
 	slamming = true
 	
-	var break_1:bool = false
-	var break_2:bool = false
+	var broke_block :bool = false
+	var killed_enemy:bool = false
 	if direction.x < 0:
-		break_1 = break_blocks_in_zone($HammerZoneLeft1)
-		break_2 = break_blocks_in_zone($HammerZoneLeft2)
+		broke_block  = $HammerZoneLeft.break_blocks()
+		killed_enemy = $HammerZoneLeft.kill_enemies()
 	else:
-		break_1 = break_blocks_in_zone($HammerZoneRight1)
-		break_2 = break_blocks_in_zone($HammerZoneRight2)
+		broke_block  = $HammerZoneRight.break_blocks()
+		killed_enemy = $HammerZoneRight.kill_enemies()
 	
-	if break_1 || break_2:
+	if broke_block || killed_enemy:
 		ScreenShakeManager.shake_screen(5,5)
 		print("BREAK!")
-
-func break_blocks_in_zone(zone:Area2D) -> bool:
-	
-	var broke_block:bool = false
-	
-	# Check to see if the zone overlaps with any breakable blocks
-	for body in zone.get_overlapping_bodies():
-		if body.is_in_group("BreakableBlocks"):
-			
-			# Break any breakable tile cells
-			if body is TileMapLayer:
-				var body_as_tile_map_layer:TileMapLayer = body as TileMapLayer
-				var block_cell_coords:Vector2 = body_as_tile_map_layer.to_local(zone.global_position)/16
-				body_as_tile_map_layer.erase_cell(block_cell_coords)
-				broke_block = true
-	
-	# Check to see if zone overlaps with any enemies
-	for area in zone.get_overlapping_areas():
-		
-		# Blob Enemy
-		if area is BlobEnemy && area.active:
-			area.kill()
-			broke_block = true
-		
-		# Help Bot
-		if area is HelpBot && HammerManManager.current_environment == HammerManManager.Environments.MENUS:
-			area.kill()
-			broke_block = true
-	
-	# Report if a block was broken
-	return broke_block
 
 #func push_rigid_bodies():
 	#

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://eud55xccloly" path="res://assets/art/hammer_man/HammerManRunning-Sheet.png" id="2_p1pe4"]
 [ext_resource type="Texture2D" uid="uid://bohi1q3vnhf77" path="res://assets/art/hammer_man/HammerManSlam-Sheet.png" id="4_wypc8"]
 [ext_resource type="AudioStream" uid="uid://brau47leu6abo" path="res://assets/audio/Retro Jump Classic 08.wav" id="5_jnhxm"]
+[ext_resource type="PackedScene" uid="uid://r7c4wpptd13g" path="res://scenes/hammer_man/hammer_zone.tscn" id="6_qxp25"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h1v86"]
 atlas = ExtResource("2_p1pe4")
@@ -61,10 +62,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_08jb5"]
-radius = 11.0
-height = 34.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_504md"]
 radius = 7.0
 
@@ -80,41 +77,11 @@ sprite_frames = SubResource("SpriteFrames_dtn6e")
 animation = &"slam"
 autoplay = "idle"
 
-[node name="HammerZoneRight1" type="Area2D" parent="."]
-position = Vector2(15, 8)
-collision_layer = 2048
-collision_mask = 4105
-metadata/_edit_group_ = true
+[node name="HammerZoneRight" parent="." instance=ExtResource("6_qxp25")]
+position = Vector2(8, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerZoneRight1"]
-shape = SubResource("CapsuleShape2D_08jb5")
-
-[node name="HammerZoneRight2" type="Area2D" parent="."]
-position = Vector2(15, -6)
-collision_layer = 2048
-collision_mask = 4105
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerZoneRight2"]
-shape = SubResource("CapsuleShape2D_08jb5")
-
-[node name="HammerZoneLeft1" type="Area2D" parent="."]
-position = Vector2(-15, 8)
-collision_layer = 2048
-collision_mask = 4105
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerZoneLeft1"]
-shape = SubResource("CapsuleShape2D_08jb5")
-
-[node name="HammerZoneLeft2" type="Area2D" parent="."]
-position = Vector2(-15, -6)
-collision_layer = 2048
-collision_mask = 4105
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerZoneLeft2"]
-shape = SubResource("CapsuleShape2D_08jb5")
+[node name="HammerZoneLeft" parent="." instance=ExtResource("6_qxp25")]
+position = Vector2(-8, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
