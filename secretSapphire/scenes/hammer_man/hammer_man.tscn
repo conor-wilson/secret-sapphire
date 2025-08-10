@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bplobt2yqsrkn"]
+[gd_scene load_steps=16 format=3 uid="uid://bplobt2yqsrkn"]
 
 [ext_resource type="Script" uid="uid://cpf415r55unnl" path="res://scenes/hammer_man/hammer_man.gd" id="1_xriwn"]
 [ext_resource type="Texture2D" uid="uid://ew36lrsvo0g3" path="res://assets/art/hammer_man/HammerMan.png" id="2_375q2"]
@@ -59,8 +59,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"slam",
-"speed": 12.0
+"speed": 9.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxp25"]
+size = Vector2(16, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kcrf"]
+size = Vector2(8, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_504md"]
 radius = 7.0
@@ -74,14 +80,30 @@ script = ExtResource("1_xriwn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dtn6e")
-animation = &"slam"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="HammerZoneRight" parent="." instance=ExtResource("6_qxp25")]
 position = Vector2(8, 0)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerZoneRight"]
+position = Vector2(8, 4)
+shape = SubResource("RectangleShape2D_qxp25")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HammerZoneRight"]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_2kcrf")
+
 [node name="HammerZoneLeft" parent="." instance=ExtResource("6_qxp25")]
 position = Vector2(-8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerZoneLeft"]
+position = Vector2(-8, 4)
+shape = SubResource("RectangleShape2D_qxp25")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HammerZoneLeft"]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_2kcrf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
