@@ -2,7 +2,7 @@ class_name HammerMan extends CharacterBody2D
 
 signal slam_started
 
-var active:bool = true
+var active:bool = false
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
