@@ -123,7 +123,7 @@ shape = SubResource("CapsuleShape2D_504md")
 [node name="Timers" type="Node2D" parent="."]
 
 [node name="CoyoteTimer" type="Timer" parent="Timers"]
-wait_time = 0.06
+wait_time = 0.08
 
 [node name="JumpBufferTimer" type="Timer" parent="Timers"]
 wait_time = 0.07
