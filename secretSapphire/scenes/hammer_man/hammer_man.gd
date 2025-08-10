@@ -2,7 +2,7 @@ class_name HammerMan extends CharacterBody2D
 
 signal slam_started
 
-var active:bool = false
+var active:bool = true
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle Hammer Slam
 	if Input.is_action_just_pressed("slam"):
+		$AnimatedSprite2D.frame = 0
 		slam_started.emit()
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -91,14 +92,14 @@ func set_direction(dir:Vector2):
 
 func set_sprite():
 	
-	if slamming:
-		$AnimatedSprite2D.play("slam")
-		return
-	
 	if direction.x < 0:
 		$AnimatedSprite2D.flip_h = true
 	else:
 		$AnimatedSprite2D.flip_h = false
+	
+	if slamming:
+		$AnimatedSprite2D.play("slam")
+		return
 	
 	if moving: 
 		$AnimatedSprite2D.play("running")
@@ -182,7 +183,7 @@ func break_blocks_in_zone(zone:Area2D) -> bool:
 func _on_slam_started() -> void:
 	slamming = true
 	await $AnimatedSprite2D.frame_changed
-	await $AnimatedSprite2D.frame_changed
+	#await $AnimatedSprite2D.frame_changed
 	slam_hammer()
 	await $AnimatedSprite2D.animation_finished
 	slamming = false
