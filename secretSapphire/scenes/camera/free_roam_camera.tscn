@@ -12,6 +12,8 @@ font_color = Color(0.615686, 0.615686, 0.615686, 1)
 
 [node name="FreeRoamCamera" type="Camera2D"]
 position = Vector2(576, 324)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 script = ExtResource("1_wp2lw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

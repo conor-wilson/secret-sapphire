@@ -48,23 +48,9 @@ func _process(delta: float) -> void:
 		returned_home.emit()
 	
 	if free_roam_mode_enabled && moving && original_mouse_pos != null:
-		
-		if centre_point == null:
-			print_debug("No centre point provided for free-roam camera")
-			return
-			
 		var new_position:Vector2 = original_pos - get_global_mouse_position() + original_mouse_pos
+		_move_within_border_limits(new_position)
 		
-		# Pan the camera on the x-axis if the limit hasn't been reached
-		if abs(new_position.x) - abs(centre_point.global_position.x) < free_roam_range_x:
-			global_position.x = new_position.x
-		else: print("Camera pan limit reached in x-Axis")
-		
-		# Pan the camera on the y-axis if the limit hasn't been reached
-		if abs(new_position.y) - abs(centre_point.global_position.y) < free_roam_range_y:
-			global_position.y = new_position.y
-		else: print("Camera pan limit reached in y-Axis")
-	
 	# TODO: This is a very noisy way to check for this. See if we can come up with something better.
 	if free_roam_mode_enabled && !moving:
 		for snap_point in snap_points: 
@@ -72,7 +58,6 @@ func _process(delta: float) -> void:
 			if dist <= snap_distance && dist > snap_tolerence:
 				position = snap_point.position
 				snap.emit(snap_point)
-
 
 func _input(event: InputEvent) -> void:
 	
@@ -87,12 +72,49 @@ func _input(event: InputEvent) -> void:
 		moving = false
 	
 	if zoom_mode_enabled && event.is_action_pressed("scroll_down") && zoom.x > zoom_min:
-		zoom.x -= zoom_speed
-		zoom.y -= zoom_speed
+		_apply_zoom(-zoom_speed)
 	
 	if zoom_mode_enabled && event.is_action_pressed("scroll_up") && zoom.x < zoom_max:
-		zoom.x += zoom_speed
-		zoom.y += zoom_speed
+		_apply_zoom(zoom_speed)
+
+# _apply_zoom applies zoom to the camera at the specified speed (this can be positive or negative)
+func _apply_zoom(speed:float):
+	
+	# Store the current mouse position 
+	var old_mouse_pos:Vector2 = get_global_mouse_position()
+	
+	# Apply zoom
+	zoom.x += speed
+	zoom.y += speed
+	
+	# Stop here if free-roam mode is not enabled
+	if !free_roam_mode_enabled: return
+	
+	# Calculate the camera's new position that would allow the zoom to center on the cursor
+	var new_camera_pos:Vector2 = position + old_mouse_pos - get_global_mouse_position()
+	
+	# Move to the camera to the new position without smoothing
+	position_smoothing_enabled = false
+	_move_within_border_limits(new_camera_pos)
+	await get_tree().process_frame
+	position_smoothing_enabled = true
+
+# _move_within_border_limits moves the camera's position to the provided new_position, but locks the
+# movement to still be within the specified x and y borders
+func _move_within_border_limits(new_position:Vector2): 
+	if centre_point == null:
+		print_debug("No centre point provided for free-roam camera")
+		return
+	
+	# Pan the camera on the x-axis if the limit hasn't been reached
+	if abs(new_position.x) - abs(centre_point.global_position.x) < free_roam_range_x:
+		global_position.x = new_position.x
+	else: print("Camera pan limit reached in x-Axis")
+	
+	# Pan the camera on the y-axis if the limit hasn't been reached
+	if abs(new_position.y) - abs(centre_point.global_position.y) < free_roam_range_y:
+		global_position.y = new_position.y
+	else: print("Camera pan limit reached in y-Axis")
 
 func apply_screen_shake(delta: float):
 	

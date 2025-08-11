@@ -66,8 +66,6 @@ script = ExtResource("1_n6v3l")
 [node name="Camera" type="Node2D" parent="."]
 
 [node name="FreeRoamCamera" parent="Camera" node_paths=PackedStringArray("snap_points", "home_point", "centre_point") instance=ExtResource("2_f0b52")]
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
 snap_distance = 96.0
 snap_points = [NodePath("../MainMenuCameraMarker"), NodePath("../SettingsCameraMarker"), NodePath("../SecretSettingsCameraMarker"), NodePath("../CaveOfWondersCameraMarker")]
 home_point = NodePath("../MainMenuCameraMarker")
