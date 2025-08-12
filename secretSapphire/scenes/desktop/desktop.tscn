@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=82 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" uid="uid://dy3v3clrgucsk" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -195,14 +195,17 @@ bounce = 0.2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p62x3"]
 size = Vector2(144, 512)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6gij"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvaam"]
 size = Vector2(1280, 144)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvaam"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6gij"]
 size = Vector2(1280, 144)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bags5"]
 size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nci2i"]
+size = Vector2(1024, 96)
 
 [node name="Desktop" type="Node2D"]
 z_index = -2
@@ -1332,21 +1335,21 @@ collision_layer = 65536
 collision_mask = 32768
 physics_material_override = SubResource("PhysicsMaterial_kq6gu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBorder"]
+[node name="LeftBorder" type="CollisionShape2D" parent="StaticBorder"]
 position = Vector2(8, 256)
 shape = SubResource("RectangleShape2D_p62x3")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBorder"]
+[node name="RightBorder" type="CollisionShape2D" parent="StaticBorder"]
 position = Vector2(1144, 272)
 shape = SubResource("RectangleShape2D_p62x3")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBorder"]
-position = Vector2(576, 8)
-shape = SubResource("RectangleShape2D_y6gij")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBorder"]
+[node name="Floor" type="CollisionShape2D" parent="StaticBorder"]
 position = Vector2(576, 504)
 shape = SubResource("RectangleShape2D_bvaam")
+
+[node name="Roof" type="CollisionShape2D" parent="StaticBorder"]
+position = Vector2(576, 8)
+shape = SubResource("RectangleShape2D_y6gij")
 
 [node name="HammerManEscapeZone" type="Area2D" parent="."]
 collision_layer = 64
@@ -1355,6 +1358,14 @@ collision_mask = 2048
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HammerManEscapeZone"]
 position = Vector2(64, 112)
 shape = SubResource("RectangleShape2D_bags5")
+
+[node name="HammerManRoof" type="StaticBody2D" parent="."]
+collision_layer = 4096
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerManRoof"]
+position = Vector2(576, 24)
+shape = SubResource("RectangleShape2D_nci2i")
 
 [connection signal="input_event" from="HomeButton" to="." method="_on_home_button_input_event"]
 [connection signal="mouse_exited" from="HomeButton" to="." method="_on_home_button_mouse_exited"]
