@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 		returned_home.emit()
 	
 	if free_roam_mode_enabled && moving && original_mouse_pos != null:
-		var new_position:Vector2 = original_pos - get_global_mouse_position() + original_mouse_pos
+		var new_position:Vector2 = original_pos + (original_mouse_pos - get_local_mouse_position())
 		_move_within_border_limits(new_position)
 		
 	# TODO: This is a very noisy way to check for this. See if we can come up with something better.
@@ -65,7 +65,7 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("pan"):
-		original_mouse_pos = get_global_mouse_position()
+		original_mouse_pos = get_local_mouse_position()
 		original_pos = global_position
 		moving = true
 	elif event.is_action_released("pan"):
