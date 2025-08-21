@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=4 uid="uid://b2peyyyvv055o"]
+
+[ext_resource type="Script" uid="uid://ba2ibcn6fu6uj" path="res://hammer_man_level.gd" id="1_01qik"]
+[ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_oso6e"]
+
+[node name="HammerManLevel" type="Node2D"]
+script = ExtResource("1_01qik")
+
+[node name="BreakableBlocks" type="TileMapLayer" parent="." groups=["BreakableBlocks"]]
+tile_map_data = PackedByteArray("AAAFAAYAAAAHAAEAAAAFAAUAAAAHAAEAAAAGAAYAAAAHAAEAAAAJAAYAAAAHAAEAAAAGAAUAAAAHAAEAAAAGAAMAAAAHAAEAAAAGAAIAAAAHAAEAAAAIAAYAAAAHAAEAAAAHAAYAAAAHAAEAAAAHAAcAAAAHAAEAAAAGAAcAAAAHAAEAAAAFAAcAAAAHAAEAAAAIAAcAAAAHAAEAAAAJAAcAAAAHAAEAAAA=")
+tile_set = ExtResource("2_oso6e")
