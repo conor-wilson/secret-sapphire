@@ -22,13 +22,20 @@ extends Node
 # 
 # - Conor (aka QuietLantern)
 
+var menus_scene := preload("res://scenes/menus/menus.tscn")
+@onready var menus: Menus = $Menus
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	reset()
+
+
+func reset():
 	#$BlackScreen.show()
 	#$TransitionScreen.transition()
 	#await $TransitionScreen.transitioned
 	#$BlackScreen.hide()
-	$Menus.play()
+	menus.play()
 	$SearchForTheSecretSapphire.stop()
 	$CreditScreen.hide()
 	$TitleScreen.hide()
@@ -38,7 +45,7 @@ func _ready() -> void:
 func _on_menus_start_game() -> void:
 	#$TransitionScreen.transition()
 	#await $TransitionScreen.transitioned
-	$Menus.stop()
+	menus.stop()
 	$CreditScreen.show()
 	await get_tree().create_timer(3).timeout
 	$CreditScreen.hide()
@@ -69,3 +76,19 @@ func _on_play_again_pressed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	_ready()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("reset"):
+		menus.queue_free()
+		var new_menus:Menus = menus_scene.instantiate()
+		add_child(new_menus)
+		menus = new_menus
+		print(menus)
+		reset()
+		#await get_tree().process_frame
+		#await get_tree().process_frame
+		#await get_tree().process_frame
+		#await get_tree().process_frame
+		#await get_tree().process_frame
+		#await get_tree().process_frame
+		#_ready()

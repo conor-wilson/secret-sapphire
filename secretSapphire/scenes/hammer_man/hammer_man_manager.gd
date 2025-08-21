@@ -29,32 +29,28 @@ func _process(_delta: float) -> void:
 	hammer_man_reparentable = true
 
 func set_hammer_man_singleton(new_hammer_man:HammerMan):
-	if hammer_man == null:
-		hammer_man = new_hammer_man
-	else:
+	if hammer_man != null:
 		print("HammerMan Singleton was attempted to be set when one already exists")
+	hammer_man = new_hammer_man
 
 func set_hammer_man_game_singleton(new_hammer_man_game:HammerManGame):
-	if hammer_man_game == null:
-		hammer_man_game = new_hammer_man_game
-	else:
+	if hammer_man_game != null:
 		print("HammerManGame Singleton was attempted to be set when one already exists")
+	hammer_man_game = new_hammer_man_game
 
 func set_desktop_singleton(new_desktop:Desktop):
-	if desktop == null:
-		desktop = new_desktop
-	else:
+	if desktop != null:
 		print("Desktop Singleton was attempted to be set when one already exists")
+	desktop = new_desktop
 
 func set_menus_singleton(new_menus:Menus):
-	if menus == null:
-		menus = new_menus
-	else:
+	if menus != null:
 		print("Menus Singleton was attempted to be set when one already exists")
+	menus = new_menus
 
 
 func move_to_game():
-	if hammer_man_reparentable:
+	if _all_singletons_non_null() && hammer_man_reparentable:
 		print("REPARENTING HAMMERMAN TO HAMMERMAN GAME")
 		current_environment = Environments.GAME
 		hammer_man_reparentable = false
@@ -66,7 +62,7 @@ func move_to_game():
 
 func move_to_desktop():
 	# We have a few extra checks here to attempt to ensure the HammerMan has escaped his game in the intended way. 
-	if hammer_man_reparentable && hammer_man_game.is_level_three() && (hammer_man_game.hammer_man_in_escape_zone || desktop.hammer_man_in_escape_zone):
+	if _all_singletons_non_null() && hammer_man_reparentable && hammer_man_game.is_level_three() && (hammer_man_game.hammer_man_in_escape_zone || desktop.hammer_man_in_escape_zone):
 		print("REPARENTING HAMMERMAN TO DESKTOP")
 		current_environment = Environments.DESKTOP
 		hammer_man_reparentable = false
@@ -77,7 +73,7 @@ func move_to_desktop():
 		_set_hammer_man_menus_terrain_collision(false)
 
 func move_to_menus():
-	if hammer_man_reparentable && desktop.hammer_man_in_escape_zone:
+	if _all_singletons_non_null() && hammer_man_reparentable && desktop.hammer_man_in_escape_zone:
 		print("REPARENTING HAMMERMAN TO MENUS")
 		current_environment = Environments.MENUS
 		hammer_man_reparentable = false
@@ -112,3 +108,6 @@ func fix_hammer_man_out_of_bounds():
 	self.call_deferred("move_to_game")
 	hammer_man_game.start_level(hammer_man_game.current_level)
 	ScreenShakeManager.shake_screen(5,5)
+
+func _all_singletons_non_null() -> bool:
+	return hammer_man != null && hammer_man_game != null && desktop != null && menus != null
