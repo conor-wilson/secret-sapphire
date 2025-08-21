@@ -40,6 +40,11 @@ func _on_floor_detection_right_body_exited(body: Node2D) -> void:
 	if active:
 		direction = Vector2.LEFT
 
-func _on_body_entered(body: Node2D) -> void:
-	if active && body is HammerMan && HammerManManager.current_environment == HammerManManager.Environments.GAME:
+#func _on_body_entered(body: Node2D) -> void:
+	#if active && body is HammerMan && HammerManManager.current_environment == HammerManManager.Environments.GAME:
+		#hit.emit()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if active && area.is_in_group("HammerManHitBox") && HammerManManager.current_environment == HammerManManager.Environments.GAME:
 		hit.emit()

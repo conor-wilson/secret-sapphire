@@ -83,6 +83,7 @@ collision_mask = 4096
 position = Vector2(11, 11)
 shape = SubResource("RectangleShape2D_okerm")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="WallDetection/Left" to="." method="_on_wall_detection_left_body_entered"]
 [connection signal="body_entered" from="WallDetection/Right" to="." method="_on_wall_detection_right_body_entered"]
