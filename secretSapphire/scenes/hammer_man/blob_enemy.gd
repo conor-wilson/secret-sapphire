@@ -2,20 +2,27 @@ class_name BlobEnemy extends Area2D
 
 signal hit
 
-@export var direction:Vector2 = Vector2.LEFT
+@export var start_direction:Vector2 = Vector2.LEFT
 @export var speed:float = 60
 
+var direction:Vector2 = Vector2.LEFT
 var active:bool = true 
+var start_position:Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	start_position = position
 
 func kill():
 	active = false
 	hide()
 
 func respawn():
+	active = false
+	position = start_position
+	direction = start_direction
+	await get_tree().process_frame
+	await get_tree().process_frame # TODO: Figure out why this only works when we wait 2 frames here instead of just one...
 	active = true
 	show()
 

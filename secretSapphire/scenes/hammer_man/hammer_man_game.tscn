@@ -243,7 +243,7 @@ position = Vector2(48, 104)
 
 [node name="BlobEnemy3" parent="Levels/Level1" instance=ExtResource("4_xcamb")]
 position = Vector2(120, 56)
-direction = Vector2(1, 0)
+start_direction = Vector2(1, 0)
 
 [node name="Level2" type="Node2D" parent="Levels"]
 visible = false
@@ -282,7 +282,7 @@ position = Vector2(161, 168)
 
 [node name="BlobEnemy2" parent="Levels/Level2" instance=ExtResource("4_xcamb")]
 position = Vector2(56, 56)
-direction = Vector2(1, 0)
+start_direction = Vector2(1, 0)
 
 [node name="Level3" type="Node2D" parent="Levels"]
 visible = false
