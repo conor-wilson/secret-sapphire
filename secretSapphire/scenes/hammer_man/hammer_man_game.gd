@@ -20,8 +20,8 @@ func _ready() -> void:
 	start_level($Levels/TitleScreen)
 
 func _process(delta: float) -> void:
-	if !$Levels/Level3/S.can_collect:
-		$Levels/Level3/S.can_collect = check_s_collectable()
+	#TODO: The below is noisy as hell. Fix it to not check as frequently
+	$Levels/Level3/S.can_collect = check_s_collectable()
 
 func open():
 	HammerManManager.call_deferred("move_to_game")
