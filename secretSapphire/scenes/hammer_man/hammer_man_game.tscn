@@ -106,10 +106,8 @@ shape = SubResource("RectangleShape2D_0j36v")
 [node name="SpawnPoint" type="Marker2D" parent="Levels/TitleScreen"]
 position = Vector2(40, 144)
 
-[node name="LevelSelect" parent="Levels" node_paths=PackedStringArray("breakable_block_config", "level_layers", "spawn_point") instance=ExtResource("2_0jwpo")]
-visible = false
-breakable_block_config = NodePath("BreakableBlockConfig")
-level_layers = [NodePath("Background"), NodePath("Border"), NodePath("Platforms"), NodePath("Level2Barrier"), NodePath("Level3Barrier")]
+[node name="LevelSelect" parent="Levels" node_paths=PackedStringArray("level_layers", "spawn_point") instance=ExtResource("2_0jwpo")]
+level_layers = [NodePath("Background"), NodePath("Border"), NodePath("Platforms"), NodePath("PermanentlyBreakableBlocks"), NodePath("Level2Barrier"), NodePath("Level3Barrier")]
 spawn_point = NodePath("SpawnPoint")
 
 [node name="Background" type="TileMapLayer" parent="Levels/LevelSelect"]
@@ -163,7 +161,7 @@ tile_set = ExtResource("1_w6q41")
 tile_map_data = PackedByteArray("AAAEAAQAAAAHAAAAAAAFAAQAAAAHAAAAAAAGAAQAAAAHAAAAAAAHAAQAAAAHAAAAAAAKAAgAAAAHAAAAAAAJAAgAAAAHAAAAAAAIAAgAAAAHAAAAAAAHAAgAAAAHAAAAAAAGAAgAAAAHAAAAAAAFAAgAAAAHAAAAAAAEAAgAAAAHAAAAAAABAAYAAAAHAAAAAAABAAoAAAAHAAAAAAABAAIAAAAHAAAAAAAIAAQAAAAHAAAAAAAKAAQAAAAHAAAAAAAJAAQAAAAHAAAAAAA=")
 tile_set = ExtResource("1_w6q41")
 
-[node name="BreakableBlockConfig" type="TileMapLayer" parent="Levels/LevelSelect"]
+[node name="PermanentlyBreakableBlocks" type="TileMapLayer" parent="Levels/LevelSelect" groups=["BreakableBlocks"]]
 tile_map_data = PackedByteArray("AAAIAAYAAAAHAAEAAAAHAAYAAAAHAAEAAAAFAAYAAAAHAAEAAAAGAAYAAAAHAAEAAAAFAAMAAAAHAAEAAAAHAAMAAAAHAAEAAAAGAAMAAAAHAAEAAAAFAAkAAAAHAAEAAAAGAAkAAAAHAAEAAAAHAAkAAAAHAAEAAAAIAAkAAAAHAAEAAAAFAAIAAAAHAAEAAAAHAAIAAAAHAAEAAAAGAAIAAAAHAAEAAAAGAAUAAAAHAAEAAAAFAAUAAAAHAAEAAAAFAAoAAAAHAAEAAAAGAAoAAAAHAAEAAAAHAAoAAAAHAAEAAAAIAAoAAAAHAAEAAAAFAAcAAAAHAAEAAAAGAAcAAAAHAAEAAAAHAAcAAAAHAAEAAAAIAAcAAAAHAAEAAAAIAAIAAAAHAAEAAAAIAAMAAAAHAAEAAAAHAAUAAAAHAAEAAAAIAAUAAAAHAAEAAAA=")
 tile_set = ExtResource("1_w6q41")
 

@@ -8,6 +8,8 @@ class_name HammerManLevel extends Node2D
 @onready var breakable_blocks: TileMapLayer = $BreakableBlocks
 
 func _ready() -> void:
+	if breakable_block_config == null:
+		breakable_block_config = TileMapLayer.new()
 	breakable_block_config.enabled = false
 	move_child(breakable_blocks, len(get_children())-1)
 	breakable_blocks.clear()
