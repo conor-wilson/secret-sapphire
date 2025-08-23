@@ -3,7 +3,7 @@ class_name HammerManGame extends Node2D
 signal level_changed
 signal s_collected(global_pos:Vector2)
 
-@onready var levels:Array[Node2D] = [
+@onready var levels:Array[HammerManLevel] = [
 	$Levels/TitleScreen,
 	$Levels/LevelSelect,
 	$Levels/Level1,
@@ -32,35 +32,17 @@ func open():
 func close():
 	HammerManManager.call_deferred("move_to_game")
 	HammerManManager.hammer_man.active = false
-	start_level(null)
+	_disable_all_levels()
 
-func start_level(desired_level:Node2D):
+func start_level(desired_level:HammerManLevel):
 	
-	# Move HammerMan to the start position
-	HammerManManager.hammer_man.position = $HammerManSpawnPoint.position
-	await get_tree().process_frame # Ensure that we wait for the movement to actually take place
+	# Disable all the levels
+	_disable_all_levels()
 	
+	# Start the new level
+	desired_level.start()
+	await get_tree().process_frame
 	current_level = desired_level
-	
-	for level in levels:
-		
-		# Hide the rest of the levels
-		if level != current_level:
-			level.hide()
-		
-		# Disable all other levels' layers
-		for child in level.get_children():
-			if child is TileMapLayer:
-				child.enabled = level == current_level
-			elif child is BlobEnemy:
-				if level == current_level:
-					child.respawn()
-				else:
-					child.kill()
-	
-	# Show the desired level
-	if desired_level != null:
-		desired_level.show()
 	level_changed.emit()
 
 func check_s_collectable() -> bool:
@@ -119,6 +101,11 @@ func _on_exit_zone_body_exited(body: Node2D) -> void:
 	if body is HammerMan:
 		hammer_man_in_escape_zone = false
 
+func _disable_all_levels():
+	for level in levels:
+		level.disable()
+
+
 
 ###################################################################
 ## Level Completion logic (in the order that would be expected): ##
@@ -165,5 +152,5 @@ func _on_level_3_door_body_entered(body: Node2D) -> void:
 
 func _on_victory_door_body_entered(body: Node2D) -> void:
 	if body is HammerMan && current_level == $Levels/VictoryScreen && HammerManManager.current_environment == HammerManManager.Environments.GAME:
-		print("Level 3 Selected")
+		print("Victory Screen Completed")
 		start_level($Levels/TitleScreen)
