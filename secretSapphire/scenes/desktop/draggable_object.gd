@@ -153,6 +153,7 @@ func follow_cursor() -> bool:
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if disabled:
+		print("FLAG 1")
 		return
 	
 	# NOTE: We use the input_event signal here instead of the mouse_entered signal because we need
@@ -162,6 +163,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		event is InputEventMouseMotion && 
 		_should_become_current_hovering_object()
 		):
+		print("FLAG 2")
 		_start_hovering()
 
 func _on_mouse_exited() -> void:
@@ -261,8 +263,9 @@ func move_to_top_of_parent():
 
 func _on_double_clicked() -> void:
 	if is_icon && openable_window != null && CursorManager.last_dragging_object == self:
-		
+		print("FLAG 3")
 		openable_window.open(global_position)
+	print("FLAG 4")
 
 func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (

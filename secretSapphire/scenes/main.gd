@@ -83,7 +83,8 @@ func _input(event: InputEvent) -> void:
 		var new_menus:Menus = menus_scene.instantiate()
 		add_child(new_menus)
 		menus = new_menus
-		print(menus)
+		menus.mute_music_toggled.connect(_on_menus_mute_music_toggled)
+		menus.start_game.connect(_on_menus_start_game)
 		reset()
 		#await get_tree().process_frame
 		#await get_tree().process_frame
