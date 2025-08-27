@@ -10,7 +10,7 @@ var colour:String # TODO: This is jankey. Fix.
 
 @onready var dialogue_box_scene = preload("res://scenes/dialogue/dialogue_box.tscn")
 
-var dialogue_box # The current instantiation of the dialogue box scene that is being displayed.
+var dialogue_box:DialogueBox # The current instantiation of the dialogue box scene that is being displayed.
 var line_queue: Array[String] = [] # The list of lines that are queued to be displayed.
 
 # TODO: Find a way to get rid of the below vars. They feel unnecessary.
@@ -61,6 +61,7 @@ func _show_dialogue_box():
 	dialogue_box.global_position = position
 	dialogue_box.follow_node = follow_node
 	dialogue_box.set_colour(colour)
+	dialogue_box.hide_tab_instructions()
 	
 	# Display the next text in the queue
 	dialogue_box.display_text(line_queue.pop_front())
@@ -69,7 +70,9 @@ func _show_dialogue_box():
 # dialogue_linger_time, and then advances the dialogue to the next line (or
 # clears the dialogue box).
 func _on_dialogue_box_finished_displaying():
+	dialogue_box.show_tab_instructions()
 	await get_tree().create_timer(dialogue_linger_time).timeout
+	dialogue_box.hide_tab_instructions()
 	_advance_dialogue()
 
 # _advance_dialogue() clears the current dialogue box, and spawns a new one with

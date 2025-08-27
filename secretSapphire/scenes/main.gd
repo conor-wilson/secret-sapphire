@@ -86,10 +86,3 @@ func _input(event: InputEvent) -> void:
 		menus.mute_music_toggled.connect(_on_menus_mute_music_toggled)
 		menus.start_game.connect(_on_menus_start_game)
 		reset()
-		#await get_tree().process_frame
-		#await get_tree().process_frame
-		#await get_tree().process_frame
-		#await get_tree().process_frame
-		#await get_tree().process_frame
-		#await get_tree().process_frame
-		#_ready()

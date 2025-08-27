@@ -3,7 +3,7 @@ class_name DialogueBox extends MarginContainer
 # TODO: Review this code and tidy it all up
 # TODO: Make it so the pitch can be scaled via an exported var so that cave of wonders has a deeper voice
 
-@onready var label: Label = $MarginContainer/Label
+@onready var label: Label = $VBoxContainer/MarginContainer/MarginContainer/Label
 @onready var timer: Timer = $Timer
 
 var pitch_modifier:float = 1
@@ -30,20 +30,24 @@ signal finished_displaying
 func set_colour(colour:String):
 	match colour:
 		"red":
-			$NinePatchRect.texture = RED_BOX
-			$MarginContainer/Label.add_theme_color_override("font_color", Color("ac3232"))
+			$VBoxContainer/MarginContainer/NinePatchRect.texture = RED_BOX
+			$VBoxContainer/MarginContainer/MarginContainer/Label.add_theme_color_override("font_color", Color("ac3232"))
+			$VBoxContainer/TabInstructions/Label.add_theme_color_override("font_color", Color("ac3232"))
 			pitch_modifier = 0.75
 		"blue":
-			$NinePatchRect.texture = BLUE_BOX
-			$MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))
+			$VBoxContainer/MarginContainer/NinePatchRect.texture = BLUE_BOX
+			$VBoxContainer/MarginContainer/MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))
+			$VBoxContainer/TabInstructions/Label.add_theme_color_override("font_color", Color("3f3f74"))
 			pitch_modifier = 1
 		"black":
-			$NinePatchRect.texture = BLACK_BOX
-			$MarginContainer/Label.add_theme_color_override("font_color", Color("000000"))
+			$VBoxContainer/MarginContainer/NinePatchRect.texture = BLACK_BOX
+			$VBoxContainer/MarginContainer/MarginContainer/Label.add_theme_color_override("font_color", Color("000000"))
+			$VBoxContainer/TabInstructions/Label.add_theme_color_override("font_color", Color("000000"))
 			pitch_modifier = 0.5
 		_: 
-			$NinePatchRect.texture = BLUE_BOX
-			$MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))
+			$VBoxContainer/MarginContainer/NinePatchRect.texture = BLUE_BOX
+			$VBoxContainer/MarginContainer/MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))
+			$VBoxContainer/TabInstructions/Label.add_theme_color_override("font_color", Color("3f3f74"))
 			pitch_modifier = 0.5
 
 func _process(delta: float) -> void:
@@ -99,3 +103,26 @@ func _display_letter():
 func _on_timer_timeout() -> void:
 	_follow_node_if_exists()
 	_display_letter()
+
+
+
+## BELOW: Tab instruction experimentation functionality
+# TODO: Figure out how to make this (or something like it) work
+# NOTE: Maybe a setting called "tab to skip dialogue"?
+
+func show_tab_instructions() -> void:
+	await get_tree().create_timer(0.4).timeout
+	$VBoxContainer/TabInstructions/BlinkerTimer.start()
+	$VBoxContainer/TabInstructions.hide()
+	$VBoxContainer/TabInstructions/Label.show()
+	$VBoxContainer/TabInstructions/BlinkerTimer.start()
+	$VBoxContainer/TabInstructions/Label.show()
+
+func hide_tab_instructions() -> void:
+	$VBoxContainer/TabInstructions.hide()
+
+func _on_blinker_timer_timeout() -> void:
+	if $VBoxContainer/TabInstructions/Label.visible:
+		$VBoxContainer/TabInstructions/Label.hide()
+	else:
+		$VBoxContainer/TabInstructions/Label.show()

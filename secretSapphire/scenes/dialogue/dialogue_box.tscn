@@ -7,11 +7,17 @@
 
 [node name="DialogueBox" type="MarginContainer"]
 z_index = 100
-offset_right = 32.0
-offset_bottom = 44.0
+offset_right = 33.0
+offset_bottom = 77.0
 script = ExtResource("1_ibntv")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("1_ir24j")
 patch_margin_left = 16
@@ -19,19 +25,36 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("2_cbn5m")
 theme_override_colors/font_color = Color(0.247059, 0.247059, 0.454902, 1)
 theme_override_font_sizes/font_size = 32
 vertical_alignment = 1
+
+[node name="TabInstructions" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabInstructions"]
+layout_mode = 2
+theme = ExtResource("2_cbn5m")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "<tab>"
+horizontal_alignment = 2
+
+[node name="BlinkerTimer" type="Timer" parent="VBoxContainer/TabInstructions"]
+wait_time = 0.3
+autostart = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -39,4 +62,5 @@ one_shot = true
 [node name="BlipNoise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_w6y5f")
 
+[connection signal="timeout" from="VBoxContainer/TabInstructions/BlinkerTimer" to="." method="_on_blinker_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

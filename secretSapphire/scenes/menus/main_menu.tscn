@@ -225,7 +225,8 @@ texture = ExtResource("8_yx54q")
 shape = SubResource("CircleShape2D_jk44i")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 1152.0
+offset_left = 2.0
+offset_right = 1154.0
 offset_bottom = 648.0
 theme_override_constants/margin_top = 175
 
