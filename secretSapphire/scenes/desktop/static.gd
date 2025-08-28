@@ -175,3 +175,16 @@ func clear_all():
 		
 		if i%30 == 0:
 			await get_tree().create_timer(0.001).timeout
+
+
+
+#var hover_circle_matrix = [
+	#[0,1,1,1,0],
+	#[1,1,1,1,1],
+	#[1,1,1,1,1],
+	#[1,1,1,1,1],
+	#[0,1,1,1,0],
+#]
+#
+#func clear_hover_matrix(origin:Vector2i):
+	#_get_circle_matrix_coords(get)

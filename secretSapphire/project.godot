@@ -13,6 +13,8 @@ config_version=5
 config/name="The Search for the Secret Sapphire"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://b6lwjcqaidjwe"
 config/icon="res://Sapphire.png"
 
 [autoload]
