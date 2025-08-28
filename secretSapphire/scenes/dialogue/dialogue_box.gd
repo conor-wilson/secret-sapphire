@@ -26,6 +26,9 @@ var space_time = 0.06
 var punc_time = 0.2
 signal finished_displaying
 
+var skipped:bool = false
+var done:bool = false
+
 # TODO: This is just so janky... create a proper constructor when there is time
 func set_colour(colour:String):
 	match colour:
@@ -59,10 +62,12 @@ func _follow_node_if_exists():
 
 func display_text(new_text:String):
 	
-	_follow_node_if_exists()
+	_follow_node_if_exists() # TODO: Does this need to be here? Doubt it. 
 	
 	text = new_text
 	label.text = new_text
+	skipped = false
+	done = false
 	
 	await resized
 	custom_minimum_size.x = min(size.x, MAX_WIDTH)
@@ -77,19 +82,23 @@ func display_text(new_text:String):
 	global_position.y -= size.y + 24 
 	
 	label.text = ""
-	_display_letter()
+	if skipped: 
+		_skip_to_end()
+	else:
+		_display_letter()
 
 func _display_letter():
 	
 	$BlipNoise.pitch_scale = randf_range(pitch_modifier-0.05,pitch_modifier+0.05)
 	if !Global.sfx_muted: $BlipNoise.play()
 	
-	_follow_node_if_exists()
+	_follow_node_if_exists() # TODO: Does this need to be here? Doubt it. 
 	label.text += text[letter_index]
 	
 	letter_index += 1 
 	if letter_index >= text.length():
 		finished_displaying.emit()
+		done = true
 		return
 	
 	match text[letter_index]: 
@@ -100,9 +109,29 @@ func _display_letter():
 		_:
 			timer.start(letter_time)
 
+func skip_to_end() -> void:
+	skipped = true
+
+# _skip_to_end skips the dialogue to the end of the current text string.
+func _skip_to_end() -> void:
+	
+	$BlipNoise.pitch_scale = randf_range(pitch_modifier-0.05,pitch_modifier+0.05)
+	if !Global.sfx_muted: $BlipNoise.play()
+	
+	_follow_node_if_exists() # TODO: Does this need to be here? Doubt it. 
+	label.text = text
+	
+	letter_index = text.length()
+	finished_displaying.emit()
+	done = true
+
 func _on_timer_timeout() -> void:
-	_follow_node_if_exists()
-	_display_letter()
+	_follow_node_if_exists() # TODO: Does this need to be here? Doubt it. 
+	if skipped: 
+		_skip_to_end()
+	else:
+		_display_letter()
+
 
 
 

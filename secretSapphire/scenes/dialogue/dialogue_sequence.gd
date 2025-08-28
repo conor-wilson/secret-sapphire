@@ -14,7 +14,7 @@ var dialogue_box:DialogueBox # The current instantiation of the dialogue box sce
 var line_queue: Array[String] = [] # The list of lines that are queued to be displayed.
 
 # TODO: Find a way to get rid of the below vars. They feel unnecessary.
-var dialogue_linger_time: float = 2
+@onready var linger_timer: Timer = $LingerTimer
 
 func _process(delta: float) -> void:
 	_follow_node_if_exists()
@@ -35,7 +35,7 @@ func start_dialogue(position: Vector2, lines: Array[String], colour:String, ling
 	# Set the class-scoped components
 	self.position = position
 	line_queue = lines
-	dialogue_linger_time = linger_time
+	linger_timer.wait_time = linger_time
 	follow_node = follow
 	self.colour = colour
 	self.skippable = skippable
@@ -71,13 +71,17 @@ func _show_dialogue_box():
 # clears the dialogue box).
 func _on_dialogue_box_finished_displaying():
 	dialogue_box.show_tab_instructions()
-	await get_tree().create_timer(dialogue_linger_time).timeout
-	dialogue_box.hide_tab_instructions()
+	print("Dialogue Box Finished")
+	linger_timer.start()
+
+func _on_linger_timer_timeout() -> void:
 	_advance_dialogue()
 
 # _advance_dialogue() clears the current dialogue box, and spawns a new one with
 # the next line in the queue if one exists.
 func _advance_dialogue() -> void:
+	
+	print("Dialogue Box Started")
 	
 	line_finished.emit()
 	dialogue_box.queue_free()
@@ -92,4 +96,8 @@ func _advance_dialogue() -> void:
 
 func _input(event: InputEvent) -> void:
 	if skippable && event.is_action_pressed("advance_dialogue"):
-		_advance_dialogue()
+		if dialogue_box.done: 
+			linger_timer.stop()
+			_advance_dialogue()
+		else:
+			dialogue_box.skip_to_end()
