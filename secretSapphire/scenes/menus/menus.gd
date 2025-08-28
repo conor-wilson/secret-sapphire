@@ -357,10 +357,23 @@ func _start_help_bot_deception_sequence():
 	var lines: Array[String] = [
 		"You're one smart cookie!! ^_^",
 		"My name is HELP BOT :) nice to meet you!",
+		"I can help you out with lots of things, for example:",
+	]
+	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, "blue", 2, $HelpBot)
+	
+	await dialogue.sequence_finished
+	lines = [
+		"Did you know you can press <TAB> to skip through dialogue faster?",
+	]
+	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, "blue", 600, $HelpBot)
+	
+	await dialogue.sequence_finished
+	lines = [
+		"Useful right? You would think the DEV would tutorialise that somewhere... ¬_¬", 
 		"To unlock the settings in this menu, you'll need to use cheat codes...",
 		"First you'll have to unlock me, try this:",
 	]
-	var dialogue:DialogueSequence = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, "blue", 2, $HelpBot)
+	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, "blue", 2, $HelpBot)
 	
 	await dialogue.sequence_finished
 	DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, ["UP DOWN UP DOWN LEFT RIGHT LEFT RIGHT"], "blue", 600, $HelpBot, false)
@@ -371,7 +384,7 @@ func _on_settings_menu_incorrect_username() -> void:
 	
 	if stage == Stage.BEGINNING || stage == Stage.START_BUTTON_BROKEN:
 		var lines: Array[String] = [
-			"Damn ¬_¬ the DEV locked it behind his username...",
+			"Oof ¬_¬ the DEV locked it behind his username...",
 			"I bet he credited himself somewhere around here... >.>"
 		]
 		DialogueManager.stop_all_dialogue()
