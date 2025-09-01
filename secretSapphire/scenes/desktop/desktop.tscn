@@ -1381,6 +1381,7 @@ shape = SubResource("RectangleShape2D_nci2i")
 [connection signal="timeout" from="DesktopWindows/Antivirus/VirusScanTimer" to="." method="_on_virus_scan_timer_timeout"]
 [connection signal="input_event" from="DesktopWindows/TodoTXT" to="." method="_on_todo_txt_input_event"]
 [connection signal="collect" from="DesktopWindows/TurtleMemeWEBP/A" to="." method="_on_a_collect"]
+[connection signal="closed" from="DesktopWindows/HammerManEXE" to="." method="_on_hammer_man_exe_closed"]
 [connection signal="level_changed" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_level_changed"]
 [connection signal="s_collected" from="DesktopWindows/HammerManEXE/HammerManGame" to="." method="_on_hammer_man_game_s_collected"]
 [connection signal="input_event" from="DesktopWindows/HammerManEXE/CloseButton" to="." method="_on_hammer_man_exe_close_button_input_event"]

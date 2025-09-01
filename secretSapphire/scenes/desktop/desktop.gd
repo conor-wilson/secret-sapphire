@@ -68,7 +68,6 @@ func _on_screen_body_entered(body: Node2D) -> void:
 	if body is HammerMan:
 		HammerManManager.call_deferred("move_to_desktop")
 
-
 func _on_screen_body_exited(body: Node2D) -> void:
 	if body is RunningLetter:
 		body.set_can_enter_desktop(false)
@@ -85,9 +84,8 @@ func _on_hammer_man_exe_icon_double_clicked() -> void:
 func _on_a_collect() -> void:
 	a_collected.emit($DesktopWindows/TurtleMemeWEBP/A.global_position)
 
-func _on_hammer_man_exe_close_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("click") && !event.is_action_pressed("pan")  && CursorManager.current_cursor == CursorManager.CURSOR:
-		$DesktopWindows/HammerManEXE/HammerManGame.close()
+func _on_hammer_man_exe_closed() -> void:
+	$DesktopWindows/HammerManEXE/HammerManGame.close()
 
 func _on_hammer_man_game_level_changed() -> void:
 	hammer_man_level_changed.emit()

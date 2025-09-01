@@ -10,6 +10,7 @@ class_name DraggableObject extends Area2D
 var unteathered:bool = false
 
 signal double_clicked
+signal closed
 
 var disabled:bool = true
 var mouse_hover:bool = false
@@ -283,6 +284,8 @@ func close():
 	for child in get_children():
 		if child is TileMapLayer:
 			child.enabled = false
+	
+	closed.emit()
 
 func _on_draggable_area_mouse_entered():
 	mouse_in_draggable_area = true
