@@ -152,7 +152,6 @@ func slam_hammer():
 func _on_slam_started() -> void:
 	slamming = true
 	await $AnimatedSprite2D.frame_changed
-	#await $AnimatedSprite2D.frame_changed
 	slam_hammer()
 	await $AnimatedSprite2D.animation_finished
 	slamming = false
