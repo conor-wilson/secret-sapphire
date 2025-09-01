@@ -3,6 +3,7 @@ class_name HammerMan extends CharacterBody2D
 signal slam_started
 
 var active:bool = false
+var waiting_to_start:bool = false
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
@@ -14,6 +15,8 @@ var direction:Vector2 = Vector2.RIGHT
 var moving:bool = false
 var slamming:bool = false
 var can_jump:bool = false
+
+@onready var respawn_delay_timer: Timer = $RespawnDelayTimer
 
 func _ready() -> void:
 	HammerManManager.set_hammer_man_singleton(self)
@@ -31,27 +34,30 @@ func _physics_process(delta: float) -> void:
 	handle_jump_buffer()
 
 	# Handle jump.
-	if Input.is_action_just_pressed("up"):
+	if Input.is_action_just_pressed("up") && !waiting_to_start:
 		if can_jump:
 			jump()
 		else:
 			$Timers/JumpBufferTimer.start()
 	
 	# Handle Hammer Slam
-	if Input.is_action_just_pressed("slam"):
+	if Input.is_action_just_pressed("slam") && !waiting_to_start:
 		$AnimatedSprite2D.frame = 0
 		slam_started.emit()
 	
 	# Get the input direction and handle the movement/deceleration.
 	moving = false
-	if Input.is_action_pressed("right"):
-		set_direction(Vector2.RIGHT)
-		moving = true
-	if Input.is_action_pressed("left"):
-		set_direction(Vector2.LEFT)
-		moving = true
-	if !moving:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if waiting_to_start:
+		velocity = Vector2.ZERO
+	else:
+		if Input.is_action_pressed("right"):
+			set_direction(Vector2.RIGHT)
+			moving = true
+		if Input.is_action_pressed("left"):
+			set_direction(Vector2.LEFT)
+			moving = true
+		if !moving:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	#print(moving)
 	
@@ -60,6 +66,18 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	#push_rigid_bodies()
+
+func respawn(new_pos:Vector2) -> void:
+	position = new_pos
+	waiting_to_start = true
+	slamming = false
+	moving = false
+	can_jump = false
+	respawn_delay_timer.start()
+
+func _on_respawn_delay_timer_timeout() -> void:
+	waiting_to_start = false
+	#show()
 
 # handle_jumpability detects whether the player should be able to jump, and adjusts the
 # can_jump var accordingly.
@@ -92,6 +110,10 @@ func set_direction(dir:Vector2):
 
 func set_sprite():
 	
+	if waiting_to_start:
+		$AnimatedSprite2D.play("idle")
+		return
+	
 	if direction.x < 0:
 		$AnimatedSprite2D.flip_h = true
 	else:
@@ -108,7 +130,8 @@ func set_sprite():
 
 func slam_hammer():
 	
-	slamming = true
+	if !slamming: # This can happen if HammerMan was respawned mid-slam
+		return
 	
 	var broke_block :bool = false
 	var killed_enemy:bool = false

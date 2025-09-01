@@ -37,7 +37,7 @@
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/running_letters/running_a.tres" id="23_2ysj3"]
 [ext_resource type="Texture2D" uid="uid://8yqnj4mcp32" path="res://assets/art/desktop_icons/HomeIcon.png" id="23_3xjlp"]
 [ext_resource type="PackedScene" uid="uid://dtxr5ergy7jvd" path="res://scenes/hammer_man/hammer_man_game.tscn" id="25_ruqgm"]
-[ext_resource type="Texture2D" uid="uid://b1auvb2hx0hhi" path="res://assets/art/Arrows/DarkGreyArrow.png" id="27_kfy1a"]
+[ext_resource type="Texture2D" uid="uid://b1auvb2hx0hhi" path="res://assets/art/arrows/DarkGreyArrow.png" id="27_kfy1a"]
 [ext_resource type="PackedScene" uid="uid://xu30uiocq2k" path="res://scenes/desktop/static.tscn" id="29_57ei7"]
 [ext_resource type="TileSet" uid="uid://6qerjyeamcbs" path="res://scenes/desktop/hammer_man_desktop_tiles.tres" id="29_lmll0"]
 [ext_resource type="Texture2D" uid="uid://dyncku344ffb" path="res://assets/art/desktop_icons/RecyclingBinIcon.png" id="31_hbmeb"]
@@ -193,7 +193,7 @@ size = Vector2(1008, 368)
 bounce = 0.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p62x3"]
-size = Vector2(144, 512)
+size = Vector2(144, 640)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bvaam"]
 size = Vector2(1280, 144)
@@ -1340,7 +1340,7 @@ position = Vector2(8, 256)
 shape = SubResource("RectangleShape2D_p62x3")
 
 [node name="RightBorder" type="CollisionShape2D" parent="StaticBorder"]
-position = Vector2(1144, 272)
+position = Vector2(1144, 256)
 shape = SubResource("RectangleShape2D_p62x3")
 
 [node name="Floor" type="CollisionShape2D" parent="StaticBorder"]

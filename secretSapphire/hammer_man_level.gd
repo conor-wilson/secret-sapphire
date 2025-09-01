@@ -18,7 +18,7 @@ func _ready() -> void:
 func start() -> void:
 	
 	# Move HammerMan to the start position
-	HammerManManager.hammer_man.position = spawn_point.position
+	HammerManManager.hammer_man.respawn(spawn_point.position)
 	await get_tree().process_frame # Ensure that we wait for the movement to actually take place
 	
 	# Enable the level's layers
