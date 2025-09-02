@@ -106,8 +106,9 @@ shape = SubResource("RectangleShape2D_0j36v")
 [node name="SpawnPoint" type="Marker2D" parent="Levels/TitleScreen"]
 position = Vector2(40, 144)
 
-[node name="LevelSelect" parent="Levels" node_paths=PackedStringArray("level_layers", "spawn_point") instance=ExtResource("2_0jwpo")]
-level_layers = [NodePath("Background"), NodePath("Border"), NodePath("Platforms"), NodePath("PermanentlyBreakableBlocks"), NodePath("Level2Barrier"), NodePath("Level3Barrier")]
+[node name="LevelSelect" parent="Levels" node_paths=PackedStringArray("breakable_block_config", "level_layers", "spawn_point") instance=ExtResource("2_0jwpo")]
+breakable_block_config = NodePath("BreakableBlocksConfig")
+level_layers = [NodePath("Background"), NodePath("Border"), NodePath("Platforms"), NodePath("Level2Barrier"), NodePath("Level3Barrier")]
 spawn_point = NodePath("SpawnPoint")
 
 [node name="Background" type="TileMapLayer" parent="Levels/LevelSelect"]
@@ -122,9 +123,9 @@ offset_bottom = 40.0
 
 [node name="Level1" type="Label" parent="Levels/LevelSelect/LevelLabels"]
 layout_mode = 0
-offset_left = 80.0
+offset_left = 64.0
 offset_top = 145.0
-offset_right = 144.0
+offset_right = 128.0
 offset_bottom = 177.0
 text = "LEVEL 1"
 label_settings = SubResource("LabelSettings_gt6fi")
@@ -133,9 +134,9 @@ vertical_alignment = 1
 
 [node name="Level2" type="Label" parent="Levels/LevelSelect/LevelLabels"]
 layout_mode = 0
-offset_left = 80.0
+offset_left = 64.0
 offset_top = 81.0
-offset_right = 144.0
+offset_right = 128.0
 offset_bottom = 129.0
 text = "LEVEL 2"
 label_settings = SubResource("LabelSettings_gt6fi")
@@ -144,9 +145,9 @@ vertical_alignment = 1
 
 [node name="Level3" type="Label" parent="Levels/LevelSelect/LevelLabels"]
 layout_mode = 0
-offset_left = 80.0
+offset_left = 64.0
 offset_top = 33.0
-offset_right = 144.0
+offset_right = 128.0
 offset_bottom = 65.0
 text = "LEVEL 3"
 label_settings = SubResource("LabelSettings_gt6fi")
@@ -158,11 +159,11 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAHAAAAAAABAAAAAAAHAAAAAAALAAAAAAAHAAA
 tile_set = ExtResource("1_w6q41")
 
 [node name="Platforms" type="TileMapLayer" parent="Levels/LevelSelect"]
-tile_map_data = PackedByteArray("AAAEAAQAAAAHAAAAAAAFAAQAAAAHAAAAAAAGAAQAAAAHAAAAAAAHAAQAAAAHAAAAAAAKAAgAAAAHAAAAAAAJAAgAAAAHAAAAAAAIAAgAAAAHAAAAAAAHAAgAAAAHAAAAAAAGAAgAAAAHAAAAAAAFAAgAAAAHAAAAAAAEAAgAAAAHAAAAAAABAAYAAAAHAAAAAAABAAoAAAAHAAAAAAABAAIAAAAHAAAAAAAIAAQAAAAHAAAAAAAKAAQAAAAHAAAAAAAJAAQAAAAHAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEAAgAAAAHAAAAAAAFAAgAAAAHAAAAAAAGAAgAAAAHAAAAAAAHAAgAAAAHAAAAAAAIAAgAAAAHAAAAAAAJAAgAAAAHAAAAAAAKAAgAAAAHAAAAAAAEAAQAAAAHAAAAAAAFAAQAAAAHAAAAAAAGAAQAAAAHAAAAAAAHAAQAAAAHAAAAAAAIAAQAAAAHAAAAAAAJAAQAAAAHAAAAAAAKAAQAAAAHAAAAAAABAAYAAAAHAAAAAAA=")
 tile_set = ExtResource("1_w6q41")
 
-[node name="PermanentlyBreakableBlocks" type="TileMapLayer" parent="Levels/LevelSelect" groups=["BreakableBlocks"]]
-tile_map_data = PackedByteArray("AAAIAAYAAAAHAAEAAAAHAAYAAAAHAAEAAAAFAAYAAAAHAAEAAAAGAAYAAAAHAAEAAAAFAAMAAAAHAAEAAAAHAAMAAAAHAAEAAAAGAAMAAAAHAAEAAAAFAAkAAAAHAAEAAAAGAAkAAAAHAAEAAAAHAAkAAAAHAAEAAAAIAAkAAAAHAAEAAAAFAAIAAAAHAAEAAAAHAAIAAAAHAAEAAAAGAAIAAAAHAAEAAAAGAAUAAAAHAAEAAAAFAAUAAAAHAAEAAAAFAAoAAAAHAAEAAAAGAAoAAAAHAAEAAAAHAAoAAAAHAAEAAAAIAAoAAAAHAAEAAAAFAAcAAAAHAAEAAAAGAAcAAAAHAAEAAAAHAAcAAAAHAAEAAAAIAAcAAAAHAAEAAAAIAAIAAAAHAAEAAAAIAAMAAAAHAAEAAAAHAAUAAAAHAAEAAAAIAAUAAAAHAAEAAAA=")
+[node name="BreakableBlocksConfig" type="TileMapLayer" parent="Levels/LevelSelect"]
+tile_map_data = PackedByteArray("AAAIAAUAAAAHAAEAAAAIAAYAAAAHAAEAAAAIAAcAAAAHAAEAAAAIAAoAAAAHAAEAAAAIAAkAAAAHAAEAAAAIAAMAAAAHAAEAAAAIAAIAAAAHAAEAAAA=")
 tile_set = ExtResource("1_w6q41")
 
 [node name="Level1SelectDoor" type="Area2D" parent="Levels/LevelSelect"]
@@ -179,7 +180,7 @@ position = Vector2(0, 3.25)
 shape = SubResource("RectangleShape2D_0j36v")
 
 [node name="Level2Barrier" type="TileMapLayer" parent="Levels/LevelSelect"]
-tile_map_data = PackedByteArray("AAAEAAUAAAAFAAEAAAAEAAYAAAAFAAEAAAAEAAcAAAAFAAEAAAA=")
+tile_map_data = PackedByteArray("AAAEAAcAAAAFAAEAAAAEAAYAAAAFAAEAAAAEAAUAAAAFAAEAAAAFAAUAAAAFAAEAAAAFAAYAAAAFAAEAAAAFAAcAAAAFAAEAAAAGAAcAAAAFAAEAAAAHAAcAAAAFAAEAAAAHAAYAAAAFAAEAAAAGAAYAAAAFAAEAAAAGAAUAAAAFAAEAAAAHAAUAAAAFAAEAAAA=")
 tile_set = ExtResource("1_w6q41")
 
 [node name="Level2SelectDoor" type="Area2D" parent="Levels/LevelSelect"]
@@ -196,7 +197,7 @@ position = Vector2(0, 3.25)
 shape = SubResource("RectangleShape2D_0j36v")
 
 [node name="Level3Barrier" type="TileMapLayer" parent="Levels/LevelSelect"]
-tile_map_data = PackedByteArray("AAAEAAIAAAAFAAEAAAAEAAMAAAAFAAEAAAA=")
+tile_map_data = PackedByteArray("AAAEAAMAAAAFAAEAAAAEAAIAAAAFAAEAAAAFAAIAAAAFAAEAAAAGAAIAAAAFAAEAAAAHAAIAAAAFAAEAAAAHAAMAAAAFAAEAAAAGAAMAAAAFAAEAAAAFAAMAAAAFAAEAAAA=")
 tile_set = ExtResource("1_w6q41")
 
 [node name="Level3SelectDoor" type="Area2D" parent="Levels/LevelSelect"]
@@ -310,7 +311,6 @@ start_direction = Vector2(1, 0)
 position = Vector2(40, 160)
 
 [node name="Level3" parent="Levels" node_paths=PackedStringArray("enemies", "breakable_block_config", "level_layers", "spawn_point") instance=ExtResource("2_0jwpo")]
-visible = false
 enemies = [NodePath("BlobEnemy")]
 breakable_block_config = NodePath("BreakableBlocksConfig")
 level_layers = [NodePath("Background"), NodePath("Border"), NodePath("Platforms")]
@@ -338,11 +338,11 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAHAAAAAAABAAAAAAAHAAAAAAALAAAAAAAHAAA
 tile_set = ExtResource("1_w6q41")
 
 [node name="Platforms" type="TileMapLayer" parent="Levels/Level3"]
-tile_map_data = PackedByteArray("AAAFAAkAAAAHAAAAAAAFAAoAAAAHAAAAAAAFAAgAAAAHAAAAAAAHAAQAAAAHAAAAAAAIAAQAAAAHAAAAAAAJAAQAAAAHAAAAAAAKAAQAAAAHAAAAAAAGAAgAAAAHAAAAAAAKAAoAAAAHAAAAAAAHAAgAAAAHAAAAAAACAAYAAAAHAAAAAAABAAYAAAAHAAAAAAAHAAUAAAAHAAAAAAADAAYAAAAHAAAAAAA=")
+tile_map_data = PackedByteArray("AAAFAAkAAAAHAAAAAAAFAAoAAAAHAAAAAAAFAAgAAAAHAAAAAAAHAAQAAAAHAAAAAAAIAAQAAAAHAAAAAAAJAAQAAAAHAAAAAAAKAAQAAAAHAAAAAAAGAAgAAAAHAAAAAAAKAAoAAAAHAAAAAAAHAAgAAAAHAAAAAAACAAYAAAAHAAAAAAABAAYAAAAHAAAAAAADAAYAAAAHAAAAAAAGAAQAAAAHAAAAAAA=")
 tile_set = ExtResource("1_w6q41")
 
 [node name="BreakableBlocksConfig" type="TileMapLayer" parent="Levels/Level3"]
-tile_map_data = PackedByteArray("AAAHAAYAAAAHAAEAAAALAAIAAAAHAAEAAAALAAMAAAAHAAEAAAABAAUAAAAHAAEAAAACAAUAAAAHAAEAAAACAAQAAAAHAAEAAAABAAQAAAAHAAEAAAAHAAcAAAAHAAEAAAADAAUAAAAHAAEAAAADAAQAAAAHAAEAAAADAAMAAAAHAAEAAAABAAMAAAAHAAEAAAACAAMAAAAHAAEAAAA=")
+tile_map_data = PackedByteArray("AAALAAIAAAAHAAEAAAALAAMAAAAHAAEAAAABAAUAAAAHAAEAAAACAAUAAAAHAAEAAAACAAQAAAAHAAEAAAABAAQAAAAHAAEAAAADAAUAAAAHAAEAAAADAAQAAAAHAAEAAAADAAMAAAAHAAEAAAABAAMAAAAHAAEAAAACAAMAAAAHAAEAAAAHAAcAAAAHAAEAAAAGAAUAAAAHAAEAAAAGAAYAAAAHAAEAAAAGAAcAAAAHAAEAAAAHAAYAAAAHAAEAAAAHAAUAAAAHAAEAAAA=")
 tile_set = ExtResource("1_w6q41")
 
 [node name="BlobEnemy" parent="Levels/Level3" instance=ExtResource("4_xcamb")]

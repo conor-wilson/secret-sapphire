@@ -144,7 +144,7 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_jjt6e")
 
 [node name="RespawnDelayTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.09
 
 [connection signal="slam_started" from="." to="." method="_on_slam_started"]
 [connection signal="timeout" from="Timers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
