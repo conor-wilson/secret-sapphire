@@ -37,12 +37,12 @@ size = Vector2(1088, 576)
 [sub_resource type="LabelSettings" id="LabelSettings_0o4ac"]
 font = ExtResource("12_hpcjg")
 font_size = 32
-font_color = Color(0.615686, 0.615686, 0.615686, 1)
+font_color = Color(0.796078, 0.862745, 0.988235, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hbp62"]
 font = ExtResource("12_hpcjg")
 font_size = 32
-font_color = Color(0.615686, 0.615686, 0.615686, 1)
+font_color = Color(0.796078, 0.862745, 0.988235, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4r0k"]
 radius = 13.0

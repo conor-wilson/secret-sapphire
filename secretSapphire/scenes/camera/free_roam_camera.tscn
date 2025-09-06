@@ -8,7 +8,8 @@
 [sub_resource type="LabelSettings" id="LabelSettings_o6o2y"]
 font = ExtResource("3_2jnnh")
 font_size = 32
-font_color = Color(0.615686, 0.615686, 0.615686, 1)
+font_color = Color(0.796078, 0.862745, 0.988235, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="FreeRoamCamera" type="Camera2D"]
 position = Vector2(576, 324)
