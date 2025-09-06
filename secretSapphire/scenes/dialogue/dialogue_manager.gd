@@ -18,3 +18,9 @@ func new_dialogue_sequence(position: Vector2, lines: Array[String], colour:Strin
 	add_child(sequence)
 	sequence.start_dialogue(position, lines.duplicate(), colour, linger_time, follow_node, skippable)
 	return sequence
+
+func skip_all_dialogue():
+	for dialogue_sequence in get_children():
+		if is_instance_valid(dialogue_sequence):
+			if is_instance_valid(dialogue_sequence.dialogue_box):
+				dialogue_sequence.skip()

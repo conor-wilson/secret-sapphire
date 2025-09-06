@@ -58,6 +58,7 @@ func _show_dialogue_box():
 	
 	# Rig the box up to work as it should
 	dialogue_box.finished_displaying.connect(_on_dialogue_box_finished_displaying)
+	dialogue_box.clicked.connect(_on_dialogue_box_clicked)
 	dialogue_box.global_position = position
 	dialogue_box.follow_node = follow_node
 	dialogue_box.set_colour(colour)
@@ -95,9 +96,21 @@ func _advance_dialogue() -> void:
 	_show_dialogue_box()
 
 func _input(event: InputEvent) -> void:
-	if skippable && event.is_action_pressed("advance_dialogue"):
-		if dialogue_box.done: 
-			linger_timer.stop()
-			_advance_dialogue()
-		else:
-			dialogue_box.skip_to_end()
+	if event.is_action_pressed("advance_dialogue"):
+		skip()
+
+func _on_dialogue_box_clicked():
+	# NOTE: It's necessary to do it this way so that clicking one dialogue box
+	#       skips all current dialogue boxes (this keeps duplicate synchronised)
+	DialogueManager.skip_all_dialogue()
+
+func skip():
+	if !skippable:
+		return
+	
+	if dialogue_box.done: 
+		linger_timer.stop()
+		_advance_dialogue()
+	else:
+		dialogue_box.skip_to_end()
+	

@@ -5,6 +5,9 @@ class_name DialogueBox extends MarginContainer
 
 @onready var label: Label = $VBoxContainer/MarginContainer/MarginContainer/Label
 @onready var timer: Timer = $Timer
+@onready var nine_patch_rect: NinePatchRect = $VBoxContainer/MarginContainer/NinePatchRect
+@onready var click_box: Area2D = $ClickBox
+@onready var click_box_collision_shape: CollisionShape2D = $ClickBox/CollisionShape2D
 
 var pitch_modifier:float = 1
 
@@ -26,6 +29,7 @@ var space_time = 0.06
 var punc_time = 0.2
 signal finished_displaying
 
+signal clicked
 var skipped:bool = false
 var done:bool = false
 
@@ -33,28 +37,29 @@ var done:bool = false
 func set_colour(colour:String):
 	match colour:
 		"red":
-			$VBoxContainer/MarginContainer/NinePatchRect.texture = RED_BOX
-			$VBoxContainer/MarginContainer/MarginContainer/Label.add_theme_color_override("font_color", Color("ac3232"))
+			nine_patch_rect.texture = RED_BOX
+			label.add_theme_color_override("font_color", Color("ac3232"))
 			$VBoxContainer/TabInstructions/Label.add_theme_color_override("font_color", Color("ac3232"))
 			pitch_modifier = 0.75
 		"blue":
-			$VBoxContainer/MarginContainer/NinePatchRect.texture = BLUE_BOX
-			$VBoxContainer/MarginContainer/MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))
+			nine_patch_rect.texture = BLUE_BOX
+			label.add_theme_color_override("font_color", Color("3f3f74"))
 			$VBoxContainer/TabInstructions/Label.add_theme_color_override("font_color", Color("3f3f74"))
 			pitch_modifier = 1
 		"black":
-			$VBoxContainer/MarginContainer/NinePatchRect.texture = BLACK_BOX
-			$VBoxContainer/MarginContainer/MarginContainer/Label.add_theme_color_override("font_color", Color("000000"))
+			nine_patch_rect.texture = BLACK_BOX
+			label.add_theme_color_override("font_color", Color("000000"))
 			$VBoxContainer/TabInstructions/Label.add_theme_color_override("font_color", Color("000000"))
 			pitch_modifier = 0.5
 		_: 
-			$VBoxContainer/MarginContainer/NinePatchRect.texture = BLUE_BOX
-			$VBoxContainer/MarginContainer/MarginContainer/Label.add_theme_color_override("font_color", Color("3f3f74"))
+			nine_patch_rect.texture = BLUE_BOX
+			label.add_theme_color_override("font_color", Color("3f3f74"))
 			$VBoxContainer/TabInstructions/Label.add_theme_color_override("font_color", Color("3f3f74"))
 			pitch_modifier = 0.5
 
 func _process(delta: float) -> void:
 	_follow_node_if_exists()
+	#_resize_click_box()
 
 func _follow_node_if_exists():
 	if follow_node != null:
@@ -132,6 +137,20 @@ func _on_timer_timeout() -> void:
 	else:
 		_display_letter()
 
+
+## Click box functionality
+
+func _on_nine_patch_rect_resized() -> void:
+	_resize_click_box()
+
+func _resize_click_box() -> void:
+	$ClickBox/CollisionShape2D.shape.size = $VBoxContainer/MarginContainer/NinePatchRect.size
+	$ClickBox/CollisionShape2D.global_position.x = $VBoxContainer/MarginContainer/NinePatchRect.global_position.x + $VBoxContainer/MarginContainer/NinePatchRect.size.x/2
+	$ClickBox/CollisionShape2D.global_position.y = $VBoxContainer/MarginContainer/NinePatchRect.global_position.y + $VBoxContainer/MarginContainer/NinePatchRect.size.y/2
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		clicked.emit()
 
 
 

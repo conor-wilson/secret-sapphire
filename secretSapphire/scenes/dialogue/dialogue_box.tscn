@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://rhnhyq6qgvba"]
+[gd_scene load_steps=6 format=3 uid="uid://rhnhyq6qgvba"]
 
 [ext_resource type="Script" uid="uid://dneelnkfykj0s" path="res://scenes/dialogue/dialogue_box.gd" id="1_ibntv"]
 [ext_resource type="Texture2D" uid="uid://creoxhmeq31gu" path="res://assets/art/dialogue/DialogueBox.png" id="1_ir24j"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="2_cbn5m"]
 [ext_resource type="AudioStream" uid="uid://xa0onw107h4n" path="res://assets/audio/Text 1.wav" id="4_w6y5f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gm23c"]
+size = Vector2(33, 57)
 
 [node name="DialogueBox" type="MarginContainer"]
 z_index = 100
@@ -62,5 +65,14 @@ one_shot = true
 [node name="BlipNoise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_w6y5f")
 
+[node name="ClickBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickBox"]
+position = Vector2(16.5, 29.5)
+shape = SubResource("RectangleShape2D_gm23c")
+
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="resized" from="VBoxContainer/MarginContainer/NinePatchRect" to="." method="_on_nine_patch_rect_resized"]
 [connection signal="timeout" from="VBoxContainer/TabInstructions/BlinkerTimer" to="." method="_on_blinker_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="input_event" from="ClickBox" to="." method="_on_area_2d_input_event"]
