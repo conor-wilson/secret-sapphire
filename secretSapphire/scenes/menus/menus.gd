@@ -363,7 +363,7 @@ func _start_help_bot_deception_sequence():
 	
 	await dialogue.sequence_finished
 	lines = [
-		"Did you know you can press <TAB> to skip through dialogue faster?",
+		"Did you know you can <CLICK> dialogue or press <TAB> to skip through it faster?",
 	]
 	dialogue = DialogueManager.new_dialogue_sequence($DialogueMarkers/CageDialogue.global_position, lines, "blue", 600, $HelpBot)
 	
