@@ -238,9 +238,9 @@ shape = SubResource("RectangleShape2D_tj3n1")
 visible = false
 
 [node name="MainMenu" type="Label" parent="ItemInstructions"]
-offset_top = 608.0
+offset_top = 610.0
 offset_right = 1152.0
-offset_bottom = 648.0
+offset_bottom = 650.0
 text = "<RIGHT CLICK to drop item>"
 label_settings = SubResource("LabelSettings_0o4ac")
 horizontal_alignment = 1
@@ -248,9 +248,9 @@ vertical_alignment = 1
 
 [node name="SettingsMenu" type="Label" parent="ItemInstructions"]
 offset_left = 1152.0
-offset_top = 608.0
+offset_top = 610.0
 offset_right = 2304.0
-offset_bottom = 648.0
+offset_bottom = 650.0
 text = "<RIGHT CLICK to drop item>"
 label_settings = SubResource("LabelSettings_hbp62")
 horizontal_alignment = 1
@@ -258,9 +258,9 @@ vertical_alignment = 1
 
 [node name="SecretSettingsMenu" type="Label" parent="ItemInstructions"]
 offset_left = 2304.0
-offset_top = 608.0
+offset_top = 610.0
 offset_right = 3456.0
-offset_bottom = 648.0
+offset_bottom = 650.0
 text = "<RIGHT CLICK to drop item>"
 label_settings = SubResource("LabelSettings_hbp62")
 horizontal_alignment = 1
