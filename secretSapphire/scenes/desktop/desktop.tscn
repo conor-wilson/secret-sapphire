@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=84 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" uid="uid://dy3v3clrgucsk" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -51,6 +51,14 @@ size = Vector2(60, 60)
 
 [sub_resource type="LabelSettings" id="LabelSettings_sv1yq"]
 font = ExtResource("5_bxrir")
+font_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_231pw"]
+size = Vector2(48, 48)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2px4q"]
+font = ExtResource("5_bxrir")
+font_size = 48
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rcyqw"]
@@ -436,6 +444,25 @@ offset_right = 56.0
 offset_bottom = 55.0
 text = "TurtleMeme.webp"
 label_settings = SubResource("LabelSettings_sv1yq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HelpButton" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+position = Vector2(112, 328)
+is_draggable = false
+is_icon = true
+openable_window = NodePath("../../DesktopWindows/HelpWindow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/HelpButton"]
+shape = SubResource("RectangleShape2D_231pw")
+
+[node name="Label" type="Label" parent="DesktopIcons/HelpButton"]
+offset_left = -22.0
+offset_top = -20.0
+offset_right = 26.0
+offset_bottom = 28.0
+text = "?"
+label_settings = SubResource("LabelSettings_2px4q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1125,6 +1152,120 @@ shape = SubResource("RectangleShape2D_8sj50")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE/CloseButton"]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_kfer5")
+
+[node name="HelpWindow" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
+visible = false
+position = Vector2(256, 288)
+max_global_x = 976.0
+min_global_y = 208.0
+max_global_y = 544.0
+draggable_area = NodePath("DraggableArea")
+open_position_offset = Vector2(144, -32)
+close_button = NodePath("CloseButton")
+metadata/_edit_group_ = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/HelpWindow"]
+tile_map_data = PackedByteArray("AAD6//j/AAAFAAAAAAD7//j/AAAFAAAAAAD8//j/AAAFAAAAAAD9//j/AAAFAAAAAAD+//j/AAAFAAAAAAD///j/AAAFAAAAAAAAAPj/AAAFAAAAAAABAPj/AAAFAAAAAAACAPj/AAAFAAAAAAADAPj/AAAFAAAAAAAEAPj/AAAFAAAAAAAFAPj/AAAFAAAAAAA=")
+tile_set = ExtResource("29_lmll0")
+
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/HelpWindow"]
+texture = ExtResource("14_8688o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HelpWindow"]
+shape = SubResource("RectangleShape2D_5hnlp")
+
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/HelpWindow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HelpWindow/DraggableArea"]
+position = Vector2(0, -118)
+shape = SubResource("RectangleShape2D_8sj50")
+
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/HelpWindow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HelpWindow/CloseButton"]
+position = Vector2(-88, -120)
+shape = SubResource("RectangleShape2D_ih88g")
+
+[node name="Text" type="Node2D" parent="DesktopWindows/HelpWindow"]
+
+[node name="Title" type="Label" parent="DesktopWindows/HelpWindow/Text"]
+offset_left = -80.0
+offset_top = -104.0
+offset_right = -24.0
+offset_bottom = -76.0
+text = "DESKTOP HELP"
+label_settings = SubResource("LabelSettings_m5gid")
+vertical_alignment = 1
+
+[node name="Line1" type="Label" parent="DesktopWindows/HelpWindow/Text"]
+offset_left = -80.0
+offset_top = -72.0
+offset_right = 57.0
+offset_bottom = -58.0
+text = "In case I forget how to"
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line2" type="Label" parent="DesktopWindows/HelpWindow/Text"]
+offset_left = -80.0
+offset_top = -48.0
+offset_right = 78.0
+offset_bottom = -34.0
+text = "use my computer again:"
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line3" type="Label" parent="DesktopWindows/HelpWindow/Text"]
+offset_left = -80.0
+offset_top = -24.0
+offset_right = 78.0
+offset_bottom = -10.0
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line4" type="Label" parent="DesktopWindows/HelpWindow/Text"]
+offset_left = -80.0
+offset_right = 78.0
+offset_bottom = 14.0
+text = "1. Double-click to open"
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line5" type="Label" parent="DesktopWindows/HelpWindow/Text"]
+offset_left = -80.0
+offset_top = 24.0
+offset_right = 78.0
+offset_bottom = 38.0
+text = "   desktop files."
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line6" type="Label" parent="DesktopWindows/HelpWindow/Text"]
+offset_left = -80.0
+offset_top = 48.0
+offset_right = 78.0
+offset_bottom = 62.0
+text = "2. Click and drag from the"
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line7" type="Label" parent="DesktopWindows/HelpWindow/Text"]
+offset_left = -80.0
+offset_top = 72.0
+offset_right = 78.0
+offset_bottom = 86.0
+text = "   top of files."
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
+
+[node name="Line8" type="Label" parent="DesktopWindows/HelpWindow/Text"]
+offset_left = -80.0
+offset_top = 96.0
+offset_right = 80.0
+offset_bottom = 110.0
+text = "3. Click \"X\" to close files."
+label_settings = SubResource("LabelSettings_7brmu")
+vertical_alignment = 1
 
 [node name="RigidScraps" type="Node2D" parent="."]
 visible = false
