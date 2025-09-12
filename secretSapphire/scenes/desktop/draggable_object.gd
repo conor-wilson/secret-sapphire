@@ -21,6 +21,8 @@ var offset: Vector2
 # Indicates if the object is an icon that can open a window.
 @export var is_icon: bool = false
 
+@export var icon_requires_double_click: bool = true
+
 @export var draggable_area: Area2D
 
 # The window that the object will open (if it is an icon) when double clicked.
@@ -86,7 +88,7 @@ func _process(delta: float) -> void:
 		# Resolve double click
 		if Input.is_action_just_released("click") && !Input.is_action_just_released("pan"):
 			print("Flag A")
-			if !$SecondClickTimer.is_stopped():
+			if !icon_requires_double_click || !$SecondClickTimer.is_stopped():
 				print("Flag B")
 				double_clicked.emit()
 		
