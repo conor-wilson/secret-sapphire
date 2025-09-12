@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=92 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" uid="uid://dy3v3clrgucsk" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://4448nynviyr7" path="res://assets/art/desktop_icons/AntiVirusIcon.png" id="5_cnua8"]
 [ext_resource type="Texture2D" uid="uid://dktusqtn6cvee" path="res://assets/art/desktop_icons/TurtlePNGIcon.png" id="5_nvnsj"]
 [ext_resource type="Texture2D" uid="uid://difn28ihreq46" path="res://assets/art/recycling_bin_contents/Scrap1.png" id="6_87aq6"]
+[ext_resource type="Texture2D" uid="uid://ca8wu3il2olwf" path="res://assets/art/desktop_icons/HelpIcon.png" id="7_7lhh2"]
 [ext_resource type="Texture2D" uid="uid://cci2v3xmvxkhs" path="res://assets/art/recycling_bin_contents/Scrap2.png" id="7_80e7u"]
 [ext_resource type="Texture2D" uid="uid://76dqtp78a0vq" path="res://assets/art/desktop_icons/NotesIcon.png" id="7_aeekl"]
 [ext_resource type="Texture2D" uid="uid://cield5vq07k3r" path="res://assets/art/recycling_bin_contents/Scrap3.png" id="8_2uucb"]
@@ -48,19 +49,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
 size = Vector2(48, 48)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_231pw"]
+size = Vector2(48, 48)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6o0g"]
+font = ExtResource("5_bxrir")
+font_size = 48
+font_color = Color(0.333333, 0.333333, 0.333333, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyifw"]
 size = Vector2(60, 60)
 
 [sub_resource type="LabelSettings" id="LabelSettings_sv1yq"]
 font = ExtResource("5_bxrir")
-font_color = Color(0.333333, 0.333333, 0.333333, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_231pw"]
-size = Vector2(48, 48)
-
-[sub_resource type="LabelSettings" id="LabelSettings_2px4q"]
-font = ExtResource("5_bxrir")
-font_size = 48
 font_color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rcyqw"]
@@ -247,12 +248,13 @@ texture = ExtResource("2_j3mel")
 
 [node name="HomeButton" type="Area2D" parent="."]
 z_index = -3
-position = Vector2(112, 400)
+position = Vector2(112, 392)
 collision_layer = 64
 collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="HomeButton"]
+scale = Vector2(2, 2)
 texture = ExtResource("23_3xjlp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HomeButton"]
@@ -273,6 +275,31 @@ polygon = PackedVector2Array(13, 24, 19, -12, 17, -14, -17, -14, -19, -12, -13, 
 
 [node name="DesktopIcons" type="Node2D" parent="."]
 z_index = -2
+
+[node name="HelpButton" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+position = Vector2(112, 328)
+is_draggable = false
+is_icon = true
+icon_requires_double_click = false
+openable_window = NodePath("../../DesktopWindows/Help")
+
+[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/HelpButton"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_7lhh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/HelpButton"]
+shape = SubResource("RectangleShape2D_231pw")
+
+[node name="Label" type="Label" parent="DesktopIcons/HelpButton"]
+visible = false
+offset_left = -22.0
+offset_top = -34.0
+offset_right = 26.0
+offset_bottom = 32.0
+text = "?"
+label_settings = SubResource("LabelSettings_t6o0g")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 248)
@@ -465,26 +492,6 @@ offset_right = 56.0
 offset_bottom = 55.0
 text = "TurtleMeme.webp"
 label_settings = SubResource("LabelSettings_sv1yq")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HelpButton" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
-position = Vector2(112, 328)
-is_draggable = false
-is_icon = true
-openable_window = NodePath("../../DesktopWindows/Help")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/HelpButton"]
-shape = SubResource("RectangleShape2D_231pw")
-
-[node name="Label" type="Label" parent="DesktopIcons/HelpButton"]
-offset_left = -22.0
-offset_top = -20.0
-offset_right = 26.0
-offset_bottom = 28.0
-text = "?"
-label_settings = SubResource("LabelSettings_2px4q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1176,6 +1183,7 @@ position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_kfer5")
 
 [node name="Help" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
+visible = false
 position = Vector2(320, 272)
 min_global_x = 192.0
 max_global_x = 960.0
