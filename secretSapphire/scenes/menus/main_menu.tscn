@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=35 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/menus/interactive_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" uid="uid://s1ncxqgkrxyo" path="res://scenes/menus/main_menu.gd" id="1_hib26"]
@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://cumnmwk8n3qwe" path="res://scenes/menus/breakable_menu_tiles.tres" id="4_rruka"]
 [ext_resource type="Texture2D" uid="uid://4damehrpitmi" path="res://assets/art/items/CrumpledPaper.png" id="4_ylyox"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="5_2a3fy"]
+[ext_resource type="Texture2D" uid="uid://dfob18q7r7scw" path="res://assets/art/menu_components/TapScreenTape.png" id="5_awvna"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_43f6x"]
 [ext_resource type="Texture2D" uid="uid://y8wgjwjjrbhx" path="res://assets/art/menu_components/SmallStartButton.png" id="8_nhvuo"]
 [ext_resource type="Texture2D" uid="uid://op2bmdwt6xln" path="res://assets/art/menu_components/Screw.png" id="8_yx54q"]
@@ -89,6 +90,7 @@ font_size = 96
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_hib26")
+metadata/_edit_vertical_guides_ = [176.0]
 
 [node name="Desktop" parent="." instance=ExtResource("2_kxbcg")]
 z_index = 0
@@ -118,6 +120,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_n3yhk")
 }
 autoplay = "sticky_note_animation"
+
+[node name="TapScreenTape" type="Sprite2D" parent="InteractiveElements"]
+position = Vector2(1016, 432)
+texture = ExtResource("5_awvna")
 
 [node name="CrumpledStickyNote" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 visible = false
@@ -254,9 +260,9 @@ layout_mode = 2
 focus_mode = 0
 theme = ExtResource("6_43f6x")
 theme_type_variation = &"FlatButton"
-theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
 text = "SETTINGS"
 flat = true
@@ -270,9 +276,9 @@ layout_mode = 2
 focus_mode = 0
 theme = ExtResource("6_43f6x")
 theme_type_variation = &"FlatButton"
-theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
 text = "QUIT"
 flat = true
