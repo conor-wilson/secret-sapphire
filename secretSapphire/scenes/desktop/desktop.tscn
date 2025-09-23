@@ -1478,7 +1478,7 @@ collision_mask = 32768
 physics_material_override = SubResource("PhysicsMaterial_kq6gu")
 
 [node name="LeftBorder" type="CollisionShape2D" parent="StaticBorder"]
-position = Vector2(16, 264)
+position = Vector2(8, 256)
 shape = SubResource("RectangleShape2D_p62x3")
 
 [node name="RightBorder" type="CollisionShape2D" parent="StaticBorder"]

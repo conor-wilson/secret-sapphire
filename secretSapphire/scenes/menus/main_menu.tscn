@@ -121,10 +121,6 @@ libraries = {
 }
 autoplay = "sticky_note_animation"
 
-[node name="TapScreenTape" type="Sprite2D" parent="InteractiveElements"]
-position = Vector2(1016, 432)
-texture = ExtResource("5_awvna")
-
 [node name="CrumpledStickyNote" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 visible = false
 position = Vector2(184, 328)
@@ -136,6 +132,10 @@ texture = ExtResource("4_ylyox")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="InteractiveElements/CrumpledStickyNote"]
 polygon = PackedVector2Array(8, -45, 16, -35, 24, -34, 43, -30, 43, -20, 46, -18, 43, -11, 40, -3, 46, 7, 42, 15, 38, 20, 39, 27, 38, 35, 28, 41, 21, 46, 5, 42, 0, 42, -13, 47, -22, 42, -31, 47, -36, 43, -38, 33, -35, 28, -37, 19, -46, -2, -46, -14, -40, -22, -39, -25, -39, -31, -32, -37, -30, -40, -26, -40, -19, -36, -12, -39, -9, -40, 0, -43)
+
+[node name="DontTouchTape" type="Sprite2D" parent="InteractiveElements"]
+position = Vector2(1016, 112)
+texture = ExtResource("5_awvna")
 
 [node name="Panel" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 collision_layer = 2
