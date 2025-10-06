@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1rpws7w7ml0u"
-path="res://.godot/imported/StickyNoteTest-Sheet.png-20deff9d36fdec920606654c78e81e4e.ctex"
+uid="uid://e2dhukxhvbl8"
+path="res://.godot/imported/DontTouchTape-Sheet.png-71f4cc9500a4f3f0af39c1705c5d0e00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/menu_components/StickyNoteTest-Sheet.png"
-dest_files=["res://.godot/imported/StickyNoteTest-Sheet.png-20deff9d36fdec920606654c78e81e4e.ctex"]
+source_file="res://assets/art/menu_components/DontTouchTape-Sheet.png"
+dest_files=["res://.godot/imported/DontTouchTape-Sheet.png-71f4cc9500a4f3f0af39c1705c5d0e00.ctex"]
 
 [params]
 
