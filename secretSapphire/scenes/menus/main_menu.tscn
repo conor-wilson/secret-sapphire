@@ -164,6 +164,7 @@ visible = false
 position = Vector2(184, 328)
 collision_layer = 16
 physics_material_override = SubResource("PhysicsMaterial_2ej0i")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledStickyNote"]
 texture = ExtResource("4_ylyox")
@@ -182,9 +183,38 @@ libraries = {
 }
 autoplay = "DontTouchTape"
 
+[node name="CrumpledDontTape" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+visible = false
+position = Vector2(1026, 123)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledDontTape"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_ylyox")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="InteractiveElements/CrumpledDontTape"]
+scale = Vector2(0.4, 0.4)
+polygon = PackedVector2Array(8, -45, 16, -35, 24, -34, 43, -30, 43, -20, 46, -18, 43, -11, 40, -3, 46, 7, 42, 15, 38, 20, 39, 27, 38, 35, 28, 41, 21, 46, 5, 42, 0, 42, -13, 47, -22, 42, -31, 47, -36, 43, -38, 33, -35, 28, -37, 19, -46, -2, -46, -14, -40, -22, -39, -25, -39, -31, -32, -37, -30, -40, -26, -40, -19, -36, -12, -39, -9, -40, 0, -43)
+
+[node name="CrumpledTouchTape" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+visible = false
+position = Vector2(1007, 100)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledTouchTape"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_ylyox")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="InteractiveElements/CrumpledTouchTape"]
+scale = Vector2(0.4, 0.4)
+polygon = PackedVector2Array(8, -45, 16, -35, 24, -34, 43, -30, 43, -20, 46, -18, 43, -11, 40, -3, 46, 7, 42, 15, 38, 20, 39, 27, 38, 35, 28, 41, 21, 46, 5, 42, 0, 42, -13, 47, -22, 42, -31, 47, -36, 43, -38, 33, -35, 28, -37, 19, -46, -2, -46, -14, -40, -22, -39, -25, -39, -31, -32, -37, -30, -40, -26, -40, -19, -36, -12, -39, -9, -40, 0, -43)
+
 [node name="Panel" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
 collision_layer = 2
 break_shake_strength = 25.0
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Panel"]
 position = Vector2(576, 256)
@@ -305,9 +335,9 @@ layout_mode = 2
 focus_mode = 0
 theme = ExtResource("6_43f6x")
 theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
-theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
 text = "SETTINGS"
 flat = true
@@ -321,9 +351,9 @@ layout_mode = 2
 focus_mode = 0
 theme = ExtResource("6_43f6x")
 theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.615686, 0.615686, 0.615686, 1)
-theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
 text = "QUIT"
 flat = true

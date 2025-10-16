@@ -90,7 +90,15 @@ func detatch_sticky_note():
 	var y_force:float = randf_range(-750, 0)
 	$InteractiveElements/CrumpledStickyNote.apply_impulse(Vector2(x_force,y_force), Vector2(10,10))
 
-#
+func detatch_tape():
+	$InteractiveElements/DontTouchTape.hide()
+	$InteractiveElements/CrumpledDontTape.show()
+	$InteractiveElements/CrumpledTouchTape.show()
+	
+	_detatch_element_if_exists("InteractiveElements/CrumpledDontTape", 15)
+	_detatch_element_if_exists("InteractiveElements/CrumpledTouchTape", 15)
+	
+
 ## TODO: This is purely for debugging. This function should be removed once it's
 ## no-longer needed.
 #func _input(event: InputEvent) -> void:

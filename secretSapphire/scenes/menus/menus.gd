@@ -311,6 +311,7 @@ func _begin_help_bot_monologue():
 	$Sound/StaticNoise.stop()
 	$Menus/MainMenu.clear_static()
 	$Menus/MainMenu.detatch_sticky_note()
+	$Menus/MainMenu.detatch_tape()
 	
 	await get_tree().create_timer(4).timeout
 	
