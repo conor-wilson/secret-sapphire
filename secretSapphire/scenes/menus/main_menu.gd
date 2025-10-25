@@ -63,7 +63,7 @@ func _detatch_element_if_exists(path: NodePath, strength:float=1):
 	# Check that the element can be detatched
 	if element == null: return
 	if element is not InteractiveElement: return
-	if !element.idle:   return
+	if !element.idle: return
 	
 	# Detatch element
 	element.detatch(strength)
@@ -95,9 +95,8 @@ func detatch_tape():
 	$InteractiveElements/CrumpledDontTape.show()
 	$InteractiveElements/CrumpledTouchTape.show()
 	
-	_detatch_element_if_exists("InteractiveElements/CrumpledDontTape", 15)
-	_detatch_element_if_exists("InteractiveElements/CrumpledTouchTape", 15)
-	
+	_detatch_element_if_exists("InteractiveElements/CrumpledDontTape", 30)
+	_detatch_element_if_exists("InteractiveElements/CrumpledTouchTape", 30)
 
 ## TODO: This is purely for debugging. This function should be removed once it's
 ## no-longer needed.
@@ -154,3 +153,9 @@ func hide_crumpled_paper():
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_tape_break_zone_body_entered(body: Node2D) -> void:
+	print("YYYYYYOUCH!!!")
+	if body == $InteractiveElements/CrumpledDontTape || body == $InteractiveElements/CrumpledTouchTape:
+		body.queue_free()

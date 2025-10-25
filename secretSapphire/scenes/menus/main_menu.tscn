@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=41 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/menus/interactive_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" uid="uid://s1ncxqgkrxyo" path="res://scenes/menus/main_menu.gd" id="1_hib26"]
@@ -128,6 +128,9 @@ font_size = 96
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfed"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8vdk"]
+size = Vector2(1088, 43)
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_hib26")
 metadata/_edit_vertical_guides_ = [176.0]
@@ -189,6 +192,12 @@ autoplay = "DontTouchTape"
 visible = false
 position = Vector2(1026, 123)
 collision_layer = 2
+collision_mask = 131073
+breakable = false
+detatch_shake_strength = 0.0
+detatch_shake_fade = 0.0
+break_shake_strength = 0.0
+break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledDontTape"]
@@ -202,6 +211,12 @@ polygon = PackedVector2Array(0, 60, 10, 50, 17.5, 50, 27.5, 40, 27.5, 35, 32.5, 
 visible = false
 position = Vector2(1007, 100)
 collision_layer = 2
+collision_mask = 131073
+breakable = false
+detatch_shake_strength = 0.0
+detatch_shake_fade = 0.0
+break_shake_strength = 0.0
+break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledTouchTape"]
@@ -475,6 +490,14 @@ vertical_alignment = 2
 [node name="SelectNoise" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("23_0uyfe")
 
+[node name="TapeBreakZone" type="Area2D" parent="."]
+collision_layer = 131072
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TapeBreakZone"]
+position = Vector2(576, 626.5)
+shape = SubResource("RectangleShape2D_n8vdk")
+
 [connection signal="a_collected" from="Desktop" to="." method="_on_desktop_a_collected"]
 [connection signal="hammer_man_level_changed" from="Desktop" to="." method="_on_desktop_hammer_man_level_changed"]
 [connection signal="s_collected" from="Desktop" to="." method="_on_desktop_s_collected"]
@@ -490,3 +513,6 @@ stream = ExtResource("23_0uyfe")
 [connection signal="click" from="InteractiveElements/Screw4" to="." method="_on_screw_4_click"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="area_entered" from="TapeBreakZone" to="." method="_on_tape_break_zone_area_entered"]
+[connection signal="body_entered" from="TapeBreakZone" to="." method="_on_tape_break_zone_body_entered"]
+[connection signal="body_shape_entered" from="TapeBreakZone" to="." method="_on_tape_break_zone_body_shape_entered"]
