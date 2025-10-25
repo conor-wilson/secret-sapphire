@@ -177,7 +177,6 @@ font_color = Color(0.615686, 0.615686, 0.615686, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rkjic"]
 font = ExtResource("5_bxrir")
-font_size = 32
 font_color = Color(0.615686, 0.615686, 0.615686, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dd5ek"]
@@ -1199,6 +1198,7 @@ metadata/_edit_group_ = true
 [node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/Help"]
 position = Vector2(0, -10)
 tile_map_data = PackedByteArray("AAD5//f/AAAFAAAAAAD6//f/AAAFAAAAAAD7//f/AAAFAAAAAAD8//f/AAAFAAAAAAD9//f/AAAFAAAAAAD+//f/AAAFAAAAAAD///f/AAAFAAAAAAAAAPf/AAAFAAAAAAABAPf/AAAFAAAAAAACAPf/AAAFAAAAAAADAPf/AAAFAAAAAAAEAPf/AAAFAAAAAAAFAPf/AAAFAAAAAAAGAPf/AAAFAAAAAAA=")
+enabled = false
 tile_set = ExtResource("29_lmll0")
 
 [node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Help"]
