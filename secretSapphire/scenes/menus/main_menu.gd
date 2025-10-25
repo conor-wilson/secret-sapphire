@@ -156,6 +156,9 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_tape_break_zone_body_entered(body: Node2D) -> void:
-	print("YYYYYYOUCH!!!")
+	# NOTE to any developers reading this: Why not just have the crumpled tape be breakable? Because
+	# I want them to bounce on the walls first before they break on the ground. This is a very
+	# hard-coded way to make that happen, but I'm trying to get final build out right now and it
+	# works just fine :)
 	if body == $InteractiveElements/CrumpledDontTape || body == $InteractiveElements/CrumpledTouchTape:
 		body.queue_free()

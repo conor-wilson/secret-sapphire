@@ -78,11 +78,14 @@ func _on_main_menu_pressed() -> void:
 	_ready()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("reset"):
-		menus.queue_free()
-		var new_menus:Menus = menus_scene.instantiate()
-		add_child(new_menus)
-		menus = new_menus
-		menus.mute_music_toggled.connect(_on_menus_mute_music_toggled)
-		menus.start_game.connect(_on_menus_start_game)
-		reset()
+	pass
+	
+	# NOTE: Uncomment if you want a dodgy reset mechanic...
+	#if event.is_action_pressed("reset"):
+		#menus.queue_free()
+		#var new_menus:Menus = menus_scene.instantiate()
+		#add_child(new_menus)
+		#menus = new_menus
+		#menus.mute_music_toggled.connect(_on_menus_mute_music_toggled)
+		#menus.start_game.connect(_on_menus_start_game)
+		#reset()
