@@ -551,7 +551,14 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 		
 		if $Menus/CaveOfWonders.talking_about_paper: return
 		
-		if stage == Stage.READY_TO_START_GAME:
+		if stage == Stage.ALL_LETTERS_COLLECTED || stage == Stage.READY_FOR_BOSS_BATTLE || (stage == Stage.LETTERS_MISSING && $Menus/CaveOfWonders.t_2_revealed):
+			var lines:Array[String] = [
+			"I have nothing more to give you, and you have no more secrets to give me.",
+			"Good luck with the HELP BOT."
+			]
+			DialogueManager.stop_all_dialogue()
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
+		elif stage == Stage.READY_TO_START_GAME:
 			var lines:Array[String] = [
 				"Congratulations on defeating the Help Bot.",
 				"I know the DEV would be proud of you.",

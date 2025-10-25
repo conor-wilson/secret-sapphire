@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene load_steps=92 format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" uid="uid://dy3v3clrgucsk" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://do1updqg30rpo" path="res://assets/art/desktop_windows/Help.png" id="31_231pw"]
 [ext_resource type="Texture2D" uid="uid://dyncku344ffb" path="res://assets/art/desktop_icons/RecyclingBinIcon.png" id="31_hbmeb"]
 [ext_resource type="PhysicsMaterial" uid="uid://dwuph7wln46bi" path="res://scenes/desktop/scrap_material.tres" id="31_p5886"]
+[ext_resource type="FontFile" uid="uid://b1juq587jcwdq" path="res://assets/fonts/Formal_Future.ttf" id="32_2px4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
 size = Vector2(48, 48)
@@ -170,6 +171,7 @@ size = Vector2(224, 308)
 size = Vector2(224, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7lhh2"]
+font = ExtResource("32_2px4q")
 font_size = 30
 font_color = Color(0.615686, 0.615686, 0.615686, 1)
 
