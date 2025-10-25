@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfob18q7r7scw"
-path="res://.godot/imported/TapScreenTape.png-7df6b527e19a2dc5b05f4c47a4d39e5d.ctex"
+uid="uid://7c2jgpay5scj"
+path="res://.godot/imported/CrumpledTape1.png-39b2f29d4c6ba6eb633bb126f6454c8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/menu_components/TapScreenTape.png"
-dest_files=["res://.godot/imported/TapScreenTape.png-7df6b527e19a2dc5b05f4c47a4d39e5d.ctex"]
+source_file="res://assets/art/menu_components/CrumpledTape1.png"
+dest_files=["res://.godot/imported/CrumpledTape1.png-39b2f29d4c6ba6eb633bb126f6454c8e.ctex"]
 
 [params]
 
