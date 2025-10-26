@@ -1,4 +1,4 @@
-extends Node2D
+class_name SearchForTheSecretSapphire extends Node2D
 
 signal victory
 
@@ -26,7 +26,7 @@ func play():
 	$Music.play()
 
 func stop():
-	hide()
+	#hide()
 	active = false
 	$Music.stop()
 

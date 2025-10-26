@@ -57,13 +57,14 @@ func _ready() -> void:
 	$HelpBot.set_new_idle_location($MovementMarkers/CageMarkers/CageMarker1, idle_markers, 400, 10)
 
 func play():
-	show()
+	#show()
 	active = true
 	$Sound/DetectiveMusic.play()
 
 func stop():
-	hide()
+	#hide()
 	active = false
+	HammerManManager.hammer_man.active = false
 	$Sound/DetectiveMusic.stop()
 	$Sound/MainMusic.stop()
 	$Sound/BossBattleMusic.stop()

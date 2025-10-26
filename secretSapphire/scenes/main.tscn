@@ -127,6 +127,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_esnhb")
 text = "MAIN MENU"
 flat = true
 
+[node name="BlackScreen" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
 [connection signal="mute_music_toggled" from="Menus" to="." method="_on_menus_mute_music_toggled"]
 [connection signal="start_game" from="Menus" to="." method="_on_menus_start_game"]
 [connection signal="victory" from="SearchForTheSecretSapphire" to="." method="_on_search_for_the_secret_sapphire_victory"]
