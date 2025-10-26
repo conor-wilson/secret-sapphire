@@ -1,9 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://b17btrbwqxhtb"]
+[gd_scene load_steps=41 format=3 uid="uid://b17btrbwqxhtb"]
 
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="1_ahu4p"]
 [ext_resource type="Script" uid="uid://bo08pedf72lh2" path="res://scenes/search_for_sapphire/title_sequence.gd" id="1_q7gyh"]
 [ext_resource type="Texture2D" uid="uid://dfaxam1wba60p" path="res://assets/art/splashscreen/TitleScreen-Sheet.png" id="2_q7gyh"]
 [ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="3_1t0yn"]
+[ext_resource type="AudioStream" uid="uid://mw6ulvl1do3b" path="res://assets/audio/dark-wind-19785.mp3" id="5_q7gyh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hc1kl"]
 font = ExtResource("1_ahu4p")
@@ -289,3 +290,8 @@ vertical_alignment = 1
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
+
+[node name="SpookyIntroMusic" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(576, 320)
+stream = ExtResource("5_q7gyh")
+volume_db = 5.962

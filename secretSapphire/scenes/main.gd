@@ -75,9 +75,9 @@ func play_secret_sapphire():
 	# Start of game should be more abrupt the first time (for dramatic effect)
 	if first_victory:
 		first_victory = false
-		title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 3, true)
+		title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 5, true, true)
 	else:
-		title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 3, false)
+		title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 5, false, true)
 	
 	# Start the "actual" game
 	await title_sequence.done
@@ -86,6 +86,7 @@ func play_secret_sapphire():
 func secret_sapphire_victory():
 	search_for_the_secret_sapphire.stop()
 	transition_screen(search_for_the_secret_sapphire, victory_screen, 1)
+	$TitleSequence/SpookyIntroMusic.play()
 
 
 #################################
@@ -110,11 +111,13 @@ func _on_search_for_the_secret_sapphire_victory() -> void:
 	secret_sapphire_victory()
 
 func _on_play_again_pressed() -> void:
+	$TitleSequence/SpookyIntroMusic.stop()
 	search_for_the_secret_sapphire.reset()
 	transition_screen(victory_screen, search_for_the_secret_sapphire, 1.5)
 	search_for_the_secret_sapphire.play()
 
 func _on_main_menu_pressed() -> void:
+	$TitleSequence/SpookyIntroMusic.stop()
 	menus.play()
 	# NOTE: This could not be more jankey, but it works perfectly fine.
 	if $Menus/Menus/MainMenu/Desktop/DesktopWindows/HammerManEXE.visible:

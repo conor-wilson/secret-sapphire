@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://duh2whuig04ys"]
+[gd_scene load_steps=12 format=3 uid="uid://duh2whuig04ys"]
 
 [ext_resource type="PackedScene" uid="uid://drpjvxm3qjcl7" path="res://scenes/menus/menus.tscn" id="1_7ucwg"]
 [ext_resource type="Script" uid="uid://bftu8upase4be" path="res://scenes/main.gd" id="1_lvo15"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="4_oiyas"]
 [ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="5_ua2gr"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_8mhct"]
+[ext_resource type="AudioStream" uid="uid://mw6ulvl1do3b" path="res://assets/audio/dark-wind-19785.mp3" id="8_85g3d"]
 [ext_resource type="PackedScene" uid="uid://b17btrbwqxhtb" path="res://scenes/search_for_sapphire/title_sequence.tscn" id="8_tipki"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ve4v"]
@@ -97,6 +98,11 @@ theme_override_colors/font_hover_color = Color(0.247059, 0.247059, 0.454902, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_esnhb")
 text = "MAIN MENU"
 flat = true
+
+[node name="SpookyIntroMusic" type="AudioStreamPlayer2D" parent="VictoryScreen"]
+position = Vector2(576, 320)
+stream = ExtResource("8_85g3d")
+volume_db = 5.962
 
 [connection signal="mute_music_toggled" from="Menus" to="." method="_on_menus_mute_music_toggled"]
 [connection signal="start_game" from="Menus" to="." method="_on_menus_start_game"]

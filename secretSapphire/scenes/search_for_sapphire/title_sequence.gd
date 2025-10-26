@@ -6,21 +6,27 @@ signal done
 @onready var title_screen: ColorRect = $TitleScreen
 @onready var black_screen: ColorRect = $BlackScreen
 
-func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:float = 3.0, hard_cut:bool=false):
+@onready var spooky_intro_music: AudioStreamPlayer2D = $SpookyIntroMusic
+
+func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:float = 3.0, hard_cut:bool=false, include_music:bool = false):
 	
 	if previous_screen == null:
 		previous_screen = black_screen
 	
+	if include_music:
+		spooky_intro_music.play()
+	
 	if hard_cut:
 		cut_to_black()
-		await transition_screen(black_screen, credit_screen, 3)
+		await transition_screen(black_screen, credit_screen, linger_time)
 	else:
-		await transition_screen(previous_screen, credit_screen, 3)
+		await transition_screen(previous_screen, credit_screen, linger_time)
 	
 	await transition_screen(credit_screen, title_screen, linger_time)
 	done.emit()
+	spooky_intro_music.stop()
 	transition_screen(title_screen, final_screen, linger_time)
-	
+
 
 func transition_screen(from_screen:Node, to_screen:Node, linger_time:float = 3.0):
 	TransitionFade.transition()
