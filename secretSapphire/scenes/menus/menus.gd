@@ -64,7 +64,8 @@ func play():
 func stop():
 	#hide()
 	active = false
-	HammerManManager.hammer_man.active = false
+	if HammerManManager.hammer_man != null:
+		HammerManManager.hammer_man.active = false
 	$Sound/DetectiveMusic.stop()
 	$Sound/MainMusic.stop()
 	$Sound/BossBattleMusic.stop()

@@ -93,7 +93,6 @@ func play_secret_sapphire():
 	search_for_the_secret_sapphire.play()
 
 func secret_sapphire_victory():
-	await get_tree().create_timer(3).timeout
 	search_for_the_secret_sapphire.stop()
 	transition_screen(search_for_the_secret_sapphire, victory_screen, 1)
 
