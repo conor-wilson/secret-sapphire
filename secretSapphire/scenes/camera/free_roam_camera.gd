@@ -12,7 +12,8 @@ var original_pos:Vector2 = global_position
 
 @export var smoothing_speed_free_roam:float = 32
 @export var smoothing_speed_stationary:float = 10
-@export var snap_distance:float = 64
+@export var snap_distance:float = 64 # Normal snap distance
+@export var max_snap_distance:float = 128 # Snap distance when more tolerance is required
 @export var snap_tolerence:float = 0.1
 @export var snap_points:Array[Marker2D] = []
 @export var zoom_speed:float = 0.1
@@ -27,10 +28,11 @@ var original_pos:Vector2 = global_position
 @export var min_vibration_noise_pitch:float = 0.5
 @export var vibraction_noise_pitch_variation:float = 0.3
 
+var min_snap_distance:float = 64
 
 func _ready() -> void:
 	ScreenShakeManager.shake.connect(screen_shake_noise)
-	pass
+	min_snap_distance = snap_distance
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,7 +46,7 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("return") && free_roam_mode_enabled && home_point != null:
 		global_position = home_point.global_position
-		zoom = Vector2(1,1)
+		tween_to_zoom(Vector2(1,1))
 		returned_home.emit()
 	
 	if free_roam_mode_enabled && moving && original_mouse_pos != null:
@@ -141,6 +143,17 @@ func screen_shake_noise(strength:float, supress_noise:bool):
 		print("Shake Strength:", strength, "Shake Pitch:",$VibrationNoise.pitch_scale)
 		
 		if !supress_noise: $VibrationNoise.play()
+
+func increase_snap_distance():
+	snap_distance = max_snap_distance
+
+func decrease_snap_distance():
+	snap_distance = min_snap_distance
+
+func tween_to_zoom(new_zoom:Vector2):
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "zoom", new_zoom, 0.1).set_ease(Tween.EASE_OUT)
+	await tween.finished
 
 ## Roaming Feature Setters
 

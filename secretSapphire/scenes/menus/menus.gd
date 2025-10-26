@@ -146,6 +146,9 @@ func _input(event: InputEvent) -> void:
 
 func reform_start_button():
 	if !active: return
+	
+	$Camera/FreeRoamCamera.tween_to_zoom(Vector2(1,1))
+	
 	await get_tree().create_timer(1).timeout
 	
 	$CollectedLetters.jump()
@@ -154,6 +157,8 @@ func reform_start_button():
 	
 	$TrueStartButton.show()
 	$TrueStartButton.detatch(40)
+	
+	$Camera/FreeRoamCamera.decrease_snap_distance()
 	
 	stage = Stage.READY_FOR_BOSS_BATTLE
 	
@@ -709,6 +714,7 @@ func _on_secret_settings_menu_t_1_collected(global_pos:Vector2) -> void:
 func _on_collected_letters_all_letters_collected() -> void:
 	if !active: return
 	stage = Stage.ALL_LETTERS_COLLECTED
+	$Camera/FreeRoamCamera.increase_snap_distance()
 	if $Camera/FreeRoamCamera.position == $Camera/MainMenuCameraMarker.position:
 		reform_start_button()
 
@@ -727,6 +733,7 @@ func _on_true_start_button_click() -> void:
 	if stage == Stage.READY_FOR_BOSS_BATTLE:
 		_start_boss_battle()
 	if stage == Stage.READY_TO_START_GAME:
+		$Camera/FreeRoamCamera.zoom = Vector2(1,1)
 		start_game.emit()
 
 
