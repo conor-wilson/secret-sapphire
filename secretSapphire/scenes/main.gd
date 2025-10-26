@@ -25,10 +25,8 @@ extends Node
 var menus_scene := preload("res://scenes/menus/menus.tscn")
 @onready var menus: Menus = $Menus
 @onready var search_for_the_secret_sapphire: SearchForTheSecretSapphire = $SearchForTheSecretSapphire
-@onready var credit_screen: ColorRect = $CreditScreen
-@onready var title_screen: ColorRect = $TitleScreen
 @onready var victory_screen: ColorRect = $VictoryScreen
-@onready var black_screen: ColorRect = $BlackScreen
+@onready var title_sequence: TitleSequence = $TitleSequence
 
 var first_victory:bool = true
 
@@ -41,17 +39,15 @@ func _ready() -> void:
 
 func reset():
 	
-	# Hide everything except for the black screen
-	cut_to_black()
+	# Hide everything (except for the black screen)
+	hide_all()
+	
+	# Play the intro sequence
+	title_sequence.play_title_sequence(null, menus, 2)
 	
 	# Start the game (which starts the music)
 	search_for_the_secret_sapphire.stop()
 	menus.play()
-	
-	# Play the intro sequence
-	await transition_screen(black_screen, credit_screen, 1.5)
-	await transition_screen(credit_screen, title_screen, 1.5)
-	transition_screen(title_screen, menus, 1.5)
 
 
 #######################
@@ -65,13 +61,10 @@ func transition_screen(from_screen:Node, to_screen:Node, linger_time:float = 3.0
 	to_screen.show()
 	await get_tree().create_timer(linger_time).timeout
 
-func cut_to_black():
+func hide_all():
 	menus.hide()
 	search_for_the_secret_sapphire.hide()
-	credit_screen.hide()
-	title_screen.hide()
 	victory_screen.hide()
-	black_screen.show()
 
 func play_secret_sapphire():
 	
@@ -81,15 +74,13 @@ func play_secret_sapphire():
 	
 	# Start of game should be more abrupt the first time (for dramatic effect)
 	if first_victory:
-		cut_to_black()
 		first_victory = false
-		await transition_screen(black_screen, credit_screen, 3)
+		title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 3, true)
 	else:
-		await transition_screen(menus, credit_screen, 3)
+		title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 3, false)
 	
-	# Play the intro sequence
-	await transition_screen(credit_screen, title_screen, 3)
-	transition_screen(title_screen, search_for_the_secret_sapphire, 1)
+	# Start the "actual" game
+	await title_sequence.done
 	search_for_the_secret_sapphire.play()
 
 func secret_sapphire_victory():

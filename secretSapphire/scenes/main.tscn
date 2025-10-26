@@ -6,10 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="4_oiyas"]
 [ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="5_ua2gr"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="6_8mhct"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_3j0bf"]
-font = ExtResource("4_oiyas")
-font_size = 36
+[ext_resource type="PackedScene" uid="uid://b17btrbwqxhtb" path="res://scenes/search_for_sapphire/title_sequence.tscn" id="8_tipki"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ve4v"]
 font = ExtResource("5_ua2gr")
@@ -29,36 +26,10 @@ script = ExtResource("1_lvo15")
 
 [node name="SearchForTheSecretSapphire" parent="." instance=ExtResource("3_wl75p")]
 
-[node name="CreditScreen" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="CreditScreen"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-text = "A game by Conor Wilson / @QuietLantern"
-label_settings = SubResource("LabelSettings_3j0bf")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TitleScreen" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="TitleScreen"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-text = "THE SEARCH FOR THE
-SECRET SAPPHIRE"
-label_settings = SubResource("LabelSettings_2ve4v")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="TitleSequence" parent="." instance=ExtResource("8_tipki")]
 
 [node name="VictoryScreen" type="ColorRect" parent="."]
+visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
@@ -126,11 +97,6 @@ theme_override_colors/font_hover_color = Color(0.247059, 0.247059, 0.454902, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_esnhb")
 text = "MAIN MENU"
 flat = true
-
-[node name="BlackScreen" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
 
 [connection signal="mute_music_toggled" from="Menus" to="." method="_on_menus_mute_music_toggled"]
 [connection signal="start_game" from="Menus" to="." method="_on_menus_start_game"]
