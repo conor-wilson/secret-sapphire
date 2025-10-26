@@ -54,7 +54,7 @@ func release_confetti():
 		sprite.texture = confetti_sprites[randi_range(0, len(confetti_sprites)-1)]
 		
 		# TODO: Also randomise scale?
-		sprite.position = Vector2(randf_range(0, screen_width), -32)
+		sprite.position = Vector2(randf_range(0, screen_width), -64)
 		sprite.scale = Vector2.ONE*randf_range(0.75, 1.25)
 		
 		add_child(sprite)
