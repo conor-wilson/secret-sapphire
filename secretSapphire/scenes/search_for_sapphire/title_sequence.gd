@@ -13,7 +13,7 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 	if previous_screen == null:
 		previous_screen = black_screen
 	
-	if include_music:
+	if include_music && !Global.music_muted:
 		spooky_intro_music.play()
 	
 	if hard_cut:

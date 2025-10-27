@@ -86,7 +86,7 @@ func play_secret_sapphire():
 func secret_sapphire_victory():
 	search_for_the_secret_sapphire.stop()
 	transition_screen(search_for_the_secret_sapphire, victory_screen, 1)
-	$TitleSequence/SpookyIntroMusic.play()
+	if !Global.music_muted: $TitleSequence/SpookyIntroMusic.play()
 
 
 #################################

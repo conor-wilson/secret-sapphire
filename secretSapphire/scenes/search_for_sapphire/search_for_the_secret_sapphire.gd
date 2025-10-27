@@ -25,7 +25,7 @@ func reset():
 func play():
 	show()
 	active = true
-	$Music.play()
+	if !Global.music_muted: $Music.play()
 
 func stop():
 	#hide()
@@ -47,7 +47,7 @@ const NUM_CONFETTI:int = 128
 
 func release_confetti():
 	
-	$SFX/ConfettiHorn.play()
+	if !Global.sfx_muted: $SFX/ConfettiHorn.play()
 	
 	var screen_width = get_viewport_rect().size.x
 	
@@ -71,10 +71,10 @@ func _on_safe_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 	if event.is_action_released("click"):
 		if safe_locked:
 			$SFX/SafeKnock.pitch_scale = randf_range(0.9, 1.1)
-			$SFX/SafeKnock.play()
+			if !Global.sfx_muted: $SFX/SafeKnock.play()
 			$Instructions.text = "<SAFE is LOCKED>"
 		else:
-			$SFX/SafeOpening.play()
+			if !Global.sfx_muted: $SFX/SafeOpening.play()
 			safe_open = true
 			$Instructions.text = "<The SAFE opens>"
 			$Safe.hide()
@@ -83,7 +83,7 @@ func _on_safe_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 func _on_picture_frame_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !active: return
 	if event.is_action_released("click"):
-		$SFX/PictureFrameCrash.play()
+		if !Global.sfx_muted: $SFX/PictureFrameCrash.play()
 		$PictureFrame.hide()
 		picture_on_wall = false
 
@@ -91,7 +91,7 @@ func _on_picture_frame_input_event(viewport: Node, event: InputEvent, shape_idx:
 func _on_red_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !active: return
 	if event.is_action_pressed("click") && !picture_on_wall && !safe_open:
-		$SFX/Button.play()
+		if !Global.sfx_muted: $SFX/Button.play()
 		safe_locked = false
 		$Instructions.text = "<The SAFE makes a CLICK noise>"
 		
