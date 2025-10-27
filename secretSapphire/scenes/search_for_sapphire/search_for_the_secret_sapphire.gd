@@ -7,6 +7,7 @@ var active:bool = true
 var safe_locked:bool = true
 var safe_open:bool = false
 var picture_on_wall:bool = true
+var victory_achieved:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +19,7 @@ func reset():
 	safe_locked = true
 	picture_on_wall = true
 	safe_open = false
+	victory_achieved = false
 	$Instructions.text = "Find the SECRET SAPPHIRE"
 
 func play():
@@ -45,7 +47,7 @@ const NUM_CONFETTI:int = 128
 
 func release_confetti():
 	
-	$ConfettiHorn.play()
+	$SFX/ConfettiHorn.play()
 	
 	var screen_width = get_viewport_rect().size.x
 	
@@ -68,8 +70,11 @@ func _on_safe_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 	if !active: return
 	if event.is_action_released("click"):
 		if safe_locked:
+			$SFX/SafeKnock.pitch_scale = randf_range(0.9, 1.1)
+			$SFX/SafeKnock.play()
 			$Instructions.text = "<SAFE is LOCKED>"
 		else:
+			$SFX/SafeOpening.play()
 			safe_open = true
 			$Instructions.text = "<The SAFE opens>"
 			$Safe.hide()
@@ -78,6 +83,7 @@ func _on_safe_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 func _on_picture_frame_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !active: return
 	if event.is_action_released("click"):
+		$SFX/PictureFrameCrash.play()
 		$PictureFrame.hide()
 		picture_on_wall = false
 
@@ -85,16 +91,17 @@ func _on_picture_frame_input_event(viewport: Node, event: InputEvent, shape_idx:
 func _on_red_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !active: return
 	if event.is_action_pressed("click") && !picture_on_wall && !safe_open:
+		$SFX/Button.play()
 		safe_locked = false
 		$Instructions.text = "<The SAFE makes a CLICK noise>"
 		
 
 func _on_sapphire_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !active: return
-	if event.is_action_pressed("click") && safe_open:
+	if event.is_action_pressed("click") && safe_open && !victory_achieved:
 		$Instructions.text = "<You have found the SECRET SAPPHIRE!>"
+		victory_achieved = true
 		release_confetti()
 		print("GAME WON!")
 		await get_tree().create_timer(4).timeout
 		victory.emit()
-		

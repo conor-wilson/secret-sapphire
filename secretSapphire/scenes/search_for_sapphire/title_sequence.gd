@@ -17,6 +17,7 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 		spooky_intro_music.play()
 	
 	if hard_cut:
+		previous_screen.hide()
 		cut_to_black()
 		await transition_screen(black_screen, credit_screen, linger_time)
 	else:
