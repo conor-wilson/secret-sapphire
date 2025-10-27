@@ -122,8 +122,9 @@ func open(pos: Vector2) -> void:
 	if new_pos.y > (max_global_y - min_open_boarder_whitespace): new_pos.y = (max_global_y - min_open_boarder_whitespace)
 	elif new_pos.y < (min_global_y + min_open_boarder_whitespace): new_pos.y = (min_global_y + min_open_boarder_whitespace)
 	
-	# Move to new position and open the object
+	# Move to new position and to the top of the parent
 	global_position = new_pos
+	move_to_top_of_parent()
 	
 	# Open the object and activate its children
 	show()
