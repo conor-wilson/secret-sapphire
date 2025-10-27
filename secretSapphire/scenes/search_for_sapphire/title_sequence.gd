@@ -2,13 +2,14 @@ class_name TitleSequence extends Node2D
 
 signal done
 
+@onready var photosensitivity_screen: ColorRect = $PhotosensitivityScreen
 @onready var credit_screen: ColorRect = $CreditScreen
 @onready var title_screen: ColorRect = $TitleScreen
 @onready var black_screen: ColorRect = $BlackScreen
 
 @onready var spooky_intro_music: AudioStreamPlayer2D = $SpookyIntroMusic
 
-func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:float = 3.0, hard_cut:bool=false, include_music:bool = false):
+func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:float = 3.0, hard_cut:bool=false, include_music:bool = false, include_photo_warning:bool=false):
 	
 	if previous_screen == null:
 		previous_screen = black_screen
@@ -19,7 +20,11 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 	if hard_cut:
 		previous_screen.hide()
 		cut_to_black()
-		await transition_screen(black_screen, credit_screen, linger_time)
+		previous_screen = black_screen
+	
+	if include_photo_warning:
+		await transition_screen(previous_screen, photosensitivity_screen, linger_time)
+		await transition_screen(photosensitivity_screen, credit_screen, linger_time)
 	else:
 		await transition_screen(previous_screen, credit_screen, linger_time)
 	

@@ -43,7 +43,7 @@ func reset():
 	hide_all()
 	
 	# Play the intro sequence
-	title_sequence.play_title_sequence(null, menus, 2)
+	title_sequence.play_title_sequence(null, menus, 2, false, false, true)
 	
 	# Start the game (which starts the music)
 	search_for_the_secret_sapphire.stop()
