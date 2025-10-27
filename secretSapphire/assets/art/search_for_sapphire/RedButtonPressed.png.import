@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://powfeeyikck"
-path="res://.godot/imported/SapphireSearchBackground.png-7433935d44d4ace9636f73516ff4cf9c.ctex"
+uid="uid://dmv4iwggx1bma"
+path="res://.godot/imported/RedButtonPressed.png-0d6e9f6612b4678b54ae597d01bd07f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/search_for_sapphire/SapphireSearchBackground.png"
-dest_files=["res://.godot/imported/SapphireSearchBackground.png-7433935d44d4ace9636f73516ff4cf9c.ctex"]
+source_file="res://assets/art/search_for_sapphire/RedButtonPressed.png"
+dest_files=["res://.godot/imported/RedButtonPressed.png-0d6e9f6612b4678b54ae597d01bd07f0.ctex"]
 
 [params]
 

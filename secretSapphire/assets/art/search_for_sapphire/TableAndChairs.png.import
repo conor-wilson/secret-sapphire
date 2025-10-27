@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://powfeeyikck"
-path="res://.godot/imported/SapphireSearchBackground.png-7433935d44d4ace9636f73516ff4cf9c.ctex"
+uid="uid://b8dg3b2s7y3j1"
+path="res://.godot/imported/TableAndChairs.png-112922598efac960c6137ada92f8583d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/search_for_sapphire/SapphireSearchBackground.png"
-dest_files=["res://.godot/imported/SapphireSearchBackground.png-7433935d44d4ace9636f73516ff4cf9c.ctex"]
+source_file="res://assets/art/search_for_sapphire/TableAndChairs.png"
+dest_files=["res://.godot/imported/TableAndChairs.png-112922598efac960c6137ada92f8583d.ctex"]
 
 [params]
 

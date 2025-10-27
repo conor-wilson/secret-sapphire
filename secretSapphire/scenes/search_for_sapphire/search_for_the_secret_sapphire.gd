@@ -14,12 +14,20 @@ func _ready() -> void:
 	reset()
 
 func reset():
+	
 	$Safe.show()
+	
+	$RemovedPictureFrame.hide()
 	$PictureFrame.show()
+	
+	#$RedButton/Pressed.hide()
+	$RedButton/Unpressed.show()
+	
 	safe_locked = true
 	picture_on_wall = true
 	safe_open = false
 	victory_achieved = false
+	
 	$Instructions.text = "Find the SECRET SAPPHIRE"
 
 func play():
@@ -85,6 +93,7 @@ func _on_picture_frame_input_event(viewport: Node, event: InputEvent, shape_idx:
 	if event.is_action_released("click"):
 		if !Global.sfx_muted: $SFX/PictureFrameCrash.play()
 		$PictureFrame.hide()
+		$RemovedPictureFrame.show()
 		picture_on_wall = false
 
 
@@ -92,6 +101,9 @@ func _on_red_button_input_event(viewport: Node, event: InputEvent, shape_idx: in
 	if !active: return
 	if event.is_action_pressed("click") && !picture_on_wall && !safe_open:
 		if !Global.sfx_muted: $SFX/Button.play()
+		$RedButton/Unpressed.hide()
+		await get_tree().create_timer(0.2).timeout
+		$RedButton/Unpressed.show()
 		safe_locked = false
 		$Instructions.text = "<The SAFE makes a CLICK noise>"
 		

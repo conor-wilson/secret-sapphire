@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://powfeeyikck"
-path="res://.godot/imported/SapphireSearchBackground.png-7433935d44d4ace9636f73516ff4cf9c.ctex"
+uid="uid://bnfqjlrbl7xrv"
+path="res://.godot/imported/PictureFrameNoHanger.png-893d79a569f54ff181dcb23ada1ccb6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/search_for_sapphire/SapphireSearchBackground.png"
-dest_files=["res://.godot/imported/SapphireSearchBackground.png-7433935d44d4ace9636f73516ff4cf9c.ctex"]
+source_file="res://assets/art/search_for_sapphire/PictureFrameNoHanger.png"
+dest_files=["res://.godot/imported/PictureFrameNoHanger.png-893d79a569f54ff181dcb23ada1ccb6f.ctex"]
 
 [params]
 
