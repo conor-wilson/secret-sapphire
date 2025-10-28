@@ -31,6 +31,7 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 	eyes_background.show()
 	
 	# Execute the sequence
+	await get_tree().create_timer(linger_time).timeout
 	if include_photo_warning:
 		await fade_in(photosensitivity_screen, linger_time)
 	await fade_in(credit_screen, linger_time)

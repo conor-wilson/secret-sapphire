@@ -46,6 +46,7 @@ func reset():
 	title_sequence.play_title_sequence(null, menus, 2, false, false, true)
 	
 	# Start the game (which starts the music)
+	await get_tree().create_timer(2).timeout
 	search_for_the_secret_sapphire.stop()
 	menus.play()
 
@@ -130,6 +131,7 @@ func _on_main_menu_pressed() -> void:
 ###########
 
 func _input(event: InputEvent) -> void:
+	#pass
 	
 	if event.is_action_pressed("debugbutton"):
 		_on_menus_start_game()
