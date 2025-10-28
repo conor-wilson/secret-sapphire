@@ -12,12 +12,12 @@
 font = ExtResource("130_hnh00")
 font_size = 32
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_corur"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_7282a"]
 font = ExtResource("132_ifxf0")
 font_size = 39
 font_color = Color(0.796078, 0.858824, 0.988235, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_corur"]
 
 [node name="VictorySequence" type="Node2D"]
 script = ExtResource("1_hfqgk")
@@ -32,7 +32,7 @@ visible = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-text = "Against the odds, you have found the SECRET SAPPHIRE..."
+text = "You have found the SECRET SAPPHIRE..."
 label_settings = SubResource("LabelSettings_sj84v")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -56,7 +56,7 @@ visible = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-text = "A feast is held in your honour..."
+text = "A feast is held in your honour."
 label_settings = SubResource("LabelSettings_sj84v")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -73,8 +73,76 @@ grow_vertical = 1
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-text = "...you are a true hero :)"
+text = "Everyone lived happily ever after..."
 label_settings = SubResource("LabelSettings_sj84v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Screen5" parent="." instance=ExtResource("130_duw4h")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Label" type="Label" parent="Screen5"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "...or did they???"
+label_settings = SubResource("LabelSettings_sj84v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TheEnd" parent="." instance=ExtResource("130_duw4h")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Label" type="Label" parent="TheEnd"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "THE END"
+label_settings = SubResource("LabelSettings_sj84v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestionMark" parent="." instance=ExtResource("130_duw4h")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Label" type="Label" parent="QuestionMark"]
+layout_mode = 0
+offset_left = 120.0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "?"
+label_settings = SubResource("LabelSettings_sj84v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" parent="." instance=ExtResource("130_duw4h")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "THE SEARCH FOR THE
+SECRET SAPPHIRE"
+label_settings = SubResource("LabelSettings_7282a")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -112,42 +180,6 @@ theme_override_colors/font_hover_color = Color(0.247059, 0.247059, 0.454902, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_corur")
 text = "MAIN MENU"
 flat = true
-
-[node name="Temp" type="ColorRect" parent="."]
-visible = false
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 0)
-
-[node name="Label" type="Label" parent="Temp"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-text = "THE SEARCH FOR THE
-SECRET SAPPHIRE"
-label_settings = SubResource("LabelSettings_7282a")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="Temp"]
-layout_mode = 0
-offset_top = 216.0
-offset_right = 1152.0
-offset_bottom = 244.0
-text = "Congratulations! You have completed"
-label_settings = SubResource("LabelSettings_sj84v")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="Temp"]
-layout_mode = 0
-offset_top = 392.0
-offset_right = 1153.0
-offset_bottom = 420.0
-text = "Thanks for playing!"
-label_settings = SubResource("LabelSettings_sj84v")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="CreditsMusic" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(576, 320)

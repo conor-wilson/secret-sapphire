@@ -12,6 +12,10 @@ signal main_menu
 @onready var screen_2: SequenceScreen = $Screen2
 @onready var screen_3: SequenceScreen = $Screen3
 @onready var screen_4: SequenceScreen = $Screen4
+@onready var screen_5: SequenceScreen = $Screen5
+@onready var the_end: SequenceScreen = $TheEnd
+@onready var question_mark: SequenceScreen = $QuestionMark
+@onready var title: SequenceScreen = $Title
 @onready var victory_menu: SequenceScreen = $VictoryMenu
 @onready var black_screen: ColorRect = $BlackScreen
 
@@ -42,20 +46,14 @@ func play_outro_sequence(previous_screen:Node, linger_time:float = 3.0):
 	await screen_2.fade_in(linger_time)
 	await screen_3.fade_in(linger_time)
 	await screen_4.fade_in(linger_time)
-	await victory_menu.fade_in(linger_time, false)
+	await screen_5.fade_in(linger_time)
 	
-	## Transition to the next scene
-	#TransitionFade.transition()
-	#await TransitionFade.fully_black
-	#eyes_background.hide()
-	#title_screen.hide()
-	#final_screen.show()
-	#
-	## Fade out the intro music
-	#if include_music && !Global.music_muted:
-		#var tween = create_tween()
-		#tween.tween_property(spooky_intro_music, "volume_db", -80, 2)
-		#tween.tween_callback(spooky_intro_music.stop)
+	the_end.fade_in(linger_time*1.5)
+	await get_tree().create_timer(linger_time*0.5).timeout
+	await question_mark.fade_in(linger_time)
+	
+	await title.fade_in(linger_time)
+	await victory_menu.fade_in(linger_time, false)
 	
 	# Done
 	done.emit()
@@ -67,23 +65,6 @@ func hide_all_screens():
 	screen_4.hide()
 	victory_menu.hide()
 	black_screen.hide()
-
-#func fade_in(screen:ColorRect, linger_time:float, also_fade_out:bool = true):
-	#
-	## Find the animation player
-	#var animation_player:AnimationPlayer = screen.find_child("AnimationPlayer")
-	#
-	## Fade the screen in
-	#screen.show()
-	#animation_player.play("fade_in")
-	#await get_tree().create_timer(linger_time).timeout
-	#
-	## Optionally fade the screen out
-	#if also_fade_out:
-		#animation_player.play("fade_out")
-		#await animation_player.animation_finished
-		#screen.hide()
-
 
 func _on_play_again_pressed() -> void:
 	fade_out_music()
