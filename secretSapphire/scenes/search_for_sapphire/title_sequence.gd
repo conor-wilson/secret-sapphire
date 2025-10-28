@@ -18,7 +18,10 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 	
 	# Play the intro track if required
 	if include_music && !Global.music_muted:
+		spooky_intro_music.volume_db = -80
 		spooky_intro_music.play()
+		var tween = create_tween()
+		tween.tween_property(spooky_intro_music, "volume_db", 6, 1)
 	
 	# Only do a smooth fade if not hard-cutting
 	if !hard_cut:
@@ -43,7 +46,14 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 	eyes_background.hide()
 	title_screen.hide()
 	final_screen.show()
-	spooky_intro_music.stop()
+	
+	# Fade out the intro music
+	if include_music && !Global.music_muted:
+		var tween = create_tween()
+		tween.tween_property(spooky_intro_music, "volume_db", -80, 2)
+		tween.tween_callback(spooky_intro_music.stop)
+	
+	# Done
 	done.emit()
 
 

@@ -61,14 +61,21 @@ func play():
 	active = true
 	$Sound/DetectiveMusic.play()
 
-func stop():
+func stop(fade_out_music:bool = false):
 	#hide()
 	active = false
 	if HammerManManager.hammer_man != null:
 		HammerManManager.hammer_man.active = false
-	$Sound/DetectiveMusic.stop()
-	$Sound/MainMusic.stop()
-	$Sound/BossBattleMusic.stop()
+	
+	if fade_out_music && !Global.music_muted:
+		$Sound/DetectiveMusic.volume_db = 0
+		var tween = create_tween()
+		tween.tween_property($Sound/DetectiveMusic, "volume_db", -80, 3)
+		tween.tween_callback($Sound/DetectiveMusic.stop)
+	else:
+		$Sound/DetectiveMusic.stop()
+		$Sound/MainMusic.stop()
+		$Sound/BossBattleMusic.stop()
 
 func _on_main_menu_settings_pressed() -> void:
 	if !active: return

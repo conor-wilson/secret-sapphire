@@ -33,12 +33,15 @@ func reset():
 func play():
 	show()
 	active = true
-	if !Global.music_muted: $Music.play()
+	if !Global.music_muted: 
+		$Music.volume_db = -8
+		$Music.play()
 
 func stop():
-	#hide()
 	active = false
-	$Music.stop()
+	var tween = create_tween()
+	tween.tween_property($Music, "volume_db", -80, 3)
+	tween.tween_callback($Music.stop)
 
 
 var confetti_sprites = [
