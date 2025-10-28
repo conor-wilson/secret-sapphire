@@ -73,6 +73,9 @@ func release_confetti():
 		var velocity:Vector2 = Vector2(randf_range(-64, 64), randf_range(128, 640))
 		tween.tween_property(sprite, "position", sprite.position + velocity, 2.0)
 		tween.parallel().tween_property(sprite, "modulate:a", 0, 1.0).set_delay(1.0)
+		
+		# Get rid of the confetti now that it's no longer visible
+		tween.tween_callback(sprite.queue_free)
 
 func _on_safe_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !active: return

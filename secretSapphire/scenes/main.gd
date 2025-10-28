@@ -98,7 +98,7 @@ func _on_menus_mute_music_toggled() -> void:
 	if Global.music_muted:
 		$SearchForTheSecretSapphire/Music.volume_db = -80
 	else:
-		$SearchForTheSecretSapphire/Music.volume_db = 0
+		$SearchForTheSecretSapphire/Music.volume_db = -10
 
 func _on_menus_start_game() -> void:
 	play_secret_sapphire()

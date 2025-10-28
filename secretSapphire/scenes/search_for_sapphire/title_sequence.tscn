@@ -814,7 +814,7 @@ color = Color(0, 0, 0, 0)
 [node name="SpookyIntroMusic" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(576, 320)
 stream = ExtResource("5_q7gyh")
-volume_db = 5.962
+volume_db = 6.0
 
 [connection signal="animation_finished" from="EyesBackground" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="visibility_changed" from="BlackScreen" to="." method="_on_black_screen_visibility_changed"]

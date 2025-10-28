@@ -102,7 +102,7 @@ flat = true
 [node name="SpookyIntroMusic" type="AudioStreamPlayer2D" parent="VictoryScreen"]
 position = Vector2(576, 320)
 stream = ExtResource("8_85g3d")
-volume_db = 5.962
+volume_db = 6.0
 
 [connection signal="mute_music_toggled" from="Menus" to="." method="_on_menus_mute_music_toggled"]
 [connection signal="start_game" from="Menus" to="." method="_on_menus_start_game"]
