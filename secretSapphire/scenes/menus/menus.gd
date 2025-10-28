@@ -59,6 +59,8 @@ func _ready() -> void:
 func play():
 	#show()
 	active = true
+	if !Global.music_muted:
+		$Sound/DetectiveMusic.volume_db = 0
 	$Sound/DetectiveMusic.play()
 
 func stop(fade_out_music:bool = false):

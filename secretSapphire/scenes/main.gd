@@ -25,8 +25,8 @@ extends Node
 var menus_scene := preload("res://scenes/menus/menus.tscn")
 @onready var menus: Menus = $Menus
 @onready var search_for_the_secret_sapphire: SearchForTheSecretSapphire = $SearchForTheSecretSapphire
-@onready var victory_screen: ColorRect = $VictoryScreen
 @onready var title_sequence: TitleSequence = $TitleSequence
+@onready var victory_sequence: VictorySequence = $VictorySequence
 
 var first_victory:bool = true
 
@@ -65,7 +65,6 @@ func transition_screen(from_screen:Node, to_screen:Node, linger_time:float = 3.0
 func hide_all():
 	menus.hide()
 	search_for_the_secret_sapphire.hide()
-	victory_screen.hide()
 
 func play_secret_sapphire():
 	
@@ -86,9 +85,7 @@ func play_secret_sapphire():
 
 func secret_sapphire_victory():
 	search_for_the_secret_sapphire.stop()
-	transition_screen(search_for_the_secret_sapphire, victory_screen, 1)
-	if !Global.music_muted: 
-		fade_in_victory_music()
+	victory_sequence.play_outro_sequence(search_for_the_secret_sapphire, 3)
 
 
 #################################
@@ -112,32 +109,19 @@ func _on_menus_start_game() -> void:
 func _on_search_for_the_secret_sapphire_victory() -> void:
 	secret_sapphire_victory()
 
-func _on_play_again_pressed() -> void:
-	fade_out_victory_music()
+func _on_victory_sequence_play_again() -> void:
 	search_for_the_secret_sapphire.reset()
-	transition_screen(victory_screen, search_for_the_secret_sapphire, 1.5)
+	transition_screen(victory_sequence, search_for_the_secret_sapphire, 1.5)
 	search_for_the_secret_sapphire.play()
 
-func _on_main_menu_pressed() -> void:
-	fade_out_victory_music()
+func _on_victory_sequence_main_menu() -> void:
 	menus.play()
 	# NOTE: This could not be more jankey, but it works perfectly fine.
 	if $Menus/Menus/MainMenu/Desktop/DesktopWindows/HammerManEXE.visible:
 		HammerManManager.hammer_man.active = true
-	await transition_screen(victory_screen, menus, 1.5)
+	await transition_screen(victory_sequence, menus, 1.5)
 
 
-func fade_out_victory_music() -> void:
-	var tween = create_tween()
-	tween.tween_property($VictoryScreen/SpookyIntroMusic, "volume_db", -80, 2)
-	tween.tween_callback($VictoryScreen/SpookyIntroMusic.stop)
-
-func fade_in_victory_music() -> void:
-	$VictoryScreen/SpookyIntroMusic.volume_db = -80
-	$VictoryScreen/SpookyIntroMusic.play()
-	var tween = create_tween()
-	tween.tween_property($VictoryScreen/SpookyIntroMusic, "volume_db", 6, 1)
-	$VictoryScreen/SpookyIntroMusic.play()
 
 ###########
 ## DEBUG ##
