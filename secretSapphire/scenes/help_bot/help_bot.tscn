@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://bcttde4rl6c7u"]
+[gd_scene load_steps=91 format=3 uid="uid://bcttde4rl6c7u"]
 
 [ext_resource type="Script" uid="uid://2ftb6mq3ltfk" path="res://scenes/help_bot/help_bot.gd" id="1_b6jo1"]
 [ext_resource type="Texture2D" uid="uid://1cwslcas3huc" path="res://assets/art/help_bot/HelpBot-Sheet.png" id="1_nxjie"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b63t8bt78w8t1" path="res://scenes/help_bot/laser.tscn" id="4_khedk"]
 [ext_resource type="Texture2D" uid="uid://72xyusf4s8ca" path="res://assets/art/help_bot/Explosion-Sheet.png" id="4_swxx6"]
 [ext_resource type="Texture2D" uid="uid://bhumivffmec6g" path="res://assets/art/help_bot/HelpBotBecomeEvil-Sheet.png" id="6_p8ct4"]
+[ext_resource type="Texture2D" uid="uid://bp3bdrs2apsex" path="res://assets/art/help_bot/HelpBotTalkingMouth-Sheet.png" id="8_drqsv"]
+[ext_resource type="Texture2D" uid="uid://81mwf4mnf7sn" path="res://assets/art/help_bot/HellBotTalkingMouth-Sheet.png" id="8_kj1gs"]
 [ext_resource type="AudioStream" uid="uid://n4ujjlwhpeg5" path="res://assets/audio/explosion-80108.mp3" id="8_nhyrt"]
 [ext_resource type="AudioStream" uid="uid://2cswgxppb4aa" path="res://assets/audio/Retro Event Wrong Simple 03.wav" id="9_kb37v"]
 [ext_resource type="AudioStream" uid="uid://bl8dia5y4b7gh" path="res://assets/audio/Retro Negative Short 21.wav" id="10_icgor"]
@@ -537,6 +539,71 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_62bbx"]
+atlas = ExtResource("8_kj1gs")
+region = Rect2(0, 0, 20, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ht1r1"]
+atlas = ExtResource("8_kj1gs")
+region = Rect2(0, 0, 20, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quie4"]
+atlas = ExtResource("8_kj1gs")
+region = Rect2(20, 0, 20, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj1gs"]
+atlas = ExtResource("8_drqsv")
+region = Rect2(0, 0, 20, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33i8r"]
+atlas = ExtResource("8_drqsv")
+region = Rect2(0, 0, 20, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cryuq"]
+atlas = ExtResource("8_drqsv")
+region = Rect2(20, 0, 20, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62bbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62bbx")
+}],
+"loop": true,
+"name": &"hell_bot_smile",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ht1r1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quie4")
+}],
+"loop": true,
+"name": &"hell_bot_talking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj1gs")
+}],
+"loop": true,
+"name": &"help_bot_smile",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33i8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cryuq")
+}],
+"loop": true,
+"name": &"help_bot_talking",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh5jh"]
 size = Vector2(62, 62)
 
@@ -554,6 +621,14 @@ sprite_frames = SubResource("SpriteFrames_jgg44")
 animation = &"help_bot_become_evil"
 frame = 18
 frame_progress = 1.0
+
+[node name="Mouth" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, 16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_62bbx")
+animation = &"hell_bot_smile"
+autoplay = "help_bot_smile"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_oh5jh")

@@ -154,3 +154,23 @@ func explode():
 
 func kill():
 	killed.emit()
+
+# NOTE: Unused feature unfortunately
+func start_talking(duration:float):
+	match mode:
+		Mode.HELP_BOT:
+			$Mouth.play("help_bot_talking")
+		Mode.HELL_BOT:
+			$Mouth.play("hell_bot_talking")
+		_:
+			print_debug("Mode ", mode, " does not have an talking animation")
+	await get_tree().create_timer(duration).timeout
+	await $Mouth.frame_changed
+	
+	match mode:
+		Mode.HELP_BOT:
+			$Mouth.play("help_bot_smile")
+		Mode.HELL_BOT:
+			$Mouth.play("hell_bot_smile")
+		_:
+			print_debug("Mode ", mode, " does not have a smile animation")
