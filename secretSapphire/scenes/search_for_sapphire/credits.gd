@@ -10,9 +10,9 @@ signal done
 func play_credits():
 	
 	credits.position = Vector2.ZERO
-	credits.fade_in(17)
+	credits.fade_in(18)
 	await get_tree().create_timer(3).timeout
-	black_background.fade_in(14.5)
+	black_background.fade_in(15.5)
 	
 	animation_player.play("scroll")
 	await credits.done

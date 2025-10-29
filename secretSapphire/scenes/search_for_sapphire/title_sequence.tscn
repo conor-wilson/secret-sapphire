@@ -61,7 +61,7 @@ vertical_alignment = 1
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-text = "Requires a keyboard and mouse
+text = "Requires a mouse and keyboard
 
 "
 label_settings = SubResource("LabelSettings_hc1kl")

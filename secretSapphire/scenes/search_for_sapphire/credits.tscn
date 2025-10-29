@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ouckgbhj7t7u"]
 
-[ext_resource type="Script" path="res://scenes/search_for_sapphire/credits.gd" id="1_fhx73"]
+[ext_resource type="Script" uid="uid://7ff28rbj6lsc" path="res://scenes/search_for_sapphire/credits.gd" id="1_fhx73"]
 [ext_resource type="PackedScene" uid="uid://bguly075bkdj7" path="res://scenes/search_for_sapphire/sequence_screen.tscn" id="1_p8hk5"]
 [ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="2_fhx73"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="3_pvvsh"]
@@ -35,7 +35,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0b7yi"]
 resource_name = "scroll"
-length = 11.0
+length = 12.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -46,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 11),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -2120)]
+"values": [Vector2(0, 0), Vector2(0, -2568)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w4qqs"]
@@ -120,11 +120,35 @@ label_settings = SubResource("LabelSettings_awn06")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Music" type="Label" parent="Credits"]
+[node name="TitleFont" type="Label" parent="Credits"]
 layout_mode = 0
 offset_top = 1120.0
 offset_right = 1152.0
-offset_bottom = 1370.0
+offset_bottom = 1489.0
+text = "Title Font: 
+
+Font+ [Antiquity Print] by SciGho"
+label_settings = SubResource("LabelSettings_5r7r2")
+horizontal_alignment = 1
+
+[node name="OtherFonts" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 1320.0
+offset_right = 1152.0
+offset_bottom = 1689.0
+text = "Other Fonts:
+
+m6x11 by Daniel Linssen
+Wacky Joe by VEXED
+Formal Future by VEXED"
+label_settings = SubResource("LabelSettings_5r7r2")
+horizontal_alignment = 1
+
+[node name="Music" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 1576.0
+offset_right = 1152.0
+offset_bottom = 1883.0
 text = "Music:
 
 \"Detective Stories\" by FreeGroove
@@ -140,9 +164,9 @@ horizontal_alignment = 1
 
 [node name="SoundEffects" type="Label" parent="Credits"]
 layout_mode = 0
-offset_top = 1536.0
+offset_top = 1992.0
 offset_right = 1152.0
-offset_bottom = 1786.0
+offset_bottom = 2361.0
 text = "Sound Effects:
 
 200 Free SFX by Kronbits
@@ -160,9 +184,9 @@ horizontal_alignment = 1
 
 [node name="GHGameOff" type="Label" parent="Credits"]
 layout_mode = 0
-offset_top = 2080.0
+offset_top = 2536.0
 offset_right = 1152.0
-offset_bottom = 2604.0
+offset_bottom = 3060.0
 text = "Originally created for GitHub GameOff 2024
 
 
