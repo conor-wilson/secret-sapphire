@@ -9,6 +9,7 @@ signal done
 
 func play_credits():
 	
+	credits.position = Vector2.ZERO
 	credits.fade_in(15)
 	await get_tree().create_timer(3).timeout
 	black_background.fade_in(11)

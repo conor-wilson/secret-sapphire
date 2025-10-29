@@ -135,6 +135,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_ffuha")
+}],
+"loop": true,
+"name": &"black_screen",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ffuha")
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_yb3nx")
@@ -529,8 +537,8 @@ animations = [{
 
 [node name="EyesBackground" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_r6aor")
-animation = &"loop"
-autoplay = "intro"
+animation = &"black_screen"
+autoplay = "black_screen"
 script = ExtResource("129_yb3nx")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

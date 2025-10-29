@@ -117,8 +117,11 @@ func _on_victory_sequence_play_again() -> void:
 func _on_victory_sequence_main_menu() -> void:
 	menus.play()
 	# NOTE: This could not be more jankey, but it works perfectly fine.
-	if $Menus/Menus/MainMenu/Desktop/DesktopWindows/HammerManEXE.visible:
-		HammerManManager.hammer_man.active = true
+	if ($Menus/Menus/MainMenu/Desktop/DesktopWindows/HammerManEXE != null && 
+		$Menus/Menus/MainMenu/Desktop/DesktopWindows/HammerManEXE.visible):
+		
+		if HammerManManager.hammer_man != null:
+			HammerManManager.hammer_man.active = true
 	await transition_screen(victory_sequence, menus, 1.5)
 
 
