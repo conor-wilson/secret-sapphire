@@ -12,7 +12,11 @@ signal done
 
 @onready var spooky_intro_music: AudioStreamPlayer2D = $SpookyIntroMusic
 
+var intro_cave_dialogue:bool = true
+
 func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:float = 3.0, hard_cut:bool=false, include_music:bool = false, include_photo_warning:bool=false):
+	
+	intro_cave_dialogue = include_photo_warning
 	
 	# Null safety
 	if previous_screen == null:
@@ -30,6 +34,7 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 		TransitionFade.transition()
 		await TransitionFade.fully_black
 	previous_screen.hide()
+	show()
 	
 	# Begin the background animation
 	eyes_background.deploy_eyes()
@@ -47,6 +52,7 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 	await TransitionFade.fully_black
 	eyes_background.hide()
 	title_screen.hide()
+	hide()
 	final_screen.show()
 	
 	# Fade out the intro music
@@ -98,3 +104,26 @@ func _on_black_screen_visibility_changed() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $EyesBackground.animation == "intro":
 		$EyesBackground.play("loop")
+
+
+func _on_cave_mouth_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		
+		var lines:Array[String] = []
+		
+		if intro_cave_dialogue:
+			lines = [
+					"You, like me, are one who knows many secrets.",
+					"Although you are here too early.",
+					"Come back later when you have released the HELP BOT."
+				]
+		else:
+			lines = [
+				"I see you have come back for more secrets...",
+				"Your diligence is admirable, and so I will give you one...",
+				"This game that you have strived so hard to start...",
+				"The one that takes place within a haunted mansion...",
+				"...it is very bad.",
+			]
+		DialogueManager.stop_all_dialogue()
+		DialogueManager.new_dialogue_sequence($CaveOfSecrets/DialogueMarker.position, lines, "black", 4, $CaveOfSecrets/DialogueMarker)

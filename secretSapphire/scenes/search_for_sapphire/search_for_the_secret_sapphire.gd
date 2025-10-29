@@ -124,3 +124,15 @@ func _on_sapphire_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 		print("GAME WON!")
 		await get_tree().create_timer(4).timeout
 		victory.emit()
+
+func _on_cave_mouth_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		var lines:Array[String] = [
+				"I see you have come back for more secrets...",
+				"Your diligence is admirable, and so I will give you one...",
+				"This game that you have strived so hard to start...",
+				"The one that takes place within a haunted mansion...",
+				"...it is very bad.",
+			]
+		DialogueManager.stop_all_dialogue()
+		DialogueManager.new_dialogue_sequence($CaveOfSecrets/DialogueMarker.position, lines, "black", 4, $CaveOfSecrets/DialogueMarker)
