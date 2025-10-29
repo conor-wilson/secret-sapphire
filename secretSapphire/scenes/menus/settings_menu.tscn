@@ -82,9 +82,9 @@ layout_mode = 2
 [node name="SecretSettingsButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/SecretSettingsContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.796078, 0.858824, 0.988235, 1)
 theme_override_colors/font_color = Color(0.247059, 0.247059, 0.454902, 1)
 theme_override_colors/font_focus_color = Color(0.796078, 0.858824, 0.988235, 1)
+theme_override_colors/font_hover_color = Color(0.796078, 0.858824, 0.988235, 1)
 theme_override_fonts/font = ExtResource("2_ityvj")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ucw1g")
@@ -97,6 +97,9 @@ theme_override_fonts/font = ExtResource("2_ityvj")
 theme_override_font_sizes/font_size = 48
 placeholder_text = "<username>"
 alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+caret_blink = true
 
 [node name="PasswordBox" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -105,6 +108,9 @@ theme_override_font_sizes/font_size = 48
 placeholder_text = "<password>"
 alignment = 1
 max_length = 10
+context_menu_enabled = false
+emoji_menu_enabled = false
+caret_blink = true
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 49.0
@@ -113,8 +119,8 @@ offset_right = 141.0
 offset_bottom = 102.0
 focus_mode = 0
 theme = ExtResource("4_558x5")
-theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.615686, 0.615686, 0.615686, 1)
 text = "BACK"
 flat = true
 

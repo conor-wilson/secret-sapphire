@@ -131,10 +131,10 @@ func _on_victory_sequence_main_menu() -> void:
 ###########
 
 func _input(event: InputEvent) -> void:
-	#pass
+	pass
 	
-	if event.is_action_pressed("debugbutton"):
-		_on_menus_start_game()
+	#if event.is_action_pressed("debugbutton"):
+		#_on_menus_start_game()
 	
 	# NOTE: Uncomment if you want a dodgy reset mechanic...
 	#if event.is_action_pressed("reset"):

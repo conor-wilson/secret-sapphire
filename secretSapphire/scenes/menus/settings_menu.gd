@@ -12,24 +12,17 @@ signal mute_music_toggled
 # TODO: Implement a generic way to check case-insentitively
 var accepted_usernames:Array[String] = [
 	"QuietLantern",
-	"Quietlantern",
-	"quietlantern",
-	"quietLantern",
-	"QUIETLANTERN",
+	"Quiet Lantern",
 	"@QuietLantern",
-	"@Quietlantern",
-	"@quietlantern",
-	"@quietLantern",
-	"@QUIETLANTERN",
+	"ConorWilson",
+	"Conor Wilson",
+	"@ConorWilson",
+	
 ]
 
 var accpted_passwords:Array[String] = [
 	"turtle123",
-	"Turtle123",
-	"TURTLE123",
 	"turtles123",
-	"Turtles123",
-	"TURTLES123",
 ]
 
 @onready var username_box: LineEdit = $CenterContainer/MarginContainer/VBoxContainer/UsernameBox
@@ -102,7 +95,7 @@ func detatch_screwdriver():
 func _correct_input(input:String, accepted_strings:Array[String]) -> bool:
 	
 	for accpeted_string in accepted_strings:
-		if input == accpeted_string:
+		if input.to_lower() == accpeted_string.to_lower():
 			return true
 	
 	return false
