@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var facing_right:bool = true
 
 func break_blocks() -> bool: 
 	
@@ -39,6 +40,24 @@ func kill_enemies() -> bool:
 	
 	# Report if a block was broken
 	return killed_enemy
+
+func scatter_scraps() -> bool: 
+	
+	var scattered_scraps:bool = false
+	
+	# Check to see if zone overlaps with any enemies
+	for body in get_overlapping_bodies():
+		
+		# Blob Enemy
+		if body.is_in_group("Scraps") && body is InteractiveElement && !body.idle:
+			var direction = Vector2(1,-1)
+			if !facing_right:
+				direction.x = -1
+			body.apply_central_impulse(randf_range(400,600)*direction)
+			scattered_scraps = true
+	
+	# Report if a block was broken
+	return scattered_scraps
 
 
 # point_is_in_hammer_zone returns true if the provided coordinates are within

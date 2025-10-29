@@ -65,23 +65,6 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 	done.emit()
 
 
-#func fade_in(screen:ColorRect, linger_time:float, also_fade_out:bool = true):
-	#
-	## Find the animation player
-	#var animation_player:AnimationPlayer = screen.find_child("AnimationPlayer")
-	#
-	## Fade the screen in
-	#screen.show()
-	#animation_player.play("fade_in")
-	#await get_tree().create_timer(linger_time).timeout
-	#
-	## Optionally fade the screen out
-	#if also_fade_out:
-		#animation_player.play("fade_out")
-		#await animation_player.animation_finished
-		#screen.hide()
-
-
 func transition_screen(from_screen:Node, to_screen:Node, linger_time:float = 3.0):
 	TransitionFade.transition()
 	await TransitionFade.fully_black
@@ -96,16 +79,6 @@ func cut_to_black():
 	black_screen.show()
 
 
-func _on_black_screen_visibility_changed() -> void:
-	if black_screen != null && black_screen.visible:
-		$EyesBackground.play("intro") # TODO: Remove this
-
-
-func _on_animated_sprite_2d_animation_finished() -> void:
-	if $EyesBackground.animation == "intro":
-		$EyesBackground.play("loop")
-
-
 func _on_cave_mouth_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		
@@ -113,10 +86,10 @@ func _on_cave_mouth_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		
 		if intro_cave_dialogue:
 			lines = [
-					"You, like me, are one who knows many secrets.",
-					"Although you are here too early.",
-					"Come back later when you have released the HELP BOT."
-				]
+				"You, like me, are one who knows many secrets.",
+				"Although you are here too early.",
+				"Come back later when you have released the HELP BOT."
+			]
 		else:
 			lines = [
 				"I see you have come back for more secrets...",

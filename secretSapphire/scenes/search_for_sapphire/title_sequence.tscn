@@ -132,4 +132,3 @@ stream = ExtResource("5_q7gyh")
 volume_db = 6.0
 
 [connection signal="input_event" from="CaveOfSecrets/CaveMouth" to="." method="_on_cave_mouth_input_event"]
-[connection signal="visibility_changed" from="BlackScreen" to="." method="_on_black_screen_visibility_changed"]

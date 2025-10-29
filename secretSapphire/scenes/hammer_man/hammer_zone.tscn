@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://r7c4wpptd13g"]
 
-[ext_resource type="Script" path="res://scenes/hammer_man/hammer_zone.gd" id="1_ji1va"]
+[ext_resource type="Script" uid="uid://cgmnogwltu33y" path="res://scenes/hammer_man/hammer_zone.gd" id="1_ji1va"]
 
 [node name="HammerZone" type="Area2D"]
 collision_layer = 2048
-collision_mask = 4105
+collision_mask = 36873
 script = ExtResource("1_ji1va")

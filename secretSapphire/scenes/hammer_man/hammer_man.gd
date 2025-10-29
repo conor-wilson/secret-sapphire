@@ -135,14 +135,17 @@ func slam_hammer():
 	
 	var broke_block :bool = false
 	var killed_enemy:bool = false
+	var scattered_scraps:bool = false
 	if direction.x < 0:
 		broke_block  = $HammerZoneLeft.break_blocks()
 		killed_enemy = $HammerZoneLeft.kill_enemies()
+		scattered_scraps = $HammerZoneLeft.scatter_scraps()
 	else:
 		broke_block  = $HammerZoneRight.break_blocks()
 		killed_enemy = $HammerZoneRight.kill_enemies()
+		scattered_scraps = $HammerZoneRight.scatter_scraps()
 	
-	if broke_block || killed_enemy:
+	if broke_block || killed_enemy || scattered_scraps:
 		ScreenShakeManager.shake_screen(5,5)
 		print("BREAK!")
 
