@@ -3,7 +3,9 @@ class_name TitleSequence extends Node2D
 signal done
 
 @onready var eyes_background: EyesBackground = $EyesBackground
+
 @onready var photosensitivity_screen: SequenceScreen = $PhotosensitivityScreen
+@onready var controls_screen: SequenceScreen = $ControlsScreen
 @onready var credit_screen: SequenceScreen = $CreditScreen
 @onready var title_screen: SequenceScreen = $TitleScreen
 @onready var black_screen: ColorRect = $BlackScreen
@@ -36,6 +38,7 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 	await get_tree().create_timer(linger_time).timeout
 	if include_photo_warning:
 		await photosensitivity_screen.fade_in(linger_time)
+		await controls_screen.fade_in(linger_time)
 	await credit_screen.fade_in(linger_time)
 	await title_screen.fade_in(linger_time, false)
 	

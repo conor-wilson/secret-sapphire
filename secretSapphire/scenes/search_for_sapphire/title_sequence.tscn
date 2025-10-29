@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b17btrbwqxhtb"]
+[gd_scene load_steps=11 format=3 uid="uid://b17btrbwqxhtb"]
 
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="1_ahu4p"]
 [ext_resource type="Script" uid="uid://bo08pedf72lh2" path="res://scenes/search_for_sapphire/title_sequence.gd" id="1_q7gyh"]
 [ext_resource type="PackedScene" uid="uid://q0gl3641bw13" path="res://scenes/search_for_sapphire/eyes_background.tscn" id="2_1t0yn"]
 [ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="3_1t0yn"]
 [ext_resource type="PackedScene" uid="uid://bguly075bkdj7" path="res://scenes/search_for_sapphire/sequence_screen.tscn" id="3_fxxuh"]
+[ext_resource type="Texture2D" uid="uid://fujm2ju4lp83" path="res://assets/art/splashscreen/MouseAndKeyboard.png" id="5_fxxuh"]
 [ext_resource type="AudioStream" uid="uid://mw6ulvl1do3b" path="res://assets/audio/dark-wind-19785.mp3" id="5_q7gyh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q7gyh"]
@@ -28,6 +29,7 @@ script = ExtResource("1_q7gyh")
 position = Vector2(576, 324)
 
 [node name="PhotosensitivityScreen" parent="." instance=ExtResource("3_fxxuh")]
+visible = false
 
 [node name="Title" type="Label" parent="PhotosensitivityScreen"]
 layout_mode = 0
@@ -51,7 +53,26 @@ label_settings = SubResource("LabelSettings_hc1kl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ControlsScreen" parent="." instance=ExtResource("3_fxxuh")]
+
+[node name="Text" type="Label" parent="ControlsScreen"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "Requires a keyboard and mouse
+
+"
+label_settings = SubResource("LabelSettings_hc1kl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MouseAndKeyboard" type="Sprite2D" parent="ControlsScreen"]
+position = Vector2(576, 368)
+scale = Vector2(2, 2)
+texture = ExtResource("5_fxxuh")
+
 [node name="CreditScreen" parent="." instance=ExtResource("3_fxxuh")]
+visible = false
 
 [node name="Label" type="Label" parent="CreditScreen"]
 layout_mode = 0
@@ -63,6 +84,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TitleScreen" parent="." instance=ExtResource("3_fxxuh")]
+visible = false
 
 [node name="Label" type="Label" parent="TitleScreen"]
 layout_mode = 0
