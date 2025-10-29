@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcqoyseha8hc4"]
+[gd_scene load_steps=10 format=3 uid="uid://dcqoyseha8hc4"]
 
 [ext_resource type="Script" uid="uid://bvvepgqsi68du" path="res://scenes/search_for_sapphire/victory_sequence.gd" id="1_hfqgk"]
 [ext_resource type="PackedScene" uid="uid://q0gl3641bw13" path="res://scenes/search_for_sapphire/eyes_background.tscn" id="2_5ryt4"]
-[ext_resource type="PackedScene" uid="uid://b1s84d8onbl45" path="res://scenes/search_for_sapphire/credits.tscn" id="5_rqr8w"]
+[ext_resource type="PackedScene" path="res://scenes/search_for_sapphire/credits.tscn" id="5_rqr8w"]
 [ext_resource type="PackedScene" uid="uid://bguly075bkdj7" path="res://scenes/search_for_sapphire/sequence_screen.tscn" id="130_duw4h"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="130_hnh00"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="131_tdh1r"]
+[ext_resource type="AudioStream" uid="uid://cnboagx225osk" path="res://assets/audio/cinematic-cello-farewell-sad-movie-credits-music-329942.mp3" id="133_k7ds0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sj84v"]
 font = ExtResource("130_hnh00")
@@ -18,6 +19,8 @@ script = ExtResource("1_hfqgk")
 
 [node name="EyesBackground" parent="." instance=ExtResource("2_5ryt4")]
 position = Vector2(576, 324)
+animation = &"loop"
+autoplay = "intro"
 
 [node name="Screen1" parent="." instance=ExtResource("130_duw4h")]
 visible = false
@@ -161,6 +164,7 @@ flat = true
 
 [node name="CreditsMusic" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(576, 320)
+stream = ExtResource("133_k7ds0")
 volume_db = 6.0
 
 [node name="BlackScreen" type="ColorRect" parent="."]

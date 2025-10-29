@@ -3,7 +3,6 @@ class_name SequenceScreen extends ColorRect
 signal done
 
 @onready var fade_animator: AnimationPlayer = $FadeAnimator
-@onready var scroll_animator: AnimationPlayer = $ScrollAnimator
 
 func fade_in(linger_time:float, also_fade_out:bool = true):
 	

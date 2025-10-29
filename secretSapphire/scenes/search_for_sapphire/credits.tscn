@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1s84d8onbl45"]
+[gd_scene load_steps=11 format=3 uid="uid://ouckgbhj7t7u"]
 
-[ext_resource type="Script" uid="uid://7ff28rbj6lsc" path="res://scenes/search_for_sapphire/credits.gd" id="1_fhx73"]
+[ext_resource type="Script" path="res://scenes/search_for_sapphire/credits.gd" id="1_fhx73"]
 [ext_resource type="PackedScene" uid="uid://bguly075bkdj7" path="res://scenes/search_for_sapphire/sequence_screen.tscn" id="1_p8hk5"]
 [ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="2_fhx73"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="3_pvvsh"]
@@ -18,22 +18,6 @@ font_size = 48
 font = ExtResource("3_pvvsh")
 font_size = 32
 
-[sub_resource type="Animation" id="Animation_0b7yi"]
-resource_name = "scroll"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Credits:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -1920)]
-}
-
 [sub_resource type="Animation" id="Animation_fna0f"]
 length = 0.001
 tracks/0/type = "value"
@@ -47,6 +31,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0b7yi"]
+resource_name = "scroll"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2120)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w4qqs"]
@@ -127,34 +127,42 @@ offset_right = 1152.0
 offset_bottom = 1370.0
 text = "Music:
 
-Detective Stories by FreeGroove
-Creepy radio frequency by MixKit
-Mystery Of  The Investigation by PaoloArgento
-Suspense e investigacao - HipervigilRPG by descreveaiRPG
-Video Game Boss Fiight by IHateTuesdays
-Sneaky Piz - Quirky Orchestral Loop by Sonican"
+\"Detective Stories\" by FreeGroove
+\"Creepy radio frequency\" by MixKit
+\"Mystery Of  The Investigation\" by PaoloArgento
+\"Suspense e investigacao\" by descreveaiRPG
+\"Video Game Boss Fiight\" by IHateTuesdays
+\"Dark Wind\" by tec_studio
+\"Haunted mansion\" by Beau-Tengu974
+\"Cinematic Cello Farewell\" by nickpanek"
 label_settings = SubResource("LabelSettings_5r7r2")
 horizontal_alignment = 1
 
 [node name="SoundEffects" type="Label" parent="Credits"]
 layout_mode = 0
-offset_top = 1472.0
+offset_top = 1536.0
 offset_right = 1152.0
-offset_bottom = 1722.0
+offset_bottom = 1786.0
 text = "Sound Effects:
 
 200 Free SFX by Kronbits
 8-bit / 16-bit Sound Effects (x25) Pack by JDWasabi
-Explosion by morganpurkis (Freesound)
-Laser by Kronos1001 (Freesound)"
+\"Explosion\" by morganpurkis (Freesound)
+\"Laser\" by Kronos1001 (Freesound)
+\"large crash with cat.aiff\" by bevibeldesign (Freesound)
+\"Metal Knock 2\" by dster777 (Freesound)
+\"Button Press 2\" by DRAGON-STUDIO
+\"Door Opening\" by Fletchpike
+\"partyblower\" by u_a9w845fdm3
+"
 label_settings = SubResource("LabelSettings_5r7r2")
 horizontal_alignment = 1
 
 [node name="GHGameOff" type="Label" parent="Credits"]
 layout_mode = 0
-offset_top = 1856.0
+offset_top = 2080.0
 offset_right = 1152.0
-offset_bottom = 2287.0
+offset_bottom = 2604.0
 text = "Originally created for GitHub GameOff 2024
 
 
@@ -168,10 +176,8 @@ and Freeplay Angles 2025 for showcasing
 The Search for the Secret Sapphire :)
 
 
-
-
-Thanks to all the playtesters:
-Friends, family, strangers, and you!"
+Thanks to all the players and playtesters:
+Family, friends, strangers, and you!"
 label_settings = SubResource("LabelSettings_5r7r2")
 horizontal_alignment = 1
 

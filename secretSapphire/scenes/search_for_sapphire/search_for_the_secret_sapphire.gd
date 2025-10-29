@@ -35,6 +35,7 @@ func play():
 	active = true
 	if !Global.music_muted: 
 		$Music.volume_db = -8
+		await get_tree().create_timer(0.5).timeout
 		$Music.play()
 
 func stop():

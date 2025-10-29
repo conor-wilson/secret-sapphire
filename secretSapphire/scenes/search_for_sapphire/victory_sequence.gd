@@ -26,10 +26,6 @@ func play_outro_sequence(previous_screen:Node, linger_time:float = 3.0):
 	if previous_screen == null:
 		previous_screen = black_screen
 	
-	# Play the intro track if required
-	if !Global.music_muted:
-		credits_music.volume_db = 0
-		credits_music.play()
 	
 	# Transition smoothly
 	TransitionFade.transition()
@@ -42,11 +38,15 @@ func play_outro_sequence(previous_screen:Node, linger_time:float = 3.0):
 	eyes_background.deploy_eyes()
 	
 	# Execute the sequence
-	await get_tree().create_timer(linger_time).timeout
-	#await screen_1.fade_in(linger_time)
-	#await screen_2.fade_in(linger_time)
-	#await screen_3.fade_in(linger_time)
-	#await screen_4.fade_in(linger_time)
+	await get_tree().create_timer(linger_time/2).timeout
+	if !Global.music_muted: # Play the intro track if required
+		credits_music.volume_db = 0
+		credits_music.play()
+	await get_tree().create_timer(linger_time/2).timeout
+	await screen_1.fade_in(linger_time)
+	await screen_2.fade_in(linger_time)
+	await screen_3.fade_in(linger_time)
+	await screen_4.fade_in(linger_time)
 	await screen_5.fade_in(linger_time)
 	
 	the_end.fade_in(linger_time*1.5)

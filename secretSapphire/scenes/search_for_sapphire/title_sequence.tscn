@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b17btrbwqxhtb"]
+[gd_scene load_steps=11 format=3 uid="uid://b17btrbwqxhtb"]
 
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="1_ahu4p"]
 [ext_resource type="Script" uid="uid://bo08pedf72lh2" path="res://scenes/search_for_sapphire/title_sequence.gd" id="1_q7gyh"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="3_1t0yn"]
 [ext_resource type="PackedScene" uid="uid://bguly075bkdj7" path="res://scenes/search_for_sapphire/sequence_screen.tscn" id="3_fxxuh"]
 [ext_resource type="Texture2D" uid="uid://fujm2ju4lp83" path="res://assets/art/splashscreen/MouseAndKeyboard.png" id="5_fxxuh"]
+[ext_resource type="AudioStream" uid="uid://mw6ulvl1do3b" path="res://assets/audio/dark-wind-19785.mp3" id="5_q7gyh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q7gyh"]
 font = ExtResource("1_ahu4p")
@@ -26,6 +27,8 @@ script = ExtResource("1_q7gyh")
 
 [node name="EyesBackground" parent="." instance=ExtResource("2_1t0yn")]
 position = Vector2(576, 324)
+animation = &"loop"
+autoplay = "intro"
 
 [node name="PhotosensitivityScreen" parent="." instance=ExtResource("3_fxxuh")]
 visible = false
@@ -103,6 +106,7 @@ color = Color(0, 0, 0, 0)
 
 [node name="SpookyIntroMusic" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(576, 320)
+stream = ExtResource("5_q7gyh")
 volume_db = 6.0
 
 [connection signal="visibility_changed" from="BlackScreen" to="." method="_on_black_screen_visibility_changed"]
