@@ -1,0 +1,181 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1s84d8onbl45"]
+
+[ext_resource type="Script" uid="uid://7ff28rbj6lsc" path="res://scenes/search_for_sapphire/credits.gd" id="1_fhx73"]
+[ext_resource type="PackedScene" uid="uid://bguly075bkdj7" path="res://scenes/search_for_sapphire/sequence_screen.tscn" id="1_p8hk5"]
+[ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="2_fhx73"]
+[ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="3_pvvsh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5qjjp"]
+font = ExtResource("2_fhx73")
+font_size = 39
+font_color = Color(0.796078, 0.858824, 0.988235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_awn06"]
+font = ExtResource("3_pvvsh")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_5r7r2"]
+font = ExtResource("3_pvvsh")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_0b7yi"]
+resource_name = "scroll"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1920)]
+}
+
+[sub_resource type="Animation" id="Animation_fna0f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4qqs"]
+_data = {
+&"RESET": SubResource("Animation_fna0f"),
+&"scroll": SubResource("Animation_0b7yi")
+}
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_fhx73")
+
+[node name="BlackBackground" parent="." instance=ExtResource("1_p8hk5")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(17.4, 12.200001)
+size_flags_horizontal = 4
+
+[node name="ColorRect" type="ColorRect" parent="BlackBackground"]
+layout_mode = 0
+offset_left = 11.494254
+offset_right = 55.172413
+offset_bottom = 53.11475
+color = Color(0, 0, 0, 1)
+
+[node name="Credits" parent="." instance=ExtResource("1_p8hk5")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Title" type="Label" parent="Credits"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "THE SEARCH FOR THE
+SECRET SAPPHIRE"
+label_settings = SubResource("LabelSettings_5qjjp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Programming_Art" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 640.0
+offset_right = 1152.0
+offset_bottom = 832.0
+text = "Programming / Art:"
+label_settings = SubResource("LabelSettings_awn06")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConorWilson" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 832.0
+offset_right = 1152.0
+offset_bottom = 928.0
+text = "Conor Wilson"
+label_settings = SubResource("LabelSettings_5r7r2")
+horizontal_alignment = 1
+
+[node name="ExternalAssets" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 928.0
+offset_right = 1152.0
+offset_bottom = 1120.0
+text = "External Assets:"
+label_settings = SubResource("LabelSettings_awn06")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 1120.0
+offset_right = 1152.0
+offset_bottom = 1370.0
+text = "Music:
+
+Detective Stories by FreeGroove
+Creepy radio frequency by MixKit
+Mystery Of  The Investigation by PaoloArgento
+Suspense e investigacao - HipervigilRPG by descreveaiRPG
+Video Game Boss Fiight by IHateTuesdays
+Sneaky Piz - Quirky Orchestral Loop by Sonican"
+label_settings = SubResource("LabelSettings_5r7r2")
+horizontal_alignment = 1
+
+[node name="SoundEffects" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 1472.0
+offset_right = 1152.0
+offset_bottom = 1722.0
+text = "Sound Effects:
+
+200 Free SFX by Kronbits
+8-bit / 16-bit Sound Effects (x25) Pack by JDWasabi
+Explosion by morganpurkis (Freesound)
+Laser by Kronos1001 (Freesound)"
+label_settings = SubResource("LabelSettings_5r7r2")
+horizontal_alignment = 1
+
+[node name="GHGameOff" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 1856.0
+offset_right = 1152.0
+offset_bottom = 2287.0
+text = "Originally created for GitHub GameOff 2024
+
+
+
+
+
+
+
+Huge thanks to GamesPond 2025
+and Freeplay Angles 2025 for showcasing
+The Search for the Secret Sapphire :)
+
+
+
+
+Thanks to all the playtesters:
+Friends, family, strangers, and you!"
+label_settings = SubResource("LabelSettings_5r7r2")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w4qqs")
+}

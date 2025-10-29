@@ -1,16 +1,21 @@
 class_name SequenceScreen extends ColorRect
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+signal done
+
+@onready var fade_animator: AnimationPlayer = $FadeAnimator
+@onready var scroll_animator: AnimationPlayer = $ScrollAnimator
 
 func fade_in(linger_time:float, also_fade_out:bool = true):
 	
 	# Fade the screen in
 	show()
-	animation_player.play("fade_in")
+	fade_animator.play("fade_in")
 	await get_tree().create_timer(linger_time).timeout
 	
 	# Optionally fade the screen out
 	if also_fade_out:
-		animation_player.play("fade_out")
-		await animation_player.animation_finished
+		fade_animator.play("fade_out")
+		await fade_animator.animation_finished
 		hide()
+	
+	done.emit()

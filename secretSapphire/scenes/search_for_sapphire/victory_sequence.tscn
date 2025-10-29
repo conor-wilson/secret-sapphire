@@ -1,21 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcqoyseha8hc4"]
+[gd_scene load_steps=9 format=3 uid="uid://dcqoyseha8hc4"]
 
 [ext_resource type="Script" uid="uid://bvvepgqsi68du" path="res://scenes/search_for_sapphire/victory_sequence.gd" id="1_hfqgk"]
 [ext_resource type="PackedScene" uid="uid://q0gl3641bw13" path="res://scenes/search_for_sapphire/eyes_background.tscn" id="2_5ryt4"]
+[ext_resource type="PackedScene" uid="uid://b1s84d8onbl45" path="res://scenes/search_for_sapphire/credits.tscn" id="5_rqr8w"]
 [ext_resource type="PackedScene" uid="uid://bguly075bkdj7" path="res://scenes/search_for_sapphire/sequence_screen.tscn" id="130_duw4h"]
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="130_hnh00"]
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="131_tdh1r"]
-[ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="132_ifxf0"]
-[ext_resource type="AudioStream" uid="uid://cnboagx225osk" path="res://assets/audio/cinematic-cello-farewell-sad-movie-credits-music-329942.mp3" id="133_k7ds0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sj84v"]
 font = ExtResource("130_hnh00")
 font_size = 32
-
-[sub_resource type="LabelSettings" id="LabelSettings_7282a"]
-font = ExtResource("132_ifxf0")
-font_size = 39
-font_color = Color(0.796078, 0.858824, 0.988235, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_corur"]
 
@@ -128,23 +122,7 @@ label_settings = SubResource("LabelSettings_sj84v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Title" parent="." instance=ExtResource("130_duw4h")]
-visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="Label" type="Label" parent="Title"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-text = "THE SEARCH FOR THE
-SECRET SAPPHIRE"
-label_settings = SubResource("LabelSettings_7282a")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Credits" parent="." instance=ExtResource("5_rqr8w")]
 
 [node name="VictoryMenu" parent="." instance=ExtResource("130_duw4h")]
 visible = false
@@ -183,7 +161,6 @@ flat = true
 
 [node name="CreditsMusic" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(576, 320)
-stream = ExtResource("133_k7ds0")
 volume_db = 6.0
 
 [node name="BlackScreen" type="ColorRect" parent="."]

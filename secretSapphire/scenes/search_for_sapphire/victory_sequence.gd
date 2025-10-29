@@ -15,7 +15,8 @@ signal main_menu
 @onready var screen_5: SequenceScreen = $Screen5
 @onready var the_end: SequenceScreen = $TheEnd
 @onready var question_mark: SequenceScreen = $QuestionMark
-@onready var title: SequenceScreen = $Title
+@onready var credits: Credits = $Credits
+
 @onready var victory_menu: SequenceScreen = $VictoryMenu
 @onready var black_screen: ColorRect = $BlackScreen
 
@@ -42,17 +43,18 @@ func play_outro_sequence(previous_screen:Node, linger_time:float = 3.0):
 	
 	# Execute the sequence
 	await get_tree().create_timer(linger_time).timeout
-	await screen_1.fade_in(linger_time)
-	await screen_2.fade_in(linger_time)
-	await screen_3.fade_in(linger_time)
-	await screen_4.fade_in(linger_time)
+	#await screen_1.fade_in(linger_time)
+	#await screen_2.fade_in(linger_time)
+	#await screen_3.fade_in(linger_time)
+	#await screen_4.fade_in(linger_time)
 	await screen_5.fade_in(linger_time)
 	
 	the_end.fade_in(linger_time*1.5)
 	await get_tree().create_timer(linger_time*0.5).timeout
 	await question_mark.fade_in(linger_time)
 	
-	await title.fade_in(linger_time)
+	credits.play_credits()
+	await credits.done
 	await victory_menu.fade_in(linger_time, false)
 	
 	# Done
