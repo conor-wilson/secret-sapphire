@@ -62,6 +62,7 @@ func play():
 	if !Global.music_muted:
 		$Sound/DetectiveMusic.volume_db = 0
 	$Sound/DetectiveMusic.play()
+	$TrueStartButton.scale = Vector2.ONE
 
 func stop(fade_out_music:bool = false):
 	#hide()
@@ -109,7 +110,8 @@ func _on_main_menu_start_button_exploded() -> void:
 	$Sound/DetectiveMusic.stop()
 	
 	if stage != Stage.HELP_BOT_MONOLOGUING:
-		if stage == Stage.BEGINNING && !Global.sfx_muted: $Sound/StaticNoise.volume_db = _get_static_noise_volume()
+		if stage == Stage.BEGINNING: 
+			$Sound/StaticNoise.volume_db = _get_static_noise_volume()
 		$Sound/StaticNoise.play()
 	
 	if stage == Stage.BEGINNING:
@@ -613,7 +615,7 @@ func _begin_cave_of_wonders_monologue() -> void:
 			"They would also request that you do not look at the code for this game.",
 			"As they are aware that it is a jumbled mess.",
 			"I have no more secrets to give you.",
-			"But I will soon."
+			"But perhaps I will soon."
 		]
 		DialogueManager.stop_all_dialogue()
 		DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
@@ -745,6 +747,7 @@ func _on_true_start_button_click() -> void:
 		_start_boss_battle()
 	if stage == Stage.READY_TO_START_GAME:
 		$Camera/FreeRoamCamera.zoom = Vector2(1,1)
+		$Camera/FreeRoamCamera.global_position = $Camera/FreeRoamCamera.home_point.global_position
 		start_game.emit()
 
 
@@ -829,6 +832,8 @@ func _on_settings_menu_mute_music_toggled() -> void:
 # _get_static_noise_volume returns the appropriate dB level for the static noise
 # given whether the Panel is broken or not.
 func _get_static_noise_volume() -> int:
+	if Global.music_muted:
+		return -80
 	if $Menus/MainMenu/InteractiveElements/Panel != null:
 		return -10
 	return -3

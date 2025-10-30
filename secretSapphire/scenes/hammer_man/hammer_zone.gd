@@ -53,7 +53,7 @@ func scatter_scraps() -> bool:
 			var direction = Vector2(1,-1)
 			if !facing_right:
 				direction.x = -1
-			body.apply_central_impulse(randf_range(400,600)*direction)
+			body.apply_central_impulse(randf_range(200,500)*direction)
 			scattered_scraps = true
 	
 	# Report if a block was broken

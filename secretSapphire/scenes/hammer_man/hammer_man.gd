@@ -149,32 +149,6 @@ func slam_hammer():
 		ScreenShakeManager.shake_screen(5,5)
 		print("BREAK!")
 
-#func push_rigid_bodies():
-	#
-	## Push any rigid bodies that HammerMan has encountered
-	#for i in get_slide_collision_count():
-		#var collision:KinematicCollision2D = get_slide_collision(i)
-		#var collider = collision.get_collider()
-		#if collider is RigidBody2D:
-			#
-			#var normal_x:float = collision.get_normal().x
-			#
-			#if abs(normal_x) > min_push_normal_x:
-				#
-				#var push_direction:Vector2 = Vector2(-normal_x, 0).normalized()
-				#
-				#print("PUSH DIRECTION: ", push_direction)
-				#print("DIRECTION:      ", direction)
-				#print("MOVING:         ", moving)
-				#
-				#if moving && push_direction == direction:
-					#print("PUSH!")
-					#collider.apply_central_force(push_direction*PUSH_FORCE)
-				#else:
-					#print("STOP!")
-					#collider.linear_damp(push_direction)
-
-
 func _on_slam_started() -> void:
 	slamming = true
 	await $AnimatedSprite2D.frame_changed
