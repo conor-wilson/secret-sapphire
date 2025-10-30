@@ -13,12 +13,15 @@ func fade_in():
 	color_rect.show()
 	animation_player.play("fade_in")
 
-func transition():
+func transition(longer_fade:bool = false):
 	color_rect.show()
-	animation_player.play("fade_out")
+	if longer_fade:
+		animation_player.play("longer_fade_out")
+	else:
+		animation_player.play("fade_out")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "fade_out":
+	if anim_name == "fade_out" || anim_name == "longer_fade_out":
 		fully_black.emit()
 		animation_player.play("fade_in")
 	else:

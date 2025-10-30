@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b17btrbwqxhtb"]
+[gd_scene load_steps=16 format=3 uid="uid://b17btrbwqxhtb"]
 
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="1_ahu4p"]
 [ext_resource type="Script" uid="uid://bo08pedf72lh2" path="res://scenes/search_for_sapphire/title_sequence.gd" id="1_q7gyh"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bguly075bkdj7" path="res://scenes/search_for_sapphire/sequence_screen.tscn" id="3_fxxuh"]
 [ext_resource type="Texture2D" uid="uid://fujm2ju4lp83" path="res://assets/art/splashscreen/MouseAndKeyboard.png" id="5_fxxuh"]
 [ext_resource type="AudioStream" uid="uid://mw6ulvl1do3b" path="res://assets/audio/dark-wind-19785.mp3" id="5_q7gyh"]
+[ext_resource type="Texture2D" uid="uid://c8uaaccxr6pia" path="res://assets/art/splashscreen/LogoSmall.png" id="6_8wvgg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8wvgg"]
 radius = 72.0
@@ -22,12 +23,22 @@ font_color = Color(0.67451, 0.196078, 0.196078, 1)
 font = ExtResource("1_ahu4p")
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_xxw5c"]
+font = ExtResource("1_ahu4p")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_8wvgg"]
+line_spacing = 12.0
+font = ExtResource("1_ahu4p")
+font_size = 32
+
 [sub_resource type="LabelSettings" id="LabelSettings_qhl73"]
 font = ExtResource("3_1t0yn")
 font_size = 39
 font_color = Color(0.796078, 0.858824, 0.988235, 1)
 
 [node name="TitleSequence" type="Node2D"]
+z_index = 200
 script = ExtResource("1_q7gyh")
 
 [node name="CaveOfSecrets" type="Node2D" parent="."]
@@ -53,7 +64,6 @@ animation = &"loop"
 autoplay = "intro"
 
 [node name="PhotosensitivityScreen" parent="." instance=ExtResource("3_fxxuh")]
-visible = false
 
 [node name="Title" type="Label" parent="PhotosensitivityScreen"]
 layout_mode = 0
@@ -77,7 +87,40 @@ label_settings = SubResource("LabelSettings_hc1kl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MadeWithGodot" parent="." instance=ExtResource("3_fxxuh")]
+visible = false
+
+[node name="LogoSmall" type="Sprite2D" parent="MadeWithGodot"]
+position = Vector2(576, 320)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_8wvgg")
+
+[node name="AvailableNow" parent="." instance=ExtResource("3_fxxuh")]
+visible = false
+
+[node name="Text" type="Label" parent="AvailableNow"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "Available now..."
+label_settings = SubResource("LabelSettings_hc1kl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Link" parent="." instance=ExtResource("3_fxxuh")]
+visible = false
+
+[node name="Text" type="Label" parent="Link"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "quietlantern.itch.io"
+label_settings = SubResource("LabelSettings_xxw5c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ControlsScreen" parent="." instance=ExtResource("3_fxxuh")]
+visible = false
 
 [node name="Text" type="Label" parent="ControlsScreen"]
 layout_mode = 0
@@ -96,14 +139,13 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_fxxuh")
 
 [node name="CreditScreen" parent="." instance=ExtResource("3_fxxuh")]
-visible = false
 
 [node name="Label" type="Label" parent="CreditScreen"]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 text = "A game by Conor Wilson / @QuietLantern"
-label_settings = SubResource("LabelSettings_hc1kl")
+label_settings = SubResource("LabelSettings_8wvgg")
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -6,9 +6,12 @@ signal done
 
 @onready var photosensitivity_screen: SequenceScreen = $PhotosensitivityScreen
 @onready var controls_screen: SequenceScreen = $ControlsScreen
+@onready var made_with_godot: SequenceScreen = $MadeWithGodot
 @onready var credit_screen: SequenceScreen = $CreditScreen
 @onready var title_screen: SequenceScreen = $TitleScreen
 @onready var black_screen: ColorRect = $BlackScreen
+@onready var available_now: SequenceScreen = $AvailableNow
+@onready var link: SequenceScreen = $Link
 
 @onready var spooky_intro_music: AudioStreamPlayer2D = $SpookyIntroMusic
 
@@ -31,21 +34,26 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 	
 	# Only do a smooth fade if not hard-cutting
 	if !hard_cut:
-		TransitionFade.transition()
+		TransitionFade.transition(!include_photo_warning)
 		await TransitionFade.fully_black
 	previous_screen.hide()
+	DialogueManager.stop_all_dialogue()
 	show()
 	
 	# Begin the background animation
 	eyes_background.deploy_eyes()
 	
 	# Execute the sequence
-	await get_tree().create_timer(linger_time).timeout
 	if include_photo_warning:
-		await photosensitivity_screen.fade_in(linger_time)
-		await controls_screen.fade_in(linger_time)
-	await credit_screen.fade_in(linger_time)
-	await title_screen.fade_in(linger_time, false)
+		await get_tree().create_timer(linger_time).timeout
+		await made_with_godot.fade_in(linger_time)
+		await credit_screen.fade_in(linger_time)
+		await title_screen.fade_in(linger_time*10, false)
+		#await controls_screen.fade_in(linger_time)
+	else:
+		await get_tree().create_timer(linger_time).timeout
+		await available_now.fade_in(linger_time*2)
+		await link.fade_in(linger_time*10, false)
 	
 	# Transition to the next scene
 	TransitionFade.transition()
@@ -92,11 +100,11 @@ func _on_cave_mouth_input_event(viewport: Node, event: InputEvent, shape_idx: in
 			]
 		else:
 			lines = [
-				"I see you have come back for more secrets...",
-				"Your diligence is admirable, and so I will give you one...",
-				"This game that you have strived so hard to start...",
-				"The one that takes place within a haunted mansion...",
-				"...it is very bad.",
+				"I see you have come back for more secrets.",
+				"Your diligence is admirable, and so I will give you one.",
+				"This game that you have strived so hard to start.",
+				"The one that takes place within a haunted mansion.",
+				"It is very bad.",
 			]
 		DialogueManager.stop_all_dialogue()
 		DialogueManager.new_dialogue_sequence($CaveOfSecrets/DialogueMarker.position, lines, "black", 4, $CaveOfSecrets/DialogueMarker)

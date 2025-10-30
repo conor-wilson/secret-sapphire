@@ -69,15 +69,15 @@ func hide_all():
 func play_secret_sapphire():
 	
 	# Stop the main game
-	menus.stop(!first_victory)
+	#menus.stop(!first_victory)
 	search_for_the_secret_sapphire.reset()
 	
 	# Start of game should be more abrupt the first time (for dramatic effect)
-	if first_victory:
-		first_victory = false
-		title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 5, true, true)
-	else:
-		title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 5, false, true)
+	#if first_victory:
+		#first_victory = false
+		#title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 5, true, true)
+	#else:
+	title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 2, false, false)
 	
 	# Start the "actual" game
 	await title_sequence.done
@@ -133,8 +133,8 @@ func _on_victory_sequence_main_menu() -> void:
 func _input(event: InputEvent) -> void:
 	pass
 	
-	#if event.is_action_pressed("debugbutton"):
-		#_on_menus_start_game()
+	if event.is_action_pressed("debugbutton"):
+		_on_menus_start_game()
 	
 	# NOTE: Uncomment if you want a dodgy reset mechanic...
 	#if event.is_action_pressed("reset"):

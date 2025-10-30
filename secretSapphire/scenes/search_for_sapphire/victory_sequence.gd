@@ -95,8 +95,8 @@ func _on_cave_mouth_input_event(viewport: Node, event: InputEvent, shape_idx: in
 	if event.is_action_pressed("click"):
 		var lines:Array[String] = [
 				"You have come so far and yet you won't stay to watch the ending?",
-				"What a strange creature you are...",
-				"...what delicious secrets do you hide?"
+				"What a strange creature you are.",
+				"What delicious secrets do you hide?"
 			]
 		DialogueManager.stop_all_dialogue()
 		DialogueManager.new_dialogue_sequence($CaveOfSecrets/DialogueMarker.position, lines, "black", 4, $CaveOfSecrets/DialogueMarker)

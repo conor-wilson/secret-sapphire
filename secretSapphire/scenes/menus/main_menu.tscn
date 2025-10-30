@@ -369,6 +369,7 @@ text = "SETTINGS"
 flat = true
 
 [node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer2"]
@@ -509,7 +510,8 @@ position = Vector2(576, 626.5)
 shape = SubResource("RectangleShape2D_n8vdk")
 
 [node name="QuitMenu" type="ColorRect" parent="."]
-z_index = 100
+visible = false
+z_index = 150
 offset_left = 272.0
 offset_top = 212.0
 offset_right = 880.0
