@@ -28,10 +28,12 @@ TransitionFade="*res://scenes/camera/transition_fade.tscn"
 
 [display]
 
-window/size/mode=3
-window/size/initial_position_type=4
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[editor]
+
+movie_writer/movie_file="D:/gamedev/godot/projects/secret-sapphire/secretSapphire/trailer/secretSapphireTrailer.avi"
 
 [global_group]
 

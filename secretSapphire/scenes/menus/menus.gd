@@ -585,7 +585,7 @@ func _on_free_roam_camera_snap(snap_point: Marker2D) -> void:
 				"They would also request that you do not look at the code for this game.",
 				"As they are aware that it is a jumbled mess.",
 				"I have no more secrets to give you.",
-				"But I will soon."
+				"But perhaps I will soon."
 			]
 			DialogueManager.stop_all_dialogue()
 			DialogueManager.new_dialogue_sequence($DialogueMarkers/CaveMarker.position, lines, "black", 4, $DialogueMarkers/CaveMarker)
