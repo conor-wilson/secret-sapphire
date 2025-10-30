@@ -25,6 +25,7 @@ func _on_start_button_click() -> void:
 
 func _on_settings_button_pressed() -> void:
 	if !Global.sfx_muted: $Sound/SelectNoise.play()
+	$QuitMenu.hide()
 	settings_pressed.emit()
 
 
@@ -151,10 +152,6 @@ func hide_crumpled_paper():
 	$InteractiveElements/CrumpledStickyNote.hide()
 
 
-func _on_quit_button_pressed() -> void:
-	get_tree().quit()
-
-
 func _on_tape_break_zone_body_entered(body: Node2D) -> void:
 	# NOTE to any developers reading this: Why not just have the crumpled tape be breakable? Because
 	# I want them to bounce on the walls first before they break on the ground. This is a very
@@ -162,3 +159,24 @@ func _on_tape_break_zone_body_entered(body: Node2D) -> void:
 	# works just fine :)
 	if body == $InteractiveElements/CrumpledDontTape || body == $InteractiveElements/CrumpledTouchTape:
 		body.queue_free()
+
+
+
+func _on_quit_button_pressed() -> void:
+	if !Global.sfx_muted: $Sound/SelectNoise.play()
+	
+	if !$QuitMenu.visible:
+		$QuitMenu.show()
+	else:
+		$QuitMenu.hide()
+
+func _on_yes_button_pressed() -> void:
+	#$Sound/SelectNoise.play()
+	get_tree().quit()
+
+func _on_no_button_pressed() -> void:
+	if !Global.sfx_muted: $Sound/SelectNoise.play()
+	$QuitMenu.hide()
+
+func _on_visibility_changed() -> void:
+	$QuitMenu.hide()

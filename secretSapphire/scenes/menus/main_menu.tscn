@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene load_steps=44 format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/menus/interactive_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" uid="uid://s1ncxqgkrxyo" path="res://scenes/menus/main_menu.gd" id="1_hib26"]
@@ -26,6 +26,7 @@
 [ext_resource type="SpriteFrames" uid="uid://rftjcopnmkle" path="res://assets/art/running_letters/running_a.tres" id="16_pscsi"]
 [ext_resource type="SpriteFrames" uid="uid://cycrm7f7m0ie8" path="res://assets/art/running_letters/running_r.tres" id="17_sxf8s"]
 [ext_resource type="AudioStream" uid="uid://t76hd8ekf63" path="res://assets/audio/Select 1.wav" id="23_0uyfe"]
+[ext_resource type="Texture2D" uid="uid://cr3biaad4agxs" path="res://assets/art/menu_components/QuitMenu.png" id="27_6imgi"]
 
 [sub_resource type="Animation" id="Animation_bex1y"]
 length = 0.001
@@ -130,6 +131,16 @@ font_size = 96
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8vdk"]
 size = Vector2(1088, 43)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1hq2q"]
+font = ExtResource("5_2a3fy")
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wxcro"]
+font = ExtResource("5_2a3fy")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_hib26")
@@ -497,6 +508,85 @@ collision_mask = 2
 position = Vector2(576, 626.5)
 shape = SubResource("RectangleShape2D_n8vdk")
 
+[node name="QuitMenu" type="ColorRect" parent="."]
+offset_left = 272.0
+offset_top = 212.0
+offset_right = 880.0
+offset_bottom = 468.0
+color = Color(1, 1, 1, 0)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="QuitMenu"]
+position = Vector2(304, 128)
+texture = ExtResource("27_6imgi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuitMenu"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 608.0
+offset_bottom = 256.0
+alignment = 1
+
+[node name="Spacer3" type="MarginContainer" parent="QuitMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="AreYouSure" type="Label" parent="QuitMenu/VBoxContainer"]
+layout_mode = 2
+text = "Your progress will be lost!"
+label_settings = SubResource("LabelSettings_1hq2q")
+horizontal_alignment = 1
+
+[node name="Spacer1" type="MarginContainer" parent="QuitMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Because" type="Label" parent="QuitMenu/VBoxContainer"]
+layout_mode = 2
+text = "Are you sure you want to quit?"
+label_settings = SubResource("LabelSettings_wxcro")
+horizontal_alignment = 1
+
+[node name="Spacer2" type="MarginContainer" parent="QuitMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="QuitMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="QuitMenu/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="YesButton" type="Button" parent="QuitMenu/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("6_43f6x")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_focus_color = Color(0.8509804, 0.5764706, 0.6039216, 1)
+theme_override_colors/font_pressed_color = Color(0.67451, 0.196078, 0.196078, 1)
+theme_override_colors/font_hover_color = Color(0.8509804, 0.5764706, 0.6039216, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
+text = "YES"
+flat = true
+
+[node name="Spacer" type="MarginContainer" parent="QuitMenu/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="NoButton" type="Button" parent="QuitMenu/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("6_43f6x")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.858824, 0.988235, 1)
+theme_override_colors/font_pressed_color = Color(0.333333, 0.333333, 0.333333, 1)
+theme_override_colors/font_hover_color = Color(0.796078, 0.858824, 0.988235, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
+text = "NO"
+flat = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="a_collected" from="Desktop" to="." method="_on_desktop_a_collected"]
 [connection signal="hammer_man_level_changed" from="Desktop" to="." method="_on_desktop_hammer_man_level_changed"]
 [connection signal="s_collected" from="Desktop" to="." method="_on_desktop_s_collected"]
@@ -515,3 +605,5 @@ shape = SubResource("RectangleShape2D_n8vdk")
 [connection signal="area_entered" from="TapeBreakZone" to="." method="_on_tape_break_zone_area_entered"]
 [connection signal="body_entered" from="TapeBreakZone" to="." method="_on_tape_break_zone_body_entered"]
 [connection signal="body_shape_entered" from="TapeBreakZone" to="." method="_on_tape_break_zone_body_shape_entered"]
+[connection signal="pressed" from="QuitMenu/VBoxContainer/CenterContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="QuitMenu/VBoxContainer/CenterContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
