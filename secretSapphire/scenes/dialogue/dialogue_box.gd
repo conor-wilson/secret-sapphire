@@ -6,8 +6,8 @@ class_name DialogueBox extends MarginContainer
 @onready var label: Label = $VBoxContainer/MarginContainer/MarginContainer/Label
 @onready var timer: Timer = $Timer
 @onready var nine_patch_rect: NinePatchRect = $VBoxContainer/MarginContainer/NinePatchRect
-@onready var click_box: Button = $ClickBox
-@onready var click_box_collision_shape: CollisionShape2D = $ClickBox/CollisionShape2D
+#@onready var click_box: Button = $ClickBox
+#@onready var click_box_collision_shape: CollisionShape2D = $ClickBox/CollisionShape2D
 
 var pitch_modifier:float = 1
 

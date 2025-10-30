@@ -157,7 +157,10 @@ func _on_tape_break_zone_body_entered(body: Node2D) -> void:
 	# I want them to bounce on the walls first before they break on the ground. This is a very
 	# hard-coded way to make that happen, but I'm trying to get final build out right now and it
 	# works just fine :)
-	if body == $InteractiveElements/CrumpledDontTape || body == $InteractiveElements/CrumpledTouchTape:
+	if (
+		(has_node("InteractiveElements/CrumpledDontTape") && body == $InteractiveElements/CrumpledDontTape) ||
+		(has_node("InteractiveElements/CrumpledTouchTape") && body == $InteractiveElements/CrumpledTouchTape)
+		):
 		body.queue_free()
 
 
