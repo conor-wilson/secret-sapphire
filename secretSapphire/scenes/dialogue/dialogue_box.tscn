@@ -5,8 +5,7 @@
 [ext_resource type="Theme" uid="uid://fqhlidlvqsyl" path="res://assets/fonts/menu_buttons.tres" id="2_cbn5m"]
 [ext_resource type="AudioStream" uid="uid://xa0onw107h4n" path="res://assets/audio/Text 1.wav" id="4_w6y5f"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gm23c"]
-size = Vector2(33, 57)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gm23c"]
 
 [node name="DialogueBox" type="MarginContainer"]
 z_index = 100
@@ -42,6 +41,12 @@ theme_override_colors/font_color = Color(0.247059, 0.247059, 0.454902, 1)
 theme_override_font_sizes/font_size = 32
 vertical_alignment = 1
 
+[node name="ClickBox" type="Button" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gm23c")
+flat = true
+
 [node name="TabInstructions" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -65,14 +70,8 @@ one_shot = true
 [node name="BlipNoise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_w6y5f")
 
-[node name="ClickBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickBox"]
-position = Vector2(16.5, 29.5)
-shape = SubResource("RectangleShape2D_gm23c")
-
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="resized" from="VBoxContainer/MarginContainer/NinePatchRect" to="." method="_on_nine_patch_rect_resized"]
+[connection signal="button_down" from="VBoxContainer/MarginContainer/ClickBox" to="." method="_on_click_box_button_down"]
 [connection signal="timeout" from="VBoxContainer/TabInstructions/BlinkerTimer" to="." method="_on_blinker_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="input_event" from="ClickBox" to="." method="_on_area_2d_input_event"]

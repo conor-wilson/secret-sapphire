@@ -6,7 +6,7 @@ class_name DialogueBox extends MarginContainer
 @onready var label: Label = $VBoxContainer/MarginContainer/MarginContainer/Label
 @onready var timer: Timer = $Timer
 @onready var nine_patch_rect: NinePatchRect = $VBoxContainer/MarginContainer/NinePatchRect
-@onready var click_box: Area2D = $ClickBox
+@onready var click_box: Button = $ClickBox
 @onready var click_box_collision_shape: CollisionShape2D = $ClickBox/CollisionShape2D
 
 var pitch_modifier:float = 1
@@ -140,13 +140,13 @@ func _on_timer_timeout() -> void:
 
 ## Click box functionality
 
-func _on_nine_patch_rect_resized() -> void:
-	_resize_click_box()
-
-func _resize_click_box() -> void:
-	$ClickBox/CollisionShape2D.shape.size = $VBoxContainer/MarginContainer/NinePatchRect.size
-	$ClickBox/CollisionShape2D.global_position.x = $VBoxContainer/MarginContainer/NinePatchRect.global_position.x + $VBoxContainer/MarginContainer/NinePatchRect.size.x/2
-	$ClickBox/CollisionShape2D.global_position.y = $VBoxContainer/MarginContainer/NinePatchRect.global_position.y + $VBoxContainer/MarginContainer/NinePatchRect.size.y/2
+#func _on_nine_patch_rect_resized() -> void:
+	#_resize_click_box()
+#
+#func _resize_click_box() -> void:
+	#$ClickBox/CollisionShape2D.shape.size = $VBoxContainer/MarginContainer/NinePatchRect.size
+	#$ClickBox/CollisionShape2D.global_position.x = $VBoxContainer/MarginContainer/NinePatchRect.global_position.x + $VBoxContainer/MarginContainer/NinePatchRect.size.x/2
+	#$ClickBox/CollisionShape2D.global_position.y = $VBoxContainer/MarginContainer/NinePatchRect.global_position.y + $VBoxContainer/MarginContainer/NinePatchRect.size.y/2
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
@@ -174,3 +174,7 @@ func _on_blinker_timer_timeout() -> void:
 		$VBoxContainer/TabInstructions/Label.hide()
 	else:
 		$VBoxContainer/TabInstructions/Label.show()
+
+
+func _on_click_box_button_down() -> void:
+	clicked.emit()
