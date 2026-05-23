@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://bwd7js17uny6q"]
+[gd_scene format=4 uid="uid://bwd7js17uny6q"]
 
 [ext_resource type="Script" uid="uid://dy3v3clrgucsk" path="res://scenes/desktop/desktop.gd" id="1_wj53n"]
 [ext_resource type="TileSet" uid="uid://53bpjhxwlgat" path="res://scenes/hammer_man/hammer_man_game_tiles.tres" id="2_b782f"]
@@ -44,7 +44,6 @@
 [ext_resource type="Texture2D" uid="uid://do1updqg30rpo" path="res://assets/art/desktop_windows/Help.png" id="31_231pw"]
 [ext_resource type="Texture2D" uid="uid://dyncku344ffb" path="res://assets/art/desktop_icons/RecyclingBinIcon.png" id="31_hbmeb"]
 [ext_resource type="PhysicsMaterial" uid="uid://dwuph7wln46bi" path="res://scenes/desktop/scrap_material.tres" id="31_p5886"]
-[ext_resource type="FontFile" uid="uid://b1juq587jcwdq" path="res://assets/fonts/Formal_Future.ttf" id="32_2px4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
 size = Vector2(48, 48)
@@ -171,7 +170,6 @@ size = Vector2(224, 308)
 size = Vector2(224, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7lhh2"]
-font = ExtResource("32_2px4q")
 font_size = 30
 font_color = Color(0.615686, 0.615686, 0.615686, 1)
 
@@ -237,33 +235,33 @@ size = Vector2(32, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nci2i"]
 size = Vector2(1024, 96)
 
-[node name="Desktop" type="Node2D"]
+[node name="Desktop" type="Node2D" unique_id=1668187691]
 z_index = -2
 script = ExtResource("1_wj53n")
 
-[node name="DesktopBg" type="Sprite2D" parent="."]
+[node name="DesktopBg" type="Sprite2D" parent="." unique_id=732795692]
 z_index = -5
 position = Vector2(576, 256)
 texture = ExtResource("2_j3mel")
 
-[node name="HomeButton" type="Area2D" parent="."]
+[node name="HomeButton" type="Area2D" parent="." unique_id=1938926741]
 z_index = -3
 position = Vector2(112, 400)
 collision_layer = 64
 collision_mask = 0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="HomeButton"]
+[node name="Sprite2D" type="Sprite2D" parent="HomeButton" unique_id=1642908287]
 scale = Vector2(2, 2)
 texture = ExtResource("23_3xjlp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HomeButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomeButton" unique_id=706748433]
 shape = SubResource("RectangleShape2D_4sq1c")
 
-[node name="DesktopIcons" type="Node2D" parent="."]
+[node name="DesktopIcons" type="Node2D" parent="." unique_id=908277886]
 z_index = -2
 
-[node name="HelpButton" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="HelpButton" parent="DesktopIcons" unique_id=1326378732 node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(112, 344)
 is_draggable = false
 is_icon = true
@@ -271,14 +269,14 @@ icon_requires_double_click = false
 openable_window = NodePath("../../DesktopWindows/Help")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/HelpButton"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/HelpButton" unique_id=1932125543]
 scale = Vector2(2, 2)
 texture = ExtResource("7_7lhh2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/HelpButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/HelpButton" unique_id=1884058305]
 shape = SubResource("RectangleShape2D_231pw")
 
-[node name="Label" type="Label" parent="DesktopIcons/HelpButton"]
+[node name="Label" type="Label" parent="DesktopIcons/HelpButton" unique_id=2129183581]
 visible = false
 offset_left = -22.0
 offset_top = -34.0
@@ -289,21 +287,21 @@ label_settings = SubResource("LabelSettings_t6o0g")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HammerManEXEIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="HammerManEXEIcon" parent="DesktopIcons" unique_id=607249850 node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 248)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/HammerManEXE")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/HammerManEXEIcon"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/HammerManEXEIcon" unique_id=1253457906]
 scale = Vector2(2, 2)
 texture = ExtResource("4_y3ib0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/HammerManEXEIcon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/HammerManEXEIcon" unique_id=10073598]
 shape = SubResource("RectangleShape2D_iyifw")
 
-[node name="Label" type="Label" parent="DesktopIcons/HammerManEXEIcon"]
+[node name="Label" type="Label" parent="DesktopIcons/HammerManEXEIcon" unique_id=1659846196]
 offset_left = -47.0
 offset_top = 32.0
 offset_right = 47.0
@@ -313,21 +311,21 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AntivirusIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="AntivirusIcon" parent="DesktopIcons" unique_id=1086120960 node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(224, 144)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/Antivirus")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/AntivirusIcon"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/AntivirusIcon" unique_id=1351293438]
 scale = Vector2(2, 2)
 texture = ExtResource("5_cnua8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/AntivirusIcon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/AntivirusIcon" unique_id=1700427808]
 shape = SubResource("RectangleShape2D_iyifw")
 
-[node name="Label" type="Label" parent="DesktopIcons/AntivirusIcon"]
+[node name="Label" type="Label" parent="DesktopIcons/AntivirusIcon" unique_id=263073272]
 offset_left = -47.0
 offset_top = 32.0
 offset_right = 47.0
@@ -337,23 +335,23 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NotesIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="NotesIcon" parent="DesktopIcons" unique_id=314516656 node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(456, 224)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TodoTXT")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/NotesIcon"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/NotesIcon" unique_id=1989813488]
 scale = Vector2(2, 2)
 texture = ExtResource("7_aeekl")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/NotesIcon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/NotesIcon" unique_id=1810054791]
 shape = SubResource("RectangleShape2D_iyifw")
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="DesktopIcons/NotesIcon"]
+[node name="Label" type="Label" parent="DesktopIcons/NotesIcon" unique_id=1536364321]
 offset_left = -47.0
 offset_top = 32.0
 offset_right = 47.0
@@ -364,21 +362,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
-[node name="TurtlePNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtlePNGIcon" parent="DesktopIcons" unique_id=253348199 node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(840, 160)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtlePNG")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtlePNGIcon"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtlePNGIcon" unique_id=217888849]
 scale = Vector2(2, 2)
 texture = ExtResource("5_nvnsj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/TurtlePNGIcon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/TurtlePNGIcon" unique_id=366602346]
 shape = SubResource("RectangleShape2D_iyifw")
 
-[node name="Label" type="Label" parent="DesktopIcons/TurtlePNGIcon"]
+[node name="Label" type="Label" parent="DesktopIcons/TurtlePNGIcon" unique_id=1916062548]
 offset_left = -47.0
 offset_top = 32.0
 offset_right = 47.0
@@ -388,20 +386,20 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleHatPNGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtleHatPNGIcon" parent="DesktopIcons" unique_id=614178970 node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(792, 256)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtleHatPNG")
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleHatPNGIcon"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleHatPNGIcon" unique_id=706543274]
 scale = Vector2(2, 2)
 texture = ExtResource("9_lhpti")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/TurtleHatPNGIcon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/TurtleHatPNGIcon" unique_id=1657520392]
 shape = SubResource("RectangleShape2D_iyifw")
 
-[node name="Label" type="Label" parent="DesktopIcons/TurtleHatPNGIcon"]
+[node name="Label" type="Label" parent="DesktopIcons/TurtleHatPNGIcon" unique_id=556480375]
 offset_left = -48.0
 offset_top = 32.0
 offset_right = 46.0
@@ -411,21 +409,21 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleGifIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtleGifIcon" parent="DesktopIcons" unique_id=1107973282 node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(976, 296)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/HappyTurtleGIF")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleGifIcon"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleGifIcon" unique_id=589701029]
 scale = Vector2(2, 2)
 texture = ExtResource("10_xvui1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/TurtleGifIcon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/TurtleGifIcon" unique_id=1461651066]
 shape = SubResource("RectangleShape2D_iyifw")
 
-[node name="Label" type="Label" parent="DesktopIcons/TurtleGifIcon"]
+[node name="Label" type="Label" parent="DesktopIcons/TurtleGifIcon" unique_id=1397497995]
 offset_left = -56.0
 offset_top = 32.0
 offset_right = 56.0
@@ -435,21 +433,21 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TMNTJPGIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="TMNTJPGIcon" parent="DesktopIcons" unique_id=903295698 node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(832, 360)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TMNTJPG")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TMNTJPGIcon"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TMNTJPGIcon" unique_id=242642496]
 scale = Vector2(2, 2)
 texture = ExtResource("11_78lqk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/TMNTJPGIcon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/TMNTJPGIcon" unique_id=405726189]
 shape = SubResource("RectangleShape2D_iyifw")
 
-[node name="Label" type="Label" parent="DesktopIcons/TMNTJPGIcon"]
+[node name="Label" type="Label" parent="DesktopIcons/TMNTJPGIcon" unique_id=1188676694]
 offset_left = -47.0
 offset_top = 32.0
 offset_right = 47.0
@@ -459,21 +457,21 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurtleMemeWEBPIcon" parent="DesktopIcons" node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
+[node name="TurtleMemeWEBPIcon" parent="DesktopIcons" unique_id=1625489234 node_paths=PackedStringArray("openable_window") instance=ExtResource("3_yrive")]
 position = Vector2(960, 184)
 min_global_x = 180.0
 is_icon = true
 openable_window = NodePath("../../DesktopWindows/TurtleMemeWEBP")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleMemeWEBPIcon"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopIcons/TurtleMemeWEBPIcon" unique_id=1255202272]
 scale = Vector2(2, 2)
 texture = ExtResource("12_mkfbq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/TurtleMemeWEBPIcon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopIcons/TurtleMemeWEBPIcon" unique_id=1245513711]
 shape = SubResource("RectangleShape2D_iyifw")
 
-[node name="Label" type="Label" parent="DesktopIcons/TurtleMemeWEBPIcon"]
+[node name="Label" type="Label" parent="DesktopIcons/TurtleMemeWEBPIcon" unique_id=141242628]
 offset_left = -56.0
 offset_top = 32.0
 offset_right = 56.0
@@ -483,24 +481,23 @@ label_settings = SubResource("LabelSettings_sv1yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RecyclingBinIcon" parent="." instance=ExtResource("4_500wu")]
+[node name="RecyclingBinIcon" parent="." unique_id=804503390 instance=ExtResource("4_500wu")]
 z_index = -3
 position = Vector2(112, 112)
 collision_layer = 2
 collision_mask = 65536
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RecyclingBinIcon"]
+[node name="Sprite2D" type="Sprite2D" parent="RecyclingBinIcon" unique_id=1102619043]
 texture = ExtResource("31_hbmeb")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RecyclingBinIcon"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RecyclingBinIcon" unique_id=2015944854]
 polygon = PackedVector2Array(13, 24, 19, -12, 17, -14, -17, -14, -19, -12, -13, 24)
 
-[node name="DesktopWindows" type="Node2D" parent="."]
+[node name="DesktopWindows" type="Node2D" parent="." unique_id=113569794]
 z_index = -2
 
-[node name="Antivirus" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
-visible = false
+[node name="Antivirus" parent="DesktopWindows" unique_id=932360776 node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 position = Vector2(389, 344)
 max_global_x = 976.0
 min_global_y = 176.0
@@ -509,41 +506,41 @@ draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/Antivirus"]
+[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/Antivirus" unique_id=1551526110]
 tile_map_data = PackedByteArray("AAD6//r/AAAFAAAAAAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAA=")
 enabled = false
 tile_set = ExtResource("29_lmll0")
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Antivirus"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Antivirus" unique_id=805012485]
 texture = ExtResource("14_trhyc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus" unique_id=1567173054]
 shape = SubResource("RectangleShape2D_rcyqw")
 
-[node name="DraggableArea" type="Area2D" parent="DesktopWindows/Antivirus"]
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/Antivirus" unique_id=1397203425]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/DraggableArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/DraggableArea" unique_id=807017974]
 position = Vector2(0, -86)
 shape = SubResource("RectangleShape2D_8sj50")
 
-[node name="CloseButton" type="Area2D" parent="DesktopWindows/Antivirus"]
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/Antivirus" unique_id=1986291460]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/CloseButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/CloseButton" unique_id=1319668826]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="FireExtinguisher" type="Area2D" parent="DesktopWindows/Antivirus"]
+[node name="FireExtinguisher" type="Area2D" parent="DesktopWindows/Antivirus" unique_id=1885667305]
 position = Vector2(60, -40)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/FireExtinguisher"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/FireExtinguisher" unique_id=885964708]
 shape = SubResource("CapsuleShape2D_q3c21")
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Antivirus/FireExtinguisher"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Antivirus/FireExtinguisher" unique_id=1230326999]
 position = Vector2(8, 0)
 texture = ExtResource("15_xgsxi")
 
-[node name="Title" type="Label" parent="DesktopWindows/Antivirus"]
+[node name="Title" type="Label" parent="DesktopWindows/Antivirus" unique_id=281469139]
 offset_left = -72.0
 offset_top = -56.0
 offset_right = 48.0
@@ -553,25 +550,25 @@ label_settings = SubResource("LabelSettings_wf0jh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Credit" type="Label" parent="DesktopWindows/Antivirus"]
+[node name="Credit" type="Label" parent="DesktopWindows/Antivirus" unique_id=1334247615]
 offset_left = -86.0
 offset_top = 64.0
 offset_right = 88.0
 offset_bottom = 88.0
-text = "Created by @QuietLantern"
+text = "Created by @ConorWilson"
 label_settings = SubResource("LabelSettings_n0ast")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="ScanButton" type="Area2D" parent="DesktopWindows/Antivirus"]
+[node name="ScanButton" type="Area2D" parent="DesktopWindows/Antivirus" unique_id=1443696117]
 position = Vector2(0, 16)
 collision_layer = 64
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/ScanButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Antivirus/ScanButton" unique_id=1700771823]
 shape = SubResource("RectangleShape2D_gohla")
 
-[node name="ScanButtonText" type="Label" parent="DesktopWindows/Antivirus/ScanButton"]
+[node name="ScanButtonText" type="Label" parent="DesktopWindows/Antivirus/ScanButton" unique_id=1672660210]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -588,7 +585,7 @@ label_settings = SubResource("LabelSettings_wgdno")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SeemsFine" type="Label" parent="DesktopWindows/Antivirus"]
+[node name="SeemsFine" type="Label" parent="DesktopWindows/Antivirus" unique_id=655922960]
 offset_left = -80.0
 offset_top = 32.0
 offset_right = 80.0
@@ -597,10 +594,10 @@ label_settings = SubResource("LabelSettings_fgxfr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VirusScanTimer" type="Timer" parent="DesktopWindows/Antivirus"]
+[node name="VirusScanTimer" type="Timer" parent="DesktopWindows/Antivirus" unique_id=1632840124]
 one_shot = true
 
-[node name="TodoTXT" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
+[node name="TodoTXT" parent="DesktopWindows" unique_id=2133254229 node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 position = Vector2(592, 280)
 max_global_x = 976.0
 min_global_y = 208.0
@@ -609,31 +606,31 @@ draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TodoTXT"]
+[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TodoTXT" unique_id=1142871980]
 tile_map_data = PackedByteArray("AAD6//j/AAAFAAAAAAD7//j/AAAFAAAAAAD8//j/AAAFAAAAAAD9//j/AAAFAAAAAAD+//j/AAAFAAAAAAD///j/AAAFAAAAAAAAAPj/AAAFAAAAAAABAPj/AAAFAAAAAAACAPj/AAAFAAAAAAADAPj/AAAFAAAAAAAEAPj/AAAFAAAAAAAFAPj/AAAFAAAAAAA=")
 tile_set = ExtResource("29_lmll0")
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TodoTXT"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TodoTXT" unique_id=2010608406]
 texture = ExtResource("14_8688o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TodoTXT"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TodoTXT" unique_id=220093775]
 shape = SubResource("RectangleShape2D_5hnlp")
 
-[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TodoTXT"]
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TodoTXT" unique_id=1746827996]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TodoTXT/DraggableArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TodoTXT/DraggableArea" unique_id=1365278809]
 position = Vector2(0, -118)
 shape = SubResource("RectangleShape2D_8sj50")
 
-[node name="CloseButton" type="Area2D" parent="DesktopWindows/TodoTXT"]
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/TodoTXT" unique_id=2141957885]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TodoTXT/CloseButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TodoTXT/CloseButton" unique_id=947700517]
 position = Vector2(-88, -120)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="Text" type="Node2D" parent="DesktopWindows/TodoTXT"]
+[node name="Text" type="Node2D" parent="DesktopWindows/TodoTXT" unique_id=932028186]
 
-[node name="Title" type="Label" parent="DesktopWindows/TodoTXT/Text"]
+[node name="Title" type="Label" parent="DesktopWindows/TodoTXT/Text" unique_id=950849852]
 offset_left = -80.0
 offset_top = -104.0
 offset_right = -18.0
@@ -642,7 +639,7 @@ text = "TODO:"
 label_settings = SubResource("LabelSettings_m5gid")
 vertical_alignment = 1
 
-[node name="Line1" type="Label" parent="DesktopWindows/TodoTXT/Text"]
+[node name="Line1" type="Label" parent="DesktopWindows/TodoTXT/Text" unique_id=1779468367]
 offset_left = -80.0
 offset_top = -72.0
 offset_right = 57.0
@@ -651,7 +648,7 @@ text = "Secret Sapphire Work:"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line2" type="Label" parent="DesktopWindows/TodoTXT/Text"]
+[node name="Line2" type="Label" parent="DesktopWindows/TodoTXT/Text" unique_id=1604904627]
 offset_left = -80.0
 offset_top = -48.0
 offset_right = 78.0
@@ -660,7 +657,7 @@ text = "- [ ] Fix all the bugs"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line3" type="Label" parent="DesktopWindows/TodoTXT/Text"]
+[node name="Line3" type="Label" parent="DesktopWindows/TodoTXT/Text" unique_id=1107961516]
 offset_left = -80.0
 offset_top = -24.0
 offset_right = 78.0
@@ -669,7 +666,7 @@ text = "- [ ] Add FINAL BOSS"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line4" type="Label" parent="DesktopWindows/TodoTXT/Text"]
+[node name="Line4" type="Label" parent="DesktopWindows/TodoTXT/Text" unique_id=383944610]
 offset_left = -80.0
 offset_right = 78.0
 offset_bottom = 14.0
@@ -677,7 +674,7 @@ text = "- [ ] Implement HELP BOT"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line5" type="Label" parent="DesktopWindows/TodoTXT/Text"]
+[node name="Line5" type="Label" parent="DesktopWindows/TodoTXT/Text" unique_id=1852509281]
 offset_left = -80.0
 offset_top = 24.0
 offset_right = 78.0
@@ -685,7 +682,7 @@ offset_bottom = 38.0
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line6" type="Label" parent="DesktopWindows/TodoTXT/Text"]
+[node name="Line6" type="Label" parent="DesktopWindows/TodoTXT/Text" unique_id=1300050982]
 offset_left = -80.0
 offset_top = 48.0
 offset_right = 78.0
@@ -694,7 +691,7 @@ text = "Other Work:"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line7" type="Label" parent="DesktopWindows/TodoTXT/Text"]
+[node name="Line7" type="Label" parent="DesktopWindows/TodoTXT/Text" unique_id=753434747]
 offset_left = -80.0
 offset_top = 72.0
 offset_right = 78.0
@@ -703,7 +700,7 @@ text = "- [ ] Fix recycling bin icon"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="Line8" type="Label" parent="DesktopWindows/TodoTXT/Text"]
+[node name="Line8" type="Label" parent="DesktopWindows/TodoTXT/Text" unique_id=1334799004]
 offset_left = -80.0
 offset_top = 96.0
 offset_right = 80.0
@@ -712,7 +709,7 @@ text = "- [x] Find more turtle pix"
 label_settings = SubResource("LabelSettings_7brmu")
 vertical_alignment = 1
 
-[node name="TurtlePNG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
+[node name="TurtlePNG" parent="DesktopWindows" unique_id=578764326 node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(973, 343)
 max_global_x = 976.0
@@ -722,30 +719,30 @@ draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TurtlePNG"]
+[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TurtlePNG" unique_id=1348015548]
 tile_map_data = PackedByteArray("AAD6//r/AAAFAAAAAAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAA=")
 enabled = false
 tile_set = ExtResource("29_lmll0")
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TurtlePNG"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TurtlePNG" unique_id=1791333491]
 texture = ExtResource("14_6xl12")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtlePNG"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtlePNG" unique_id=848525152]
 shape = SubResource("RectangleShape2D_rcyqw")
 
-[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TurtlePNG"]
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TurtlePNG" unique_id=307596791]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtlePNG/DraggableArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtlePNG/DraggableArea" unique_id=577098873]
 position = Vector2(0, -86)
 shape = SubResource("RectangleShape2D_8sj50")
 
-[node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtlePNG"]
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtlePNG" unique_id=268232710]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtlePNG/CloseButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtlePNG/CloseButton" unique_id=1703774995]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="TurtleHatPNG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
+[node name="TurtleHatPNG" parent="DesktopWindows" unique_id=31506282 node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(785, 365)
 max_global_x = 976.0
@@ -755,30 +752,30 @@ draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TurtleHatPNG"]
+[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TurtleHatPNG" unique_id=1444971399]
 tile_map_data = PackedByteArray("AAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAD6//r/AAAFAAAAAAA=")
 enabled = false
 tile_set = ExtResource("29_lmll0")
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TurtleHatPNG"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TurtleHatPNG" unique_id=1645044438]
 texture = ExtResource("14_85gd2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleHatPNG"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleHatPNG" unique_id=716709787]
 shape = SubResource("RectangleShape2D_rcyqw")
 
-[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TurtleHatPNG"]
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TurtleHatPNG" unique_id=671538686]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleHatPNG/DraggableArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleHatPNG/DraggableArea" unique_id=670507652]
 position = Vector2(0, -86)
 shape = SubResource("RectangleShape2D_8sj50")
 
-[node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtleHatPNG"]
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtleHatPNG" unique_id=1999322160]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleHatPNG/CloseButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleHatPNG/CloseButton" unique_id=73208988]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="HappyTurtleGIF" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
+[node name="HappyTurtleGIF" parent="DesktopWindows" unique_id=825671905 node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(191, 348)
 max_global_x = 976.0
@@ -788,38 +785,36 @@ draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/HappyTurtleGIF"]
+[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/HappyTurtleGIF" unique_id=1102611918]
 tile_map_data = PackedByteArray("AAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAD6//r/AAAFAAAAAAA=")
 enabled = false
 tile_set = ExtResource("29_lmll0")
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/HappyTurtleGIF"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/HappyTurtleGIF" unique_id=881400979]
 texture = ExtResource("15_ecr0k")
 hframes = 16
 frame = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DesktopWindows/HappyTurtleGIF/Sprite2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_iichv")
-}
-autoplay = "happy_turtle_gif"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DesktopWindows/HappyTurtleGIF/Sprite2D" unique_id=50487623]
+libraries/ = SubResource("AnimationLibrary_iichv")
+autoplay = &"happy_turtle_gif"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HappyTurtleGIF"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HappyTurtleGIF" unique_id=897062224]
 shape = SubResource("RectangleShape2D_rcyqw")
 
-[node name="DraggableArea" type="Area2D" parent="DesktopWindows/HappyTurtleGIF"]
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/HappyTurtleGIF" unique_id=1426194228]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HappyTurtleGIF/DraggableArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HappyTurtleGIF/DraggableArea" unique_id=395651480]
 position = Vector2(0, -86)
 shape = SubResource("RectangleShape2D_8sj50")
 
-[node name="CloseButton" type="Area2D" parent="DesktopWindows/HappyTurtleGIF"]
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/HappyTurtleGIF" unique_id=1677755771]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HappyTurtleGIF/CloseButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HappyTurtleGIF/CloseButton" unique_id=1635460510]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="TMNTJPG" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
+[node name="TMNTJPG" parent="DesktopWindows" unique_id=912317385 node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(720, 192)
 max_global_x = 976.0
@@ -829,30 +824,30 @@ draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TMNTJPG"]
+[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TMNTJPG" unique_id=1800925870]
 tile_map_data = PackedByteArray("AAD6//r/AAAFAAAAAAD7//r/AAAFAAAAAAD8//r/AAAFAAAAAAD9//r/AAAFAAAAAAD+//r/AAAFAAAAAAD///r/AAAFAAAAAAAAAPr/AAAFAAAAAAABAPr/AAAFAAAAAAACAPr/AAAFAAAAAAADAPr/AAAFAAAAAAAEAPr/AAAFAAAAAAAFAPr/AAAFAAAAAAA=")
 enabled = false
 tile_set = ExtResource("29_lmll0")
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TMNTJPG"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TMNTJPG" unique_id=130765893]
 texture = ExtResource("16_ho8k6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TMNTJPG"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TMNTJPG" unique_id=584451343]
 shape = SubResource("RectangleShape2D_rcyqw")
 
-[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TMNTJPG"]
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TMNTJPG" unique_id=2087869169]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TMNTJPG/DraggableArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TMNTJPG/DraggableArea" unique_id=2096414113]
 position = Vector2(0, -86)
 shape = SubResource("RectangleShape2D_8sj50")
 
-[node name="CloseButton" type="Area2D" parent="DesktopWindows/TMNTJPG"]
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/TMNTJPG" unique_id=380839507]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TMNTJPG/CloseButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TMNTJPG/CloseButton" unique_id=1951114141]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="TurtleMemeWEBP" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
+[node name="TurtleMemeWEBP" parent="DesktopWindows" unique_id=414883111 node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(712, 272)
 max_global_x = 976.0
@@ -862,239 +857,239 @@ draggable_area = NodePath("DraggableArea")
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TurtleMemeWEBP"]
+[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/TurtleMemeWEBP" unique_id=1522710291]
 tile_map_data = PackedByteArray("AAD6//n/AAAFAAAAAAD7//n/AAAFAAAAAAD8//n/AAAFAAAAAAD9//n/AAAFAAAAAAD+//n/AAAFAAAAAAD///n/AAAFAAAAAAAAAPn/AAAFAAAAAAABAPn/AAAFAAAAAAACAPn/AAAFAAAAAAADAPn/AAAFAAAAAAAEAPn/AAAFAAAAAAAFAPn/AAAFAAAAAAA=")
 enabled = false
 tile_set = ExtResource("29_lmll0")
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP" unique_id=130334461]
 texture = ExtResource("17_yj0i8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP" unique_id=1306940802]
 shape = SubResource("RectangleShape2D_de7jb")
 
-[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TurtleMemeWEBP"]
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/TurtleMemeWEBP" unique_id=1422679065]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP/DraggableArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP/DraggableArea" unique_id=408238160]
 position = Vector2(0, -102)
 shape = SubResource("RectangleShape2D_8sj50")
 
-[node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtleMemeWEBP"]
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/TurtleMemeWEBP" unique_id=704031631]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP/CloseButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP/CloseButton" unique_id=1667481300]
 position = Vector2(-88, -104)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="A" parent="DesktopWindows/TurtleMemeWEBP" instance=ExtResource("22_gmy4o")]
+[node name="A" parent="DesktopWindows/TurtleMemeWEBP" unique_id=414343531 instance=ExtResource("22_gmy4o")]
 position = Vector2(55, -50)
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DesktopWindows/TurtleMemeWEBP/A"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DesktopWindows/TurtleMemeWEBP/A" unique_id=248871194]
 sprite_frames = ExtResource("23_2ysj3")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP/A"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/TurtleMemeWEBP/A" unique_id=1208750261]
 position = Vector2(0, 11)
 shape = SubResource("CapsuleShape2D_skiw6")
 
-[node name="BlockingFire" type="Node2D" parent="DesktopWindows/TurtleMemeWEBP/A"]
+[node name="BlockingFire" type="Node2D" parent="DesktopWindows/TurtleMemeWEBP/A" unique_id=1155641023]
 
-[node name="Fire2" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" instance=ExtResource("20_npo72")]
+[node name="Fire2" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" unique_id=688019208 instance=ExtResource("20_npo72")]
 position = Vector2(5, -10)
 
-[node name="Fire3" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" instance=ExtResource("20_npo72")]
+[node name="Fire3" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" unique_id=1342401441 instance=ExtResource("20_npo72")]
 position = Vector2(1, 9)
 
-[node name="Fire5" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" instance=ExtResource("20_npo72")]
+[node name="Fire5" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" unique_id=768414258 instance=ExtResource("20_npo72")]
 position = Vector2(-5, -13)
 
-[node name="Fire10" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" instance=ExtResource("20_npo72")]
+[node name="Fire10" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" unique_id=782278002 instance=ExtResource("20_npo72")]
 position = Vector2(16, 1)
 
-[node name="Fire11" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" instance=ExtResource("20_npo72")]
+[node name="Fire11" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" unique_id=273692104 instance=ExtResource("20_npo72")]
 position = Vector2(-7, -5)
 
-[node name="Fire12" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" instance=ExtResource("20_npo72")]
+[node name="Fire12" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" unique_id=1963283309 instance=ExtResource("20_npo72")]
 position = Vector2(-5, 7)
 
-[node name="Fire16" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" instance=ExtResource("20_npo72")]
+[node name="Fire16" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" unique_id=934349956 instance=ExtResource("20_npo72")]
 position = Vector2(6, 3)
 
-[node name="Fire18" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" instance=ExtResource("20_npo72")]
+[node name="Fire18" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" unique_id=1406701905 instance=ExtResource("20_npo72")]
 position = Vector2(-17, 8)
 
-[node name="Fire21" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" instance=ExtResource("20_npo72")]
+[node name="Fire21" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" unique_id=1447842993 instance=ExtResource("20_npo72")]
 position = Vector2(15, 16)
 
-[node name="Fire23" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" instance=ExtResource("20_npo72")]
+[node name="Fire23" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" unique_id=967907006 instance=ExtResource("20_npo72")]
 position = Vector2(-3, 18)
 
-[node name="Fire28" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" instance=ExtResource("20_npo72")]
+[node name="Fire28" parent="DesktopWindows/TurtleMemeWEBP/A/BlockingFire" unique_id=998551347 instance=ExtResource("20_npo72")]
 position = Vector2(-17, 20)
 
-[node name="Fire" type="Node2D" parent="DesktopWindows/TurtleMemeWEBP"]
+[node name="Fire" type="Node2D" parent="DesktopWindows/TurtleMemeWEBP" unique_id=723174160]
 
-[node name="Fire1" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire1" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=516011208 instance=ExtResource("20_npo72")]
 position = Vector2(-61, 92)
 
-[node name="Fire4" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire4" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=2129598603 instance=ExtResource("20_npo72")]
 position = Vector2(-59, -3)
 
-[node name="Fire6" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire6" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=861027371 instance=ExtResource("20_npo72")]
 position = Vector2(-73, 92)
 
-[node name="Fire7" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire7" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1952604376 instance=ExtResource("20_npo72")]
 position = Vector2(-66, 92)
 
-[node name="Fire8" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire8" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1455784596 instance=ExtResource("20_npo72")]
 position = Vector2(-80, 5)
 
-[node name="Fire9" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire9" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=933651454 instance=ExtResource("20_npo72")]
 position = Vector2(-72, -3)
 
-[node name="Fire13" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire13" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1472922482 instance=ExtResource("20_npo72")]
 position = Vector2(-59, 8)
 
-[node name="Fire14" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire14" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=232331251 instance=ExtResource("20_npo72")]
 position = Vector2(-72, 13)
 
-[node name="Fire15" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire15" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=49769329 instance=ExtResource("20_npo72")]
 position = Vector2(-81, 92)
 
-[node name="Fire17" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire17" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=97879446 instance=ExtResource("20_npo72")]
 position = Vector2(65, 92)
 
-[node name="Fire19" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire19" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=793893253 instance=ExtResource("20_npo72")]
 position = Vector2(81, 92)
 
-[node name="Fire20" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire20" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=121698448 instance=ExtResource("20_npo72")]
 position = Vector2(-64, 27)
 
-[node name="Fire22" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire22" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=685410311 instance=ExtResource("20_npo72")]
 position = Vector2(73, 92)
 
-[node name="Fire24" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire24" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1590277392 instance=ExtResource("20_npo72")]
 position = Vector2(65, 53)
 
-[node name="Fire25" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire25" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=71822759 instance=ExtResource("20_npo72")]
 position = Vector2(-58, 42)
 
-[node name="Fire26" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire26" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1337591737 instance=ExtResource("20_npo72")]
 position = Vector2(-58, 52)
 
-[node name="Fire27" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire27" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1123905016 instance=ExtResource("20_npo72")]
 position = Vector2(54, 57)
 
-[node name="Fire29" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire29" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1972297183 instance=ExtResource("20_npo72")]
 position = Vector2(-73, 44)
 
-[node name="Fire30" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire30" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=241003325 instance=ExtResource("20_npo72")]
 position = Vector2(-81, 27)
 
-[node name="Fire31" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire31" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=852558326 instance=ExtResource("20_npo72")]
 position = Vector2(19, 37)
 
-[node name="Fire32" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire32" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=978718190 instance=ExtResource("20_npo72")]
 position = Vector2(-56, 92)
 
-[node name="Fire33" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire33" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=109465152 instance=ExtResource("20_npo72")]
 position = Vector2(-59, -122)
 
-[node name="Fire34" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire34" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1259072055 instance=ExtResource("20_npo72")]
 position = Vector2(-48, -56)
 
-[node name="Fire35" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire35" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=6933667 instance=ExtResource("20_npo72")]
 position = Vector2(-39, -57)
 
-[node name="Fire36" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire36" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=2058345497 instance=ExtResource("20_npo72")]
 position = Vector2(-11, -120)
 
-[node name="Fire37" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire37" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1249298762 instance=ExtResource("20_npo72")]
 position = Vector2(-61, -54)
 
-[node name="Fire38" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire38" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1167375453 instance=ExtResource("20_npo72")]
 position = Vector2(-60, -112)
 
-[node name="Fire39" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire39" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1326851515 instance=ExtResource("20_npo72")]
 position = Vector2(81, -16)
 
-[node name="Fire40" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire40" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1384584176 instance=ExtResource("20_npo72")]
 position = Vector2(67, -17)
 
-[node name="Fire41" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire41" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=723018005 instance=ExtResource("20_npo72")]
 position = Vector2(1, -118)
 
-[node name="Fire42" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire42" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1801044557 instance=ExtResource("20_npo72")]
 position = Vector2(-41, -42)
 
-[node name="Fire43" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire43" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=161562138 instance=ExtResource("20_npo72")]
 position = Vector2(-36, -35)
 
-[node name="Fire44" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire44" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1345860787 instance=ExtResource("20_npo72")]
 position = Vector2(33, -72)
 
-[node name="Fire45" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire45" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=933530632 instance=ExtResource("20_npo72")]
 position = Vector2(38, -118)
 
-[node name="Fire46" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire46" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=2097588612 instance=ExtResource("20_npo72")]
 position = Vector2(47, -112)
 
-[node name="Fire47" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire47" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1650787430 instance=ExtResource("20_npo72")]
 position = Vector2(-46, -112)
 
-[node name="Fire48" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire48" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1330067285 instance=ExtResource("20_npo72")]
 position = Vector2(21, -69)
 
-[node name="Fire49" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire49" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1401077545 instance=ExtResource("20_npo72")]
 position = Vector2(75, 56)
 
-[node name="Fire50" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire50" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=352294728 instance=ExtResource("20_npo72")]
 position = Vector2(65, -3)
 
-[node name="Fire51" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire51" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=380705389 instance=ExtResource("20_npo72")]
 position = Vector2(12, 46)
 
-[node name="Fire52" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire52" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=87795762 instance=ExtResource("20_npo72")]
 position = Vector2(74, -120)
 
-[node name="Fire53" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire53" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1048781967 instance=ExtResource("20_npo72")]
 position = Vector2(-62, -41)
 
-[node name="Fire54" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire54" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=228105710 instance=ExtResource("20_npo72")]
 position = Vector2(9, 54)
 
-[node name="Fire55" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire55" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1268848627 instance=ExtResource("20_npo72")]
 position = Vector2(23, 55)
 
-[node name="Fire56" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire56" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=729599409 instance=ExtResource("20_npo72")]
 position = Vector2(-52, -40)
 
-[node name="Fire57" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire57" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=152013993 instance=ExtResource("20_npo72")]
 position = Vector2(68, -112)
 
-[node name="Fire58" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire58" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=241340503 instance=ExtResource("20_npo72")]
 position = Vector2(20, -116)
 
-[node name="Fire59" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire59" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=232457849 instance=ExtResource("20_npo72")]
 position = Vector2(79, -5)
 
-[node name="Fire60" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire60" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=313975544 instance=ExtResource("20_npo72")]
 position = Vector2(-4, -112)
 
-[node name="Fire61" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire61" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=526105982 instance=ExtResource("20_npo72")]
 position = Vector2(81, -112)
 
-[node name="Fire62" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire62" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=928184281 instance=ExtResource("20_npo72")]
 position = Vector2(-22, -112)
 
-[node name="Fire63" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire63" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=1988691275 instance=ExtResource("20_npo72")]
 position = Vector2(-44, -30)
 
-[node name="Fire64" parent="DesktopWindows/TurtleMemeWEBP/Fire" instance=ExtResource("20_npo72")]
+[node name="Fire64" parent="DesktopWindows/TurtleMemeWEBP/Fire" unique_id=2042528471 instance=ExtResource("20_npo72")]
 position = Vector2(-59, -25)
 
-[node name="Caption" type="Label" parent="DesktopWindows/TurtleMemeWEBP"]
+[node name="Caption" type="Label" parent="DesktopWindows/TurtleMemeWEBP" unique_id=333535426]
 offset_left = -96.0
 offset_top = 64.0
 offset_right = 96.0
@@ -1104,57 +1099,57 @@ label_settings = SubResource("LabelSettings_f8lwi")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Arrows" type="Node2D" parent="DesktopWindows/TurtleMemeWEBP"]
+[node name="Arrows" type="Node2D" parent="DesktopWindows/TurtleMemeWEBP" unique_id=1919002292]
 visible = false
 
-[node name="LightGreyArrow" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows"]
+[node name="LightGreyArrow" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows" unique_id=876909983]
 position = Vector2(-21, 92)
 rotation = -3.14159
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_kfy1a")
 
-[node name="LightGreyArrow2" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows"]
+[node name="LightGreyArrow2" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows" unique_id=1277720956]
 position = Vector2(-8, 90)
 rotation = -1.57079
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_kfy1a")
 
-[node name="LightGreyArrow3" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows"]
+[node name="LightGreyArrow3" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows" unique_id=1966940949]
 position = Vector2(19, 90)
 rotation = 4.71238
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_kfy1a")
 
-[node name="LightGreyArrow4" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows"]
+[node name="LightGreyArrow4" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows" unique_id=631487905]
 position = Vector2(32, 92)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_kfy1a")
 
-[node name="LightGreyArrow5" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows"]
+[node name="LightGreyArrow5" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows" unique_id=1996989176]
 position = Vector2(6, 92)
 rotation = -3.14159
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_kfy1a")
 
-[node name="LightGreyArrow6" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows"]
+[node name="LightGreyArrow6" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows" unique_id=1612939156]
 position = Vector2(46, 90)
 rotation = -4.71238
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_kfy1a")
 
-[node name="LightGreyArrow7" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows"]
+[node name="LightGreyArrow7" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows" unique_id=742859166]
 position = Vector2(73, 90)
 rotation = -7.85397
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_kfy1a")
 
-[node name="LightGreyArrow8" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows"]
+[node name="LightGreyArrow8" type="Sprite2D" parent="DesktopWindows/TurtleMemeWEBP/Arrows" unique_id=340117309]
 position = Vector2(60, 92)
 rotation = -3.14159
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_kfy1a")
 
-[node name="HammerManEXE" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
+[node name="HammerManEXE" parent="DesktopWindows" unique_id=1654393302 node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(320, 232)
 max_global_x = 976.0
@@ -1165,25 +1160,25 @@ open_position_offset = Vector2(144, -32)
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
-[node name="HammerManGame" parent="DesktopWindows/HammerManEXE" instance=ExtResource("25_ruqgm")]
+[node name="HammerManGame" parent="DesktopWindows/HammerManEXE" unique_id=1042919420 instance=ExtResource("25_ruqgm")]
 position = Vector2(-96, -96)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE" unique_id=827470097]
 shape = SubResource("RectangleShape2D_ime56")
 
-[node name="DraggableArea" type="Area2D" parent="DesktopWindows/HammerManEXE"]
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/HammerManEXE" unique_id=137942060]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE/DraggableArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE/DraggableArea" unique_id=1702554580]
 position = Vector2(0, -86)
 shape = SubResource("RectangleShape2D_8sj50")
 
-[node name="CloseButton" type="Area2D" parent="DesktopWindows/HammerManEXE"]
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/HammerManEXE" unique_id=547175412]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE/CloseButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/HammerManEXE/CloseButton" unique_id=1354130986]
 position = Vector2(-88, -88)
 shape = SubResource("RectangleShape2D_kfer5")
 
-[node name="Help" parent="DesktopWindows" node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
+[node name="Help" parent="DesktopWindows" unique_id=1608268233 node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
 visible = false
 position = Vector2(320, 272)
 min_global_x = 192.0
@@ -1195,33 +1190,33 @@ open_position_offset = Vector2(160, -64)
 close_button = NodePath("CloseButton")
 metadata/_edit_group_ = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/Help"]
+[node name="TileMapLayer" type="TileMapLayer" parent="DesktopWindows/Help" unique_id=1056259632]
 position = Vector2(0, -10)
 tile_map_data = PackedByteArray("AAD5//f/AAAFAAAAAAD6//f/AAAFAAAAAAD7//f/AAAFAAAAAAD8//f/AAAFAAAAAAD9//f/AAAFAAAAAAD+//f/AAAFAAAAAAD///f/AAAFAAAAAAAAAPf/AAAFAAAAAAABAPf/AAAFAAAAAAACAPf/AAAFAAAAAAADAPf/AAAFAAAAAAAEAPf/AAAFAAAAAAAFAPf/AAAFAAAAAAAGAPf/AAAFAAAAAAA=")
 enabled = false
 tile_set = ExtResource("29_lmll0")
 
-[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Help"]
+[node name="Sprite2D" type="Sprite2D" parent="DesktopWindows/Help" unique_id=1829777471]
 texture = ExtResource("31_231pw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Help"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Help" unique_id=1852942608]
 shape = SubResource("RectangleShape2D_2px4q")
 
-[node name="DraggableArea" type="Area2D" parent="DesktopWindows/Help"]
+[node name="DraggableArea" type="Area2D" parent="DesktopWindows/Help" unique_id=1937267843]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Help/DraggableArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Help/DraggableArea" unique_id=586268852]
 position = Vector2(0, -144)
 shape = SubResource("RectangleShape2D_7lhh2")
 
-[node name="CloseButton" type="Area2D" parent="DesktopWindows/Help"]
+[node name="CloseButton" type="Area2D" parent="DesktopWindows/Help" unique_id=1120621255]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Help/CloseButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopWindows/Help/CloseButton" unique_id=1725680015]
 position = Vector2(-104, -146)
 shape = SubResource("RectangleShape2D_ih88g")
 
-[node name="Text" type="Node2D" parent="DesktopWindows/Help"]
+[node name="Text" type="Node2D" parent="DesktopWindows/Help" unique_id=1372767255]
 
-[node name="Title" type="Label" parent="DesktopWindows/Help/Text"]
+[node name="Title" type="Label" parent="DesktopWindows/Help/Text" unique_id=57353694]
 offset_left = -95.0
 offset_top = -135.0
 offset_right = 97.0
@@ -1232,7 +1227,7 @@ label_settings = SubResource("LabelSettings_7lhh2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Subtitle" type="Label" parent="DesktopWindows/Help/Text"]
+[node name="Subtitle" type="Label" parent="DesktopWindows/Help/Text" unique_id=1229596741]
 offset_left = -88.0
 offset_top = -33.0
 offset_right = 88.0
@@ -1242,7 +1237,7 @@ label_settings = SubResource("LabelSettings_rkjic")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Line1" type="Label" parent="DesktopWindows/Help/Text"]
+[node name="Line1" type="Label" parent="DesktopWindows/Help/Text" unique_id=433708763]
 offset_left = -88.0
 offset_top = 14.0
 offset_right = 88.0
@@ -1252,7 +1247,7 @@ text = "    Double-click to open
 label_settings = SubResource("LabelSettings_dd5ek")
 vertical_alignment = 1
 
-[node name="Line2" type="Label" parent="DesktopWindows/Help/Text"]
+[node name="Line2" type="Label" parent="DesktopWindows/Help/Text" unique_id=597767215]
 offset_left = -88.0
 offset_top = 62.0
 offset_right = 88.0
@@ -1262,7 +1257,7 @@ text = "    Click and drag from the
 label_settings = SubResource("LabelSettings_dd5ek")
 vertical_alignment = 1
 
-[node name="Line3" type="Label" parent="DesktopWindows/Help/Text"]
+[node name="Line3" type="Label" parent="DesktopWindows/Help/Text" unique_id=1278190707]
 offset_left = -88.0
 offset_top = 109.0
 offset_right = 88.0
@@ -1271,10 +1266,10 @@ text = "    Click \"X\" to close files"
 label_settings = SubResource("LabelSettings_dd5ek")
 vertical_alignment = 1
 
-[node name="RigidScraps" type="Node2D" parent="."]
+[node name="RigidScraps" type="Node2D" parent="." unique_id=1724559689]
 visible = false
 
-[node name="Scrap1" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="Scrap1" parent="RigidScraps" unique_id=2131465774 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(92, 417)
 collision_layer = 32768
 collision_mask = 65536
@@ -1282,13 +1277,13 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap1"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap1" unique_id=335787781]
 texture = ExtResource("6_87aq6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap1" unique_id=214666981]
 shape = SubResource("CircleShape2D_f4lp4")
 
-[node name="Scrap2" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="Scrap2" parent="RigidScraps" unique_id=1801434107 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(135, 397)
 collision_layer = 32768
 collision_mask = 65536
@@ -1296,13 +1291,13 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap2"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap2" unique_id=1979191200]
 texture = ExtResource("7_80e7u")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap2" unique_id=1480391521]
 shape = SubResource("CircleShape2D_3bl16")
 
-[node name="Scrap3" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="Scrap3" parent="RigidScraps" unique_id=150511062 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(137, 419)
 collision_layer = 32768
 collision_mask = 65536
@@ -1310,14 +1305,14 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap3"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap3" unique_id=1575929430]
 texture = ExtResource("8_2uucb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap3" unique_id=227943386]
 rotation = 0.785397
 shape = SubResource("CapsuleShape2D_i305j")
 
-[node name="Scrap4" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="Scrap4" parent="RigidScraps" unique_id=1361486159 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(103, 376)
 collision_layer = 32768
 collision_mask = 65536
@@ -1325,14 +1320,14 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap4"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap4" unique_id=1300836078]
 texture = ExtResource("9_ptjwv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap4" unique_id=1233543027]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_x8m81")
 
-[node name="Scrap5" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="Scrap5" parent="RigidScraps" unique_id=1550383822 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(116, 404)
 collision_layer = 32768
 collision_mask = 65536
@@ -1340,15 +1335,15 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap5"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Scrap5" unique_id=82684063]
 texture = ExtResource("10_mbtxq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Scrap5" unique_id=1478472290]
 position = Vector2(1, -1)
 rotation = 0.785397
 shape = SubResource("CapsuleShape2D_pdh3w")
 
-[node name="GodotLogo" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="GodotLogo" parent="RigidScraps" unique_id=148023460 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(119, 384)
 collision_layer = 32768
 collision_mask = 65536
@@ -1356,15 +1351,15 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/GodotLogo"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/GodotLogo" unique_id=1143234389]
 texture = ExtResource("11_pwlfk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/GodotLogo"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/GodotLogo" unique_id=2085730477]
 position = Vector2(0, -1)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_8r524")
 
-[node name="Email1" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="Email1" parent="RigidScraps" unique_id=1716035904 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(138, 376)
 collision_layer = 32768
 collision_mask = 65536
@@ -1372,14 +1367,14 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Email1"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Email1" unique_id=1239593131]
 texture = ExtResource("12_0cbwi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Email1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Email1" unique_id=1112970149]
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_qgwa3")
 
-[node name="Email2" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="Email2" parent="RigidScraps" unique_id=1237771343 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(100, 395)
 collision_layer = 32768
 collision_mask = 65536
@@ -1387,14 +1382,14 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Email2"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Email2" unique_id=811737493]
 texture = ExtResource("12_0cbwi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Email2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Email2" unique_id=867722771]
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_qgwa3")
 
-[node name="Email3" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="Email3" parent="RigidScraps" unique_id=1362043955 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(117, 423)
 collision_layer = 32768
 collision_mask = 65536
@@ -1402,14 +1397,14 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Email3"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Email3" unique_id=590375949]
 texture = ExtResource("12_0cbwi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Email3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Email3" unique_id=1778202551]
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_qgwa3")
 
-[node name="File1" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="File1" parent="RigidScraps" unique_id=182579103 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(104, 409)
 collision_layer = 32768
 collision_mask = 65536
@@ -1417,14 +1412,14 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/File1"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/File1" unique_id=1926311086]
 texture = ExtResource("13_tl8a5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/File1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/File1" unique_id=506194838]
 rotation = 3.14159
 shape = SubResource("CapsuleShape2D_3ykyp")
 
-[node name="File2" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="File2" parent="RigidScraps" unique_id=1198388229 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(128, 409)
 collision_layer = 32768
 collision_mask = 65536
@@ -1432,14 +1427,14 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/File2"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/File2" unique_id=1701069320]
 texture = ExtResource("13_tl8a5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/File2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/File2" unique_id=1629088947]
 rotation = 3.14159
 shape = SubResource("CapsuleShape2D_3ykyp")
 
-[node name="Folder" parent="RigidScraps" groups=["Scraps"] instance=ExtResource("4_500wu")]
+[node name="Folder" parent="RigidScraps" unique_id=311670366 groups=["Scraps"] instance=ExtResource("4_500wu")]
 position = Vector2(89, 383)
 collision_layer = 32768
 collision_mask = 65536
@@ -1447,66 +1442,66 @@ physics_material_override = ExtResource("31_p5886")
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Folder"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidScraps/Folder" unique_id=1893523746]
 texture = ExtResource("14_semdl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Folder"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidScraps/Folder" unique_id=864494170]
 position = Vector2(0, 1)
 rotation = 4.71238
 shape = SubResource("CapsuleShape2D_7nws6")
 
-[node name="ScreenBorder" type="TileMapLayer" parent="."]
+[node name="ScreenBorder" type="TileMapLayer" parent="." unique_id=168717598]
 tile_map_data = PackedByteArray("AAAEAAQAAAAHAAAAAAAFAAQAAAAHAAAAAAAGAAQAAAAHAAAAAAAHAAQAAAAHAAAAAAAIAAQAAAAHAAAAAAAJAAQAAAAHAAAAAAAKAAQAAAAHAAAAAAALAAQAAAAHAAAAAAAMAAQAAAAHAAAAAAANAAQAAAAHAAAAAAAOAAQAAAAHAAAAAAAPAAQAAAAHAAAAAAAQAAQAAAAHAAAAAAARAAQAAAAHAAAAAAASAAQAAAAHAAAAAAATAAQAAAAHAAAAAAAUAAQAAAAHAAAAAAAVAAQAAAAHAAAAAAAWAAQAAAAHAAAAAAAXAAQAAAAHAAAAAAAYAAQAAAAHAAAAAAAZAAQAAAAHAAAAAAAaAAQAAAAHAAAAAAAbAAQAAAAHAAAAAAAcAAQAAAAHAAAAAAAdAAQAAAAHAAAAAAAeAAQAAAAHAAAAAAAfAAQAAAAHAAAAAAAgAAQAAAAHAAAAAAAhAAQAAAAHAAAAAAAiAAQAAAAHAAAAAAAjAAQAAAAHAAAAAAAkAAQAAAAHAAAAAAAlAAQAAAAHAAAAAAAmAAQAAAAHAAAAAAAnAAQAAAAHAAAAAAAoAAQAAAAHAAAAAAApAAQAAAAHAAAAAAAqAAQAAAAHAAAAAAArAAQAAAAHAAAAAAAsAAQAAAAHAAAAAAAtAAQAAAAHAAAAAAAuAAQAAAAHAAAAAAAvAAQAAAAHAAAAAAAwAAQAAAAHAAAAAAAxAAQAAAAHAAAAAAAyAAQAAAAHAAAAAAA2AAQAAAAHAAAAAAA3AAQAAAAHAAAAAAA4AAQAAAAHAAAAAAA5AAQAAAAHAAAAAAA6AAQAAAAHAAAAAAA7AAQAAAAHAAAAAAA8AAQAAAAHAAAAAAA9AAQAAAAHAAAAAAA+AAQAAAAHAAAAAAA/AAQAAAAHAAAAAABAAAQAAAAHAAAAAABBAAQAAAAHAAAAAABCAAQAAAAHAAAAAABDAAQAAAAHAAAAAABDAAUAAAAHAAAAAABDAAYAAAAHAAAAAABDAAcAAAAHAAAAAABDAAgAAAAHAAAAAABDAAkAAAAHAAAAAABDAAoAAAAHAAAAAABDAAsAAAAHAAAAAABDAAwAAAAHAAAAAABDAA0AAAAHAAAAAABDAA4AAAAHAAAAAABDAA8AAAAHAAAAAABDABAAAAAHAAAAAABDABEAAAAHAAAAAABDABIAAAAHAAAAAABDABMAAAAHAAAAAABDABQAAAAHAAAAAABDABUAAAAHAAAAAABDABYAAAAHAAAAAABDABcAAAAHAAAAAABDABgAAAAHAAAAAABDABkAAAAHAAAAAABDABoAAAAHAAAAAABDABsAAAAHAAAAAABCABsAAAAHAAAAAABBABsAAAAHAAAAAABAABsAAAAHAAAAAAA/ABsAAAAHAAAAAAA+ABsAAAAHAAAAAAA9ABsAAAAHAAAAAAA8ABsAAAAHAAAAAAA7ABsAAAAHAAAAAAA6ABsAAAAHAAAAAAA5ABsAAAAHAAAAAAA4ABsAAAAHAAAAAAA3ABsAAAAHAAAAAAA2ABsAAAAHAAAAAAA1ABsAAAAHAAAAAAA0ABsAAAAHAAAAAAAzABsAAAAHAAAAAAAyABsAAAAHAAAAAAAxABsAAAAHAAAAAAAwABsAAAAHAAAAAAAvABsAAAAHAAAAAAAuABsAAAAHAAAAAAAtABsAAAAHAAAAAAAsABsAAAAHAAAAAAArABsAAAAHAAAAAAAqABsAAAAHAAAAAAApABsAAAAHAAAAAAAoABsAAAAHAAAAAAAnABsAAAAHAAAAAAAmABsAAAAHAAAAAAAlABsAAAAHAAAAAAAkABsAAAAHAAAAAAAjABsAAAAHAAAAAAAiABsAAAAHAAAAAAAhABsAAAAHAAAAAAAgABsAAAAHAAAAAAAfABsAAAAHAAAAAAAeABsAAAAHAAAAAAAdABsAAAAHAAAAAAAcABsAAAAHAAAAAAAbABsAAAAHAAAAAAAaABsAAAAHAAAAAAAZABsAAAAHAAAAAAAYABsAAAAHAAAAAAAXABsAAAAHAAAAAAAWABsAAAAHAAAAAAAVABsAAAAHAAAAAAAUABsAAAAHAAAAAAATABsAAAAHAAAAAAASABsAAAAHAAAAAAARABsAAAAHAAAAAAAQABsAAAAHAAAAAAAPABsAAAAHAAAAAAAOABsAAAAHAAAAAAANABsAAAAHAAAAAAAMABsAAAAHAAAAAAALABsAAAAHAAAAAAAKABsAAAAHAAAAAAAJABsAAAAHAAAAAAAIABsAAAAHAAAAAAAHABsAAAAHAAAAAAAEABsAAAAHAAAAAAAEABoAAAAHAAAAAAAEABkAAAAHAAAAAAAEABgAAAAHAAAAAAAEABcAAAAHAAAAAAAEABYAAAAHAAAAAAAEABUAAAAHAAAAAAAEABQAAAAHAAAAAAAEABMAAAAHAAAAAAAEABIAAAAHAAAAAAAEABEAAAAHAAAAAAAEABAAAAAHAAAAAAAEAA8AAAAHAAAAAAAEAA4AAAAHAAAAAAAEAA0AAAAHAAAAAAAFABsAAAAHAAAAAAAGABsAAAAHAAAAAAA1AAQAAAAHAAAAAAA0AAQAAAAHAAAAAAAzAAQAAAAHAAAAAAAEAAsAAAAHAAAAAAAEAAwAAAAHAAAAAAAEAAoAAAAHAAAAAAAEAAUAAAAHAAAAAAA=")
 tile_set = ExtResource("29_lmll0")
 
-[node name="BreakableBlocks" type="TileMapLayer" parent="." groups=["BreakableBlocks"]]
+[node name="BreakableBlocks" type="TileMapLayer" parent="." unique_id=1673213612 groups=["BreakableBlocks"]]
 tile_map_data = PackedByteArray("AAAEAAcAAAAHAAEAAAAEAAgAAAAHAAEAAAAEAAYAAAAHAAEAAAAEAAkAAAAHAAEAAAA=")
 tile_set = ExtResource("2_b782f")
 
-[node name="Static" parent="." instance=ExtResource("29_57ei7")]
+[node name="Static" parent="." unique_id=1368394368 instance=ExtResource("29_57ei7")]
 
-[node name="Screen" type="Area2D" parent="."]
+[node name="Screen" type="Area2D" parent="." unique_id=1001561010]
 collision_layer = 64
 collision_mask = 2145
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen" unique_id=407818639]
 position = Vector2(576, 256)
 shape = SubResource("RectangleShape2D_5awlk")
 
-[node name="StaticBorder" type="StaticBody2D" parent="."]
+[node name="StaticBorder" type="StaticBody2D" parent="." unique_id=620217057]
 collision_layer = 65536
 collision_mask = 32768
 physics_material_override = SubResource("PhysicsMaterial_kq6gu")
 
-[node name="LeftBorder" type="CollisionShape2D" parent="StaticBorder"]
+[node name="LeftBorder" type="CollisionShape2D" parent="StaticBorder" unique_id=1552217638]
 position = Vector2(8, 256)
 shape = SubResource("RectangleShape2D_p62x3")
 
-[node name="RightBorder" type="CollisionShape2D" parent="StaticBorder"]
+[node name="RightBorder" type="CollisionShape2D" parent="StaticBorder" unique_id=1124180530]
 position = Vector2(1144, 256)
 shape = SubResource("RectangleShape2D_p62x3")
 
-[node name="Floor" type="CollisionShape2D" parent="StaticBorder"]
+[node name="Floor" type="CollisionShape2D" parent="StaticBorder" unique_id=1780755453]
 position = Vector2(576, 504)
 shape = SubResource("RectangleShape2D_bvaam")
 
-[node name="Roof" type="CollisionShape2D" parent="StaticBorder"]
+[node name="Roof" type="CollisionShape2D" parent="StaticBorder" unique_id=1455121827]
 position = Vector2(576, 8)
 shape = SubResource("RectangleShape2D_y6gij")
 
-[node name="HammerManEscapeZone" type="Area2D" parent="."]
+[node name="HammerManEscapeZone" type="Area2D" parent="." unique_id=664223539]
 collision_layer = 64
 collision_mask = 2048
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerManEscapeZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerManEscapeZone" unique_id=518402544]
 position = Vector2(64, 128)
 shape = SubResource("RectangleShape2D_bags5")
 
-[node name="HammerManRoof" type="StaticBody2D" parent="."]
+[node name="HammerManRoof" type="StaticBody2D" parent="." unique_id=1825991657]
 collision_layer = 4096
 collision_mask = 2048
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerManRoof"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerManRoof" unique_id=1924192334]
 position = Vector2(576, 24)
 shape = SubResource("RectangleShape2D_nci2i")
 

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=21 format=3 uid="uid://cjnjhykip21o5"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://cjnjhykip21o5"]
 
 [ext_resource type="Texture2D" uid="uid://dv5ayhpl7ym6v" path="res://assets/art/running_letters/S-Idle-Sheet.png" id="1_ovjpk"]
 [ext_resource type="Texture2D" uid="uid://bjgxlt2seuhcb" path="res://assets/art/running_letters/S-Jumping-Sheet.png" id="2_a6n8b"]

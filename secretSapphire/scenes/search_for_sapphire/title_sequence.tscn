@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b17btrbwqxhtb"]
+[gd_scene format=3 uid="uid://b17btrbwqxhtb"]
 
 [ext_resource type="FontFile" uid="uid://bckbkknmti08k" path="res://assets/fonts/m6x11.ttf" id="1_ahu4p"]
 [ext_resource type="Script" uid="uid://bo08pedf72lh2" path="res://scenes/search_for_sapphire/title_sequence.gd" id="1_q7gyh"]
@@ -7,7 +7,6 @@
 [ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="3_1t0yn"]
 [ext_resource type="PackedScene" uid="uid://bguly075bkdj7" path="res://scenes/search_for_sapphire/sequence_screen.tscn" id="3_fxxuh"]
 [ext_resource type="Texture2D" uid="uid://fujm2ju4lp83" path="res://assets/art/splashscreen/MouseAndKeyboard.png" id="5_fxxuh"]
-[ext_resource type="AudioStream" uid="uid://mw6ulvl1do3b" path="res://assets/audio/dark-wind-19785.mp3" id="5_q7gyh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8wvgg"]
 radius = 72.0
@@ -27,35 +26,35 @@ font = ExtResource("3_1t0yn")
 font_size = 39
 font_color = Color(0.796078, 0.858824, 0.988235, 1)
 
-[node name="TitleSequence" type="Node2D"]
+[node name="TitleSequence" type="Node2D" unique_id=186278650]
 script = ExtResource("1_q7gyh")
 
-[node name="CaveOfSecrets" type="Node2D" parent="."]
+[node name="CaveOfSecrets" type="Node2D" parent="." unique_id=1171442450]
 
-[node name="Sprite2D" type="Sprite2D" parent="CaveOfSecrets"]
+[node name="Sprite2D" type="Sprite2D" parent="CaveOfSecrets" unique_id=1204157149]
 position = Vector2(4240, -1424)
 texture = ExtResource("2_hc1kl")
 
-[node name="CaveMouth" type="Area2D" parent="CaveOfSecrets"]
+[node name="CaveMouth" type="Area2D" parent="CaveOfSecrets" unique_id=687930711]
 position = Vector2(4240, -1424)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CaveOfSecrets/CaveMouth"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaveOfSecrets/CaveMouth" unique_id=1515631333]
 position = Vector2(0, 48)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_8wvgg")
 
-[node name="DialogueMarker" type="Marker2D" parent="CaveOfSecrets"]
+[node name="DialogueMarker" type="Marker2D" parent="CaveOfSecrets" unique_id=1417479062]
 position = Vector2(4288, -1336)
 
-[node name="EyesBackground" parent="." instance=ExtResource("2_1t0yn")]
+[node name="EyesBackground" parent="." unique_id=764963376 instance=ExtResource("2_1t0yn")]
 position = Vector2(576, 324)
 animation = &"loop"
 autoplay = "intro"
 
-[node name="PhotosensitivityScreen" parent="." instance=ExtResource("3_fxxuh")]
+[node name="PhotosensitivityScreen" parent="." unique_id=1475626027 instance=ExtResource("3_fxxuh")]
 visible = false
 
-[node name="Title" type="Label" parent="PhotosensitivityScreen"]
+[node name="Title" type="Label" parent="PhotosensitivityScreen" unique_id=1580321828]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -66,7 +65,7 @@ label_settings = SubResource("LabelSettings_q7gyh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Text" type="Label" parent="PhotosensitivityScreen"]
+[node name="Text" type="Label" parent="PhotosensitivityScreen" unique_id=1756849539]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -77,9 +76,9 @@ label_settings = SubResource("LabelSettings_hc1kl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ControlsScreen" parent="." instance=ExtResource("3_fxxuh")]
+[node name="ControlsScreen" parent="." unique_id=1970734117 instance=ExtResource("3_fxxuh")]
 
-[node name="Text" type="Label" parent="ControlsScreen"]
+[node name="Text" type="Label" parent="ControlsScreen" unique_id=894019836]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -90,27 +89,27 @@ label_settings = SubResource("LabelSettings_hc1kl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MouseAndKeyboard" type="Sprite2D" parent="ControlsScreen"]
+[node name="MouseAndKeyboard" type="Sprite2D" parent="ControlsScreen" unique_id=1798086755]
 position = Vector2(576, 368)
 scale = Vector2(2, 2)
 texture = ExtResource("5_fxxuh")
 
-[node name="CreditScreen" parent="." instance=ExtResource("3_fxxuh")]
+[node name="CreditScreen" parent="." unique_id=1751461852 instance=ExtResource("3_fxxuh")]
 visible = false
 
-[node name="Label" type="Label" parent="CreditScreen"]
+[node name="Label" type="Label" parent="CreditScreen" unique_id=1600960280]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-text = "A game by Conor Wilson / @QuietLantern"
+text = "A game by Conor Wilson"
 label_settings = SubResource("LabelSettings_hc1kl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TitleScreen" parent="." instance=ExtResource("3_fxxuh")]
+[node name="TitleScreen" parent="." unique_id=1076139034 instance=ExtResource("3_fxxuh")]
 visible = false
 
-[node name="Label" type="Label" parent="TitleScreen"]
+[node name="Label" type="Label" parent="TitleScreen" unique_id=502093609]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -120,15 +119,14 @@ label_settings = SubResource("LabelSettings_qhl73")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BlackScreen" type="ColorRect" parent="."]
+[node name="BlackScreen" type="ColorRect" parent="." unique_id=432281884]
 visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 0)
 
-[node name="SpookyIntroMusic" type="AudioStreamPlayer2D" parent="."]
+[node name="SpookyIntroMusic" type="AudioStreamPlayer2D" parent="." unique_id=458275743]
 position = Vector2(576, 320)
-stream = ExtResource("5_q7gyh")
 volume_db = 6.0
 
 [connection signal="input_event" from="CaveOfSecrets/CaveMouth" to="." method="_on_cave_mouth_input_event"]

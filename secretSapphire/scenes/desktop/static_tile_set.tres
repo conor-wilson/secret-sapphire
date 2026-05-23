@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dqe6s2a32nf6q"]
+[gd_resource type="TileSet" format=3 uid="uid://dqe6s2a32nf6q"]
 
 [ext_resource type="Texture2D" uid="uid://1dldeotyl6j4" path="res://assets/art/tile_sheets/WhiteNoise-Sheet.png" id="1_s5fgp"]
 

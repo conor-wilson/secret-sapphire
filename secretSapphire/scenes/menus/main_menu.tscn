@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://5ctllddc4obb"]
+[gd_scene format=4 uid="uid://5ctllddc4obb"]
 
 [ext_resource type="PackedScene" uid="uid://b7pp5suyru2lf" path="res://scenes/menus/interactive_element.tscn" id="1_7wdxp"]
 [ext_resource type="Script" uid="uid://s1ncxqgkrxyo" path="res://scenes/menus/main_menu.gd" id="1_hib26"]
@@ -142,64 +142,60 @@ font = ExtResource("5_2a3fy")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D" unique_id=1580594858]
 script = ExtResource("1_hib26")
 metadata/_edit_vertical_guides_ = [176.0]
 
-[node name="Desktop" parent="." instance=ExtResource("2_kxbcg")]
+[node name="Desktop" parent="." unique_id=156522475 instance=ExtResource("2_kxbcg")]
 z_index = 0
 
-[node name="Background" type="TileMapLayer" parent="."]
+[node name="Background" type="TileMapLayer" parent="." unique_id=348784628]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAMAAAABAAAAAAAAAAMAAAACAAAAAAAAAAMAAAADAAAAAAAAAAMAAAAEAAAAAAAAAAMAAAAFAAAAAAAAAAMAAAAGAAAAAAAAAAMAAAAHAAAAAAAAAAMAAAAIAAAAAAAAAAMAAAAJAAAAAAAAAAMAAAAKAAAAAAAAAAMAAAALAAAAAAAAAAMAAAAMAAAAAAAAAAMAAAANAAAAAAAAAAMAAAAOAAAAAAAAAAMAAAAPAAAAAAAAAAMAAAAQAAAAAAAAAAMAAAARAAAAAAAAAAMAAAASAAAAAAAAAAMAAAATAAAAAAAAAAMAAAAUAAAAAAAAAAMAAAAVAAAAAAAAAAMAAAAWAAAAAAAAAAMAAAAXAAAAAAAAAAMAAAAYAAAAAAAAAAMAAAAZAAAAAAAAAAMAAAAaAAAAAAAAAAMAAAAbAAAAAAAAAAMAAAAcAAAAAAAAAAMAAAAdAAAAAAAAAAMAAAAeAAAAAAAAAAMAAAAfAAAAAAAAAAMAAAAgAAAAAAAAAAMAAAAhAAAAAAAAAAMAAAAiAAAAAAAAAAMAAAAjAAAAAAAAAAMAAAAjABQAAAAAAAMAAAAAABQAAAAAAAMAAAAiABQAAAAAAAMAAAAhABQAAAAAAAMAAAAgABQAAAAAAAMAAAAfABQAAAAAAAMAAAAeABQAAAAAAAMAAAAdABQAAAAAAAMAAAAcABQAAAAAAAMAAAAbABQAAAAAAAMAAAAaABQAAAAAAAMAAAAZABQAAAAAAAMAAAAYABQAAAAAAAMAAAAXABQAAAAAAAMAAAAWABQAAAAAAAMAAAAVABQAAAAAAAMAAAAUABQAAAAAAAMAAAATABQAAAAAAAMAAAASABQAAAAAAAMAAAARABQAAAAAAAMAAAAQABQAAAAAAAMAAAAPABQAAAAAAAMAAAAOABQAAAAAAAMAAAANABQAAAAAAAMAAAAMABQAAAAAAAMAAAALABQAAAAAAAMAAAAKABQAAAAAAAMAAAAJABQAAAAAAAMAAAAIABQAAAAAAAMAAAAHABQAAAAAAAMAAAAGABQAAAAAAAMAAAAFABQAAAAAAAMAAAAEABQAAAAAAAMAAAADABQAAAAAAAMAAAACABQAAAAAAAMAAAABABQAAAAAAAMAAAAAAAEAAAAAAAMAAAAAAAIAAAAAAAMAAAAAAAMAAAAAAAMAAAAAAAQAAAAAAAMAAAAAAAUAAAAAAAMAAAAAAAYAAAAAAAMAAAAAAAcAAAAAAAMAAAAAAAgAAAAAAAMAAAAAAAkAAAAAAAMAAAAAAAoAAAAAAAMAAAAAAAsAAAAAAAMAAAAAAAwAAAAAAAMAAAAAAA0AAAAAAAMAAAAAAA4AAAAAAAMAAAAAAA8AAAAAAAMAAAAAABAAAAAAAAMAAAAAABEAAAAAAAMAAAAAABIAAAAAAAMAAAAAABMAAAAAAAMAAAAjAAEAAAAAAAMAAAAjAAIAAAAAAAMAAAAjAAMAAAAAAAMAAAAjAAQAAAAAAAMAAAAjAAUAAAAAAAMAAAAjAAYAAAAAAAMAAAAjAAcAAAAAAAMAAAAjAAgAAAAAAAMAAAAjAAkAAAAAAAMAAAAjAAoAAAAAAAMAAAAjAAsAAAAAAAMAAAAjAAwAAAAAAAMAAAAjAA0AAAAAAAMAAAAjAA4AAAAAAAMAAAAjAA8AAAAAAAMAAAAjABAAAAAAAAMAAAAjABEAAAAAAAMAAAAjABIAAAAAAAMAAAAjABMAAAAAAAMAAAAMAAIAAAACAAMAAQAMAAEAAAAAAAMAAAALAAEAAAAAAAMAAAAKAAEAAAAAAAMAAAAJAAEAAAAAAAMAAAAIAAEAAAAAAAMAAAAHAAEAAAAAAAMAAAAGAAEAAAAAAAMAAAAFAAEAAAAAAAMAAAAEAAEAAAAAAAMAAAADAAEAAAAAAAMAAAACAAEAAAAAAAMAAAABAAEAAAAAAAMAAAABAAIAAAAAAAMAAAABAAMAAAAAAAMAAAABAAQAAAAAAAMAAAABAAUAAAAAAAMAAAABAAYAAAAAAAMAAAABAAcAAAAAAAMAAAABAAgAAAAAAAMAAAABAAkAAAAAAAMAAAABAAoAAAAAAAMAAAABAAsAAAAAAAMAAAABAAwAAAAAAAMAAAABAA0AAAAAAAMAAAABAA4AAAAAAAMAAAABAA8AAAAAAAMAAAABABAAAAAAAAMAAAABABEAAAAAAAMAAAABABIAAAAAAAMAAAABABMAAAAAAAMAAAACABMAAAAAAAMAAAACABIAAAAAAAMAAAACABEAAAAAAAMAAAACABAAAAAAAAMAAAACAA8AAAAAAAMAAAACAA4AAAAAAAMAAAACAA0AAAABAAMAAwACAAwAAAACAAMABAACAAsAAAACAAMABAACAAoAAAACAAMABAACAAkAAAACAAMABAACAAgAAAACAAMABAACAAcAAAACAAMABAACAAYAAAACAAMABAACAAUAAAACAAMABAACAAQAAAACAAMABAACAAMAAAACAAMABAACAAIAAAABAAMAAQADAAIAAAACAAMAAQADAA0AAAACAAMAAwADAA4AAAAAAAMAAAADAA8AAAAAAAMAAAADABAAAAAAAAMAAAADABEAAAAAAAMAAAADABIAAAAAAAMAAAADABMAAAAAAAMAAAAEABMAAAAAAAMAAAAEABIAAAAAAAMAAAAEABEAAAAAAAMAAAAEABAAAAAAAAMAAAAEAA8AAAAAAAMAAAAEAA4AAAAAAAMAAAAEAA0AAAACAAMAAwAEAAIAAAACAAMAAQAFAAIAAAACAAMAAQAFAA0AAAACAAMAAwAFAA4AAAAAAAMAAAAFAA8AAAAAAAMAAAAFABAAAAAAAAMAAAAFABEAAAAAAAMAAAAFABIAAAAAAAMAAAAFABMAAAAAAAMAAAAGABMAAAAAAAMAAAAGABIAAAAAAAMAAAAGABEAAAAAAAMAAAAGABAAAAAAAAMAAAAGAA8AAAAAAAMAAAAGAA4AAAAAAAMAAAAGAA0AAAACAAMAAwAGAAIAAAACAAMAAQAHAAIAAAACAAMAAQAHAA0AAAACAAMAAwAHAA4AAAAAAAMAAAAHAA8AAAAAAAMAAAAHABAAAAAAAAMAAAAHABEAAAAAAAMAAAAHABIAAAAAAAMAAAAHABMAAAAAAAMAAAAIABMAAAAAAAMAAAAIABIAAAAAAAMAAAAIABEAAAAAAAMAAAAIABAAAAAAAAMAAAAIAA8AAAAAAAMAAAAIAA4AAAAAAAMAAAAIAA0AAAACAAMAAwAIAAIAAAACAAMAAQAJAAIAAAACAAMAAQAJAA0AAAACAAMAAwAJAA4AAAAAAAMAAAAJAA8AAAAAAAMAAAAJABAAAAAAAAMAAAAJABEAAAAAAAMAAAAJABIAAAAAAAMAAAAJABMAAAAAAAMAAAAKABMAAAAAAAMAAAAKABIAAAAAAAMAAAAKABEAAAAAAAMAAAAKABAAAAAAAAMAAAAKAA8AAAAAAAMAAAAKAA4AAAAAAAMAAAAKAA0AAAACAAMAAwAKAAIAAAACAAMAAQALAAIAAAACAAMAAQALAA0AAAACAAMAAwALAA4AAAAAAAMAAAALAA8AAAAAAAMAAAALABAAAAAAAAMAAAALABEAAAAAAAMAAAALABIAAAAAAAMAAAALABMAAAAAAAMAAAAMABMAAAAAAAMAAAAMABIAAAAAAAMAAAAMABEAAAAAAAMAAAAMABAAAAAAAAMAAAAMAA8AAAAAAAMAAAAMAA4AAAAAAAMAAAAMAA0AAAACAAMAAwANAA0AAAACAAMAAwANAAIAAAACAAMAAQANAAEAAAAAAAMAAAAOAAEAAAAAAAMAAAAOAAIAAAACAAMAAQAOAA0AAAACAAMAAwAOAA4AAAAAAAMAAAANAA4AAAAAAAMAAAANAA8AAAAAAAMAAAANABAAAAAAAAMAAAANABEAAAAAAAMAAAANABIAAAAAAAMAAAANABMAAAAAAAMAAAAOABMAAAAAAAMAAAAOABIAAAAAAAMAAAAOABEAAAAAAAMAAAAOABAAAAAAAAMAAAAOAA8AAAAAAAMAAAAPAA8AAAAAAAMAAAAPAA4AAAAAAAMAAAAPAA0AAAACAAMAAwAPAAIAAAACAAMAAQAPAAEAAAAAAAMAAAAQAAEAAAAAAAMAAAAQAAIAAAACAAMAAQAQAA0AAAACAAMAAwAQAA4AAAAAAAMAAAAQAA8AAAAAAAMAAAAQABAAAAAAAAMAAAAPABAAAAAAAAMAAAAPABEAAAAAAAMAAAAPABIAAAAAAAMAAAAPABMAAAAAAAMAAAAQABMAAAAAAAMAAAAQABIAAAAAAAMAAAAQABEAAAAAAAMAAAARABEAAAAAAAMAAAARABAAAAAAAAMAAAARAA8AAAAAAAMAAAARAA4AAAAAAAMAAAARAA0AAAACAAMAAwARAAIAAAACAAMAAQARAAEAAAAAAAMAAAASAAEAAAAAAAMAAAASAAIAAAACAAMAAQASAA0AAAACAAMAAwASAA4AAAAAAAMAAAASAA8AAAAAAAMAAAASABAAAAAAAAMAAAASABEAAAAAAAMAAAASABIAAAAAAAMAAAARABIAAAAAAAMAAAARABMAAAAAAAMAAAASABMAAAAAAAMAAAATABMAAAAAAAMAAAATABIAAAAAAAMAAAATABEAAAAAAAMAAAATABAAAAAAAAMAAAATAA8AAAAAAAMAAAATAA4AAAAAAAMAAAATAA0AAAACAAMAAwATAAIAAAACAAMAAQATAAEAAAAAAAMAAAAUAAEAAAAAAAMAAAAUAAIAAAACAAMAAQAUAA0AAAACAAMAAwAUAA4AAAAAAAMAAAAUAA8AAAAAAAMAAAAUABAAAAAAAAMAAAAUABEAAAAAAAMAAAAUABIAAAAAAAMAAAAUABMAAAAAAAMAAAAVABMAAAAAAAMAAAAVABIAAAAAAAMAAAAVABEAAAAAAAMAAAAVABAAAAAAAAMAAAAVAA8AAAAAAAMAAAAVAA4AAAAAAAMAAAAVAA0AAAACAAMAAwAVAAIAAAACAAMAAQAVAAEAAAAAAAMAAAAWAAEAAAAAAAMAAAAWAAIAAAACAAMAAQAWAA0AAAACAAMAAwAWAA4AAAAAAAMAAAAWAA8AAAAAAAMAAAAWABAAAAAAAAMAAAAWABEAAAAAAAMAAAAWABIAAAAAAAMAAAAWABMAAAAAAAMAAAAXABMAAAAAAAMAAAAXABIAAAAAAAMAAAAXABEAAAAAAAMAAAAXABAAAAAAAAMAAAAXAA8AAAAAAAMAAAAXAA4AAAAAAAMAAAAXAA0AAAACAAMAAwAXAAIAAAACAAMAAQAXAAEAAAAAAAMAAAAYAAEAAAAAAAMAAAAYAAIAAAACAAMAAQAYAA0AAAACAAMAAwAYAA4AAAAAAAMAAAAYAA8AAAAAAAMAAAAYABAAAAAAAAMAAAAYABEAAAAAAAMAAAAYABIAAAAAAAMAAAAYABMAAAAAAAMAAAAZABMAAAAAAAMAAAAZABIAAAAAAAMAAAAZABEAAAAAAAMAAAAZABAAAAAAAAMAAAAZAA8AAAAAAAMAAAAZAA4AAAAAAAMAAAAZAA0AAAACAAMAAwAZAAIAAAACAAMAAQAZAAEAAAAAAAMAAAAaAAEAAAAAAAMAAAAaAAIAAAACAAMAAQAaAA0AAAACAAMAAwAaAA4AAAAAAAMAAAAaAA8AAAAAAAMAAAAaABAAAAAAAAMAAAAaABEAAAAAAAMAAAAaABIAAAAAAAMAAAAaABMAAAAAAAMAAAAbABMAAAAAAAMAAAAbABIAAAAAAAMAAAAbABEAAAAAAAMAAAAbABAAAAAAAAMAAAAbAA8AAAAAAAMAAAAbAA4AAAAAAAMAAAAbAA0AAAACAAMAAwAbAAIAAAACAAMAAQAbAAEAAAAAAAMAAAAcAAEAAAAAAAMAAAAcAAIAAAACAAMAAQAcAA0AAAACAAMAAwAcAA4AAAAAAAMAAAAcAA8AAAAAAAMAAAAcABAAAAAAAAMAAAAcABEAAAAAAAMAAAAcABIAAAAAAAMAAAAcABMAAAAAAAMAAAAdABMAAAAAAAMAAAAdABIAAAAAAAMAAAAdABEAAAAAAAMAAAAdABAAAAAAAAMAAAAdAA8AAAAAAAMAAAAdAA4AAAAAAAMAAAAdAA0AAAACAAMAAwAdAAIAAAACAAMAAQAdAAEAAAAAAAMAAAAeAAEAAAAAAAMAAAAeAAIAAAACAAMAAQAeAA0AAAACAAMAAwAeAA4AAAAAAAMAAAAeAA8AAAAAAAMAAAAeABAAAAAAAAMAAAAeABEAAAAAAAMAAAAeABIAAAAAAAMAAAAeABMAAAAAAAMAAAAfABMAAAAAAAMAAAAfABIAAAAAAAMAAAAfABEAAAAAAAMAAAAfABAAAAAAAAMAAAAfAA8AAAAAAAMAAAAfAA4AAAAAAAMAAAAfAA0AAAACAAMAAwAfAAIAAAACAAMAAQAfAAEAAAAAAAMAAAAgAAEAAAAAAAMAAAAgAAIAAAACAAMAAQAgAA0AAAACAAMAAwAgAA4AAAAAAAMAAAAgAA8AAAAAAAMAAAAgABAAAAAAAAMAAAAgABEAAAAAAAMAAAAgABIAAAAAAAMAAAAgABMAAAAAAAMAAAAhABMAAAAAAAMAAAAhABIAAAAAAAMAAAAhABEAAAAAAAMAAAAhABAAAAAAAAMAAAAhAA8AAAAAAAMAAAAhAA0AAAABAAMABAAhAAwAAAACAAMAAgAhAAsAAAACAAMAAgAhAAoAAAACAAMAAgAhAAkAAAACAAMAAgAhAAgAAAACAAMAAgAhAAcAAAACAAMAAgAhAAYAAAACAAMAAgAhAAUAAAACAAMAAgAhAAQAAAACAAMAAgAhAAMAAAACAAMAAgAhAAIAAAABAAMAAgAhAAEAAAAAAAMAAAAiAAEAAAAAAAMAAAAiAAIAAAAAAAMAAAAiAAMAAAAAAAMAAAAiAAQAAAAAAAMAAAAiAAUAAAAAAAMAAAAiAAYAAAAAAAMAAAAiAAcAAAAAAAMAAAAiAAgAAAAAAAMAAAAiAAkAAAAAAAMAAAAiAAoAAAAAAAMAAAAiAAsAAAAAAAMAAAAiAAwAAAAAAAMAAAAiAA0AAAAAAAMAAAAiAA4AAAAAAAMAAAAiAA8AAAAAAAMAAAAiABAAAAAAAAMAAAAiABEAAAAAAAMAAAAiABIAAAAAAAMAAAAiABMAAAAAAAMAAAAhAA4AAAAAAAMAAAA=")
 tile_set = ExtResource("1_jssq0")
 
-[node name="Boarder" type="TileMapLayer" parent="."]
+[node name="Boarder" type="TileMapLayer" parent="." unique_id=1922160732]
 tile_map_data = PackedByteArray("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")
 tile_set = ExtResource("1_jssq0")
 
-[node name="BreakableBlocks" type="TileMapLayer" parent="." groups=["BreakableBlocks"]]
+[node name="BreakableBlocks" type="TileMapLayer" parent="." unique_id=835192660 groups=["BreakableBlocks"]]
 tile_map_data = PackedByteArray("AABGACQAAAAGAAEAAABHACQAAAAGAAEAAABHACUAAAAGAAEAAABGACUAAAAGAAEAAAA=")
 tile_set = ExtResource("4_rruka")
 
-[node name="InteractiveElements" type="Node2D" parent="."]
+[node name="InteractiveElements" type="Node2D" parent="." unique_id=688756573]
 
-[node name="StickyNote" type="Sprite2D" parent="InteractiveElements"]
+[node name="StickyNote" type="Sprite2D" parent="InteractiveElements" unique_id=363556867]
 position = Vector2(184, 336)
 texture = ExtResource("3_ahnkd")
 hframes = 15
 frame = 7
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractiveElements/StickyNote"]
-libraries = {
-&"": SubResource("AnimationLibrary_n3yhk")
-}
-autoplay = "sticky_note_animation"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractiveElements/StickyNote" unique_id=930747676]
+libraries/ = SubResource("AnimationLibrary_n3yhk")
+autoplay = &"sticky_note_animation"
 
-[node name="CrumpledStickyNote" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+[node name="CrumpledStickyNote" parent="InteractiveElements" unique_id=1677609688 instance=ExtResource("1_7wdxp")]
 visible = false
 position = Vector2(184, 328)
 collision_layer = 16
 physics_material_override = SubResource("PhysicsMaterial_2ej0i")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledStickyNote"]
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledStickyNote" unique_id=1557856117]
 texture = ExtResource("4_ylyox")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="InteractiveElements/CrumpledStickyNote"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="InteractiveElements/CrumpledStickyNote" unique_id=1869477092]
 polygon = PackedVector2Array(8, -45, 16, -35, 24, -34, 43, -30, 43, -20, 46, -18, 43, -11, 40, -3, 46, 7, 42, 15, 38, 20, 39, 27, 38, 35, 28, 41, 21, 46, 5, 42, 0, 42, -13, 47, -22, 42, -31, 47, -36, 43, -38, 33, -35, 28, -37, 19, -46, -2, -46, -14, -40, -22, -39, -25, -39, -31, -32, -37, -30, -40, -26, -40, -19, -36, -12, -39, -9, -40, 0, -43)
 
-[node name="DontTouchTape" type="Sprite2D" parent="InteractiveElements"]
+[node name="DontTouchTape" type="Sprite2D" parent="InteractiveElements" unique_id=1669938946]
 position = Vector2(1016, 112)
 texture = ExtResource("8_awvna")
 hframes = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractiveElements/DontTouchTape"]
-libraries = {
-&"": SubResource("AnimationLibrary_6imgi")
-}
-autoplay = "DontTouchTape"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractiveElements/DontTouchTape" unique_id=539089396]
+libraries/ = SubResource("AnimationLibrary_6imgi")
+autoplay = &"DontTouchTape"
 
-[node name="CrumpledDontTape" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+[node name="CrumpledDontTape" parent="InteractiveElements" unique_id=175045014 instance=ExtResource("1_7wdxp")]
 visible = false
 position = Vector2(1026, 123)
 collision_layer = 2
@@ -211,14 +207,14 @@ break_shake_strength = 0.0
 break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledDontTape"]
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledDontTape" unique_id=2093586025]
 texture = ExtResource("9_jygr6")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="InteractiveElements/CrumpledDontTape"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="InteractiveElements/CrumpledDontTape" unique_id=475074892]
 scale = Vector2(0.4, 0.4)
 polygon = PackedVector2Array(0, 60, 10, 50, 17.5, 50, 27.5, 40, 27.5, 35, 32.5, 30, 45, 30, 55, 20, 55, 17.5, 60, 7.5, 60, 0, 55, -5, 55, -20, 45, -30, 42.5, -30, 40, -32.5, 40, -37.5, 25, -52.5, 22.5, -52.5, 12.5, -57.5, 7.5, -57.5, -5, -45, -15, -45, -20, -50, -30, -50, -45, -35, -45, -32.5, -50, -27.5, -50, -20, -40, -10, -35, -10, -35, -7.5, -37.5, -2.5, -42.5, 2.5, -42.5, 5, -52.5, 15, -52.5, 22.5, -45, 30, -42.5, 30, -42.5, 40, -30, 52.5, -22.5, 52.5, -17.5, 47.5, -15, 47.5, -2.5, 60)
 
-[node name="CrumpledTouchTape" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+[node name="CrumpledTouchTape" parent="InteractiveElements" unique_id=1784382089 instance=ExtResource("1_7wdxp")]
 visible = false
 position = Vector2(1007, 100)
 collision_layer = 2
@@ -230,27 +226,27 @@ break_shake_strength = 0.0
 break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledTouchTape"]
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/CrumpledTouchTape" unique_id=351636272]
 texture = ExtResource("10_n8vdk")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="InteractiveElements/CrumpledTouchTape"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="InteractiveElements/CrumpledTouchTape" unique_id=1818385191]
 scale = Vector2(0.4, 0.4)
 polygon = PackedVector2Array(10, 55, 15, 50, 17.5, 50, 25, 42.5, 32.5, 42.5, 35, 45, 37.5, 45, 42.5, 40, 45, 40, 50, 35, 50, 27.5, 47.5, 25, 47.5, 17.5, 50, 15, 50, 12.5, 52.5, 10, 52.5, 7.5, 57.5, 2.5, 57.5, -7.5, 47.5, -17.499985, 47.5, -19.999985, 50, -22.499985, 50, -27.499985, 35, -42.499985, 27.5, -42.499985, 17.5, -52.499985, 12.5, -52.499985, 10, -54.999985, 0, -54.999985, -15, -39.999985, -27.5, -39.999985, -40, -27.499985, -40, -22.499985, -42.5, -19.999985, -42.5, -10, -40, -7.5, -40, -2.5, -52.5, 10, -52.5, 12.5, -47.5, 17.5, -47.5, 22.5, -50, 25, -50, 30, -52.5, 32.5, -52.5, 35, -42.5, 45, -35, 45, -22.5, 57.5, -17.5, 57.5, -15, 55, -12.5, 55, -10, 52.5, 0, 52.5, 2.5, 55)
 
-[node name="Panel" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+[node name="Panel" parent="InteractiveElements" unique_id=1075472184 instance=ExtResource("1_7wdxp")]
 collision_layer = 2
 break_shake_strength = 25.0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Panel"]
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Panel" unique_id=1483459295]
 position = Vector2(576, 256)
 texture = ExtResource("3_janoq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Panel"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Panel" unique_id=1936496926]
 position = Vector2(576, 256)
 shape = SubResource("RectangleShape2D_p2u67")
 
-[node name="Title" type="Label" parent="InteractiveElements/Panel"]
+[node name="Title" type="Label" parent="InteractiveElements/Panel" unique_id=1662264580]
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 1088.0
@@ -261,21 +257,21 @@ label_settings = SubResource("LabelSettings_rnshd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartButton" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+[node name="StartButton" parent="InteractiveElements" unique_id=1508852310 instance=ExtResource("1_7wdxp")]
 position = Vector2(576, 384)
 collision_layer = 2
 break_shake_strength = 30.0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/StartButton"]
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/StartButton" unique_id=1424739084]
 texture = ExtResource("8_nhvuo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/StartButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/StartButton" unique_id=1299387919]
 position = Vector2(0, 3.05176e-05)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_nwsea")
 
-[node name="Screw1" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+[node name="Screw1" parent="InteractiveElements" unique_id=1466046023 instance=ExtResource("1_7wdxp")]
 position = Vector2(96, 96)
 collision_layer = 2
 detatch_shake_strength = 5.0
@@ -283,13 +279,13 @@ break_shake_strength = 0.0
 break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw1"]
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw1" unique_id=471651889]
 texture = ExtResource("8_yx54q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw1" unique_id=1105196984]
 shape = SubResource("CircleShape2D_jk44i")
 
-[node name="Screw2" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+[node name="Screw2" parent="InteractiveElements" unique_id=760640496 instance=ExtResource("1_7wdxp")]
 position = Vector2(1056, 96)
 collision_layer = 2
 detatch_shake_strength = 5.0
@@ -297,13 +293,13 @@ break_shake_strength = 0.0
 break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw2"]
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw2" unique_id=792273518]
 texture = ExtResource("8_yx54q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw2" unique_id=1510992814]
 shape = SubResource("CircleShape2D_jk44i")
 
-[node name="Screw3" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+[node name="Screw3" parent="InteractiveElements" unique_id=2020127482 instance=ExtResource("1_7wdxp")]
 position = Vector2(96, 416)
 collision_layer = 2
 detatch_shake_strength = 5.0
@@ -311,13 +307,13 @@ break_shake_strength = 0.0
 break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw3"]
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw3" unique_id=1108102623]
 texture = ExtResource("8_yx54q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw3" unique_id=1659298207]
 shape = SubResource("CircleShape2D_jk44i")
 
-[node name="Screw4" parent="InteractiveElements" instance=ExtResource("1_7wdxp")]
+[node name="Screw4" parent="InteractiveElements" unique_id=146941889 instance=ExtResource("1_7wdxp")]
 position = Vector2(1056, 416)
 collision_layer = 2
 detatch_shake_strength = 5.0
@@ -325,38 +321,38 @@ break_shake_strength = 0.0
 break_shake_fade = 0.0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw4"]
+[node name="Sprite2D" type="Sprite2D" parent="InteractiveElements/Screw4" unique_id=1727505168]
 texture = ExtResource("8_yx54q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Screw4" unique_id=578090710]
 shape = SubResource("CircleShape2D_jk44i")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=146694360]
 offset_left = 2.0
 offset_right = 1154.0
 offset_bottom = 648.0
 theme_override_constants/margin_top = 175
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=387118388]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=739297372]
 layout_mode = 2
 text = " "
 label_settings = SubResource("LabelSettings_35xiq")
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1422913008]
 layout_mode = 2
 theme_override_constants/margin_top = 208
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=187321445]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1060395689]
 layout_mode = 2
 
-[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer"]
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer" unique_id=1448648356]
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("6_43f6x")
@@ -368,10 +364,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
 text = "SETTINGS"
 flat = true
 
-[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1656757704]
 layout_mode = 2
 
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer2"]
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer2" unique_id=2109796018]
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("6_43f6x")
@@ -383,102 +379,102 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
 text = "QUIT"
 flat = true
 
-[node name="RigidLetters" type="Node2D" parent="."]
+[node name="RigidLetters" type="Node2D" parent="." unique_id=520549674]
 visible = false
 
-[node name="S" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
+[node name="S" parent="RigidLetters" unique_id=1356327653 instance=ExtResource("1_7wdxp")]
 position = Vector2(519, 576)
 collision_layer = 4
 collision_mask = 5
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/S"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/S" unique_id=784741151]
 texture = ExtResource("12_oif4b")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/S"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/S" unique_id=650771227]
 polygon = PackedVector2Array(-12, -11, -7, -16, 7, -16, 12, -11, 12, -9, 10, -7, 8, -7, 5, -10, -5, -10, -6, -9, -6, -4, -5, -3, 7, -3, 12, 2, 12, 10, 6, 16, -7, 16, -12, 11, -12, 9, -10, 7, -8, 7, -5, 10, 5, 10, 6, 9, 6, 4, 5, 3, -7, 3, -12, -2)
 
-[node name="T1" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
+[node name="T1" parent="RigidLetters" unique_id=685904116 instance=ExtResource("1_7wdxp")]
 position = Vector2(546, 576)
 collision_layer = 4
 collision_mask = 5
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/T1"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/T1" unique_id=1437732274]
 texture = ExtResource("13_mlhma")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/T1"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/T1" unique_id=650687240]
 polygon = PackedVector2Array(-10, -16, 10, -16, 13, -13, 10, -10, 3, -10, 3, 14, 1, 16, -1, 16, -3, 14, -3, -10, -10, -10, -13, -13)
 
-[node name="A1" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
+[node name="A1" parent="RigidLetters" unique_id=1377459781 instance=ExtResource("1_7wdxp")]
 position = Vector2(569, 576)
 collision_layer = 4
 collision_mask = 5
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/A1"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/A1" unique_id=1336705660]
 texture = ExtResource("14_7kfov")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/A1"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/A1" unique_id=154588368]
 polygon = PackedVector2Array(1, -16, 16, 13, 16, 15, 15, 16, 11, 16, 7, 7, -7, 7, -11, 16, -15, 16, -16, 15, -16, 13, -1, -16)
 
-[node name="R" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
+[node name="R" parent="RigidLetters" unique_id=1208647632 instance=ExtResource("1_7wdxp")]
 position = Vector2(597, 576)
 collision_layer = 4
 collision_mask = 5
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/R"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/R" unique_id=1215647663]
 texture = ExtResource("15_1jtme")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/R"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/R" unique_id=1076151394]
 polygon = PackedVector2Array(-7, -16, 5, -16, 10, -11, 10, -2, 7, 1, 11, 14, 9, 16, 7, 16, 5, 14, 2, 4, -4, 4, -4, 14, -6, 16, -8, 16, -10, 14, -10, -13)
 
-[node name="T2" parent="RigidLetters" instance=ExtResource("1_7wdxp")]
+[node name="T2" parent="RigidLetters" unique_id=1780382601 instance=ExtResource("1_7wdxp")]
 position = Vector2(622, 576)
 collision_layer = 4
 collision_mask = 5
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/T2"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidLetters/T2" unique_id=170647771]
 texture = ExtResource("13_mlhma")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/T2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidLetters/T2" unique_id=1280857254]
 polygon = PackedVector2Array(-10, -16, 10, -16, 13, -13, 10, -10, 3, -10, 3, 14, 1, 16, -1, 16, -3, 14, -3, -10, -10, -10, -13, -13)
 
-[node name="RunningLetters" type="Node2D" parent="."]
+[node name="RunningLetters" type="Node2D" parent="." unique_id=1289778179]
 
-[node name="S" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+[node name="S" parent="RunningLetters" unique_id=650641551 instance=ExtResource("13_7j4n4")]
 visible = false
 position = Vector2(125, 538)
 sprite_frames = ExtResource("14_asqxe")
 
-[node name="T1" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+[node name="T1" parent="RunningLetters" unique_id=978514187 instance=ExtResource("13_7j4n4")]
 visible = false
 position = Vector2(284, 543)
 sprite_frames = ExtResource("15_8ipti")
 
-[node name="A1" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+[node name="A1" parent="RunningLetters" unique_id=660904957 instance=ExtResource("13_7j4n4")]
 visible = false
 position = Vector2(373, 537)
 sprite_frames = ExtResource("16_pscsi")
 
-[node name="R" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+[node name="R" parent="RunningLetters" unique_id=917342905 instance=ExtResource("13_7j4n4")]
 visible = false
 position = Vector2(716, 535)
 sprite_frames = ExtResource("17_sxf8s")
 
-[node name="T2" parent="RunningLetters" instance=ExtResource("13_7j4n4")]
+[node name="T2" parent="RunningLetters" unique_id=1839345482 instance=ExtResource("13_7j4n4")]
 visible = false
 position = Vector2(895, 508)
 sprite_frames = ExtResource("15_8ipti")
 
-[node name="CreditContainer" type="MarginContainer" parent="."]
+[node name="CreditContainer" type="MarginContainer" parent="." unique_id=579378068]
 offset_left = 760.0
 offset_top = 572.0
 offset_right = 1152.0
@@ -486,29 +482,29 @@ offset_bottom = 648.0
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 48
 
-[node name="Credit" type="Label" parent="CreditContainer"]
+[node name="Credit" type="Label" parent="CreditContainer" unique_id=656670184]
 layout_mode = 2
 theme = ExtResource("6_43f6x")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "Created by @QuietLantern"
+text = "Created by @ConorWilson"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Sound" type="Node2D" parent="."]
+[node name="Sound" type="Node2D" parent="." unique_id=555068198]
 
-[node name="SelectNoise" type="AudioStreamPlayer2D" parent="Sound"]
+[node name="SelectNoise" type="AudioStreamPlayer2D" parent="Sound" unique_id=798927771]
 stream = ExtResource("23_0uyfe")
 
-[node name="TapeBreakZone" type="Area2D" parent="."]
+[node name="TapeBreakZone" type="Area2D" parent="." unique_id=1700013678]
 collision_layer = 131072
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TapeBreakZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TapeBreakZone" unique_id=723124800]
 position = Vector2(576, 626.5)
 shape = SubResource("RectangleShape2D_n8vdk")
 
-[node name="QuitMenu" type="ColorRect" parent="."]
+[node name="QuitMenu" type="ColorRect" parent="." unique_id=1185612865]
 z_index = 100
 offset_left = 272.0
 offset_top = 212.0
@@ -517,47 +513,47 @@ offset_bottom = 468.0
 color = Color(1, 1, 1, 0)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="QuitMenu"]
+[node name="Sprite2D" type="Sprite2D" parent="QuitMenu" unique_id=1668035503]
 position = Vector2(304, 128)
 texture = ExtResource("27_6imgi")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="QuitMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="QuitMenu" unique_id=799128781]
 layout_mode = 0
 offset_top = 4.0
 offset_right = 608.0
 offset_bottom = 256.0
 alignment = 1
 
-[node name="Spacer3" type="MarginContainer" parent="QuitMenu/VBoxContainer"]
+[node name="Spacer3" type="MarginContainer" parent="QuitMenu/VBoxContainer" unique_id=991042023]
 layout_mode = 2
 
-[node name="AreYouSure" type="Label" parent="QuitMenu/VBoxContainer"]
+[node name="AreYouSure" type="Label" parent="QuitMenu/VBoxContainer" unique_id=1180884894]
 layout_mode = 2
 text = "Your progress will be lost!"
 label_settings = SubResource("LabelSettings_1hq2q")
 horizontal_alignment = 1
 
-[node name="Spacer1" type="MarginContainer" parent="QuitMenu/VBoxContainer"]
+[node name="Spacer1" type="MarginContainer" parent="QuitMenu/VBoxContainer" unique_id=1244648320]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="Because" type="Label" parent="QuitMenu/VBoxContainer"]
+[node name="Because" type="Label" parent="QuitMenu/VBoxContainer" unique_id=1793707807]
 layout_mode = 2
 text = "Are you sure you want to quit?"
 label_settings = SubResource("LabelSettings_wxcro")
 horizontal_alignment = 1
 
-[node name="Spacer2" type="MarginContainer" parent="QuitMenu/VBoxContainer"]
+[node name="Spacer2" type="MarginContainer" parent="QuitMenu/VBoxContainer" unique_id=997010908]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="QuitMenu/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="QuitMenu/VBoxContainer" unique_id=710156493]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="QuitMenu/VBoxContainer/CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="QuitMenu/VBoxContainer/CenterContainer" unique_id=1122864157]
 layout_mode = 2
 
-[node name="YesButton" type="Button" parent="QuitMenu/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="YesButton" type="Button" parent="QuitMenu/VBoxContainer/CenterContainer/HBoxContainer" unique_id=1433194624]
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("6_43f6x")
@@ -570,11 +566,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ppfed")
 text = "YES"
 flat = true
 
-[node name="Spacer" type="MarginContainer" parent="QuitMenu/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="Spacer" type="MarginContainer" parent="QuitMenu/VBoxContainer/CenterContainer/HBoxContainer" unique_id=264409506]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="NoButton" type="Button" parent="QuitMenu/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="NoButton" type="Button" parent="QuitMenu/VBoxContainer/CenterContainer/HBoxContainer" unique_id=498712044]
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("6_43f6x")

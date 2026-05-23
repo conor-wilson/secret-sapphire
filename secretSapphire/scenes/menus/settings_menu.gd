@@ -9,15 +9,19 @@ signal incorrect_password
 signal mute_sfx_toggled
 signal mute_music_toggled
 
-# TODO: Implement a generic way to check case-insentitively
 var accepted_usernames:Array[String] = [
-	"QuietLantern",
-	"Quiet Lantern",
-	"@QuietLantern",
-	"ConorWilson",
-	"Conor Wilson",
-	"@ConorWilson",
-	
+	"@conorwilson",
+	"conorwilson",
+	"@conor",
+	"conor",
+	"wilson",
+	"@wilson",
+	"conorw",
+	"@conorw",
+	"cwilson",
+	"@cwilson",
+	"quietlantern",
+	"@quietlantern", # TODO: Double check all these
 ]
 
 var accpted_passwords:Array[String] = [
@@ -95,7 +99,7 @@ func detatch_screwdriver():
 func _correct_input(input:String, accepted_strings:Array[String]) -> bool:
 	
 	for accpeted_string in accepted_strings:
-		if input.to_lower() == accpeted_string.to_lower():
+		if input.to_lower().replace(" ", "") == accpeted_string.to_lower():
 			return true
 	
 	return false

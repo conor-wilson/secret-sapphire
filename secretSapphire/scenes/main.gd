@@ -20,7 +20,7 @@ extends Node
 # 
 # Thanks for reading! 
 # 
-# - Conor (aka QuietLantern)
+# - Conor :)
 
 var menus_scene := preload("res://scenes/menus/menus.tscn")
 @onready var menus: Menus = $Menus
