@@ -93,6 +93,7 @@ flat = true
 
 [node name="UsernameBox" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1294637218]
 layout_mode = 2
+theme = ExtResource("4_558x5")
 theme_override_fonts/font = ExtResource("2_ityvj")
 theme_override_font_sizes/font_size = 48
 placeholder_text = "<username>"
@@ -101,8 +102,13 @@ context_menu_enabled = false
 emoji_menu_enabled = false
 caret_blink = true
 
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1798391854]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+
 [node name="PasswordBox" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1553301304]
 layout_mode = 2
+theme = ExtResource("4_558x5")
 theme_override_fonts/font = ExtResource("2_ityvj")
 theme_override_font_sizes/font_size = 48
 placeholder_text = "<password>"
