@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://do1updqg30rpo" path="res://assets/art/desktop_windows/Help.png" id="31_231pw"]
 [ext_resource type="Texture2D" uid="uid://dyncku344ffb" path="res://assets/art/desktop_icons/RecyclingBinIcon.png" id="31_hbmeb"]
 [ext_resource type="PhysicsMaterial" uid="uid://dwuph7wln46bi" path="res://scenes/desktop/scrap_material.tres" id="31_p5886"]
+[ext_resource type="FontFile" uid="uid://b1juq587jcwdq" path="res://assets/fonts/Formal_Future.ttf" id="33_7lhh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
 size = Vector2(48, 48)
@@ -170,6 +171,7 @@ size = Vector2(224, 308)
 size = Vector2(224, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7lhh2"]
+font = ExtResource("33_7lhh2")
 font_size = 30
 font_color = Color(0.615686, 0.615686, 0.615686, 1)
 

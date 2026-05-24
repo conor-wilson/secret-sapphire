@@ -102,7 +102,7 @@ context_menu_enabled = false
 emoji_menu_enabled = false
 caret_blink = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1798391854]
+[node name="Spacer" type="MarginContainer" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1798391854]
 layout_mode = 2
 theme_override_constants/margin_top = 2
 
