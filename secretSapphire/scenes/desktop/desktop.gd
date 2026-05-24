@@ -84,6 +84,7 @@ func _on_hammer_man_exe_icon_double_clicked() -> void:
 
 func _on_a_collect() -> void:
 	a_collected.emit($DesktopWindows/TurtleMemeWEBP/A.global_position)
+	#if !Global.sfx_muted: $LetterCollection.play()
 
 func _on_hammer_man_exe_closed() -> void:
 	$DesktopWindows/HammerManEXE/HammerManGame.close()
@@ -93,6 +94,7 @@ func _on_hammer_man_game_level_changed() -> void:
 
 func _on_hammer_man_game_s_collected(global_pos:Vector2) -> void:
 	s_collected.emit(global_pos)
+	#if !Global.sfx_muted: $LetterCollection.play()
 
 func _on_escape_zone_body_entered(body: Node2D) -> void:
 	if body is HammerMan:

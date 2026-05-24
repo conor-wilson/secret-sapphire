@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://dyncku344ffb" path="res://assets/art/desktop_icons/RecyclingBinIcon.png" id="31_hbmeb"]
 [ext_resource type="PhysicsMaterial" uid="uid://dwuph7wln46bi" path="res://scenes/desktop/scrap_material.tres" id="31_p5886"]
 [ext_resource type="FontFile" uid="uid://b1juq587jcwdq" path="res://assets/fonts/Formal_Future.ttf" id="33_7lhh2"]
+[ext_resource type="AudioStream" uid="uid://d1d5m5t1awlpd" path="res://assets/audio/Retro Event StereoUP 02.wav" id="46_rkjic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sq1c"]
 size = Vector2(48, 48)
@@ -1507,6 +1508,10 @@ collision_mask = 2048
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HammerManRoof" unique_id=1924192334]
 position = Vector2(576, 24)
 shape = SubResource("RectangleShape2D_nci2i")
+
+[node name="LetterCollection" type="AudioStreamPlayer2D" parent="." unique_id=686008702]
+position = Vector2(576, 256)
+stream = ExtResource("46_rkjic")
 
 [connection signal="input_event" from="HomeButton" to="." method="_on_home_button_input_event"]
 [connection signal="mouse_exited" from="HomeButton" to="." method="_on_home_button_mouse_exited"]
