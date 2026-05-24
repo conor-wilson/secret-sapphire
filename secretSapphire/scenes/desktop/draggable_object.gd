@@ -71,6 +71,7 @@ func _process(delta: float) -> void:
 	
 	if mouse_hover:
 		if Input.is_action_just_pressed("click") && !Input.is_action_pressed("pan"):
+			
 			# Bring the DraggableObject to the top of the draw order
 			move_to_top_of_parent()
 			
@@ -87,17 +88,8 @@ func _process(delta: float) -> void:
 		
 		# Resolve double click
 		if Input.is_action_just_released("click") && !Input.is_action_just_released("pan"):
-			print("Flag A")
 			if !icon_requires_double_click || !$SecondClickTimer.is_stopped():
-				print("Flag B")
 				double_clicked.emit()
-		
-		# TODO: Have a look at this and see if we can apply it to the HellBot's movements
-		#var tween = get_tree().create_tween()
-		#if is_inside_dropable:
-			#tween.tween_property(self, "position", body_ref.position, 0.2).set_ease(Tween.EASE_OUT)
-		#else is_inside_dropable:
-			#tween.tween_property(self, "global_position", initial_pos, 0.2).set_ease(Tween.EASE_OUT)
 
 
 func open(pos: Vector2) -> void:
@@ -154,7 +146,6 @@ func follow_cursor() -> bool:
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if disabled:
-		print("FLAG 1")
 		return
 	
 	# NOTE: We use the input_event signal here instead of the mouse_entered signal because we need
@@ -164,7 +155,6 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		event is InputEventMouseMotion &&
 		_should_become_current_hovering_object()
 		):
-		print("FLAG 2")
 		_start_hovering()
 
 func _on_mouse_exited() -> void:
@@ -260,9 +250,7 @@ func move_to_top_of_parent():
 
 func _on_double_clicked() -> void:
 	if is_icon && openable_window != null && CursorManager.last_dragging_object == self:
-		print("FLAG 3")
 		openable_window.open(global_position)
-	print("FLAG 4")
 
 func _on_close_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (

@@ -21,7 +21,7 @@ var accepted_usernames:Array[String] = [
 	"cwilson",
 	"@cwilson",
 	"quietlantern",
-	"@quietlantern", # TODO: Double check all these
+	"@quietlantern",
 ]
 
 var accpted_passwords:Array[String] = [
