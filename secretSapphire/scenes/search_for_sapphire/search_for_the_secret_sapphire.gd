@@ -18,6 +18,7 @@ func reset():
 	$Safe.show()
 	$Sapphire.show()
 	$Sapphire/Glow.scale = Vector2.ONE*0.5
+	$Sapphire.modulate = Color.WHITE
 	
 	$RemovedPictureFrame.hide()
 	$PictureFrame.show()
@@ -115,7 +116,7 @@ func _on_red_button_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		$RedButton/Unpressed.show()
 		safe_locked = false
 		$Instructions.text = "<The SAFE makes a CLICK noise>"
-		
+
 
 func _on_sapphire_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !active: return

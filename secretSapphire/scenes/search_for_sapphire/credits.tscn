@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ouckgbhj7t7u"]
+[gd_scene format=3 uid="uid://ouckgbhj7t7u"]
 
 [ext_resource type="Script" uid="uid://7ff28rbj6lsc" path="res://scenes/search_for_sapphire/credits.gd" id="1_fhx73"]
 [ext_resource type="PackedScene" uid="uid://bguly075bkdj7" path="res://scenes/search_for_sapphire/sequence_screen.tscn" id="1_p8hk5"]
@@ -35,7 +35,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0b7yi"]
 resource_name = "scroll"
-length = 12.0
+length = 14.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -43,10 +43,10 @@ tracks/0/path = NodePath("Credits:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 11),
+"times": PackedFloat32Array(0, 13),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -2568)]
+"values": [Vector2(0, 0), Vector2(0, -2599)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w4qqs"]
@@ -55,10 +55,10 @@ _data = {
 &"scroll": SubResource("Animation_0b7yi")
 }
 
-[node name="Credits" type="Node2D"]
+[node name="Credits" type="Node2D" unique_id=1529453611]
 script = ExtResource("1_fhx73")
 
-[node name="BlackBackground" parent="." instance=ExtResource("1_p8hk5")]
+[node name="BlackBackground" parent="." unique_id=416672407 instance=ExtResource("1_p8hk5")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -67,21 +67,21 @@ grow_vertical = 1
 scale = Vector2(17.4, 12.200001)
 size_flags_horizontal = 4
 
-[node name="ColorRect" type="ColorRect" parent="BlackBackground"]
+[node name="ColorRect" type="ColorRect" parent="BlackBackground" unique_id=1201432675]
 layout_mode = 0
 offset_left = 11.494254
 offset_right = 55.172413
 offset_bottom = 53.11475
 color = Color(0, 0, 0, 1)
 
-[node name="Credits" parent="." instance=ExtResource("1_p8hk5")]
+[node name="Credits" parent="." unique_id=153895423 instance=ExtResource("1_p8hk5")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Title" type="Label" parent="Credits"]
+[node name="Title" type="Label" parent="Credits" unique_id=149208888]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -91,7 +91,7 @@ label_settings = SubResource("LabelSettings_5qjjp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Programming_Art" type="Label" parent="Credits"]
+[node name="Programming_Art" type="Label" parent="Credits" unique_id=659904059]
 layout_mode = 0
 offset_top = 640.0
 offset_right = 1152.0
@@ -101,7 +101,7 @@ label_settings = SubResource("LabelSettings_awn06")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConorWilson" type="Label" parent="Credits"]
+[node name="ConorWilson" type="Label" parent="Credits" unique_id=1641455741]
 layout_mode = 0
 offset_top = 832.0
 offset_right = 1152.0
@@ -110,7 +110,7 @@ text = "Conor Wilson"
 label_settings = SubResource("LabelSettings_5r7r2")
 horizontal_alignment = 1
 
-[node name="ExternalAssets" type="Label" parent="Credits"]
+[node name="ExternalAssets" type="Label" parent="Credits" unique_id=931629335]
 layout_mode = 0
 offset_top = 928.0
 offset_right = 1152.0
@@ -120,7 +120,7 @@ label_settings = SubResource("LabelSettings_awn06")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TitleFont" type="Label" parent="Credits"]
+[node name="TitleFont" type="Label" parent="Credits" unique_id=2035197668]
 layout_mode = 0
 offset_top = 1120.0
 offset_right = 1152.0
@@ -131,7 +131,7 @@ Font+ [Antiquity Print] by SciGho"
 label_settings = SubResource("LabelSettings_5r7r2")
 horizontal_alignment = 1
 
-[node name="OtherFonts" type="Label" parent="Credits"]
+[node name="OtherFonts" type="Label" parent="Credits" unique_id=333179531]
 layout_mode = 0
 offset_top = 1320.0
 offset_right = 1152.0
@@ -144,7 +144,7 @@ Formal Future by VEXED"
 label_settings = SubResource("LabelSettings_5r7r2")
 horizontal_alignment = 1
 
-[node name="Music" type="Label" parent="Credits"]
+[node name="Music" type="Label" parent="Credits" unique_id=2137353484]
 layout_mode = 0
 offset_top = 1576.0
 offset_right = 1152.0
@@ -162,7 +162,7 @@ text = "Music:
 label_settings = SubResource("LabelSettings_5r7r2")
 horizontal_alignment = 1
 
-[node name="SoundEffects" type="Label" parent="Credits"]
+[node name="SoundEffects" type="Label" parent="Credits" unique_id=1868262078]
 layout_mode = 0
 offset_top = 1992.0
 offset_right = 1152.0
@@ -177,17 +177,18 @@ text = "Sound Effects:
 \"Metal Knock 2\" by dster777 (Freesound)
 \"Button Press 2\" by DRAGON-STUDIO
 \"Door Opening\" by Fletchpike
-\"partyblower\" by u_a9w845fdm3
-"
+\"Short Choir\" by Breviceps (Freesound)
+\"partyblower\" by u_a9w845fdm3"
 label_settings = SubResource("LabelSettings_5r7r2")
 horizontal_alignment = 1
 
-[node name="GHGameOff" type="Label" parent="Credits"]
+[node name="GHGameOff" type="Label" parent="Credits" unique_id=1110241668]
 layout_mode = 0
 offset_top = 2536.0
 offset_right = 1152.0
 offset_bottom = 3060.0
-text = "Originally created for GitHub GameOff 2024
+text = "
+Originally created for GitHub GameOff 2024
 
 
 
@@ -205,7 +206,5 @@ Family, friends, strangers, and you!"
 label_settings = SubResource("LabelSettings_5r7r2")
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_w4qqs")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=125426733]
+libraries/ = SubResource("AnimationLibrary_w4qqs")

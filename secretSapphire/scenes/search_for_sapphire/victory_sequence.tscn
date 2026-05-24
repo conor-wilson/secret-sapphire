@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcqoyseha8hc4"]
+[gd_scene format=3 uid="uid://dcqoyseha8hc4"]
 
 [ext_resource type="Script" uid="uid://bvvepgqsi68du" path="res://scenes/search_for_sapphire/victory_sequence.gd" id="1_hfqgk"]
 [ext_resource type="PackedScene" uid="uid://q0gl3641bw13" path="res://scenes/search_for_sapphire/eyes_background.tscn" id="2_5ryt4"]
@@ -19,35 +19,35 @@ font_size = 32
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_corur"]
 
-[node name="VictorySequence" type="Node2D"]
+[node name="VictorySequence" type="Node2D" unique_id=888645095]
 script = ExtResource("1_hfqgk")
 
-[node name="CaveOfSecrets" type="Node2D" parent="."]
+[node name="CaveOfSecrets" type="Node2D" parent="." unique_id=2029449814]
 
-[node name="Sprite2D" type="Sprite2D" parent="CaveOfSecrets"]
+[node name="Sprite2D" type="Sprite2D" parent="CaveOfSecrets" unique_id=1264683409]
 position = Vector2(4240, -1424)
 texture = ExtResource("8_7ohe5")
 
-[node name="CaveMouth" type="Area2D" parent="CaveOfSecrets"]
+[node name="CaveMouth" type="Area2D" parent="CaveOfSecrets" unique_id=605015596]
 position = Vector2(4240, -1424)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CaveOfSecrets/CaveMouth"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaveOfSecrets/CaveMouth" unique_id=741322918]
 position = Vector2(0, 48)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_yysxt")
 
-[node name="DialogueMarker" type="Marker2D" parent="CaveOfSecrets"]
+[node name="DialogueMarker" type="Marker2D" parent="CaveOfSecrets" unique_id=847854548]
 position = Vector2(4288, -1336)
 
-[node name="EyesBackground" parent="." instance=ExtResource("2_5ryt4")]
+[node name="EyesBackground" parent="." unique_id=1418992438 instance=ExtResource("2_5ryt4")]
 position = Vector2(576, 324)
 animation = &"loop"
 autoplay = "intro"
 
-[node name="Screen1" parent="." instance=ExtResource("130_duw4h")]
+[node name="Screen1" parent="." unique_id=897429241 instance=ExtResource("130_duw4h")]
 visible = false
 
-[node name="Label" type="Label" parent="Screen1"]
+[node name="Label" type="Label" parent="Screen1" unique_id=705413354]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -56,10 +56,10 @@ label_settings = SubResource("LabelSettings_sj84v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Screen2" parent="." instance=ExtResource("130_duw4h")]
+[node name="Screen2" parent="." unique_id=1970570655 instance=ExtResource("130_duw4h")]
 visible = false
 
-[node name="Label" type="Label" parent="Screen2"]
+[node name="Label" type="Label" parent="Screen2" unique_id=2051617763]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -68,10 +68,10 @@ label_settings = SubResource("LabelSettings_sj84v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Screen3" parent="." instance=ExtResource("130_duw4h")]
+[node name="Screen3" parent="." unique_id=179872979 instance=ExtResource("130_duw4h")]
 visible = false
 
-[node name="Label" type="Label" parent="Screen3"]
+[node name="Label" type="Label" parent="Screen3" unique_id=437327261]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -80,7 +80,7 @@ label_settings = SubResource("LabelSettings_sj84v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Screen4" parent="." instance=ExtResource("130_duw4h")]
+[node name="Screen4" parent="." unique_id=1124539133 instance=ExtResource("130_duw4h")]
 visible = false
 anchors_preset = 0
 anchor_right = 0.0
@@ -88,7 +88,7 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Label" type="Label" parent="Screen4"]
+[node name="Label" type="Label" parent="Screen4" unique_id=1725425572]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -97,7 +97,7 @@ label_settings = SubResource("LabelSettings_sj84v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Screen5" parent="." instance=ExtResource("130_duw4h")]
+[node name="Screen5" parent="." unique_id=1177205857 instance=ExtResource("130_duw4h")]
 visible = false
 anchors_preset = 0
 anchor_right = 0.0
@@ -105,7 +105,7 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Label" type="Label" parent="Screen5"]
+[node name="Label" type="Label" parent="Screen5" unique_id=81462298]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -114,14 +114,14 @@ label_settings = SubResource("LabelSettings_sj84v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TheEnd" parent="." instance=ExtResource("130_duw4h")]
+[node name="TheEnd" parent="." unique_id=1970147674 instance=ExtResource("130_duw4h")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Label" type="Label" parent="TheEnd"]
+[node name="Label" type="Label" parent="TheEnd" unique_id=397107760]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -130,14 +130,14 @@ label_settings = SubResource("LabelSettings_sj84v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuestionMark" parent="." instance=ExtResource("130_duw4h")]
+[node name="QuestionMark" parent="." unique_id=716007986 instance=ExtResource("130_duw4h")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Label" type="Label" parent="QuestionMark"]
+[node name="Label" type="Label" parent="QuestionMark" unique_id=1809409704]
 layout_mode = 0
 offset_left = 115.0
 offset_right = 1152.0
@@ -147,12 +147,12 @@ label_settings = SubResource("LabelSettings_sj84v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Credits" parent="." instance=ExtResource("5_rqr8w")]
+[node name="Credits" parent="." unique_id=1849704324 instance=ExtResource("5_rqr8w")]
 
-[node name="VictoryMenu" parent="." instance=ExtResource("130_duw4h")]
+[node name="VictoryMenu" parent="." unique_id=1115715855 instance=ExtResource("130_duw4h")]
 visible = false
 
-[node name="PlayAgain" type="Button" parent="VictoryMenu"]
+[node name="PlayAgain" type="Button" parent="VictoryMenu" unique_id=1060129002]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 256.0
@@ -168,7 +168,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_corur")
 text = "PLAY AGAIN"
 flat = true
 
-[node name="MainMenu" type="Button" parent="VictoryMenu"]
+[node name="MainMenu" type="Button" parent="VictoryMenu" unique_id=607875796]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 320.0
@@ -184,12 +184,12 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_corur")
 text = "MAIN MENU"
 flat = true
 
-[node name="CreditsMusic" type="AudioStreamPlayer2D" parent="."]
+[node name="CreditsMusic" type="AudioStreamPlayer2D" parent="." unique_id=159144209]
 position = Vector2(576, 320)
 stream = ExtResource("133_k7ds0")
 volume_db = 6.0
 
-[node name="BlackScreen" type="ColorRect" parent="."]
+[node name="BlackScreen" type="ColorRect" parent="." unique_id=1420995761]
 visible = false
 offset_right = 1152.0
 offset_bottom = 648.0

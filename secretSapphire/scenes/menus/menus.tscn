@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://drpjvxm3qjcl7"]
+[gd_scene format=3 uid="uid://drpjvxm3qjcl7"]
 
 [ext_resource type="Script" uid="uid://ck1jnl3ehcf1g" path="res://scenes/menus/menus.gd" id="1_n6v3l"]
 [ext_resource type="PackedScene" uid="uid://hmfard6sqx6h" path="res://scenes/camera/free_roam_camera.tscn" id="2_f0b52"]
@@ -62,185 +62,185 @@ size = Vector2(192, 1504)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uubxr"]
 size = Vector2(4288, 192)
 
-[node name="Menus" type="Node2D"]
+[node name="Menus" type="Node2D" unique_id=1301386655]
 script = ExtResource("1_n6v3l")
 
-[node name="Camera" type="Node2D" parent="."]
+[node name="Camera" type="Node2D" parent="." unique_id=779286060]
 
-[node name="FreeRoamCamera" parent="Camera" node_paths=PackedStringArray("snap_points", "home_point", "centre_point") instance=ExtResource("2_f0b52")]
+[node name="FreeRoamCamera" parent="Camera" unique_id=1042247826 node_paths=PackedStringArray("snap_points", "home_point", "centre_point") instance=ExtResource("2_f0b52")]
 snap_distance = 96.0
 max_snap_distance = 288.0
 snap_points = [NodePath("../MainMenuCameraMarker"), NodePath("../SettingsCameraMarker"), NodePath("../SecretSettingsCameraMarker"), NodePath("../CaveOfWondersCameraMarker")]
 home_point = NodePath("../MainMenuCameraMarker")
 centre_point = NodePath("../SettingsCameraMarker")
 
-[node name="MainMenuCameraMarker" type="Marker2D" parent="Camera"]
+[node name="MainMenuCameraMarker" type="Marker2D" parent="Camera" unique_id=404796727]
 position = Vector2(576, 324)
 
-[node name="SettingsCameraMarker" type="Marker2D" parent="Camera"]
+[node name="SettingsCameraMarker" type="Marker2D" parent="Camera" unique_id=1740653476]
 position = Vector2(1728, 324)
 
-[node name="SecretSettingsCameraMarker" type="Marker2D" parent="Camera"]
+[node name="SecretSettingsCameraMarker" type="Marker2D" parent="Camera" unique_id=984290254]
 position = Vector2(2880, 324)
 
-[node name="CaveOfWondersCameraMarker" type="Marker2D" parent="Camera"]
+[node name="CaveOfWondersCameraMarker" type="Marker2D" parent="Camera" unique_id=173881336]
 position = Vector2(4238, -1428)
 
-[node name="Menus" type="Node2D" parent="."]
+[node name="Menus" type="Node2D" parent="." unique_id=1174459688]
 
-[node name="MainMenu" parent="Menus" instance=ExtResource("3_mqdpw")]
+[node name="MainMenu" parent="Menus" unique_id=370560564 instance=ExtResource("3_mqdpw")]
 
-[node name="SettingsMenu" parent="Menus" instance=ExtResource("4_78aek")]
+[node name="SettingsMenu" parent="Menus" unique_id=950208117 instance=ExtResource("4_78aek")]
 position = Vector2(1152, 0)
 
-[node name="SecretSettingsMenu" parent="Menus" instance=ExtResource("5_rhiqq")]
+[node name="SecretSettingsMenu" parent="Menus" unique_id=869774910 instance=ExtResource("5_rhiqq")]
 position = Vector2(2304, 0)
 
-[node name="CaveOfWonders" parent="Menus" instance=ExtResource("6_r2f2f")]
+[node name="CaveOfWonders" parent="Menus" unique_id=443586000 instance=ExtResource("6_r2f2f")]
 position = Vector2(4238, -1428)
 
-[node name="DialogueMarkers" type="Node2D" parent="."]
+[node name="DialogueMarkers" type="Node2D" parent="." unique_id=1967970135]
 
-[node name="SettingsButtonMarker" type="Marker2D" parent="DialogueMarkers"]
+[node name="SettingsButtonMarker" type="Marker2D" parent="DialogueMarkers" unique_id=132978451]
 position = Vector2(623, 476)
 
-[node name="SecretSettingsButtonMarker" type="Marker2D" parent="DialogueMarkers"]
+[node name="SecretSettingsButtonMarker" type="Marker2D" parent="DialogueMarkers" unique_id=1035559952]
 position = Vector2(1839, 352)
 
-[node name="LockedSecretSettingsButtonMarker" type="Marker2D" parent="DialogueMarkers"]
+[node name="LockedSecretSettingsButtonMarker" type="Marker2D" parent="DialogueMarkers" unique_id=1166695560]
 position = Vector2(1766, 352)
 
-[node name="CageDialogue" type="Marker2D" parent="DialogueMarkers"]
+[node name="CageDialogue" type="Marker2D" parent="DialogueMarkers" unique_id=335565214]
 position = Vector2(3084, 294)
 
-[node name="MonologueMarker" type="Marker2D" parent="DialogueMarkers"]
+[node name="MonologueMarker" type="Marker2D" parent="DialogueMarkers" unique_id=1298110860]
 position = Vector2(823, 295)
 
-[node name="CaveMarker" type="Marker2D" parent="DialogueMarkers"]
+[node name="CaveMarker" type="Marker2D" parent="DialogueMarkers" unique_id=153899694]
 position = Vector2(4286, -1340)
 
-[node name="MovementMarkers" type="Node2D" parent="."]
+[node name="MovementMarkers" type="Node2D" parent="." unique_id=1289168038]
 
-[node name="CageMarkers" type="Node2D" parent="MovementMarkers"]
+[node name="CageMarkers" type="Node2D" parent="MovementMarkers" unique_id=1044506242]
 
-[node name="CageMarker1" type="Marker2D" parent="MovementMarkers/CageMarkers"]
+[node name="CageMarker1" type="Marker2D" parent="MovementMarkers/CageMarkers" unique_id=116686382]
 position = Vector2(2857, 276)
 
-[node name="CageMarker2" type="Marker2D" parent="MovementMarkers/CageMarkers"]
+[node name="CageMarker2" type="Marker2D" parent="MovementMarkers/CageMarkers" unique_id=881528189]
 position = Vector2(2893, 268)
 
-[node name="CageMarker3" type="Marker2D" parent="MovementMarkers/CageMarkers"]
+[node name="CageMarker3" type="Marker2D" parent="MovementMarkers/CageMarkers" unique_id=323343630]
 position = Vector2(2865, 312)
 
-[node name="CageMarker4" type="Marker2D" parent="MovementMarkers/CageMarkers"]
+[node name="CageMarker4" type="Marker2D" parent="MovementMarkers/CageMarkers" unique_id=517283174]
 position = Vector2(2901, 304)
 
-[node name="ScreenMarkers" type="Node2D" parent="MovementMarkers"]
+[node name="ScreenMarkers" type="Node2D" parent="MovementMarkers" unique_id=1429087762]
 
-[node name="ScreenMarker1" type="Marker2D" parent="MovementMarkers/ScreenMarkers"]
+[node name="ScreenMarker1" type="Marker2D" parent="MovementMarkers/ScreenMarkers" unique_id=1564176417]
 position = Vector2(573, 262)
 
-[node name="ScreenMarker2" type="Marker2D" parent="MovementMarkers/ScreenMarkers"]
+[node name="ScreenMarker2" type="Marker2D" parent="MovementMarkers/ScreenMarkers" unique_id=117879296]
 position = Vector2(492, 207)
 
-[node name="ScreenMarker3" type="Marker2D" parent="MovementMarkers/ScreenMarkers"]
+[node name="ScreenMarker3" type="Marker2D" parent="MovementMarkers/ScreenMarkers" unique_id=616953891]
 position = Vector2(659, 322)
 
-[node name="ScreenMarker4" type="Marker2D" parent="MovementMarkers/ScreenMarkers"]
+[node name="ScreenMarker4" type="Marker2D" parent="MovementMarkers/ScreenMarkers" unique_id=589551139]
 position = Vector2(643, 198)
 
-[node name="ScreenMarker5" type="Marker2D" parent="MovementMarkers/ScreenMarkers"]
+[node name="ScreenMarker5" type="Marker2D" parent="MovementMarkers/ScreenMarkers" unique_id=1046201473]
 position = Vector2(507, 305)
 
-[node name="BossFightMarkers" type="Node2D" parent="MovementMarkers"]
+[node name="BossFightMarkers" type="Node2D" parent="MovementMarkers" unique_id=378324020]
 
-[node name="BossFightMarker1" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
+[node name="BossFightMarker1" type="Marker2D" parent="MovementMarkers/BossFightMarkers" unique_id=258077832]
 position = Vector2(374, 497)
 
-[node name="BossFightMarker2" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
+[node name="BossFightMarker2" type="Marker2D" parent="MovementMarkers/BossFightMarkers" unique_id=90809432]
 position = Vector2(786, 484)
 
-[node name="BossFightMarker3" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
+[node name="BossFightMarker3" type="Marker2D" parent="MovementMarkers/BossFightMarkers" unique_id=908559759]
 position = Vector2(599, 545)
 
-[node name="BossFightMarker4" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
+[node name="BossFightMarker4" type="Marker2D" parent="MovementMarkers/BossFightMarkers" unique_id=214260304]
 position = Vector2(424, 583)
 
-[node name="BossFightMarker5" type="Marker2D" parent="MovementMarkers/BossFightMarkers"]
+[node name="BossFightMarker5" type="Marker2D" parent="MovementMarkers/BossFightMarkers" unique_id=1097143357]
 position = Vector2(764, 581)
 
-[node name="Items" type="Node2D" parent="."]
+[node name="Items" type="Node2D" parent="." unique_id=946537026]
 
-[node name="Wrench" parent="Items" instance=ExtResource("8_o8ma5")]
+[node name="Wrench" parent="Items" unique_id=713931203 instance=ExtResource("8_o8ma5")]
 position = Vector2(1545, 179)
 collision_layer = 1024
 breakable = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Items/Wrench"]
+[node name="Sprite2D" type="Sprite2D" parent="Items/Wrench" unique_id=1657704453]
 scale = Vector2(2, 2)
 texture = ExtResource("9_kg5t1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Wrench"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Wrench" unique_id=266052399]
 rotation = -0.785397
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_0o1dt")
 
-[node name="FireExtinguisher" parent="Items" instance=ExtResource("8_o8ma5")]
+[node name="FireExtinguisher" parent="Items" unique_id=1173965547 instance=ExtResource("8_o8ma5")]
 position = Vector2(-120, 496)
 collision_layer = 1024
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Items/FireExtinguisher"]
+[node name="Sprite2D" type="Sprite2D" parent="Items/FireExtinguisher" unique_id=1957619015]
 scale = Vector2(2, 2)
 texture = ExtResource("10_aa2fp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/FireExtinguisher"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/FireExtinguisher" unique_id=706388117]
 position = Vector2(-16, 1)
 shape = SubResource("CapsuleShape2D_ej1cw")
 
-[node name="CrumpledPasswordHint" parent="Items" instance=ExtResource("8_o8ma5")]
+[node name="CrumpledPasswordHint" parent="Items" unique_id=57857984 instance=ExtResource("8_o8ma5")]
 position = Vector2(248, 536)
 collision_layer = 1024
 breakable = false
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Items/CrumpledPasswordHint"]
+[node name="Sprite2D" type="Sprite2D" parent="Items/CrumpledPasswordHint" unique_id=1295874238]
 texture = ExtResource("11_ffab4")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Items/CrumpledPasswordHint"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Items/CrumpledPasswordHint" unique_id=1661074345]
 polygon = PackedVector2Array(8, -45, 16, -35, 24, -34, 43, -30, 43, -20, 46, -18, 43, -11, 40, -3, 46, 7, 42, 15, 38, 20, 39, 27, 38, 35, 28, 41, 21, 46, 5, 42, 0, 42, -13, 47, -22, 42, -31, 47, -36, 43, -38, 33, -35, 28, -37, 19, -46, -2, -46, -14, -40, -22, -39, -25, -39, -31, -32, -37, -30, -40, -26, -40, -19, -36, -12, -39, -9, -40, 0, -43)
 
-[node name="ItemDropZones" type="Node2D" parent="."]
+[node name="ItemDropZones" type="Node2D" parent="." unique_id=1458268748]
 
-[node name="MainMenu" type="Area2D" parent="ItemDropZones"]
+[node name="MainMenu" type="Area2D" parent="ItemDropZones" unique_id=1484690305]
 collision_layer = 512
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDropZones/MainMenu"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDropZones/MainMenu" unique_id=1922954659]
 position = Vector2(576, 320)
 shape = SubResource("RectangleShape2D_tj3n1")
 
-[node name="SettingsMenu" type="Area2D" parent="ItemDropZones"]
+[node name="SettingsMenu" type="Area2D" parent="ItemDropZones" unique_id=1480779412]
 collision_layer = 512
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDropZones/SettingsMenu"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDropZones/SettingsMenu" unique_id=630612416]
 position = Vector2(1728, 320)
 shape = SubResource("RectangleShape2D_tj3n1")
 
-[node name="SecretSettingsMenu" type="Area2D" parent="ItemDropZones"]
+[node name="SecretSettingsMenu" type="Area2D" parent="ItemDropZones" unique_id=1862034182]
 collision_layer = 512
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDropZones/SecretSettingsMenu"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDropZones/SecretSettingsMenu" unique_id=757375762]
 position = Vector2(2880, 320)
 shape = SubResource("RectangleShape2D_tj3n1")
 
-[node name="ItemInstructions" type="Node2D" parent="."]
+[node name="ItemInstructions" type="Node2D" parent="." unique_id=1335485044]
 visible = false
 
-[node name="MainMenu" type="Label" parent="ItemInstructions"]
+[node name="MainMenu" type="Label" parent="ItemInstructions" unique_id=1940978664]
 offset_top = 610.0
 offset_right = 1152.0
 offset_bottom = 650.0
@@ -249,7 +249,7 @@ label_settings = SubResource("LabelSettings_0o4ac")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsMenu" type="Label" parent="ItemInstructions"]
+[node name="SettingsMenu" type="Label" parent="ItemInstructions" unique_id=79385602]
 offset_left = 1152.0
 offset_top = 610.0
 offset_right = 2304.0
@@ -259,7 +259,7 @@ label_settings = SubResource("LabelSettings_hbp62")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SecretSettingsMenu" type="Label" parent="ItemInstructions"]
+[node name="SecretSettingsMenu" type="Label" parent="ItemInstructions" unique_id=613175659]
 offset_left = 2304.0
 offset_top = 610.0
 offset_right = 3456.0
@@ -269,29 +269,29 @@ label_settings = SubResource("LabelSettings_hbp62")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CollectedLetters" parent="." instance=ExtResource("13_3vrp3")]
+[node name="CollectedLetters" parent="." unique_id=911212137 instance=ExtResource("13_3vrp3")]
 
-[node name="CollectableLetters" type="Node2D" parent="."]
+[node name="CollectableLetters" type="Node2D" parent="." unique_id=1028876516]
 
-[node name="R" parent="CollectableLetters" instance=ExtResource("14_duyw0")]
+[node name="R" parent="CollectableLetters" unique_id=247103159 instance=ExtResource("14_duyw0")]
 visible = false
 position = Vector2(20, -54)
 can_collect = true
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/R"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollectableLetters/R" unique_id=1307979711]
 position = Vector2(0, -10)
 sprite_frames = ExtResource("15_nd253")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/R"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableLetters/R" unique_id=2069667639]
 shape = SubResource("CapsuleShape2D_f4r0k")
 
-[node name="Foam" parent="." instance=ExtResource("16_mei6b")]
+[node name="Foam" parent="." unique_id=2031131633 instance=ExtResource("16_mei6b")]
 position = Vector2(184, -144)
 
-[node name="TrueStartButton" parent="." instance=ExtResource("8_o8ma5")]
+[node name="TrueStartButton" parent="." unique_id=947533623 instance=ExtResource("8_o8ma5")]
 visible = false
 position = Vector2(576, 550)
 collision_layer = 8192
@@ -299,7 +299,7 @@ breakable = false
 detatch_shake_strength = 20.0
 metadata/_edit_group_ = true
 
-[node name="Button" type="Button" parent="TrueStartButton"]
+[node name="Button" type="Button" parent="TrueStartButton" unique_id=350098295]
 offset_left = -80.0
 offset_top = -30.0
 offset_right = 80.0
@@ -308,68 +308,68 @@ focus_mode = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fx6je")
 flat = true
 
-[node name="Sprite2D" type="Sprite2D" parent="TrueStartButton"]
+[node name="Sprite2D" type="Sprite2D" parent="TrueStartButton" unique_id=807710506]
 texture = ExtResource("18_pi5ji")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TrueStartButton"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrueStartButton" unique_id=1067952567]
 shape = SubResource("RectangleShape2D_u6cai")
 
-[node name="Sound" type="Node2D" parent="."]
+[node name="Sound" type="Node2D" parent="." unique_id=237646268]
 
-[node name="DetectiveMusic" type="AudioStreamPlayer2D" parent="Sound"]
+[node name="DetectiveMusic" type="AudioStreamPlayer2D" parent="Sound" unique_id=760972111]
 position = Vector2(1152, 320)
 stream = ExtResource("19_6jqg8")
 
-[node name="StaticNoise" type="AudioStreamPlayer2D" parent="Sound"]
+[node name="StaticNoise" type="AudioStreamPlayer2D" parent="Sound" unique_id=2140509899]
 position = Vector2(576, 256)
 stream = ExtResource("20_y437t")
 
-[node name="MainMusic" type="AudioStreamPlayer2D" parent="Sound"]
+[node name="MainMusic" type="AudioStreamPlayer2D" parent="Sound" unique_id=1590927994]
 position = Vector2(1728, 321)
 stream = ExtResource("22_pas85")
 max_distance = 3000.0
 
-[node name="EeryMusic" type="AudioStreamPlayer2D" parent="Sound"]
+[node name="EeryMusic" type="AudioStreamPlayer2D" parent="Sound" unique_id=395197181]
 position = Vector2(4238, -1428)
 stream = ExtResource("23_o0sdu")
 autoplay = true
 
-[node name="BossBattleMusic" type="AudioStreamPlayer2D" parent="Sound"]
+[node name="BossBattleMusic" type="AudioStreamPlayer2D" parent="Sound" unique_id=1015728795]
 position = Vector2(574, 551)
 stream = ExtResource("23_qeh6t")
 
-[node name="HelpBot" parent="." instance=ExtResource("7_bh0tg")]
+[node name="HelpBot" parent="." unique_id=1062539806 instance=ExtResource("7_bh0tg")]
 position = Vector2(2879, 289)
 
-[node name="ItemBoundery" type="Area2D" parent="."]
+[node name="ItemBoundery" type="Area2D" parent="." unique_id=520855057]
 collision_layer = 512
 collision_mask = 1024
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemBoundery"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemBoundery" unique_id=1223353173]
 position = Vector2(1728, 320)
 shape = SubResource("RectangleShape2D_5xla6")
 debug_color = Color(0, 0.688334, 0.7, 0.14902)
 
-[node name="ItemRespawnPoint" type="Marker2D" parent="ItemBoundery"]
+[node name="ItemRespawnPoint" type="Marker2D" parent="ItemBoundery" unique_id=554155120]
 position = Vector2(576, 320)
 
-[node name="HammerManBoundery" type="Area2D" parent="."]
+[node name="HammerManBoundery" type="Area2D" parent="." unique_id=247932628]
 collision_layer = 64
 collision_mask = 2048
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerManBoundery"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerManBoundery" unique_id=1930181626]
 position = Vector2(-320, 336)
 shape = SubResource("RectangleShape2D_o57v0")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HammerManBoundery"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HammerManBoundery" unique_id=634151416]
 position = Vector2(3776, 336)
 shape = SubResource("RectangleShape2D_o57v0")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="HammerManBoundery"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="HammerManBoundery" unique_id=1715787380]
 position = Vector2(1728, 992)
 shape = SubResource("RectangleShape2D_uubxr")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="HammerManBoundery"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="HammerManBoundery" unique_id=1879532405]
 position = Vector2(1728, -320)
 shape = SubResource("RectangleShape2D_uubxr")
 
