@@ -498,6 +498,7 @@ polygon = PackedVector2Array(13, 24, 19, -12, 17, -14, -17, -14, -19, -12, -13, 
 z_index = -2
 
 [node name="Antivirus" parent="DesktopWindows" unique_id=932360776 node_paths=PackedStringArray("draggable_area", "close_button") instance=ExtResource("3_yrive")]
+visible = false
 position = Vector2(389, 344)
 max_global_x = 976.0
 min_global_y = 176.0

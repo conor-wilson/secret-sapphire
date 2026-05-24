@@ -16,6 +16,8 @@ func _ready() -> void:
 func reset():
 	
 	$Safe.show()
+	$Sapphire.show()
+	$Sapphire/Glow.scale = Vector2.ONE*0.5
 	
 	$RemovedPictureFrame.hide()
 	$PictureFrame.show()
@@ -119,6 +121,11 @@ func _on_sapphire_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 	if !active: return
 	if event.is_action_pressed("click") && safe_open && !victory_achieved:
 		$Instructions.text = "<You have found the SECRET SAPPHIRE!>"
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property($Sapphire, "modulate", Color.TRANSPARENT, 0.5)
+
+		$SFX/ChoirSinging.stop()
 		victory_achieved = true
 		release_confetti()
 		print("GAME WON!")
@@ -136,3 +143,16 @@ func _on_cave_mouth_input_event(viewport: Node, event: InputEvent, shape_idx: in
 			]
 		DialogueManager.stop_all_dialogue()
 		DialogueManager.new_dialogue_sequence($CaveOfSecrets/DialogueMarker.position, lines, "black", 4, $CaveOfSecrets/DialogueMarker)
+
+
+func _on_sapphire_mouse_entered() -> void:
+	if safe_open && !victory_achieved:
+		if !Global.sfx_muted: $SFX/ChoirSinging.play()
+		var tween = get_tree().create_tween()
+		tween.tween_property($Sapphire/Glow, "scale", Vector2.ONE, 0.4)
+
+func _on_sapphire_mouse_exited() -> void:
+	if safe_open && !victory_achieved:
+		$SFX/ChoirSinging.stop()
+		var tween = get_tree().create_tween()
+		tween.tween_property($Sapphire/Glow, "scale", Vector2.ONE*0.5, 0.4)

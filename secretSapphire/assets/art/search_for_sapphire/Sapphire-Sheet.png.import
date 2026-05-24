@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy6w1kilhe2so"
-path="res://.godot/imported/Sapphire.png-a04e9121bb561ab3821fee1f6d41987e.ctex"
+uid="uid://dngwx40ah135p"
+path="res://.godot/imported/Sapphire-Sheet.png-919c2c9e19e9d7ca03dd2d4c8f8e1703.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/search_for_sapphire/Sapphire.png"
-dest_files=["res://.godot/imported/Sapphire.png-a04e9121bb561ab3821fee1f6d41987e.ctex"]
+source_file="res://assets/art/search_for_sapphire/Sapphire-Sheet.png"
+dest_files=["res://.godot/imported/Sapphire-Sheet.png-919c2c9e19e9d7ca03dd2d4c8f8e1703.ctex"]
 
 [params]
 
