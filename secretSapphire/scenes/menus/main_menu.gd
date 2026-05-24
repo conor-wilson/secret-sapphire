@@ -5,6 +5,7 @@ signal start_button_exploded
 signal panel_broken
 signal s_collected(global_pos:Vector2)
 signal a_collected(global_pos:Vector2)
+signal fire_extinguisher_clicked
 signal hammer_man_level_changed
 signal crumpled_paper_clicked
 
@@ -135,6 +136,9 @@ func _on_desktop_a_collected(global_pos:Vector2) -> void:
 func _on_desktop_s_collected(global_pos:Vector2) -> void:
 	s_collected.emit(global_pos)
 
+func _on_desktop_fire_extinguisher_clicked() -> void:
+	fire_extinguisher_clicked.emit()
+
 func _on_crumpled_sticky_note_click() -> void:
 	crumpled_paper_clicked.emit()
 
@@ -162,7 +166,6 @@ func _on_tape_break_zone_body_entered(body: Node2D) -> void:
 		(has_node("InteractiveElements/CrumpledTouchTape") && body == $InteractiveElements/CrumpledTouchTape)
 		):
 		body.queue_free()
-
 
 
 func _on_quit_button_pressed() -> void:

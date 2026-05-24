@@ -585,6 +585,7 @@ flat = true
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="a_collected" from="Desktop" to="." method="_on_desktop_a_collected"]
+[connection signal="fire_extinguisher_clicked" from="Desktop" to="." method="_on_desktop_fire_extinguisher_clicked"]
 [connection signal="hammer_man_level_changed" from="Desktop" to="." method="_on_desktop_hammer_man_level_changed"]
 [connection signal="s_collected" from="Desktop" to="." method="_on_desktop_s_collected"]
 [connection signal="click" from="InteractiveElements/CrumpledStickyNote" to="." method="_on_crumpled_sticky_note_click"]

@@ -377,6 +377,7 @@ shape = SubResource("RectangleShape2D_uubxr")
 [connection signal="snap" from="Camera/FreeRoamCamera" to="." method="_on_free_roam_camera_snap"]
 [connection signal="a_collected" from="Menus/MainMenu" to="." method="_on_main_menu_a_collected"]
 [connection signal="crumpled_paper_clicked" from="Menus/MainMenu" to="." method="_on_crumpled_password_hint_click"]
+[connection signal="fire_extinguisher_clicked" from="Menus/MainMenu" to="." method="_on_fire_extinguisher_click"]
 [connection signal="hammer_man_level_changed" from="Menus/MainMenu" to="." method="_on_main_menu_hammer_man_level_changed"]
 [connection signal="panel_broken" from="Menus/MainMenu" to="." method="_on_main_menu_panel_broken"]
 [connection signal="s_collected" from="Menus/MainMenu" to="." method="_on_main_menu_s_collected"]

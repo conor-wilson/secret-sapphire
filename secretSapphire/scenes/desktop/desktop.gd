@@ -2,6 +2,7 @@ class_name Desktop extends Node2D
 
 signal s_collected(global_pos:Vector2)
 signal a_collected(global_pos:Vector2)
+signal fire_extinguisher_clicked
 signal hammer_man_level_changed
 
 const this_is_actually_fine_message:String = "\"THIS ACTUALLY IS FINE!\nTRY THIS:                      \""
@@ -140,7 +141,7 @@ func _on_scan_button_mouse_exited() -> void:
 func _on_fire_extinguisher_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click") && !event.is_action_pressed("pan") && mode == Mode.ACTIVE && CursorManager.current_cursor == CursorManager.CURSOR:
 		$DesktopWindows/Antivirus/FireExtinguisher.hide()
-		CursorManager.set_mouse_cursor(CursorManager.FIRE_EXTINGUISHER)
+		fire_extinguisher_clicked.emit()
 
 
 ## RECYCLING BIN STUFF
