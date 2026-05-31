@@ -125,18 +125,14 @@ func _start_what_was_that_sequence():
 	if !active: return
 	if stage == Stage.START_BUTTON_BROKEN:
 		var lines: Array[String] = [
-			"...What was that?",
-			"Was that what I think it was? o_o",
-			"I told that DEV to fix the START button... ¬_¬",
-			"Oh well, luckily I can fix it for you ^_^",
-			"You'll have to come and unlock me first though..."
+			"What was that? o_o",
 		]
 		DialogueManager.stop_all_dialogue()
-		DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.position, lines, "blue", 2, $DialogueMarkers/SettingsButtonMarker)
+		DialogueManager.new_dialogue_sequence($DialogueMarkers/SettingsButtonMarker.position, lines, "blue", 2000, $DialogueMarkers/SettingsButtonMarker)
 		if $Menus/SettingsMenu.secret_settings_locked: 
-			DialogueManager.new_dialogue_sequence($DialogueMarkers/LockedSecretSettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/LockedSecretSettingsButtonMarker)
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/LockedSecretSettingsButtonMarker.global_position, lines, "blue", 2000, $DialogueMarkers/LockedSecretSettingsButtonMarker)
 		else:
-			DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, lines, "blue", 2, $DialogueMarkers/SecretSettingsButtonMarker)
+			DialogueManager.new_dialogue_sequence($DialogueMarkers/SecretSettingsButtonMarker.global_position, lines, "blue", 2000, $DialogueMarkers/SecretSettingsButtonMarker)
 
 
 func _input(event: InputEvent) -> void:

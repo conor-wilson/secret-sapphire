@@ -6,17 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bjc3ogtd7g8s4" path="res://assets/art/menu_components/Cave.png" id="2_hc1kl"]
 [ext_resource type="FontFile" uid="uid://beb6n1e5n8kuk" path="res://assets/fonts/antiquity-print.ttf" id="3_1t0yn"]
 [ext_resource type="PackedScene" uid="uid://bguly075bkdj7" path="res://scenes/search_for_sapphire/sequence_screen.tscn" id="3_fxxuh"]
-[ext_resource type="Texture2D" uid="uid://fujm2ju4lp83" path="res://assets/art/splashscreen/MouseAndKeyboard.png" id="5_fxxuh"]
-[ext_resource type="AudioStream" uid="uid://mw6ulvl1do3b" path="res://assets/audio/dark-wind-19785.mp3" id="8_hc1kl"]
+[ext_resource type="Texture2D" uid="uid://cqx1pn3s3awcc" path="res://assets/art/splashscreen/MadeWithGodot.png" id="5_hc1kl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8wvgg"]
 radius = 72.0
 height = 208.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_q7gyh"]
-font = ExtResource("1_ahu4p")
-font_size = 48
-font_color = Color(0.67451, 0.196078, 0.196078, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hc1kl"]
 font = ExtResource("1_ahu4p")
@@ -26,6 +20,10 @@ font_size = 32
 font = ExtResource("3_1t0yn")
 font_size = 39
 font_color = Color(0.796078, 0.858824, 0.988235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fxxuh"]
+font = ExtResource("1_ahu4p")
+font_size = 64
 
 [node name="TitleSequence" type="Node2D" unique_id=186278650]
 script = ExtResource("1_q7gyh")
@@ -52,51 +50,14 @@ position = Vector2(576, 324)
 animation = &"loop"
 autoplay = "intro"
 
-[node name="PhotosensitivityScreen" parent="." unique_id=1475626027 instance=ExtResource("3_fxxuh")]
-visible = false
+[node name="MadeWithGodot" parent="." unique_id=1475626027 instance=ExtResource("3_fxxuh")]
 
-[node name="Title" type="Label" parent="PhotosensitivityScreen" unique_id=1580321828]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-text = "PHOTOSENSITIVITY WARNING
-
-"
-label_settings = SubResource("LabelSettings_q7gyh")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Text" type="Label" parent="PhotosensitivityScreen" unique_id=1756849539]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-text = "
-
-This game contains flashing images"
-label_settings = SubResource("LabelSettings_hc1kl")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ControlsScreen" parent="." unique_id=1970734117 instance=ExtResource("3_fxxuh")]
-
-[node name="Text" type="Label" parent="ControlsScreen" unique_id=894019836]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-text = "Requires a mouse and keyboard
-
-"
-label_settings = SubResource("LabelSettings_hc1kl")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MouseAndKeyboard" type="Sprite2D" parent="ControlsScreen" unique_id=1798086755]
-position = Vector2(576, 368)
-scale = Vector2(2, 2)
-texture = ExtResource("5_fxxuh")
+[node name="OriginalLargeDarkBlack" type="Sprite2D" parent="MadeWithGodot" unique_id=2040919589]
+position = Vector2(576, 323.99997)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_hc1kl")
 
 [node name="CreditScreen" parent="." unique_id=1751461852 instance=ExtResource("3_fxxuh")]
-visible = false
 
 [node name="Label" type="Label" parent="CreditScreen" unique_id=1600960280]
 layout_mode = 0
@@ -120,15 +81,36 @@ label_settings = SubResource("LabelSettings_qhl73")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BlackScreen" type="ColorRect" parent="." unique_id=432281884]
+[node name="AvailableNow" parent="." unique_id=1970734117 instance=ExtResource("3_fxxuh")]
 visible = false
+
+[node name="Text" type="Label" parent="AvailableNow" unique_id=894019836]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "Available now..."
+label_settings = SubResource("LabelSettings_hc1kl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="itchLink" parent="." unique_id=2077637606 instance=ExtResource("3_fxxuh")]
+
+[node name="Text" type="Label" parent="itchLink" unique_id=1427379119]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "conorwilson.itch.io"
+label_settings = SubResource("LabelSettings_fxxuh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlackScreen" type="ColorRect" parent="." unique_id=432281884]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 0)
 
 [node name="SpookyIntroMusic" type="AudioStreamPlayer2D" parent="." unique_id=458275743]
 position = Vector2(576, 320)
-stream = ExtResource("8_hc1kl")
 volume_db = 6.0
 
 [connection signal="input_event" from="CaveOfSecrets/CaveMouth" to="." method="_on_cave_mouth_input_event"]

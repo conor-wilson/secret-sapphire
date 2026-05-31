@@ -365,6 +365,7 @@ text = "SETTINGS"
 flat = true
 
 [node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1656757704]
+visible = false
 layout_mode = 2
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer2" unique_id=2109796018]

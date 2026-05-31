@@ -19,3 +19,5 @@ builds/*
 *.mp3
 *.wav
 *.ttf
+secretSapphire/trailer/*
+trailer/*

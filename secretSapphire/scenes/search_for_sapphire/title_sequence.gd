@@ -4,19 +4,18 @@ signal done
 
 @onready var eyes_background: EyesBackground = $EyesBackground
 
-@onready var photosensitivity_screen: SequenceScreen = $PhotosensitivityScreen
-@onready var controls_screen: SequenceScreen = $ControlsScreen
+@onready var made_with_godot_screen: SequenceScreen = $MadeWithGodot
 @onready var credit_screen: SequenceScreen = $CreditScreen
 @onready var title_screen: SequenceScreen = $TitleScreen
+@onready var available_now_screen: SequenceScreen = $AvailableNow
+@onready var itch_link: SequenceScreen = $itchLink
 @onready var black_screen: ColorRect = $BlackScreen
 
 @onready var spooky_intro_music: AudioStreamPlayer2D = $SpookyIntroMusic
 
 var intro_cave_dialogue:bool = true
 
-func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:float = 3.0, hard_cut:bool=false, include_music:bool = false, include_photo_warning:bool=false):
-	
-	intro_cave_dialogue = include_photo_warning
+func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:float = 3.0, hard_cut:bool=false, include_music:bool = false, is_intro:bool=false, custom_transition_speed:float = 1.0):
 	
 	# Null safety
 	if previous_screen == null:
@@ -31,21 +30,27 @@ func play_title_sequence(previous_screen:Node, final_screen:Node, linger_time:fl
 	
 	# Only do a smooth fade if not hard-cutting
 	if !hard_cut:
-		TransitionFade.transition()
+		TransitionFade.transition(custom_transition_speed)
 		await TransitionFade.fully_black
 	previous_screen.hide()
 	show()
 	
 	# Begin the background animation
-	eyes_background.deploy_eyes()
+	if is_intro:
+		eyes_background.deploy_eyes()
+	else:
+		eyes_background.deploy_eyes(1)
 	
 	# Execute the sequence
-	await get_tree().create_timer(linger_time).timeout
-	if include_photo_warning:
-		await photosensitivity_screen.fade_in(linger_time)
-		await controls_screen.fade_in(linger_time)
-	await credit_screen.fade_in(linger_time)
-	await title_screen.fade_in(linger_time, false)
+	if is_intro:
+		await get_tree().create_timer(linger_time).timeout
+		await made_with_godot_screen.fade_in(linger_time)
+		await credit_screen.fade_in(linger_time)
+		await title_screen.fade_in(linger_time, false)
+	else:
+		await get_tree().create_timer(0.5).timeout
+		await available_now_screen.fade_in(linger_time)
+		await itch_link.fade_in(10000)
 	
 	# Transition to the next scene
 	TransitionFade.transition()

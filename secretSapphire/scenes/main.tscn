@@ -1,22 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://duh2whuig04ys"]
+[gd_scene format=3 uid="uid://duh2whuig04ys"]
 
 [ext_resource type="PackedScene" uid="uid://drpjvxm3qjcl7" path="res://scenes/menus/menus.tscn" id="1_7ucwg"]
 [ext_resource type="Script" uid="uid://bftu8upase4be" path="res://scenes/main.gd" id="1_lvo15"]
 [ext_resource type="PackedScene" uid="uid://byovsr0mrrcte" path="res://scenes/search_for_sapphire/search_for_the_secret_sapphire.tscn" id="3_wl75p"]
 [ext_resource type="PackedScene" uid="uid://dcqoyseha8hc4" path="res://scenes/search_for_sapphire/victory_sequence.tscn" id="5_85g3d"]
+[ext_resource type="AudioStream" uid="uid://bb5splwfsha7d" path="res://assets/audio/Retro Impact Punch 07.wav" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://bh4byhtafyv74" path="res://assets/art/items/Cursor.png" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://b17btrbwqxhtb" path="res://scenes/search_for_sapphire/title_sequence.tscn" id="8_tipki"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node2D" unique_id=1114790172]
 script = ExtResource("1_lvo15")
 
-[node name="Menus" parent="." instance=ExtResource("1_7ucwg")]
+[node name="Menus" parent="." unique_id=1258675537 instance=ExtResource("1_7ucwg")]
 
-[node name="SearchForTheSecretSapphire" parent="." instance=ExtResource("3_wl75p")]
+[node name="SearchForTheSecretSapphire" parent="." unique_id=1497093298 instance=ExtResource("3_wl75p")]
 
-[node name="TitleSequence" parent="." instance=ExtResource("8_tipki")]
+[node name="TitleSequence" parent="." unique_id=994932625 instance=ExtResource("8_tipki")]
+z_index = 1000
 
-[node name="VictorySequence" parent="." instance=ExtResource("5_85g3d")]
+[node name="VictorySequence" parent="." unique_id=1260075933 instance=ExtResource("5_85g3d")]
 visible = false
+
+[node name="VibrationNoise" type="AudioStreamPlayer2D" parent="." unique_id=503207560]
+position = Vector2(0, -4)
+stream = ExtResource("6_tefeu")
+
+[node name="BlackScreen" type="ColorRect" parent="." unique_id=825259090]
+visible = false
+z_index = 4096
+offset_left = -104.0
+offset_top = -88.0
+offset_right = 1258.0
+offset_bottom = 728.0
+color = Color(0, 0, 0, 1)
+
+[node name="TrailerCursor" type="Sprite2D" parent="." unique_id=494522577]
+texture = ExtResource("7_o6xl0")
 
 [connection signal="mute_music_toggled" from="Menus" to="." method="_on_menus_mute_music_toggled"]
 [connection signal="start_game" from="Menus" to="." method="_on_menus_start_game"]

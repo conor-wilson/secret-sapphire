@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 # Hello to anyone viewing the code during the jam!
 #
@@ -50,6 +50,9 @@ func reset():
 	await get_tree().create_timer(2).timeout
 	menus.play()
 
+func _process(delta: float) -> void:
+	$TrailerCursor.global_position = get_global_mouse_position() + Vector2(16, 16)
+
 
 #######################
 ## SCENE TRANSITIONS ##
@@ -73,15 +76,12 @@ func play_secret_sapphire():
 	search_for_the_secret_sapphire.reset()
 	
 	# Start of game should be more abrupt the first time (for dramatic effect)
-	if first_victory:
-		first_victory = false
-		title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 5, true, true)
-	else:
-		title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 5, false, true)
-	
+	title_sequence.play_title_sequence(menus, search_for_the_secret_sapphire, 5, false, true, false, 0.2)
+
 	# Start the "actual" game
 	await title_sequence.done
 	search_for_the_secret_sapphire.play()
+
 
 func secret_sapphire_victory():
 	search_for_the_secret_sapphire.stop()
@@ -131,10 +131,17 @@ func _on_victory_sequence_main_menu() -> void:
 ###########
 
 func _input(event: InputEvent) -> void:
-	pass
 	
-	#if event.is_action_pressed("debugbutton"):
-		#_on_menus_start_game()
+	if event.is_action_pressed("debugbutton"):
+		_on_menus_start_game()
+		#DialogueManager.stop_all_dialogue()
+	
+	if event.is_action_pressed("slam"):
+		$VibrationNoise.play()
+		$Menus/Sound/StaticNoise.stop()
+		$BlackScreen.show()
+		await get_tree().create_timer(0.5).timeout
+		get_tree().quit()
 	
 	# NOTE: Uncomment if you want a dodgy reset mechanic...
 	#if event.is_action_pressed("reset"):

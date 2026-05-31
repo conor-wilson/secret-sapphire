@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 		current_dragging_object = null
 
 func set_mouse_cursor(source:Resource):
-	Input.set_custom_mouse_cursor(source, 0, _get_hotspot(source))
+	Input.set_custom_mouse_cursor(source, 0, get_hotspot(source))
 	current_cursor = source
 	
 
@@ -30,7 +30,7 @@ func current_cursor_is(source:Resource) -> bool:
 	return current_cursor == source
 
 # _get_hotspot returns the hotspot offset for the provided custom cursor resource.
-func _get_hotspot(source:Resource) -> Vector2: 
+func get_hotspot(source:Resource) -> Vector2: 
 	match source:
 		CURSOR:
 			return Vector2.ZERO

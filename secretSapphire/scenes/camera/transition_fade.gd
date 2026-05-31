@@ -13,9 +13,9 @@ func fade_in():
 	color_rect.show()
 	animation_player.play("fade_in")
 
-func transition():
+func transition(custom_speed:float = 1.0):
 	color_rect.show()
-	animation_player.play("fade_out")
+	animation_player.play("fade_out", -1, custom_speed)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out":

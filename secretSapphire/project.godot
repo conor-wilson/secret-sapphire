@@ -37,7 +37,8 @@ window/stretch/scale_mode="integer"
 
 [editor]
 
-movie_writer/movie_file="D:/gamedev/godot/projects/secret-sapphire/secretSapphire/trailer/secretSapphireTrailer.avi"
+movie_writer/video_quality=1.0
+movie_writer/movie_file="/Users/conorwilson/gamedev/projects/secret-sapphire/secretSapphire/trailer/trailer7.avi"
 
 [global_group]
 
